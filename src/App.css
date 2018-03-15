@@ -1,0 +1,26 @@
+.user-info-header {
+	display: flex;
+	align-items: center;
+}
+
+.charity-title {
+	margin-left:10pt;
+}
+
+.charity-subtitle {
+	margin-left:10pt;
+	font-size:16pt;
+}
+
+
+.card-text-container {
+	padding-top:10pt;
+}
+
+.social-container {
+	margin-top:10pt;
+}
+
+.contact-title {
+	font-weight: 500;
+}

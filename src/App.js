@@ -1,19 +1,42 @@
 import React, { Component } from 'react';
 import lorem from 'lorem-ipsum'
+import RequestsTableExample from './RequestsTableExample'
+import './App.css';
+
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Avatar from 'material-ui/Avatar';
+import Paper from 'material-ui/Paper';
 
 class App extends Component {
   render() {
+    const avatarStyle = {"marginRight":10}
+    const paperStyle = {padding:20, marginTop:20}
+
     return (
+    <MuiThemeProvider>
       <div className="App">
-        <header >
-          <h1>Ayudelos</h1>
-          <h3>Ciudad de Mexico, Mexico</h3>
+        <header style={{"marginBottom" : 20}}>
+          <div className = "user-info-header">
+            <Avatar size={70} style={avatarStyle}>A</Avatar>
+            <div className = "user-info-text">
+              <h1 className="charity-title">Ayudelos</h1>
+              <div className="charity-subtitle">Ciudad de Mexico, Mexico</div>
+            </div>
+          </div>
         </header>
+        <div className = "user-story">
+          <Paper zDepth={1} style={paperStyle}>
           <h2>Our Story</h2>
-          <p>
+          <div className="card-text-container">
             {lorem({count:10})}
-          </p>
-          <div className = "connect-container">
+          </div>
+          </Paper>
+        </div>
+        <div className = "connect-container">
+          <Paper zDepth={1} style={paperStyle}>
+          <h2>Learn More</h2>
+          <div className = "card-text-container">
             <div className = "contact-container">
               <div className = "contact-name social-info">
                 <span className="contact-name-title contact-title">Contact name: </span>Humberto Rodriguez
@@ -35,10 +58,15 @@ class App extends Component {
               <div className = "twitter-container social-info">
                 <a href="twitter.com">Twitter</a>
               </div>
-
-            </div>
           </div>
+          </div>
+          </Paper>
+        </div>
+        <div className = "open-requests">
+          {RequestsTableExample()}
+        </div>
       </div>
+    </MuiThemeProvider>
     );
   }
 }
