@@ -9,7 +9,7 @@ import Paper from 'material-ui/Paper';
 
 class App extends Component {
   render() {
-    const avatarStyle = {"marginRight":10}
+    const avatarStyle = {"marginRight":10, "height":70, "width":70, "font-size": 32}
     const paperStyle = {padding:20, marginTop:20}
     const requestsHeaderStyling = {marginLeft:0}
 
