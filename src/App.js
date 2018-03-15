@@ -4,7 +4,6 @@ import RequestsTableExample from './RequestsTableExample'
 import './App.css';
 
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Avatar from 'material-ui/Avatar';
 import Paper from 'material-ui/Paper';
 
@@ -12,9 +11,11 @@ class App extends Component {
   render() {
     const avatarStyle = {"marginRight":10}
     const paperStyle = {padding:20, marginTop:20}
+    const requestsHeaderStyling = {marginLeft:0}
+
+    const elevation = 3
 
     return (
-    <MuiThemeProvider>
       <div className="App">
         <header style={{"marginBottom" : 20}}>
           <div className = "user-info-header">
@@ -26,7 +27,7 @@ class App extends Component {
           </div>
         </header>
         <div className = "user-story">
-          <Paper zDepth={1} style={paperStyle}>
+          <Paper elevation={elevation} style={paperStyle}>
           <h2>Our Story</h2>
           <div className="card-text-container">
             {lorem({count:10})}
@@ -34,7 +35,7 @@ class App extends Component {
           </Paper>
         </div>
         <div className = "connect-container">
-          <Paper zDepth={1} style={paperStyle}>
+          <Paper elevation={elevation} style={paperStyle}>
           <h2>Learn More</h2>
           <div className = "card-text-container">
             <div className = "contact-container">
@@ -62,11 +63,16 @@ class App extends Component {
           </div>
           </Paper>
         </div>
-        <div className = "open-requests">
+        <div className = "open-requests requests-section">
+          <h2 style={requestsHeaderStyling} className = "requests-title">Open Requests</h2>
           {RequestsTableExample()}
         </div>
+        <div className = "closed-requests requests-section">
+          <h2 style={requestsHeaderStyling}className = "requests-title">Closed Requests</h2>
+          {RequestsTableExample()}
+        </div>
+
       </div>
-    </MuiThemeProvider>
     );
   }
 }
