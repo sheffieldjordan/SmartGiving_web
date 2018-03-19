@@ -16,7 +16,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <ProfileHeader/>
+        <ProfileHeader store={this.props.store}/>
         <div className = "user-story">
           <Paper elevation={elevation} style={paperStyle}>
           <h2>Our Story</h2>

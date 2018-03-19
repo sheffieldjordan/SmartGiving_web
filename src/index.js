@@ -4,5 +4,20 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { createStore } from 'redux'
+import data from './data/user'
+
+window.React = React
+
+const placeholderReducer = (state = {}, action) => { return state}
+const initialState = {
+	...data
+}
+
+const store = createStore(
+	placeholderReducer,
+	initialState
+)
+
+ReactDOM.render(<App store={store}/>, document.getElementById('root'));
 registerServiceWorker();
