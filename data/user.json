@@ -1,0 +1,19 @@
+{
+	"user": {
+		"location": {
+			"country": "Mexico",
+			"state": "",
+			"city": "Ciudad de Mexico",
+			"imgurl": "https://i.imgur.com/SIodEmY.jpg"
+		},
+		"contact": {
+			"name": "Humberto Rodriguez",
+			"email": "humbertorodriguez12@gmail.com",
+			"website": "www.google.com",
+			"facebook": "www.facebook.com",
+			"instagram": "www.instagram.com",
+			"twitter": "www.twitter.com"
+		},
+		"story": "Que te pasa? Aroident cillum cupidatat veniam ipsum do reprehenderit. In commodo ipsum excepteur proident et pariatur. Aliqua veniam irure labore culpa velit laboris sunt excepteur proident. Irure adipisicing et dolore consequat irure esse est consectetur ad id officia id. Deserunt anim adipisicing in officia eiusmod ullamco exercitation minim aute. Nostrud sint cillum aute amet minim ut culpa nisi amet veniam nisi adipisicing esse minim. Eiusmod consectetur laboris in minim excepteur consequat ipsum exercitation in voluptate eiusmod eiusmod id adipisicing. Culpa ipsum aute nostrud enim Lorem Lorem consequat. Ex proident veniam dolor anim nisi dolor ex aliqua sint et excepteur labore. Id qui eu velit officia elit consectetur aliquip fugiat culpa adipisicing minim anim excepteur."
+	}
+}
