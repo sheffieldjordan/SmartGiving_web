@@ -48,27 +48,14 @@ const contactSection = (renderFunc, sections, contact, itemClass=undefined) => {
 
 // Returns a span in the form of this:
 // Twitter: www.twitter.com
-
 const titleValueSpan = (title, value, itemClass) => {
   return (<div><span className = {itemClass}>{title + ": "}</span>{value}</div>)
 }
 
 // Returns a span in the form of this:
 // Twitter
-
 const titleLinkSpan = (title, link, itemClass) => {
   return (<a className = {itemClass} href={link}>{title}</a>)
 }
-
-// const valueContactSection = (sections, contact) => {
-//   return sections.map((key, i) => {
-//     if (contact[key] === undefined) return
-//     return (
-//       <div key={i} className={"social-info"}>
-//       <a href={contact[key]}>{contactMapping[key]}</a>
-//       </div>
-//   )})
-// }
-
 
 export default ContactInfo
