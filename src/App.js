@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 
 import ProfileHeader from './components/ProfileHeader'
+import About from './components/About'
 import UserStory from './components/UserStory'
 import ContactInfo from './components/ContactInfo'
 import RequestsTableExample from './RequestsTableExample'
 
 import './App.css';
 
+// TODO: Remove this hacky way to show the about page
+var showAbout = false;
 
 class App extends Component {
-  render() {    
+  render() {
+    if (showAbout) {
+      return (<About/>)
+    }    
     return (
       <div className="App">
         <ProfileHeader store={this.props.store}/>
