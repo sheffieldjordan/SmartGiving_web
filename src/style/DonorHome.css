@@ -1,0 +1,25 @@
+.page-header {
+	margin:20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.page-title {
+	font-size: 40px;
+}
+
+.charity-card-container {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.charity-card {
+	width:400px;
+	margin:20px;
+	display: inline-block;
+}
+
+.charity-card-media {
+	height:200px;
+}

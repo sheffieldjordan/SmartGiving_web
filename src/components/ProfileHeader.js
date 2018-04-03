@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import Avatar from 'material-ui/Avatar';
+import UserAvatar from './UserAvatar';
 
 class ProfileHeader extends Component {
 	render() {
 		const userInfo = this.props.store.getState().user;
-	    const avatarStyle = {"marginRight":10, "height":70, "width":70, "fontSize": 32, "backgroundColor":"#317EAC"}
 		return (
 			<header style={{"marginBottom" : 20}}>
 			  <div className = "user-info-header">
-			    <Avatar size={70} style={avatarStyle}>
-			    	{userInfo.charityName.charAt(0)}
-			    </Avatar>
+			    <UserAvatar displayName={userInfo.charityName} />
 			    <div className = "user-info-text">
 			      <h1 className="charity-title">{userInfo.charityName}</h1>
 			      <div className="charity-subtitle">{locationWithKeys(["city", "country"], userInfo.location)}</div>

@@ -5,6 +5,8 @@ import UserStory from '../components/UserStory'
 import ContactInfo from '../components/ContactInfo'
 import RequestsTableExample from '../RequestsTableExample'
 
+import '../style/ProfilePage.css';
+
 class ProfilePage extends Component {
   render() {
     return (

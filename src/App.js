@@ -9,8 +9,7 @@ import ProfilePage from './containers/ProfilePage'
 import About from './containers/About'
 import Home from './containers/Home'
 import Whoops404 from './containers/Whoops404'
-
-import './App.css';
+import DonorHome from './containers/DonorHome'
 
 class App extends Component {
   render() {
@@ -21,6 +20,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/profile" component={() => <ProfilePage store={this.props.store}/>} />
+          <Route path="/donor" component={() => <DonorHome store={this.props.store}/>} />
           <Route component={Whoops404} />
         </Switch>
       </div>
