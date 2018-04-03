@@ -1,42 +1,31 @@
 import React, { Component } from 'react';
+import {
+  HashRouter,
+  Route,
+  Switch // Displays the first route that matches
+} from 'react-router-dom'
 
-import ProfileHeader from './components/ProfileHeader'
-import UserStory from './components/UserStory'
-import ContactInfo from './components/ContactInfo'
-import RequestsTableExample from './RequestsTableExample'
-
-import About from './components/About'
-import Home from './components/Home'
+import ProfilePage from './containers/ProfilePage'
+import About from './containers/About'
+import Home from './containers/Home'
+import Whoops404 from './containers/Whoops404'
 
 import './App.css';
 
-// TODO: Remove this hacky way to show the about page
-var showAbout = false;
-var showHome = true;
 class App extends Component {
   render() {
-    if (showAbout) {
-      return (<About/>)
-    } else if (showHome) {
-      return (<Home/>)
-    }
     return (
-      <div className="App">
-        <ProfileHeader store={this.props.store}/>
-        <UserStory store={this.props.store}/>
-        <ContactInfo store={this.props.store}/>
-
-        <div className = "open-requests requests-section">
-          <h2 className = "requests-title">Open Requests</h2>
-          {RequestsTableExample()}
-        </div>
-        <div className = "closed-requests requests-section">
-          <h2 className = "requests-title">Closed Requests</h2>
-          {RequestsTableExample()}
-        </div>
-
+    <HashRouter>
+      <div className="main">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/profile" component={() => <ProfilePage store={this.props.store}/>} />
+          <Route component={Whoops404} />
+        </Switch>
       </div>
-    );
+    </HashRouter>
+    )
   }
 }
 
