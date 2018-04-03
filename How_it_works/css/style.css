@@ -1,0 +1,197 @@
+body{
+	background:#000;
+}
+
+#Scenes{
+	position:fixed;
+	width:100%;
+	height:400%;
+}
+
+.parallax-layer{
+	position:absolute;
+	height:100vh;
+	background-repeat:no-repeat;
+}
+
+#scene-1{
+	background:url('../images/bg-1.png');
+    background-size: cover;
+	width:100%; 
+}
+
+.kids{
+    position:absolute;
+	background:url(../images/kids.png);
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 300px;
+    left:48%;
+}
+
+
+.carolyn {
+	position:absolute;
+	background:url(../images/carolyn.png);
+    background-repeat: no-repeat;
+	width: 220px;
+	height:500px;
+    left:30%;
+    display: flex;
+}
+
+h1 {
+    position:absolute;
+	left:10%;
+}
+
+h2 {
+    text-align:center;
+    position: relative;
+    margin: auto;
+}
+
+#sheruns {
+    position:absolute;
+	left:10%;
+    top:30%;
+    width: 300px;
+}
+
+#everyday {
+    position:absolute;
+	left:55%;
+    top:10%;
+    width: 600px;    
+}
+
+.donna {
+    position:absolute;
+	background:url(../images/donna.png);
+    background-repeat: no-repeat;
+	width: 200px;
+	height:500px;
+	left:30%;
+    display: flex;
+    
+}
+
+.delivery {
+    position:absolute;
+	background:url(../images/shopping_cart.png);
+	background-size: contain;
+    background-repeat: no-repeat;
+    width: 400px;
+	height:600px;
+    display:flex;
+}
+
+#scene-2{
+	background:url('../images/bg-2.png');
+    background-size: cover;
+	width:100%;
+    -webkit-transform: translate(0,100%);
+    -ms-transform: translate(0,100%);
+    transform: translate(0,100%);
+}
+
+.sheworks {
+    position:absolute;
+	left:10%;
+    top:30%;
+    width: 300px;
+}
+
+#scene-3 {
+    
+/*    background:linear-gradient(#828384, white);*/
+    background-color: whitesmoke;
+    background-size: cover;
+	width:100%;
+    -webkit-transform: translate(0,200%);
+    -ms-transform: translate(0,200%);
+    transform: translate(0,200%);    
+}
+
+div > p {
+    align-self: flex-end;
+    font-size: 1.5em;
+
+}
+
+.introducing {
+    position: relative;
+    margin: auto;
+    text-align:center;
+    width: 30%;
+}
+
+#triangle {
+    position:relative;
+    margin: auto;
+    width: 220px;
+    height: 200px;
+	background:url(../images/triangle_.png);
+    background-repeat:no-repeat;
+}
+
+/*
+.eth {
+    position:relative;
+    margin: auto;
+    width: 220px;
+    height: 600px;
+	background:url(../images/ethreum%20logo.png);
+    background-repeat:no-repeat;
+}
+
+*/
+
+#kids_w_books {
+    position:absolute;
+	background:url(../images/kids_w_books.png);
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 300px;
+    left:48%;
+}
+
+#textbooks {
+    position:absolute;
+	background:url(../images/textbooks.png);
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 300px;
+    left:44%;
+}
+
+#caps {
+    position:absolute;
+	background:url(../images/caps.png);
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 300px;
+    left:48%;
+}
+
+
+#scene-4 {
+	background-color: whitesmoke;
+    background-size: cover;
+	width:100%;
+    -webkit-transform: translate(0,300%);
+    -ms-transform: translate(0,300%);
+    transform: translate(0,300%);    
+}
+
+a:link,  a:visited {
+    text-align:center;
+    background-color: grey;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: lightgrey;
+}
