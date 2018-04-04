@@ -11,8 +11,8 @@ import Home from './components/Home'
 import './App.css';
 
 // TODO: Remove this hacky way to show the about page
-var showAbout = false;
-var showHome = true;
+var showAbout = true;
+var showHome = false;
 class App extends Component {
   render() {
     if (showAbout) {
