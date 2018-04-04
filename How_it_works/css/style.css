@@ -15,7 +15,7 @@ body{
 }
 
 #scene-1{
-	background:url('../images/bg-1.png');
+	background:url('../images/mountains_bkg1.svg');
     background-size: cover;
 	width:100%; 
 }
@@ -87,7 +87,7 @@ h2 {
 }
 
 #scene-2{
-	background:url('../images/bg-2.png');
+	background:url('../images/city_bkg2.svg');
     background-size: cover;
 	width:100%;
     -webkit-transform: translate(0,100%);
