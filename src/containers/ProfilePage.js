@@ -10,7 +10,7 @@ import '../style/ProfilePage.css';
 class ProfilePage extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="page-container">
         <ProfileHeader store={this.props.store}/>
         <UserStory store={this.props.store}/>
         <ContactInfo store={this.props.store}/>

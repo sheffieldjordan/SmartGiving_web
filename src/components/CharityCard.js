@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
-import Lorem from 'lorem-ipsum'
-
 
 class CharityCard extends Component {
 	render() {
