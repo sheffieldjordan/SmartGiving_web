@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style/index.css';
+import 'semantic-ui-css/semantic.min.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import { createStore } from 'redux'
 import data from './data/user'
+
+
 
 window.React = React
 
@@ -19,5 +22,9 @@ const store = createStore(
 	initialState
 )
 
-ReactDOM.render(<App store={store}/>, document.getElementById('root'));
+ReactDOM.render(
+
+	<App store={store}/>,
+
+	document.getElementById('root'));
 registerServiceWorker();

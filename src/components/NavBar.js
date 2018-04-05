@@ -11,16 +11,17 @@ class NavBar extends Component {
 		<div>
 			<AppBar position="static" color="primary">
 				<Toolbar className="button-bar" disableGutters={true}>
+					<Button color="inherit" component={Link} to="/">GlobalGiving</Button>
 					<Button color="inherit" component={Link} to="/about">About Us</Button>
-					<Button color="inherit">How It Works</Button>
-					<Button color="inherit">Contact</Button>
+					<Button color="inherit" component={Link} to="/howitworks">How It Works</Button>
+					<Button color="inherit" component={Link} to="/contact">Contact</Button>
 				</Toolbar>
 			</AppBar>
-			<AppBar position="static" color="default">
+{/*			<AppBar position="static" color="default">
 				<Toolbar className = "title-bar">
 					<h1>SmartGiving</h1>
 				</Toolbar>
-			</AppBar>
+			</AppBar> */}
 		</div>
 		);
 	}
