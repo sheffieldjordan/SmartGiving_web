@@ -1,24 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style/index.css';
-import 'semantic-ui-css/semantic.min.css';
+import './style/Components.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+
 import { createStore } from 'redux'
+import {showDonationDrawer} from './redux/reducers'
 import data from './data/user'
 
 
 
 window.React = React
 
-const placeholderReducer = (state = {}, action) => { return state}
 const initialState = {
+	donationDrawerOpen: false,
 	...data
 }
 
 const store = createStore(
-	placeholderReducer,
+	showDonationDrawer,
 	initialState
 )
 

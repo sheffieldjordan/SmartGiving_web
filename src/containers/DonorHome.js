@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import UserAvatar from '../components/UserAvatar';
 import CharityCard from '../components/CharityCard'
 import NavBar from '../components/NavBar'
 
@@ -14,7 +13,6 @@ import "../style/DonorHome.css"
 
 class DonorHome extends Component {
 	render() {
-		const userInfo = this.props.store.getState().user;
 		const charities = [ {title: "Donate 2 Colombian Kidz", image: ImageColombian},
 							{title: "Too Many Tulips", image: ImageTulip},
 							{title: "Save Our Frogs", image:ImageFrog},
