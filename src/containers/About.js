@@ -3,7 +3,8 @@ import NavBar from '../components/NavBar';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import { List, Image, Divider } from 'semantic-ui-react';
-import Nat_img from '../images/Nat.png';
+import Nat from '../images/Nat.png';
+import Morgan from '../images/Morgan.png';
 
 
 
@@ -23,7 +24,7 @@ class About extends Component {
 			<div className="page-container">
 				<List>
 					<List.Item>
-						<Image src={Nat_img} size='small' circular verticalAlign='middle'/>
+						<Image src={Morgan} size='small' circular verticalAlign='middle'/>
 						<List.Content verticalAlign='middle'>
 							<List.Header as='a' href='https://www.linkedin.com/in/morgansjordan/'>Morgan Jordan</List.Header>
 							<List.Description>Last seen watching stars 10 hours ago.</List.Description>
@@ -31,14 +32,14 @@ class About extends Component {
 					</List.Item>
 
 					<List.Item>
-						<Image src={Nat_img} size='small' circular verticalAlign='middle' />
+						<Image src={Nat} size='small' circular verticalAlign='middle' />
 						<List.Content verticalAlign='middle'>
 							<List.Header as='a' href='https://www.linkedin.com/in/gnicho/'>Gabriel Nicholas</List.Header>
 							<List.Description>Last seen watching stars 10 hours ago.</List.Description>
 						</List.Content>
 					</List.Item>
 					<List.Item>
-						<Image src={Nat_img}  size='small' circular verticalAlign='middle' />
+						<Image src={Nat}  size='small' circular verticalAlign='middle' />
 						<List.Content verticalAlign='middle'>
 							<List.Header as='a' href='https://www.linkedin.com/in/selberthely/'>Selenne Berthely</List.Header>
 							<List.Description>Last seen in South Hall just now.</List.Description>
@@ -46,7 +47,7 @@ class About extends Component {
 					</List.Item>
 
 					<List.Item>
-						<Image src={Nat_img}  size='small' circular verticalAlign='middle' />
+						<Image src={Nat}  size='small' circular verticalAlign='middle' />
 						<List.Content verticalAlign='middle'>
 							<List.Header as='a' href='https://www.linkedin.com/in/lizlee0225/'>Liz (Hyemin) Lee</List.Header>
 							<List.Description>Last seen in South Hall just now.</List.Description>
@@ -54,7 +55,7 @@ class About extends Component {
 					</List.Item>
 
 					<List.Item>
-						<Image src={Nat_img}  size='small' circular verticalAlign='middle' />
+						<Image src={Nat}  size='small' circular verticalAlign='middle' />
 						<List.Content verticalAlign='middle'>
 							<List.Header as='a' href='https://www.linkedin.com/in/natalia-timakova/'>Natalia Timakova</List.Header>
 							<List.Description>Last seen in South Hall just now.</List.Description>

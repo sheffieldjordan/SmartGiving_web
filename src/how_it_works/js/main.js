@@ -1,6 +1,5 @@
+import * as skrollr from '/skrollr.min.js'
+
 skrollr.init();		
 
-$("#back_to_top").click(function() {
-    window.location.reload();
-});
 
