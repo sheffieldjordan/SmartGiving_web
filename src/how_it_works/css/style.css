@@ -1,15 +1,9 @@
 
-#scene-1{
-	background:url('../images/mountains_bkg1.svg');
-    background-size: cover;
-	width:100%; 
-}
-
 .kids{
     position:absolute;
 	background:url(../images/kids.png);
     background-repeat: no-repeat;
-    background-size: 60% 60%;
+    background-size: 61% 61%;
     width: 500px;
     height: 300px;
     left:48%;
@@ -34,20 +28,8 @@
     background-size: 65% 65%;
     width: 200px;
     height:500px;
-    left:30%;
     display: flex;
 }
-
-
-#scene-2{
-    background:url('../images/city_bkg.svg');
-    background-size: cover;
-    width:100%;
-    -webkit-transform: translate(0,100%);
-    -ms-transform: translate(0,100%);
-    transform: translate(0,100%);
-}
-
 
 
 
@@ -61,35 +43,7 @@
 }
 
 
-
-.sheworks {
-    position:absolute;
-	left:10%;
-    top:30%;
-    width: 300px;
-}
-
-#scene-3 {
-    
-/*    background:linear-gradient(#828384, white);*/
-    background-color: whitesmoke;
-    background-size: cover;
-	width:100%;
-    -webkit-transform: translate(0,200%);
-    -ms-transform: translate(0,200%);
-    transform: translate(0,200%);    
-}
-
-
-.introducing {
-    position: relative;
-    margin: auto;
-    text-align:center;
-    width: 30%;
-    top: 150px;
-}
-
-#triangle {
+.triangle {
     position:relative;
     margin: auto;
     width: 220px;
@@ -98,51 +52,20 @@
     background-repeat:no-repeat;
 }
 
-/*
-.eth {
-    position:relative;
-    margin: auto;
-    width: 220px;
-    height: 600px;
-	background:url(../images/ethreum%20logo.png);
-    background-repeat:no-repeat;
-}
 
-*/
-
-#kids_w_books {
-    position:absolute;
-	background:url(../images/kids_w_books.png);
-    background-repeat: no-repeat;
-    width: 500px;
-    height: 300px;
-    left:48%;
-}
-
-#textbooks {
+.textbooks {
     position:absolute;
 	background:url(../images/textbooks.png);
     background-repeat: no-repeat;
     width: 500px;
     height: 300px;
-    left:44%;
 }
 
-#caps {
+.caps {
     position:absolute;
 	background:url(../images/caps.png);
     background-repeat: no-repeat;
-    width: 500px;
+    width: 490px;
     height: 300px;
-    left:48%;
-}
+  }
 
-
-#scene-4 {
-	background-color: whitesmoke;
-    background-size: cover;
-	width:100%;
-    -webkit-transform: translate(0,300%);
-    -ms-transform: translate(0,300%);
-    transform: translate(0,300%);    
-}

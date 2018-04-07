@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'semantic-ui-css/semantic.min.css';
 import NavBar from '../components/NavBar';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
