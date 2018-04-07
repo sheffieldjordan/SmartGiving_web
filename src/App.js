@@ -9,6 +9,8 @@ import {
 import ProfilePage from './containers/ProfilePage'
 import About from './containers/About'
 import Home from './containers/Home'
+import Contact from './containers/Contact'
+import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
 import DonorHome from './containers/DonorHome'
 import DonatePage from './containers/DonatePage'
@@ -21,6 +23,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={() => <DonorHome store={this.props.store}/>} />
           <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/howitworks" component={Howitworks} />
           <Route path="/profile" component={() => <ProfilePage store={this.props.store}/>} />
           <Route path="/donor" component={() => <DonorHome store={this.props.store}/>} />
           <Route path="/donate" component={() => <DonatePage store={this.props.store}/>} />
@@ -28,6 +32,7 @@ class App extends Component {
         </Switch>
       </div>
     </HashRouter>
+
     )
   }
 }

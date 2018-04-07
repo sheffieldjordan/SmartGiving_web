@@ -1,18 +1,3 @@
-body{
-	background:#000;
-}
-
-#Scenes{
-	position:fixed;
-	width:100%;
-	height:400%;
-}
-
-.parallax-layer{
-	position:absolute;
-	height:100vh;
-	background-repeat:no-repeat;
-}
 
 #scene-1{
 	background:url('../images/mountains_bkg1.svg');
@@ -24,6 +9,7 @@ body{
     position:absolute;
 	background:url(../images/kids.png);
     background-repeat: no-repeat;
+    background-size: 60% 60%;
     width: 500px;
     height: 300px;
     left:48%;
@@ -31,69 +17,50 @@ body{
 
 
 .carolyn {
-	position:absolute;
+	position:fixed;
 	background:url(../images/carolyn.png);
     background-repeat: no-repeat;
+    background-size: 60% 60%;
 	width: 220px;
 	height:500px;
     left:30%;
     display: flex;
 }
 
-h1 {
-    position:absolute;
-	left:10%;
-}
-
-h2 {
-    text-align:center;
-    position: relative;
-    margin: auto;
-}
-
-#sheruns {
-    position:absolute;
-	left:10%;
-    top:30%;
-    width: 300px;
-}
-
-#everyday {
-    position:absolute;
-	left:55%;
-    top:10%;
-    width: 600px;    
-}
-
 .donna {
-    position:absolute;
-	background:url(../images/donna.png);
+    position:fixed;
+    background:url(../images/donna.svg);
     background-repeat: no-repeat;
-	width: 200px;
-	height:500px;
-	left:30%;
+    background-size: 65% 65%;
+    width: 200px;
+    height:500px;
+    left:30%;
     display: flex;
-    
 }
 
-.delivery {
-    position:absolute;
-	background:url(../images/shopping_cart.png);
-	background-size: contain;
-    background-repeat: no-repeat;
-    width: 400px;
-	height:600px;
-    display:flex;
-}
 
 #scene-2{
-	background:url('../images/city_bkg2.svg');
+    background:url('../images/city_bkg.svg');
     background-size: cover;
-	width:100%;
+    width:100%;
     -webkit-transform: translate(0,100%);
     -ms-transform: translate(0,100%);
     transform: translate(0,100%);
 }
+
+
+
+
+.delivery {
+    position:fixed;
+	background:url(../images/shopping_cart.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 240px;
+	height: 260px;
+}
+
+
 
 .sheworks {
     position:absolute;
@@ -113,17 +80,13 @@ h2 {
     transform: translate(0,200%);    
 }
 
-div > p {
-    align-self: flex-end;
-    font-size: 1.5em;
-
-}
 
 .introducing {
     position: relative;
     margin: auto;
     text-align:center;
     width: 30%;
+    top: 150px;
 }
 
 #triangle {
@@ -182,16 +145,4 @@ div > p {
     -webkit-transform: translate(0,300%);
     -ms-transform: translate(0,300%);
     transform: translate(0,300%);    
-}
-
-a:link,  a:visited {
-    text-align:center;
-    background-color: grey;
-    color: black;
-    padding: 10px 20px;
-    text-decoration: none;
-}
-
-a:hover {
-    background-color: lightgrey;
 }
