@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ProfileHeader from '../components/ProfileHeader'
 import UserStory from '../components/UserStory'
 import ContactInfo from '../components/ContactInfo'
-import RequestsTableExample from '../RequestsTableExample'
+import RequestsTableExample from '../components/RequestsTableExample'
 
 import '../style/ProfilePage.css';
 
