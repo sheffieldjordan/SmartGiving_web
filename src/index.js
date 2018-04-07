@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style/index.css';
-<<<<<<< HEAD
-=======
 import './style/Components.css';
->>>>>>> afcd2d5befa6f94a62361e4c016f02855f66e0a5
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
