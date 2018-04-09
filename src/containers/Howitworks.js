@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { ParallaxProvider, Parallax } from 'react-skrollr';
 import { Background } from 'react-parallax';
 import { Parallax as ParallaxB } from 'react-parallax';
+import NavBar from '../components/NavBar'
+import {AppBar, Toolbar} from 'material-ui'
 
 import '../how_it_works/css/style.css';
 
