@@ -4,7 +4,6 @@ import { ParallaxProvider, Parallax } from 'react-skrollr';
 import { Background } from 'react-parallax';
 import { Parallax as ParallaxB } from 'react-parallax';
 import NavBar from '../components/NavBar'
-import {AppBar, Toolbar} from 'material-ui'
 
 import '../how_it_works/css/style.css';
 
@@ -12,14 +11,7 @@ class Howitworks extends Component {
 // @Natasha write your code here
   render() {
     return (
-
-
-	    	<div><NavBar/>
-			<AppBar position="static" color="default">
-				<Toolbar className = "title-bar">
-					<h1>How it works</h1>
-				</Toolbar>
-			</AppBar>
+	    	<div><NavBar title="How it works"/>
 			<ParallaxB       
 				blur={0}
 				bgImage={require('../how_it_works/images/back.png')}
