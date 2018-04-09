@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Drawer from 'material-ui/Drawer';
 import Button from 'material-ui/Button';
@@ -8,6 +9,7 @@ import UserAvatar from './UserAvatar';
 class DonationDrawer extends Component {
 
 	render() {
+		const dollarsPerEther = 421.0 // TODO: Get this price dynamically
 		return (
 		<Drawer anchor="bottom" open={this.props.open} onClose={this.props.onClose}>
 			<div className="donation-drawer-container">
@@ -20,7 +22,7 @@ class DonationDrawer extends Component {
 					</div>
 				</div>
 				<div className = "donate-pre-description">
-				Are you sure you would like to donate $15.00 (0.0026 ETH) to Save the Frogs for one pair of rainboots?
+				Are you sure you would like to donate ${Math.floor(this.props.dollars).toFixed(2)} ({(this.props.dollars/dollarsPerEther).toFixed(5)} ETH) to {this.props.charity.title}?
 				</div>
 				<div className = "donate-button-container">
 					<Button className = "donate-button" onClick = {this.props.onPrimary} variant="raised" size="medium" color="primary">Donate</Button>
@@ -37,6 +39,23 @@ class DonationDrawer extends Component {
 	}
 }
 
+DonationDrawer.propTypes = {
+	open: PropTypes.bool,
+	onClose: PropTypes.func,
+	onPrimary: PropTypes.func, // When the user hits the primary butotn
+	onSecondary: PropTypes.func, // When the user hits the secondary button
+
+	charity: PropTypes.object,
+	price: PropTypes.number,
+	sender: PropTypes.object,
+	recipient: PropTypes.object,
+}
+
+DonationDrawer.defaultProps = {
+	dollars: 15.0,
+	charity: "SAMPLE TITLE"
+	// TODO @Gabe get some default images for here
+}
 export default DonationDrawer;
 
 

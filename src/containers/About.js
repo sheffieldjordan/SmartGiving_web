@@ -3,7 +3,7 @@ import 'semantic-ui-css/semantic.min.css';
 import NavBar from '../components/NavBar';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import { List, Image, Divider } from 'semantic-ui-react';
+import { List, Image} from 'semantic-ui-react';
 import Nat from '../images/Nat.png';
 import Morgan from '../images/Morgan.png';
 

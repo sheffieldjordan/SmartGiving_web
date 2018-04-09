@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import NavBar from '../components/NavBar';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
 
 import { ParallaxProvider, Parallax } from 'react-skrollr';
 import { Background } from 'react-parallax';
 import { Parallax as ParallaxB } from 'react-parallax';
 
 import '../how_it_works/css/style.css';
-import mountains_bkg1 from '../how_it_works/images/mountains_bkg1.svg';
-import city_bkg2 from '../how_it_works/images/city_bkg2.svg';
-import back from '../how_it_works/images/back.png';
 
 class Howitworks extends Component {
 // @Natasha write your code here
@@ -29,17 +23,15 @@ class Howitworks extends Component {
 				bgImage={require('../how_it_works/images/back.png')}
 				bgImageAlt='background'
 				strength={300}>	    	
-				<ParallaxProvider>
+				<ParallaxProvider init={{smoothScrolling: true}}>
 
 					{/* Scene 1 */}
 					
-					<Parallax data={{'data-0': 'opacity: 1; position:fixed; left:45%;','data-1': 'opacity: 0;'}}>
+					<Parallax data={{'data-start': 'opacity: 1; position:fixed; left:45%;','data-top': 'opacity: 0;'}}>
 						<div>Scroll to see the story</div>
 					</Parallax>
 
-
-
-						<Parallax data={{'data-10': 'opacity: 1; position:fixed; top:50vh;','data-500': 'opacity: 0; top:-50vh;'}}>
+						<Parallax data={{'data-10': 'opacity: 1; position:fixed; left:30%; top:50vh;','data-500': 'opacity: 0; top:-50vh;'}}>
 							<div className='carolyn'></div>
 						</Parallax>
 
@@ -190,16 +182,13 @@ class Howitworks extends Component {
 
 					
 				</ParallaxProvider>
-				<div style={{ height: '4500px' }} />
-				</ParallaxB>
+				<div style={{ height: '4800px' }} />
+			</ParallaxB>
 			</div>
     );
   }
-
-
-
 }
 
 
-export default Howitworks;
 
+export default Howitworks;
