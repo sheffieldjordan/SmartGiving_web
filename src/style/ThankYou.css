@@ -9,6 +9,8 @@
 .thanks-image {
 	display:block;
 	width:25%;
+	max-width:200px;
+
 	margin: 30px auto 30px auto;
 }
 

@@ -1,0 +1,39 @@
+{
+	"requests": [
+		{
+			"item" : "Pens",
+			"num" : 40,
+			"unit": "individuals" 
+		}, 
+		{
+			"item" : "Color pencil (12 ct)",
+			"num" : 20,
+			"unit": "boxes" 
+		},
+		{
+			"item" : "Notebooks",
+			"num" : 60,
+			"unit": "individuals" 
+		}, 
+		{
+			"item" : "Jump ropes",
+			"num" : 30,
+			"unit": "individuals" 
+		},
+		{
+			"item" : "Chalk",
+			"num" : 60,
+			"unit": "individuals" 
+		}, 
+		{
+			"item" : "Basketballs",
+			"num" : 10,
+			"unit": "individuals" 
+		},
+		{
+			"item" : "Watercolor paint (12 ct)",
+			"num" : 10,
+			"unit": "boxes" 
+		}
+	]
+}
