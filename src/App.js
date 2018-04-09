@@ -8,7 +8,6 @@ import {
 
 import ProfilePage from './containers/ProfilePage'
 import About from './containers/About'
-import Home from './containers/Home'
 import Contact from './containers/Contact'
 import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'

@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../components/NavBar';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
 
 import { ParallaxProvider, Parallax } from 'react-skrollr';
 import { Background } from 'react-parallax';
@@ -9,7 +6,6 @@ import { Background } from 'react-parallax';
 import '../how_it_works/css/style.css';
 import mountains_bkg1 from '../how_it_works/images/mountains_bkg1.svg';
 import city_bkg from '../how_it_works/images/city_bkg.svg';
-import delivery from '../how_it_works/images/shopping_cart.png';
 
 class Howitworks extends Component {
 // @Natasha write your code here
