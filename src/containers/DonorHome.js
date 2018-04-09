@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import { toggleDrawer, selectCharity } from '../redux/actions'
 
@@ -20,7 +21,6 @@ class DonorHome extends Component {
 
 	render() {
 		const storeState = this.props.store.getState()
-		const closeDrawer = () => this.props.showCharity(false)
 		const selectDonate = (charity) => () => {
 			this.props.showCharity(true, charity)
 		}
@@ -45,9 +45,12 @@ class DonorHome extends Component {
 				<DonationDrawer store={this.props.store}
 				open={storeState.donationDrawerOpen}
 				charity={storeState.selectedCharity}
-				onClose={closeDrawer}
-				onPrimary={closeDrawer}
-				onSecondary={closeDrawer}/>
+				onClose={() => this.props.showCharity(false)}
+				onPrimary={() => {
+					this.props.showCharity(false)
+					this.props.history.push('/thanks')
+				}}
+				onSecondary={() => this.props.showCharity(false)}/>
 			</div>
 		</div>
 		)
@@ -68,6 +71,6 @@ DonorHome = connect(
 	mapDispatchToProps
 )(DonorHome)
 
-export default DonorHome
+export default withRouter(DonorHome)
 
 
