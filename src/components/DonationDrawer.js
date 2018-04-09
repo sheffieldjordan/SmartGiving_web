@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Drawer from 'material-ui/Drawer';
 import Button from 'material-ui/Button';
@@ -37,6 +38,22 @@ class DonationDrawer extends Component {
 	}
 }
 
+DonationDrawer.propTypes = {
+	open: PropTypes.bool,
+	onClose: PropTypes.func,
+	onPrimary: PropTypes.func, // When the user hits the primary butotn
+	onSecondary: PropTypes.func, // When the user hits the secondary button
+
+	// TODO @Gabe fill in this shit
+	title: PropTypes.string,
+	price: PropTypes.number,
+	sender: PropTypes.object,
+	recipient: PropTypes.object,
+}
+
+DonationDrawer.defaultProps = {
+	// TODO @Gabe get some default images for here
+}
 export default DonationDrawer;
 
 

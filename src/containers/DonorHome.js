@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
+import { toggleDrawer } from '../redux/actions'
+
 import CharityCard from '../components/CharityCard'
 import NavBar from '../components/NavBar'
+import DonationDrawer from '../components/DonationDrawer'
 
 import ImageColombian from '../images/test_colombian.jpg'
 import ImageFrog from '../images/test_frog.jpg'
@@ -13,6 +18,9 @@ import "../style/DonorHome.css"
 
 class DonorHome extends Component {
 	render() {
+		const storeState = this.props.store.getState()
+		const closeDrawer = () => this.props.showDrawer(false)
+
 		const charities = [ {title: "Donate 2 Colombian Kidz", image: ImageColombian},
 							{title: "Too Many Tulips", image: ImageTulip},
 							{title: "Save Our Frogs", image:ImageFrog},
@@ -26,14 +34,33 @@ class DonorHome extends Component {
 						return <CharityCard key={i}
 						title={c.title}
 						description={Lorem({count:Math.floor((Math.random() * 3) + 4)})}
-						image={c.image}/>	
+						image={c.image}
+						onDonate={() => this.props.showDrawer(true)}/>	
 					})}
 				</div>
+				<DonationDrawer store={this.props.store}
+				open={storeState.donationDrawerOpen}
+				onClose={closeDrawer}
+				onPrimary={closeDrawer}
+				onSecondary={closeDrawer}/>
 			</div>
 		</div>
 		)
 	}
 }
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+	return {
+		showDrawer: (showDrawer) => {
+			dispatch(toggleDrawer(showDrawer))
+		}
+	}
+}
+
+DonorHome = connect(
+	null,
+	mapDispatchToProps
+)(DonorHome)
 
 export default DonorHome
 

@@ -12,7 +12,6 @@ import Contact from './containers/Contact'
 import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
 import DonorHome from './containers/DonorHome'
-import DonatePage from './containers/DonatePage'
 
 class App extends Component {
   render() {
@@ -26,7 +25,6 @@ class App extends Component {
           <Route path="/howitworks" component={Howitworks} />
           <Route path="/profile" component={() => <ProfilePage store={this.props.store}/>} />
           <Route path="/donor" component={() => <DonorHome store={this.props.store}/>} />
-          <Route path="/donate" component={() => <DonatePage store={this.props.store}/>} />
           <Route component={Whoops404} />
         </Switch>
       </div>
