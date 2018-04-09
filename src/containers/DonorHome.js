@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-import { toggleDrawer } from '../redux/actions'
+import { toggleDrawer, selectCharity } from '../redux/actions'
 
 import CharityCard from '../components/CharityCard'
 import NavBar from '../components/NavBar'
@@ -17,9 +17,13 @@ import Lorem from 'lorem-ipsum'
 import "../style/DonorHome.css"
 
 class DonorHome extends Component {
+
 	render() {
 		const storeState = this.props.store.getState()
-		const closeDrawer = () => this.props.showDrawer(false)
+		const closeDrawer = () => this.props.showCharity(false)
+		const selectDonate = (charity) => () => {
+			this.props.showCharity(true, charity)
+		}
 
 		const charities = [ {title: "Donate 2 Colombian Kidz", image: ImageColombian},
 							{title: "Too Many Tulips", image: ImageTulip},
@@ -35,11 +39,12 @@ class DonorHome extends Component {
 						title={c.title}
 						description={Lorem({count:Math.floor((Math.random() * 3) + 4)})}
 						image={c.image}
-						onDonate={() => this.props.showDrawer(true)}/>	
+						onDonate={selectDonate(c)}/>	
 					})}
 				</div>
 				<DonationDrawer store={this.props.store}
 				open={storeState.donationDrawerOpen}
+				charity={storeState.selectedCharity}
 				onClose={closeDrawer}
 				onPrimary={closeDrawer}
 				onSecondary={closeDrawer}/>
@@ -51,7 +56,8 @@ class DonorHome extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		showDrawer: (showDrawer) => {
+		showCharity: (showDrawer, charity={}) => {
+			dispatch(selectCharity(charity))
 			dispatch(toggleDrawer(showDrawer))
 		}
 	}
