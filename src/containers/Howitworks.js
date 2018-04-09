@@ -19,7 +19,7 @@ class Howitworks extends Component {
 				</Parallax>
 
 				<Parallax data={{'data-start': 'opacity: 1;','data-1000': 'opacity: 0;'}}>
-				<Background> <img src={mountains_bkg1}/>
+				<Background> <img src={mountains_bkg1} alt="mountains"/>
 
 					<Parallax data={{'data-10': 'opacity: 1; position:fixed; top:30%;','data-500': 'opacity: 0; top:-50%;'}}>
 						<div className='carolyn'></div>
@@ -46,7 +46,7 @@ class Howitworks extends Component {
 				{/*	Scene-2	*/}		
 
 				<Parallax data={{'data-1000': 'opacity: 1;','data-2000': 'opacity: 0;'}}>
-				<Background className='scene-2'> <img src={city_bkg}/>
+				<Background className='scene-2'> <img src={city_bkg} alt="city"/>
 
 					<Parallax data={{'data-500': 'opacity: 0;', 'data-800': 'opacity: 1; position:fixed; top:30%;','data-1500': 'opacity: 0; top:-50%;'}}>
 						<div className='donna'></div>
