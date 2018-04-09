@@ -9,7 +9,6 @@ class RequestTable extends Component {
 	render() {
 		const data = this.props.data
 		const titles = Object.keys(data[0]) // We're being naughty and assuming the first item as keys
-		console.log(titles)
 		return (
 			<div>
 			  <Table>
