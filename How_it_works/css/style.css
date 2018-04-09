@@ -1,3 +1,16 @@
+mark {
+    padding: 5px;
+    border-radius: 8px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    line-height: 1.5;
+    background-color: #EDAE44;
+}
+
+#scene-1 mark, #scene-2 mark {
+    background-color: white;
+}
+
 body{
 	background:#000;
 }
@@ -17,7 +30,7 @@ body{
 #scene-1{
 	background:url('../images/bg-1.png');
     background-size: cover;
-	width:100%; 
+	width:100%;
 }
 
 .kids{
@@ -62,7 +75,7 @@ h2 {
     position:absolute;
 	left:55%;
     top:10%;
-    width: 600px;    
+    width: 600px;
 }
 
 .donna {
@@ -73,7 +86,7 @@ h2 {
 	height:500px;
 	left:30%;
     display: flex;
-    
+
 }
 
 .delivery {
@@ -103,14 +116,14 @@ h2 {
 }
 
 #scene-3 {
-    
+
 /*    background:linear-gradient(#828384, white);*/
     background-color: whitesmoke;
     background-size: cover;
 	width:100%;
     -webkit-transform: translate(0,200%);
     -ms-transform: translate(0,200%);
-    transform: translate(0,200%);    
+    transform: translate(0,200%);
 }
 
 div > p {
@@ -181,7 +194,7 @@ div > p {
 	width:100%;
     -webkit-transform: translate(0,300%);
     -ms-transform: translate(0,300%);
-    transform: translate(0,300%);    
+    transform: translate(0,300%);
 }
 
 a:link,  a:visited {
