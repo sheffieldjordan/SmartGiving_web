@@ -11,7 +11,7 @@ class NavBar extends Component {
 		<div>
 			<AppBar position="static" color="primary">
 				<Toolbar className="button-bar" disableGutters={true}>
-					<Button color="inherit" component={Link} to="/">GlobalGiving</Button>
+					<Button color="inherit" component={Link} to="/">SmartGiving</Button>
 					<Button color="inherit" component={Link} to="/about">About Us</Button>
 					<Button color="inherit" component={Link} to="/howitworks">How It Works</Button>
 					<Button color="inherit" component={Link} to="/contact">Contact</Button>
