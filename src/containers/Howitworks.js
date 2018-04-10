@@ -9,7 +9,6 @@ import Toolbar from 'material-ui/Toolbar';
 
 import { ParallaxProvider, Parallax } from 'react-skrollr';
 import { Parallax as ParallaxB } from 'react-parallax';
-import NavBar from '../components/NavBar'
 
 import '../how_it_works/css/style.css';
 
