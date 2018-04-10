@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom'
 import NavBar from '../components/NavBar';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 
 import { ParallaxProvider, Parallax } from 'react-skrollr';
-import { Background } from 'react-parallax';
 import { Parallax as ParallaxB } from 'react-parallax';
 
 import '../how_it_works/css/style.css';
-import mountains_bkg1 from '../how_it_works/images/mountains_bkg1.svg';
-import city_bkg2 from '../how_it_works/images/city_bkg2.svg';
-import back from '../how_it_works/images/back.png';
+
+
 
 class Howitworks extends Component {
 // @Natasha write your code here
-  render() {
-    return (
 
+	
+	render() {
+
+
+    return (
 
 	    	<div><NavBar/>
 			<AppBar position="static" color="default">
@@ -24,22 +26,25 @@ class Howitworks extends Component {
 					<h1>How it works</h1>
 				</Toolbar>
 			</AppBar>
+
 			<ParallaxB       
 				blur={0}
 				bgImage={require('../how_it_works/images/back.png')}
 				bgImageAlt='background'
-				strength={300}>	    	
-				<ParallaxProvider>
+				strength={300}>
+				
+				<ParallaxProvider init={{smoothScrolling: true, forceHeight: false}}>
 
 					{/* Scene 1 */}
 					
-					<Parallax data={{'data-0': 'opacity: 1; position:fixed; left:45%;','data-1': 'opacity: 0;'}}>
+					<React.Fragment>
+					<Parallax data={{'data-start': 'opacity: 1; position:fixed; left:45%;','data-top': 'opacity: 0;'}}>
 						<div>Scroll to see the story</div>
 					</Parallax>
+					</React.Fragment>
 
-
-
-						<Parallax data={{'data-10': 'opacity: 1; position:fixed; top:50vh;','data-500': 'opacity: 0; top:-50vh;'}}>
+						<React.Fragment>
+						<Parallax data={{'data-10': 'opacity: 1; position:fixed; left:30%; top:50vh;','data-500': 'opacity: 0; top:-50vh;'}}>
 							<div className='carolyn'></div>
 						</Parallax>
 
@@ -187,18 +192,17 @@ class Howitworks extends Component {
 						<Parallax data={{'data-4900': 'opacity: 0;', 'data-5000': 'opacity: 1; position:fixed; top:50vh; left:45%;'}}>
 							<div><h1>The End</h1></div>
 						</Parallax>
+						</React.Fragment>
 
 					
 				</ParallaxProvider>
-				<div style={{ height: '4500px' }} />
-				</ParallaxB>
+				<div style={{ height: '4800px' }} />
+			</ParallaxB>
 			</div>
     );
   }
-
-
-
 }
+
 
 
 export default Howitworks;

@@ -11,12 +11,12 @@
 
 
 .carolyn {
-	position:fixed;
 	background:url(../images/carolyn.png);
     background-repeat: no-repeat;
     background-size: 60% 60%;
 	width: 220px;
 	height:500px;
+    position: fixed;
     left:30%;
     display: flex;
 }
