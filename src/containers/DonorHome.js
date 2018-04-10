@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import { toggleDrawer, selectCharity } from '../redux/actions'
+import { toggleDrawer, selectRequest } from '../redux/actions'
 
 import CharityCard from '../components/CharityCard'
 import NavBar from '../components/NavBar'
@@ -21,29 +21,34 @@ class DonorHome extends Component {
 
 	render() {
 		const storeState = this.props.store.getState()
-		const selectDonate = (charity) => () => {
-			this.props.showCharity(true, charity)
+		const selectDonate = (request) => () => {
+			this.props.showRequest(true, request)
 		}
 
-		const charities = [ {title: "Donate 2 Colombian Kidz", image: ImageColombian},
-							{title: "Too Many Tulips", image: ImageTulip},
-							{title: "Save Our Frogs", image:ImageFrog},
-							{title: "Si Se Puede: Language for a better time", image:ImageMexico}]
+
+		const images = [ImageColombian, ImageFrog, ImageTulip, ImageMexico]
+		const requests = storeState.requests
+		const drawerRequest = () => {
+			if (Object.keys(storeState.selectedRequest).length === 0) {
+				return undefined
+			}
+			return storeState.selectedRequest
+		}
 		return (
 		<div>
 			<NavBar/>
 			<div className="page-container">
 				<div className="charity-card-container">
-					{charities.map((c, i) => {
+					{requests.map((r, i) => {
 						return <CharityCard key={i}
-						title={c.title}
-						description={Lorem({count:Math.floor((Math.random() * 3) + 4)})}
-						image={c.image}
-						onDonate={selectDonate(c)}
-						onLearnMore={() => this.props.history.push("/gift")}/>	
+						title={r.charity.title}
+						description={r.charity.about}
+						image={images[i]}
+						onDonate={selectDonate(r)}
+						onLearnMore={() =>  this.props.history.push("/gift")}/>	
 					})}
 				</div>
-				<CharityDonationDrawer store={this.props.store} charity={storeState.selectedCharity}/>
+				<CharityDonationDrawer store={this.props.store} request={drawerRequest()}/>
 			</div>
 		</div>
 		)
@@ -52,8 +57,8 @@ class DonorHome extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		showCharity: (showDrawer, charity={}) => {
-			dispatch(selectCharity(charity))
+		showRequest: (showDrawer, request={}) => {
+			dispatch(selectRequest(request))
 			dispatch(toggleDrawer(showDrawer))
 		}
 	}

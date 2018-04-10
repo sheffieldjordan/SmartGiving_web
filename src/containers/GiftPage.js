@@ -7,7 +7,7 @@ import CharityDonationDrawer from '../components/CharityDonationDrawer'
 import {Paper, Button} from 'material-ui'
 import {kStyleElevation, kStylePaper} from '../style/styleConstants'
 
-import { toggleDrawer, selectCharity } from '../redux/actions'
+import { toggleDrawer, selectRequest } from '../redux/actions'
 import { connect } from 'react-redux'
 
 import '../style/GiftPage.css'
@@ -62,7 +62,7 @@ class GiftPage extends Component {
 							</Paper>
 						</div>
 					</div>
-					<CharityDonationDrawer store={this.props.store} request={storeState.selectedCharity}/>
+					<CharityDonationDrawer store={this.props.store} request={giftData}/>
 				</div>
 			</div>
 		)
@@ -71,8 +71,8 @@ class GiftPage extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		showDonate: (showDrawer, charity={}) => {
-			dispatch(selectCharity(charity))
+		showDonate: (showDrawer, request={}) => {
+			dispatch(selectRequest(request))
 			dispatch(toggleDrawer(showDrawer))
 		}
 	}

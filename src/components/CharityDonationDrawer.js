@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import { toggleDrawer, selectCharity } from '../redux/actions'
+import { toggleDrawer, selectRequest } from '../redux/actions'
 
 import DonationDrawer from '../components/DonationDrawer'
 
@@ -14,13 +14,13 @@ class CharityDonationDrawer extends Component {
 		return (
 			<DonationDrawer store={this.props.store}
 				open={storeState.donationDrawerOpen}
-				charity={this.props.charity}
-				onClose={() => this.props.showCharity(false)}
+				request={this.props.request}
+				onClose={() => this.props.showRequest(false)}
 				onPrimary={() => {
-					this.props.showCharity(false)
+					this.props.showRequest(false)
 					this.props.history.push('/thanks')
 				}}
-				onSecondary={() => this.props.showCharity(false)}/>
+				onSecondary={() => this.props.showRequest(false)}/>
 		)
 	}
 }
@@ -28,15 +28,15 @@ class CharityDonationDrawer extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		showCharity: (showDrawer, charity={}) => {
-			dispatch(selectCharity(charity))
+		showRequest: (showDrawer, request={}) => {
+			dispatch(selectRequest(request))
 			dispatch(toggleDrawer(showDrawer))
 		}
 	}
 }
 
 CharityDonationDrawer.propTypes = {
-	request: PropTypes.object.isRequired,
+	request: PropTypes.object,
 }
 
 

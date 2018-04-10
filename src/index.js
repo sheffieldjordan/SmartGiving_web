@@ -16,7 +16,7 @@ window.React = React
 
 const initialState = {
 	donationDrawerOpen: false,
-	selectedCharity: {},
+	selectedRequest: {},
 	...data,
 	...requests
 }
