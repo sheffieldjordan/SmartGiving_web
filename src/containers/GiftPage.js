@@ -9,14 +9,26 @@ import {kStyleElevation, kStylePaper} from '../style/styleConstants'
 
 import { toggleDrawer, selectRequest } from '../redux/actions'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import '../style/GiftPage.css'
 
 class GiftPage extends Component {
 	render() {
-
 		const storeState = this.props.store.getState()
-		const giftData = storeState.requests[0]
+		console.log(this.props.history.location)
+
+
+		// TODO @Gabe make this use the real path!
+		const loadGiftData = () => {
+			if (this.props.history.location.state === undefined){
+				console.log("WARNING: USING FAKE DATA")
+				return storeState.requests[0]
+			}
+			return this.props.history.location.state.request
+		}
+		const giftData = loadGiftData()
+
 		const selectDonate = () => {
 			this.props.showDonate(true, giftData.charity)
 		}
@@ -83,6 +95,6 @@ GiftPage = connect(
 	mapDispatchToProps
 )(GiftPage)
 
-export default GiftPage;
+export default withRouter(GiftPage);
 
 

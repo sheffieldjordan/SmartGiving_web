@@ -10,7 +10,6 @@ class DonationDrawer extends Component {
 
 	render() {
 		const request = this.props.request
-		console.log(request)
 		const dollarsPerEther = 421.0 // TODO: Get this price dynamically
 		return (
 		<Drawer anchor="bottom" open={this.props.open} onClose={this.props.onClose}>

@@ -45,7 +45,10 @@ class DonorHome extends Component {
 						description={r.charity.about}
 						image={images[i]}
 						onDonate={selectDonate(r)}
-						onLearnMore={() =>  this.props.history.push("/gift")}/>	
+						onLearnMore={() =>  this.props.history.push({
+							pathname: "/gift",
+							state: {request:r}}
+							)}/>	
 					})}
 				</div>
 				<CharityDonationDrawer store={this.props.store} request={drawerRequest()}/>
