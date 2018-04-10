@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+
 import NavBar from '../components/NavBar'
+import RequestTable from '../components/RequestTable'
+import CharityDonationDrawer from '../components/CharityDonationDrawer'
+
 import {Paper, Button} from 'material-ui'
 import {kStyleElevation, kStylePaper} from '../style/styleConstants'
-import RequestTable from '../components/RequestTable'
 
-import reqData from '../data/requests'
+import { toggleDrawer, selectCharity } from '../redux/actions'
+import { connect } from 'react-redux'
 
 import '../style/GiftPage.css'
 
@@ -13,6 +17,9 @@ class GiftPage extends Component {
 
 		const storeState = this.props.store.getState()
 		const giftData = storeState.requests[0]
+		const selectDonate = () => {
+			this.props.showDonate(true, giftData.charity)
+		}
 		return (
 			<div>
 				<NavBar title="Gift information page"/>
@@ -50,16 +57,31 @@ class GiftPage extends Component {
 								<RequestTable data={giftData.inventory}/>
 								<div className = "gift-donation-section">
 									<h3 className = "gift-donation-cost"> Total cost: ${Math.floor(giftData.dollars).toFixed(2)} </h3>
-									<Button size="large" variant="raised" color="primary">Donate</Button>
+									<Button size="large" variant="raised" color="primary" onClick={selectDonate}>Donate</Button>
 								</div>
 							</Paper>
 						</div>
 					</div>
+					<CharityDonationDrawer store={this.props.store} request={storeState.selectedCharity}/>
 				</div>
 			</div>
 		)
 	}
 }
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+	return {
+		showDonate: (showDrawer, charity={}) => {
+			dispatch(selectCharity(charity))
+			dispatch(toggleDrawer(showDrawer))
+		}
+	}
+}
+
+GiftPage = connect(
+	null,
+	mapDispatchToProps
+)(GiftPage)
 
 export default GiftPage;
 

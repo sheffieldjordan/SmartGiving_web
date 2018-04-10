@@ -6,7 +6,7 @@ import { toggleDrawer, selectCharity } from '../redux/actions'
 
 import CharityCard from '../components/CharityCard'
 import NavBar from '../components/NavBar'
-import DonationDrawer from '../components/DonationDrawer'
+import CharityDonationDrawer from '../components/CharityDonationDrawer'
 
 import ImageColombian from '../images/test_colombian.jpg'
 import ImageFrog from '../images/test_frog.jpg'
@@ -39,18 +39,11 @@ class DonorHome extends Component {
 						title={c.title}
 						description={Lorem({count:Math.floor((Math.random() * 3) + 4)})}
 						image={c.image}
-						onDonate={selectDonate(c)}/>	
+						onDonate={selectDonate(c)}
+						onLearnMore={() => this.props.history.push("/gift")}/>	
 					})}
 				</div>
-				<DonationDrawer store={this.props.store}
-				open={storeState.donationDrawerOpen}
-				charity={storeState.selectedCharity}
-				onClose={() => this.props.showCharity(false)}
-				onPrimary={() => {
-					this.props.showCharity(false)
-					this.props.history.push('/thanks')
-				}}
-				onSecondary={() => this.props.showCharity(false)}/>
+				<CharityDonationDrawer store={this.props.store} charity={storeState.selectedCharity}/>
 			</div>
 		</div>
 		)
