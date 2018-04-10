@@ -9,6 +9,7 @@ import Toolbar from 'material-ui/Toolbar';
 
 import { ParallaxProvider, Parallax } from 'react-skrollr';
 import { Parallax as ParallaxB } from 'react-parallax';
+import NavBar from '../components/NavBar'
 
 import '../how_it_works/css/style.css';
 
@@ -19,7 +20,7 @@ import '../how_it_works/css/style.css';
 
 class Howitworks extends Component {
 // @Natasha write your code here
-
+<<<<<<< HEAD
 
 	
 	render() {
@@ -34,11 +35,11 @@ class Howitworks extends Component {
 				</Toolbar>
 			</AppBar>
 
-
-
-
-
-
+=======
+  render() {
+    return (
+	    	<div><NavBar title="How it works"/>
+>>>>>>> 3077af96327438e6b38e6b653dbd72db1c866385
 			<ParallaxB       
 				blur={0}
 				bgImage={require('../how_it_works/images/back.png')}
@@ -50,12 +51,12 @@ class Howitworks extends Component {
 
 					{/* Scene 1 */}
 					
-			<React.Fragment>
+					<React.Fragment>
 
-				    	
-		
+				strength={300}>	    	
+				<ParallaxProvider init={{smoothScrolling: true}}>
 
-
+					{/* Scene 1 */}
 					
 
 					<Parallax data={{'data-start': 'opacity: 1; position:fixed; left:45%;','data-top': 'opacity: 0;'}}>
