@@ -8,6 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux'
 import {updateDrawer} from './redux/reducers'
 import data from './data/user'
+import requests from './data/requests'
 
 
 
@@ -16,8 +17,9 @@ window.React = React
 
 const initialState = {
 	donationDrawerOpen: false,
-	selectedCharity: {},
-	...data
+	selectedRequest: {},
+	...data,
+	...requests
 }
 
 const store = createStore(

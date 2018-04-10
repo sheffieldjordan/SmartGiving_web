@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import { toggleDrawer, selectCharity } from '../redux/actions'
+import { toggleDrawer, selectRequest } from '../redux/actions'
 
 import CharityCard from '../components/CharityCard'
 import NavBar from '../components/NavBar'
-import DonationDrawer from '../components/DonationDrawer'
+import CharityDonationDrawer from '../components/CharityDonationDrawer'
 
 import ImageColombian from '../images/test_colombian.jpg'
 import ImageFrog from '../images/test_frog.jpg'
@@ -21,36 +21,37 @@ class DonorHome extends Component {
 
 	render() {
 		const storeState = this.props.store.getState()
-		const selectDonate = (charity) => () => {
-			this.props.showCharity(true, charity)
+		const selectDonate = (request) => () => {
+			this.props.showRequest(true, request)
 		}
 
-		const charities = [ {title: "Donate 2 Colombian Kidz", image: ImageColombian},
-							{title: "Too Many Tulips", image: ImageTulip},
-							{title: "Save Our Frogs", image:ImageFrog},
-							{title: "Si Se Puede: Language for a better time", image:ImageMexico}]
+
+		const images = [ImageColombian, ImageFrog, ImageTulip, ImageMexico]
+		const requests = storeState.requests
+		const drawerRequest = () => {
+			if (Object.keys(storeState.selectedRequest).length === 0) {
+				return undefined
+			}
+			return storeState.selectedRequest
+		}
 		return (
 		<div>
 			<NavBar/>
 			<div className="page-container">
 				<div className="charity-card-container">
-					{charities.map((c, i) => {
+					{requests.map((r, i) => {
 						return <CharityCard key={i}
-						title={c.title}
-						description={Lorem({count:Math.floor((Math.random() * 3) + 4)})}
-						image={c.image}
-						onDonate={selectDonate(c)}/>	
+						title={r.charity.title}
+						description={r.charity.about}
+						image={images[i]}
+						onDonate={selectDonate(r)}
+						onLearnMore={() =>  this.props.history.push({
+							pathname: "/gift",
+							state: {request:r}}
+							)}/>	
 					})}
 				</div>
-				<DonationDrawer store={this.props.store}
-				open={storeState.donationDrawerOpen}
-				charity={storeState.selectedCharity}
-				onClose={() => this.props.showCharity(false)}
-				onPrimary={() => {
-					this.props.showCharity(false)
-					this.props.history.push('/thanks')
-				}}
-				onSecondary={() => this.props.showCharity(false)}/>
+				<CharityDonationDrawer store={this.props.store} request={drawerRequest()}/>
 			</div>
 		</div>
 		)
@@ -59,8 +60,8 @@ class DonorHome extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		showCharity: (showDrawer, charity={}) => {
-			dispatch(selectCharity(charity))
+		showRequest: (showDrawer, request={}) => {
+			dispatch(selectRequest(request))
 			dispatch(toggleDrawer(showDrawer))
 		}
 	}

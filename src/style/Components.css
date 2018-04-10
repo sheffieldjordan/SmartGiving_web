@@ -67,5 +67,13 @@ h1, h2, h3{
 	font-style: italic;
 	margin-top:25px;
 	width:60%;
-
 }
+
+
+/* RequestTable.js */
+
+.table-title-cell
+{
+	text-transform: uppercase;
+}
+

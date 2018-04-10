@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import NavBar from '../components/NavBar';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
 import { List, Image} from 'semantic-ui-react';
 import Nat from '../images/Nat.png';
 import Morgan from '../images/Morgan.png';
@@ -15,13 +13,7 @@ class About extends Component {
     return (
 
 		<div>
-			<NavBar/>
-			<AppBar position="static" color="default">
-				<Toolbar className = "title-bar">
-					<h1>About us</h1>
-				</Toolbar>
-			</AppBar>
-			
+			<NavBar title="About us"/>			
 			<div className="page-container">
 				<List>
 					<List.Item>

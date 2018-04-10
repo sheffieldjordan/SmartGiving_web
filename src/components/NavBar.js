@@ -7,6 +7,18 @@ import Button from 'material-ui/Button';
 
 class NavBar extends Component {
 	render() {
+		const titleBar= (title) => {
+			if (title !== undefined) {
+				return (
+					<AppBar position="static" color="default">
+						<Toolbar className = "title-bar">
+							<h1>{title}</h1>
+						</Toolbar>
+					</AppBar>
+				)
+			}
+			return <div/>
+		}
 		return (
 		<div>
 			<AppBar position="static" color="primary">
@@ -17,11 +29,8 @@ class NavBar extends Component {
 					<Button color="inherit" component={Link} to="/contact">Contact</Button>
 				</Toolbar>
 			</AppBar>
-{/*			<AppBar position="static" color="default">
-				<Toolbar className = "title-bar">
-					<h1>SmartGiving</h1>
-				</Toolbar>
-			</AppBar> */}
+			{titleBar(this.props.title)}
+
 		</div>
 		);
 	}
