@@ -1,0 +1,21 @@
+.thanks-title {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 36pt;
+	font-weight:800;
+	margin-top:90px;
+}
+
+.thanks-image {
+	display:block;
+	width:25%;
+	margin: 30px auto 30px auto;
+}
+
+.thanks-text {
+	display:block;
+	width:50%;
+	max-width:500px;
+	margin:auto;
+	text-align: center;
+}

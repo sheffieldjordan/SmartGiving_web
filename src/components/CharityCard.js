@@ -15,8 +15,8 @@ class CharityCard extends Component {
 					<p>{this.props.description}</p>
 				</CardContent>
 				<CardActions>
-		          <Button size="small" color="primary">Learn More</Button>
-		          <Button size="small" color="primary">Donate</Button>
+		          <Button size="small" color="primary" onClick={this.props.onLearnMore}>Learn More</Button>
+		          <Button size="small" color="primary" onClick={this.props.onDonate}>Donate</Button>
 				</CardActions>
 			</Card>
 		)
@@ -26,7 +26,9 @@ class CharityCard extends Component {
 CharityCard.propTypes = {
 	title: PropTypes.string.isRequired,
 	description: PropTypes.string,
-	Image: PropTypes.object,
+	image: PropTypes.string,
+	onDonate: PropTypes.func,
+	onLearnMore:PropTypes.func,
 }
 
 CharityCard.defaultProps = {
