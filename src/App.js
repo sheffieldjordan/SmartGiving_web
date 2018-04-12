@@ -1,43 +1,56 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import {
+  HashRouter,
+  Route,
+  Switch // Displays the first route that matches
+} from 'react-router-dom'
 
-import ProfileHeader from './components/ProfileHeader'
-import UserStory from './components/UserStory'
-import ContactInfo from './components/ContactInfo'
-import RequestsTableExample from './RequestsTableExample'
+import { ParallaxProvider } from 'react-skrollr';
 
-import About from './components/About'
-import Home from './components/Home'
 
-import './App.css';
+import ProfilePage from './containers/ProfilePage'
+import About from './containers/About'
+import Contact from './containers/Contact'
+import Howitworks from './containers/Howitworks'
+import Whoops404 from './containers/Whoops404'
+import DonorHome from './containers/DonorHome'
+import ThankYou from './containers/ThankYou'
+import GiftPage from './containers/GiftPage'
 
-// TODO: Remove this hacky way to show the about page
-var showAbout = true;
-var showHome = false;
 class App extends Component {
   render() {
-    if (showAbout) {
-      return (<About/>)
-    } else if (showHome) {
-      return (<Home/>)
-    }
     return (
-      <div className="App">
-        <ProfileHeader store={this.props.store}/>
-        <UserStory store={this.props.store}/>
-        <ContactInfo store={this.props.store}/>
-
-        <div className = "open-requests requests-section">
-          <h2 className = "requests-title">Open Requests</h2>
-          {RequestsTableExample()}
-        </div>
-        <div className = "closed-requests requests-section">
-          <h2 className = "requests-title">Closed Requests</h2>
-          {RequestsTableExample()}
-        </div>
-
+    <ParallaxProvider init={{smoothScrolling: true, smoothScrollingDuration: 1000, forceHeight: false}}>
+    <HashRouter>
+      <div className="main">
+        <Switch>
+          <Route exact path="/" component={() => <DonorHome store={this.props.store}/>} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/howitworks" component={Howitworks}/>
+          <Route path="/profile" component={() => <ProfilePage store={this.props.store}/>} />
+          <Route path="/donor" component={() => <DonorHome store={this.props.store}/>} />
+          <Route path="/gift" component={() => <GiftPage store={this.props.store}/>} />
+          <Route path="/thanks" component={() => <ThankYou store={this.props.store}/>} />
+          <Route component={Whoops404} />
+        </Switch>
       </div>
-    );
+    </HashRouter>
+    </ParallaxProvider>
+
+    )
   }
 }
+
+const mapStateToProps = state => {
+  return state
+}
+
+
+App = connect(
+  mapStateToProps,
+  null
+)(App)
 
 export default App;

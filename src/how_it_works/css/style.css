@@ -1,0 +1,71 @@
+
+.kids{
+    position:absolute;
+	background:url(../images/kids.png);
+    background-repeat: no-repeat;
+    background-size: 61% 61%;
+    width: 500px;
+    height: 300px;
+    left:48%;
+    display: flex;
+}
+
+
+.carolyn {
+	background:url(../images/carolyn.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+	width: 200px;
+	height:300px;
+    left:30%;
+    display: flex;
+}
+
+.donna {
+    position:fixed;
+    background:url(../images/donna.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 200px;
+    height:300px;
+    display: flex;
+}
+
+
+
+.delivery {
+    position:fixed;
+	background:url(../images/shopping_cart.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 240px;
+	height: 260px;
+}
+
+
+.triangle {
+    position:relative;
+    margin: auto;
+    width: 220px;
+    height: 200px;
+	background:url(../images/triangle_.png);
+    background-repeat:no-repeat;
+}
+
+
+.textbooks {
+    position:absolute;
+	background:url(../images/textbooks.png);
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 300px;
+}
+
+.caps {
+    position:absolute;
+	background:url(../images/caps.png);
+    background-repeat: no-repeat;
+    width: 490px;
+    height: 300px;
+  }
+
