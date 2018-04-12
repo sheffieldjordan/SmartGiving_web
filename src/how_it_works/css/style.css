@@ -7,27 +7,27 @@
     width: 500px;
     height: 300px;
     left:48%;
+    display: flex;
 }
 
 
 .carolyn {
 	background:url(../images/carolyn.png);
     background-repeat: no-repeat;
-    background-size: 60% 60%;
-	width: 220px;
-	height:500px;
-    position: fixed;
+    background-size: contain;
+	width: 200px;
+	height:300px;
     left:30%;
     display: flex;
 }
 
 .donna {
     position:fixed;
-    background:url(../images/donna.svg);
+    background:url(../images/donna.png);
     background-repeat: no-repeat;
-    background-size: 65% 65%;
+    background-size: contain;
     width: 200px;
-    height:500px;
+    height:300px;
     display: flex;
 }
 

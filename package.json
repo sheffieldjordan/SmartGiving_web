@@ -23,6 +23,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+    "build-and-deploy": "npm run build && s3cmd sync build/* s3://smartgiving && echo '🚀  Deployed!'",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject"
 	},
