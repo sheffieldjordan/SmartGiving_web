@@ -27,6 +27,7 @@ const store = createStore(
 	initialState
 )
 
+
 ReactDOM.render(
 
 	<App store={store}/>,
