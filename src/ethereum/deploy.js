@@ -6,7 +6,7 @@ const Web3 = require('web3')
 const compiledFactory = require('./build/GiftFactory.json')
 
 const provider = new HDWalletProvider(
-	'body armor enrich average marble note staff prize three arrest glory deny',
+	'xxx',
 	'https://rinkeby.infura.io/0EQx7uotOUUoAlWuNWHq'
 )
 const web3 = new Web3(provider)
