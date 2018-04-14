@@ -1,13 +1,12 @@
 
 .kids{
-    position:absolute;
 	background:url(../images/kids.png);
     background-repeat: no-repeat;
     background-size: 61% 61%;
     width: 500px;
     height: 300px;
-    left:48%;
     display: flex;
+    position: absolute;
 }
 
 
@@ -17,41 +16,81 @@
     background-size: contain;
 	width: 200px;
 	height:300px;
-    left:30%;
     display: flex;
 }
 
 .donna {
-    position:fixed;
     background:url(../images/donna.png);
     background-repeat: no-repeat;
     background-size: contain;
     width: 200px;
     height:300px;
+    position: absolute;
     display: flex;
 }
 
 
 
 .delivery {
-    position:fixed;
 	background:url(../images/shopping_cart.png);
     background-repeat: no-repeat;
     background-size: contain;
     width: 240px;
 	height: 260px;
+    position: absolute;
 }
 
 
 .triangle {
-    position:relative;
     margin: auto;
     width: 220px;
     height: 200px;
 	background:url(../images/triangle_.png);
     background-repeat:no-repeat;
+
 }
 
+.store {
+    background:url(../images/store.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+.coin200 {
+    background:url(../images/coin200.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+}
+
+.coin190 {
+    background:url(../images/coin190.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+}
+
+.coin180 {
+    background:url(../images/coin180.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+}
+
+.blue {
+  -webkit-filter: drop-shadow(0 0 0 blue);
+  filter: drop-shadow(0 0 0 blue);
+  background-color: blue;
+}
 
 .textbooks {
     position:absolute;
