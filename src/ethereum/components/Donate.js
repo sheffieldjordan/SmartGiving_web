@@ -10,8 +10,6 @@ class Donate extends Component {
 	onSubmit = async (event) => {
 		event.preventDefault()
 		this.setState({
-			message: '',
-			loading: true,
 			errorMessage: ''
 		})
 

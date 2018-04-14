@@ -17,6 +17,8 @@ import DonorHome from './containers/DonorHome'
 import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
 import Donate from './ethereum/components/Donate'
+import Bid from './ethereum/components/Bid'
+import GetAllStats from './ethereum/components/GetAllStats'
 
 class App extends Component {
 	render() {
@@ -58,6 +60,14 @@ class App extends Component {
 							<Route
 								path="/donate"
 								component={() => <Donate store={this.props.store} />}
+							/>
+							<Route
+								path="/bid"
+								component={() => <Bid store={this.props.store} />}
+							/>
+							<Route
+								path="/getallstats"
+								component={() => <GetAllStats store={this.props.store} />}
 							/>
 							<Route component={Whoops404} />
 						</Switch>
