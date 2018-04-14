@@ -6,7 +6,7 @@ import GiftFactory from './build/GiftFactory.json'
 
 const factoryInstance = new web3.eth.Contract(
 	JSON.parse(GiftFactory.interface),
-	'0xB3F4832A8078DEf5016D1E53e167a5e9463084C2' // there's Gift Factory deployed on Rinkeby at this address
+	'0xc256a2AAB064844358e341EB2D5cf62383904A9a' // there's Gift Factory deployed on Rinkeby at this address
 )
 
 export default factoryInstance
