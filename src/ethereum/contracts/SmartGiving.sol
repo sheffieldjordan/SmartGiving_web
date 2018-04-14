@@ -4,6 +4,7 @@ contract GiftFactory {
 
     address[] public completedGifts;
     address[] public masterGiftList;
+    address[] public recipients;
     uint public lastUpdate;
 
     mapping(address => bool) public giftExists;
@@ -50,6 +51,7 @@ contract GiftFactory {
         giftToOwner[id] = _recipient;
         recipientGiftCount[_recipient]++;
         donorGiftCount[_donor]++;
+        recipients.push(_recipient);
         masterGiftList.push(_newGift);
         lastUpdate = now;
     }
@@ -104,6 +106,10 @@ contract GiftFactory {
             }
         }
         return result;
+    }
+
+    function getRecipients() view public returns(address[]){
+        return recipients;
     }
 }
 
