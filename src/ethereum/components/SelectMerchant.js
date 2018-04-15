@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import web3 from '../web3'
 import SmartGift from '../smartgift'
 
-class Bid extends Component {
+class SelectMerchant extends Component {
 	state = {
 		errorMessage: ''
 	}
@@ -11,10 +11,10 @@ class Bid extends Component {
 		event.preventDefault()
 
 		try {
-			const targetGift = SmartGift('0xF861bbf557eFbb092D48365912dA3b1b64af515d') // Provide GIFT ADDRESS
+			const targetGift = SmartGift('0xF861bbf557eFbb092D48365912dA3b1b64af515d')
 			const accounts = await web3.eth.getAccounts()
-			const bidEntry = await targetGift.methods
-				.merchantBids(web3.utils.toWei('0.019', 'ether')) // Provide BID AMOUNT. 0.019 is the example Bid amount in Ether.
+			const selectMerchant = await targetGift.methods
+				.recipientPicksMerchant('0x038740aE426fa19758f6B77E7A92d4F4169e1772')
 				.send({
 					from: accounts[0],
 					gas: 1000000
@@ -29,7 +29,7 @@ class Bid extends Component {
 		return (
 			<div>
 				<form onSubmit={this.onSubmit}>
-					<button>Bid</button>
+					<button>Select Merchant</button>
 				</form>
 				<h1>{this.state.errorMessage}</h1>
 			</div>
@@ -37,4 +37,4 @@ class Bid extends Component {
 	}
 }
 
-export default Bid
+export default SelectMerchant
