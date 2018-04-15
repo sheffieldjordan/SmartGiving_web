@@ -2,11 +2,8 @@
 .kids{
 	background:url(../images/kids.png);
     background-repeat: no-repeat;
-    background-size: 61% 61%;
-    width: 500px;
-    height: 300px;
-    display: flex;
-    position: absolute;
+    width: 310px;
+    height: 210px;
 }
 
 
@@ -26,7 +23,6 @@
     width: 200px;
     height:300px;
     position: absolute;
-    display: flex;
 }
 
 
@@ -42,12 +38,11 @@
 
 
 .triangle {
-    margin: auto;
+	background:url(../images/triangle_.png);
     width: 220px;
     height: 200px;
-	background:url(../images/triangle_.png);
     background-repeat:no-repeat;
-
+     
 }
 
 .store {
@@ -65,7 +60,6 @@
     background-size: contain;
     width: 80px;
     height: 80px;
-    position: absolute;
 }
 
 .coin190 {
@@ -74,7 +68,6 @@
     background-size: contain;
     width: 80px;
     height: 80px;
-    position: absolute;
 }
 
 .coin180 {
@@ -83,28 +76,37 @@
     background-size: contain;
     width: 80px;
     height: 80px;
-    position: absolute;
 }
 
-.blue {
-  -webkit-filter: drop-shadow(0 0 0 blue);
-  filter: drop-shadow(0 0 0 blue);
-  background-color: blue;
+.books {
+    display:inline-flex;
+    background:url(../images/books.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 150px;
+}
+
+.books1 {
+    position:absolute;
+    background:url(../images/books1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 350px;
 }
 
 .textbooks {
-    position:absolute;
 	background:url(../images/textbooks.png);
     background-repeat: no-repeat;
-    width: 500px;
-    height: 300px;
+    width: 200px;
+    height: 100px;
 }
 
 .caps {
-    position:absolute;
 	background:url(../images/caps.png);
     background-repeat: no-repeat;
-    width: 490px;
-    height: 300px;
+    width: 310px;
+    height: 80px;
   }
 

@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import { List, Image} from 'semantic-ui-react';
 import Nat from '../images/Nat.png';
 import Morgan from '../images/Morgan.png';
+import Liz from '../images/lizlee.png';
 
 
 
@@ -40,7 +41,7 @@ class About extends Component {
 					</List.Item>
 
 					<List.Item>
-						<Image src={Nat}  size='small' circular verticalAlign='middle' />
+						<Image src={Liz}  size='small' circular verticalAlign='middle' />
 						<List.Content verticalAlign='middle'>
 							<List.Header as='a' href='https://www.linkedin.com/in/lizlee0225/'>Liz (Hyemin) Lee</List.Header>
 							<List.Description>Last seen in South Hall just now.</List.Description>
