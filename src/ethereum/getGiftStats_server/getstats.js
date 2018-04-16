@@ -71,18 +71,18 @@ const convertToDatabaseObject = (ethereumJSON, smartGiftAddress) => {
 		id: 1234, // you get this from DB
 		recipient: {
 			address: addressCheck(ethereumJSON[0]),
-			name: "",
-			pic: "",
-			about: "",
-			challenge: ""
+			// name: "",
+			// pic: "",
+			// about: "",
+			// challenge: ""
 		},
 		expiry: timeCheck(ethereumJSON[6]),
 		description: ethereumJSON[12],
-		items: [{ desc: "", qty: 0, unit: "" }],
-		preferredMerchants: [""],
+		// items: [{ desc: "", qty: 0, unit: "" }],
+		// preferredMerchants: [""],
 		donor: addressCheck(ethereumJSON[1]),
 		maxDonation: parseInt(ethereumJSON[3]),
-		recommendedDonation: "",
+		// recommendedDonation: "",
 		startTime: timeCheck(ethereumJSON[8]),
 		giftAddress: addressCheck(smartGiftAddress),
 		bids: bidsArray(ethereumJSON[13], ethereumJSON[14]),
@@ -106,12 +106,12 @@ var bidsArray = (merchants, bids) => {
 			{
 				merchId: addressCheck(merchants[i]), // array of merchant addresses
 				bid: parseInt(bids[i]), // array of merchant bids
-				merchInfo: {
-					name: "",
-					location: "",
-					about: "",
-					pic: ""
-				}
+				// merchInfo: {
+				// 	name: "",
+				// 	location: "",
+				// 	about: "",
+				// 	pic: ""
+				// }
 			}
 		)
 	}
