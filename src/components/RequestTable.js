@@ -21,7 +21,6 @@ class RequestTable extends Component {
 			    </TableHead>
 			    <TableBody>
 			    {data.map((d, i) => {
-			    	let j = 0;
 			    	return (
 			    		<TableRow key={i}>
 			    			{Object.values(d).map((v, j) => {

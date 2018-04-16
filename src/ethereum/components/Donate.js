@@ -15,7 +15,7 @@ class Donate extends Component {
 
 		try {
 			const accounts = await web3.eth.getAccounts()
-			const giftInstance = await factory.methods
+			await factory.methods
 				.createSmartGift(
 					'0x68009930D2E4a9A0A4b53484AED8289c86802Ae5', // Recipient adddress
 					1531353600, // exiration time in Unix format

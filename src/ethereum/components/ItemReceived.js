@@ -13,7 +13,7 @@ class ItemReceived extends Component {
 		try {
 			const targetGift = SmartGift('0xF861bbf557eFbb092D48365912dA3b1b64af515d') // address of the Gift you're working on
 			const accounts = await web3.eth.getAccounts()
-			const itemReceived = await targetGift.methods
+			await targetGift.methods
 				.recipientReceivesItem()
 				.send({
 					from: accounts[0],

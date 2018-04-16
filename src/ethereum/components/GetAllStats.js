@@ -12,7 +12,37 @@ class GetAllStats extends Component {
 
 		async function getGiftsAndStats(recipientList) {
 			var recipientChecked = []
-			var masterGiftList = []
+			const converToDatabaseObject = (ethereumJSON, smartGiftAddress) => {
+				let dBJSON = {
+					recipient: {
+						address: ethereumJSON[0],
+						name: '',
+						pic: '',
+						about: '',
+						challenge: ''
+					},
+					expiry: ethereumJSON[6],
+					description: ethereumJSON[12],
+					items: [JSON.stringify({ desc: '', qty: 0, unit: '' })],
+					preferredMerchants: [''],
+					donor: ethereumJSON[1],
+					maxDonation: ethereumJSON[3],
+					recommendedDonation: 0,
+					startTime: ethereumJSON[8],
+					giftAddress: smartGiftAddress,
+					bids: bidsArray(ethereumJSON[13], ethereumJSON[14]),
+					updateTime: ethereumJSON[7],
+					selectedMerchant: ethereumJSON[2],
+					finalCost: ethereumJSON[5],
+					merchantShipped: ethereumJSON[10],
+					timeShipped: ethereumJSON[15],
+					itemReceived: ethereumJSON[11],
+					timeReceived: ethereumJSON[16],
+					balance: ethereumJSON[17]
+				}
+				return dBJSON
+			}
+
 			for (let i = 0; i < recipientList.length; i++) {
 				if (recipientChecked.includes(recipientList[i])) {
 					continue
@@ -40,37 +70,6 @@ class GetAllStats extends Component {
 						)
 					}
 					return merchantArray
-				}
-
-				const converToDatabaseObject = (ethereumJSON, smartGiftAddress) => {
-					let dBJSON = {
-						recipient: {
-							address: ethereumJSON[0],
-							name: '',
-							pic: '',
-							about: '',
-							challenge: ''
-						},
-						expiry: ethereumJSON[6],
-						description: ethereumJSON[12],
-						items: [JSON.stringify({ desc: '', qty: 0, unit: '' })],
-						preferredMerchants: [''],
-						donor: ethereumJSON[1],
-						maxDonation: ethereumJSON[3],
-						recommendedDonation: 0,
-						startTime: ethereumJSON[8],
-						giftAddress: smartGiftAddress,
-						bids: bidsArray(ethereumJSON[13], ethereumJSON[14]),
-						updateTime: ethereumJSON[7],
-						selectedMerchant: ethereumJSON[2],
-						finalCost: ethereumJSON[5],
-						merchantShipped: ethereumJSON[10],
-						timeShipped: ethereumJSON[15],
-						itemReceived: ethereumJSON[11],
-						timeReceived: ethereumJSON[16],
-						balance: ethereumJSON[17]
-					}
-					return dBJSON
 				}
 
 				let giftStats = []
