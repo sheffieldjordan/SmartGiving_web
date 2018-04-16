@@ -8,15 +8,15 @@ class CharityCard extends Component {
 	render() {
 		return (
 			<Card className="charity-card">
-				<CardMedia className="charity-card-media" title={this.props.title} image={this.props.image}>
+				<CardMedia className="charity-card-media" title={this.props.title} image={this.props.image} onClick={this.props.onLearnMore}>
 				</CardMedia>
 				<CardContent>
-					<h2>{this.props.title}</h2>
+					<h2 className="charity-card-title" onClick={this.props.onLearnMore}>{this.props.title}</h2>
 					<p>{this.props.description}</p>
 				</CardContent>
 				<CardActions>
-		          <Button size="small" color="primary" onClick={this.props.onLearnMore}>Learn More</Button>
-		          <Button size="small" color="primary" onClick={this.props.onDonate}>Donate</Button>
+		          <Button size="medium" color="primary" onClick={this.props.onLearnMore}>Learn More</Button>
+		          <Button size="medium" color="primary" onClick={this.props.onDonate}>Donate</Button>
 				</CardActions>
 			</Card>
 		)

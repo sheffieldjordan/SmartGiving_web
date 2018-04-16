@@ -40,7 +40,7 @@ class DonorHome extends Component {
 					{requests.map((r, i) => {
 						return <CharityCard key={i}
 						title={r.charity.title}
-						description={r.charity.about}
+						description={r.summary}
 						image={images[i]}
 						onDonate={selectDonate(r)}
 						onLearnMore={() =>  this.props.history.push({
