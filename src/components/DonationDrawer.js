@@ -18,18 +18,21 @@ class DonationDrawer extends Component {
 				<div className="donate-avatar-container">
 					<div className = "donate-avatar-container">
 						<UserAvatar displayName="Donor" />
-						<div>&#8594;</div>
+						<div className = "donate-arrow">&#8680;</div>
 						<UserAvatar displayName="Recipient" />
 					</div>
 				</div>
-				<div className = "donate-pre-description">
+				<div className = "donate-description donate-pre-description">
 				Are you sure you would like to donate ${Math.floor(request.dollars).toFixed(2)} ({(request.dollars/dollarsPerEther).toFixed(5)} ETH) to {request.charity.title}?
+				</div>
+				<div className = "donate-description donate-what-happens">
+				(Your payment will be processed once a merchant and recipient agree on delivering and receiving your gifts before the expiration date.)
 				</div>
 				<div className = "donate-button-container">
 					<Button className = "donate-button" onClick = {this.props.onPrimary} variant="raised" size="medium" color="primary">Donate</Button>
 					<Button className = "donate-button" onClick = {this.props.onSecondary} variant="raised" size="medium" color="default">Cancel</Button>
 				</div>
-				<div className = "donate-post-description">
+				<div className = "donate-description donate-post-description">
 				If you choose to donate, you will be brought to MetaMask where you can complete your donation.
 				</div>
 

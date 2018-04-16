@@ -47,6 +47,8 @@ h1, h2, h3{
 	margin:15px;
 	display:flex;
 	justify-content: center;
+	align-items: center;
+
 	font-size: 32pt;
 	font-weight: 800;
 }
@@ -59,11 +61,15 @@ h1, h2, h3{
 	margin:auto;
 }
 
-.donate-pre-description, .donate-post-description {
+.donate-description {
 	text-align: center;
-	width:50%;
+	width:80%;
 	margin:auto;
-	margin-bottom:25px;
+}
+
+.donate-arrow {
+	margin-left: 15px;
+	margin-right: 20px;
 }
 
 .donate-post-description{
@@ -71,8 +77,14 @@ h1, h2, h3{
 	font-style: italic;
 	margin-top:25px;
 	width:60%;
+	margin-bottom:25px;
 }
 
+.donate-what-happens {
+	margin-bottom:25px;
+	font-style: italic;
+
+}
 
 /* RequestTable.js */
 
@@ -118,5 +130,6 @@ h1, h2, h3{
 }
 
 .charity-card-content {
+	height: 225px;
 	padding-bottom:8px !important;
 }

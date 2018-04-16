@@ -69,7 +69,7 @@ class GiftPage extends Component {
 								<h2 className = "gift-background-title"> Request Details </h2>
 								<RequestTable data={giftData.inventory}/>
 								<div className = "gift-donation-section">
-									<h3 className = "gift-donation-cost"> Total cost: ${Math.floor(giftData.dollars).toFixed(2)} </h3>
+									<h3 className = "gift-donation-estimate"> Estimated Cost of Donation: <span className = "gift-donation-cost">${Math.floor(giftData.dollars).toFixed(2)} </span></h3>
 									<Button size="large" variant="raised" color="primary" onClick={selectDonate}>Donate</Button>
 								</div>
 							</Paper>

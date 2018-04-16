@@ -26,10 +26,6 @@
 	justify-content: space-between;
 }
 
-.gift-donation-cost {
-	margin-right: 20px;
-}
-
 .gift-info-image-card {
 	margin-top: 20px;
 }
@@ -46,4 +42,8 @@
 
 .gift-info-image {
 	height: 200px;
+}
+
+.gift-donation-cost {
+	color:#3f51b5;
 }
