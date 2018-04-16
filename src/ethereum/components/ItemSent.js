@@ -13,7 +13,7 @@ class ItemSent extends Component {
 		try {
 			const targetGift = SmartGift('0xF861bbf557eFbb092D48365912dA3b1b64af515d') // address of the Gift you're working on
 			const accounts = await web3.eth.getAccounts()
-			const itemSent = await targetGift.methods.merchantShipsItem().send({
+			await targetGift.methods.merchantShipsItem().send({
 				from: accounts[0],
 				gas: 1000000
 			})
