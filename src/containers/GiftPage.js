@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import NavBar from '../components/NavBar'
 import RequestTable from '../components/RequestTable'
 import CharityDonationDrawer from '../components/CharityDonationDrawer'
+import ContactInfo from '../components/ContactInfo'
 
 import {Paper, Button} from 'material-ui'
 import {kStyleElevation, kStylePaper} from '../style/styleConstants'
@@ -34,7 +35,7 @@ class GiftPage extends Component {
 		}
 		return (
 			<div>
-				<NavBar title="Gift information page"/>
+				<NavBar/>
 				<div className = "page-container">
 					<h1 className = "gift-page-title">
 						{giftData.title}
@@ -43,23 +44,26 @@ class GiftPage extends Component {
 					for {giftData.charity.title}
 					</div>
 
-
 					<div className = "gift-info-container">
 						<div className = "gift-background-section">
 							<Paper elevation={kStyleElevation} style={kStylePaper}>
-								<h2 className = "gift-background-title"> Summary </h2>
+								<h2 className = "gift-background-title"> Background </h2>
 								<div className = "gift-background">
 									{giftData.background}
 								</div>
-								<h2 className = "gift-background-title"> Challenge </h2>
+								<h2 className = "gift-background-title"> Why There Is a Challenge </h2>
 								<div className = "gift-background">
 									{giftData.challenge}
 								</div>
 							</Paper>
 							<Paper elevation={kStyleElevation} style={kStylePaper}>
-								<h2 className = "gift-background-title"> About </h2>
+								<h2 className = "gift-background-title"> About Recipient </h2>
 								<div className = "gift-background">
 									{giftData.charity.about}
+								</div>
+								<h2 className = "gift-background-title"> Learn More </h2>
+								<div className = "gift-background">
+									<ContactInfo user={giftData.charity}></ContactInfo>
 								</div>
 							</Paper>
 						</div>

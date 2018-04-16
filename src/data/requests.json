@@ -3,7 +3,21 @@
 		{
 			"charity" : {
 				"title" :"Palmira Elementary School",
-				"about": "Palmira Secondary School is in Palmira, Colombia, located Southwest of Colombia. We are a village based school for students between ages 5-12 throughout the year so that they can receive the necessary education and support when adults are not present at home during the day. Other than the typical school subjects, such as math and writing, our focus is to also engage the students in extracurricular activities as an outlet of their creativity and emotions. These activities include arts and craft, physical education (PE), and dancing."
+				"about": "Palmira Secondary School is in Palmira, Colombia, located Southwest of Colombia. We are a village based school for students between ages 5-12 throughout the year so that they can receive the necessary education and support when adults are not present at home during the day. Other than the typical school subjects, such as math and writing, our focus is to also engage the students in extracurricular activities as an outlet of their creativity and emotions. These activities include arts and craft, physical education (PE), and dancing.",
+				"location": {
+					"country": "Colombia",
+					"state": "",
+					"city": "Palmira",
+					"imgurl": "https://i.imgur.com/SIodEmY.jpg"
+				},
+				"contact": {
+					"name": "Humberto Rodriguez",
+					"email": "humbertorodriguez12@gmail.com",
+					"website": "www.google.com",
+					"facebook": "www.facebook.com",
+					"instagram": "www.instagram.com",
+					"twitter": "www.twitter.com"
+				}
 			},
 			"title" : "school supplies",
 			"summary" : "Gift school supplies to students aged 5-12 at Palmira Elementary School in Colombia!",
@@ -52,7 +66,21 @@
 		{
 			"charity" : {
 				"title" :"Save Our Frogs, Cusuco National Park",
-				"about": "Cusuco National Park (Cusuco) is located in the Merendon Mountains of northwestern Honduras.  Cusuco harbors remarkable biodiversity and is ranked among the ‘top 100 most irreplaceable sites’ in the world from an analysis of over 173,000 protected areas.  In Cusuco, there are 14 amphibian species listed as Endangered or Critically Endangered on the IUCN Red List of Threatened Species, with five also endemic to this one location.  For this reason, Cusuco is also recognized as a site of global importance by the Alliance for Zero Extinction."
+				"about": "Cusuco National Park (Cusuco) is located in the Merendon Mountains of northwestern Honduras.  Cusuco harbors remarkable biodiversity and is ranked among the ‘top 100 most irreplaceable sites’ in the world from an analysis of over 173,000 protected areas.  In Cusuco, there are 14 amphibian species listed as Endangered or Critically Endangered on the IUCN Red List of Threatened Species, with five also endemic to this one location.  For this reason, Cusuco is also recognized as a site of global importance by the Alliance for Zero Extinction.",
+				"location": {
+					"country": "Honduras",
+					"state": "",
+					"city": "Cusuco National Park",
+					"imgurl": "https://i.imgur.com/SIodEmY.jpg"
+				},
+				"contact": {
+					"name": "Humberto Rodriguez",
+					"email": "humbertorodriguez12@gmail.com",
+					"website": "www.google.com",
+					"facebook": "www.facebook.com",
+					"instagram": "www.instagram.com",
+					"twitter": "www.twitter.com"
+				}
 
 			},
 			"summary" : "Save critically endangered frog species at Cusuco National Park in Honduras by gifting essential Preservation tools.",
@@ -82,8 +110,21 @@
 		{
 			"charity" : {
 				"title" :"Residency for All",
-				"about": "Residency for All is a home to local seniors over the age of 70 years who either don’t have a home or have disabilities to function on their own. We provide rooms where they can stay and also provide basic housing services such as changing their bedding and cleaning the rooms. We want to continue making improvements to the building so that the residents feel like they’re home, safe, and comfortable in our spaces."
-
+				"about": "Residency for All is a home to local seniors over the age of 70 years who either don’t have a home or have disabilities to function on their own. We provide rooms where they can stay and also provide basic housing services such as changing their bedding and cleaning the rooms. We want to continue making improvements to the building so that the residents feel like they’re home, safe, and comfortable in our spaces.",
+				"location": {
+					"country": "USA",
+					"state": "California",
+					"city": "Berkeley",
+					"imgurl": "https://i.imgur.com/SIodEmY.jpg"
+				},
+				"contact": {
+					"name": "Humberto Rodriguez",
+					"email": "humbertorodriguez12@gmail.com",
+					"website": "www.google.com",
+					"facebook": "www.facebook.com",
+					"instagram": "www.instagram.com",
+					"twitter": "www.twitter.com"
+				}
 			},
 			"title" : "water supplies",
 			"summary" : "Senior home Residency for All is going through a major renovation of their front and back lawns to assist the senior residents better.",
@@ -112,7 +153,21 @@
 		{
 			"charity" : {
 				"title" :"Si Se Puede, by Atzin Desarrollo Comunitario ",
-				"about": "Atzin assists rural people, particularly indigenous women, to attain better life opportunities, stronger cultural wellbeing, and greater self-sufficiency with more peaceful governance. In 1997, Atzin was formed to counter this cycle of poverty and violence in Tlamacazapa. Atzin means 'sacred water' in the local language, Nahuatl. Its humanitarian development programs emerged gradually in response to community needs."
+				"about": "Atzin assists rural people, particularly indigenous women, to attain better life opportunities, stronger cultural wellbeing, and greater self-sufficiency with more peaceful governance. In 1997, Atzin was formed to counter this cycle of poverty and violence in Tlamacazapa. Atzin means 'sacred water' in the local language, Nahuatl. Its humanitarian development programs emerged gradually in response to community needs.",
+				"location": {
+					"country": "India",
+					"state": "Tamil Nadu",
+					"city": "Baliganipali",
+					"imgurl": "https://i.imgur.com/SIodEmY.jpg"
+				},
+				"contact": {
+					"name": "Humberto Rodriguez",
+					"email": "humbertorodriguez12@gmail.com",
+					"website": "www.google.com",
+					"facebook": "www.facebook.com",
+					"instagram": "www.instagram.com",
+					"twitter": "www.twitter.com"
+				}
 
 			},
 			"title" : "education supplies",

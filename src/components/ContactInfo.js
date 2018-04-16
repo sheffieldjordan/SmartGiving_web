@@ -1,24 +1,18 @@
 import React, { Component } from 'react';
 
-import Paper from 'material-ui/Paper';
-import {kStyleElevation, kStylePaper} from '../style/styleConstants'
-
-
 class ContactInfo extends Component {
 	render() {
+    const user = this.props.user
 		return (
-        <div className = "connect-container">
-          <Paper elevation={kStyleElevation} style={kStylePaper}>
-          <h2>Learn More</h2>
+        <div className = "contact-container">
           <div className = "card-text-container">
             <div className = "contact-container">
-              {contactSection(titleValueSpan, ['name', 'email'], this.props.store.getState().user.contact,"contact-title")}
+              {contactSection(titleValueSpan, ['name', 'email'], user.contact,"contact-title")}
             </div>
             <div className = "social-container">
-              {contactSection(titleLinkSpan, ['website', 'facebook', 'twitter', 'instagram'], this.props.store.getState().user.contact,"social-info")}
+              {contactSection(titleLinkSpan, ['website', 'facebook', 'twitter', 'instagram'], user.contact,"social-info")}
             </div>
           </div>
-          </Paper>
         </div>
 	    )
 	}
@@ -32,8 +26,6 @@ const contactMapping = {
   "instagram" : "Instagram",
   "twitter" : "Twitter"
 }
-
-
 
 const contactSection = (renderFunc, sections, contact, itemClass=undefined) => {
   return sections.map((key, i) => {
