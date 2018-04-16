@@ -1,5 +1,6 @@
 {
 	"name": "my-app",
+	"homepage": "http://gajeam.github.io/SmartGiving_web",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
