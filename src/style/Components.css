@@ -108,3 +108,15 @@ h1, h2, h3{
 	height:200px;
 }
 
+.charity-card-tags {
+	color:#3f51b5;
+	margin-top:10px;
+}
+
+.charity-card-buttons {
+	margin-bottom:10px;
+}
+
+.charity-card-content {
+	padding-bottom:8px !important;
+}

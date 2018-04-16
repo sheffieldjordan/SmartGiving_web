@@ -23,7 +23,6 @@ class DonorHome extends Component {
 			this.props.showRequest(true, request)
 		}
 
-
 		const images = [ImageColombian, ImageFrog, ImageTulip, ImageMexico]
 		const requests = storeState.requests
 		const drawerRequest = () => {
@@ -42,6 +41,7 @@ class DonorHome extends Component {
 						title={r.charity.title}
 						description={r.summary}
 						image={images[i]}
+						tags={r.tags}
 						onDonate={selectDonate(r)}
 						onLearnMore={() =>  this.props.history.push({
 							pathname: "/gift",
