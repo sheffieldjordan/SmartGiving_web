@@ -7,7 +7,7 @@ import Toolbar from 'material-ui/Toolbar';
 import Footer from '../components/Footer';
 
 
-import { ParallaxProvider, Parallax } from 'react-skrollr';
+import { Parallax } from 'react-skrollr';
 import { Parallax as ParallaxB } from 'react-parallax';
 
 import '../how_it_works/css/style.css';
