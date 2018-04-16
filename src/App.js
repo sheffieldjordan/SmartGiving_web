@@ -19,6 +19,9 @@ import GiftPage from './containers/GiftPage'
 import Donate from './ethereum/components/Donate'
 import Bid from './ethereum/components/Bid'
 import GetAllStats from './ethereum/components/GetAllStats'
+import SelectMerchant from './ethereum/components/SelectMerchant'
+import ItemSent from './ethereum/components/ItemSent'
+import ItemReceived from './ethereum/components/ItemReceived'
 
 class App extends Component {
 	render() {
@@ -68,6 +71,18 @@ class App extends Component {
 							<Route
 								path="/getallstats"
 								component={() => <GetAllStats store={this.props.store} />}
+							/>
+							<Route
+								path="/selectmerchant"
+								component={() => <SelectMerchant store={this.props.store} />}
+							/>
+							<Route
+								path="/itemsent"
+								component={() => <ItemSent store={this.props.store} />}
+							/>
+							<Route
+								path="/itemreceived"
+								component={() => <ItemReceived store={this.props.store} />}
 							/>
 							<Route component={Whoops404} />
 						</Switch>
