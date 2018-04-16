@@ -7,11 +7,7 @@ import { toggleDrawer, selectRequest } from '../redux/actions'
 import CharityCard from '../components/CharityCard'
 import NavBar from '../components/NavBar'
 import CharityDonationDrawer from '../components/CharityDonationDrawer'
-
-import ImageColombian from '../images/test_colombian.jpg'
-import ImageFrog from '../images/test_frog.jpg'
-import ImageMexico from '../images/test_mexico.jpg'
-import ImageTulip from '../images/test_tulip.jpg'
+import { ImageLibrary } from '../components/ImageLibrary'
 
 import "../style/DonorHome.css"
 
@@ -23,7 +19,6 @@ class DonorHome extends Component {
 			this.props.showRequest(true, request)
 		}
 
-		const images = [ImageColombian, ImageFrog, ImageTulip, ImageMexico]
 		const requests = storeState.requests
 		const drawerRequest = () => {
 			if (Object.keys(storeState.selectedRequest).length === 0) {
@@ -40,7 +35,7 @@ class DonorHome extends Component {
 						return <CharityCard key={i}
 						title={r.charity.title}
 						description={r.summary}
-						image={images[i]}
+						image={ImageLibrary(r.charity.image)}
 						tags={r.tags}
 						onDonate={selectDonate(r)}
 						onLearnMore={() =>  this.props.history.push({

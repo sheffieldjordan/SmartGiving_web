@@ -8,7 +8,6 @@
 .gift-page-author {
 	font-size: 20pt;
 	text-align: center;
-	color:#666666;
 }
 
 .gift-info-container {
@@ -17,11 +16,7 @@
 	margin-top:30px;
 }
 
-.gift-background-section {
-	width:48%;
-}
-
-.gift-inventory {
+.gift-info-section {
 	width:48%;
 }
 
@@ -33,4 +28,22 @@
 
 .gift-donation-cost {
 	margin-right: 20px;
+}
+
+.gift-info-image-card {
+	margin-top: 20px;
+}
+.gift-background-color {
+	height: 100%;
+	background-color:rgba(255, 255, 255, 0.6);
+}
+.gift-title-container {
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+}
+
+.gift-info-image {
+	height: 200px;
 }

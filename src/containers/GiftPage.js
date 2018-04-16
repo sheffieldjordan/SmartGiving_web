@@ -4,8 +4,9 @@ import NavBar from '../components/NavBar'
 import RequestTable from '../components/RequestTable'
 import CharityDonationDrawer from '../components/CharityDonationDrawer'
 import ContactInfo from '../components/ContactInfo'
+import { ImageLibrary } from '../components/ImageLibrary'
 
-import {Paper, Button} from 'material-ui'
+import { Paper, Button, Card, CardMedia } from 'material-ui'
 import {kStyleElevation, kStylePaper} from '../style/styleConstants'
 
 import { toggleDrawer, selectRequest } from '../redux/actions'
@@ -17,8 +18,6 @@ import '../style/GiftPage.css'
 class GiftPage extends Component {
 	render() {
 		const storeState = this.props.store.getState()
-		console.log(this.props.history.location)
-
 
 		// TODO @Gabe make this use the real path!
 		const loadGiftData = () => {
@@ -37,15 +36,22 @@ class GiftPage extends Component {
 			<div>
 				<NavBar/>
 				<div className = "page-container">
-					<h1 className = "gift-page-title">
-						{giftData.title}
-					</h1>
-					<div className = "gift-page-author">
-					for {giftData.charity.title}
-					</div>
-
 					<div className = "gift-info-container">
-						<div className = "gift-background-section">
+						<div className = "gift-info-section">
+							<Card className="gift-info-image-card">
+								<CardMedia className="gift-info-image" title={giftData.charity.title} image={ImageLibrary(giftData.charity.image)}>
+								<div className = "gift-background-color">
+									<div className = "gift-title-container">
+										<h1 className = "gift-page-title">
+											{giftData.title}
+										</h1>
+										<div className = "gift-page-author">
+											for {giftData.charity.title}
+										</div>
+									</div>
+								</div>
+								</CardMedia>
+							</Card>
 							<Paper elevation={kStyleElevation} style={kStylePaper}>
 								<h2 className = "gift-background-title"> Background </h2>
 								<div className = "gift-background">
@@ -54,6 +60,17 @@ class GiftPage extends Component {
 								<h2 className = "gift-background-title"> Why There Is a Challenge </h2>
 								<div className = "gift-background">
 									{giftData.challenge}
+								</div>
+							</Paper>
+
+						</div>
+						<div className = "gift-info-section">
+							<Paper elevation={kStyleElevation} style={kStylePaper}>
+								<h2 className = "gift-background-title"> Request Details </h2>
+								<RequestTable data={giftData.inventory}/>
+								<div className = "gift-donation-section">
+									<h3 className = "gift-donation-cost"> Total cost: ${Math.floor(giftData.dollars).toFixed(2)} </h3>
+									<Button size="large" variant="raised" color="primary" onClick={selectDonate}>Donate</Button>
 								</div>
 							</Paper>
 							<Paper elevation={kStyleElevation} style={kStylePaper}>
@@ -66,16 +83,7 @@ class GiftPage extends Component {
 									<ContactInfo user={giftData.charity}></ContactInfo>
 								</div>
 							</Paper>
-						</div>
-						<div className = "gift-inventory">
-							<Paper elevation={kStyleElevation} style={kStylePaper}>
-								<h2 className = "gift-background-title"> Request Details </h2>
-								<RequestTable data={giftData.inventory}/>
-								<div className = "gift-donation-section">
-									<h3 className = "gift-donation-cost"> Total cost: ${Math.floor(giftData.dollars).toFixed(2)} </h3>
-									<Button size="large" variant="raised" color="primary" onClick={selectDonate}>Donate</Button>
-								</div>
-							</Paper>
+
 						</div>
 					</div>
 					<CharityDonationDrawer store={this.props.store} request={giftData}/>
