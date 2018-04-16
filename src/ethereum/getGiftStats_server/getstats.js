@@ -1,14 +1,14 @@
-const factory = require('./files/factory')
-const SmartGift = require('./files/smartgift')
-const web3 = require('./files/web3')
-const path = require('path')
-const fs = require('fs-extra')
+const factory = require("./files/factory")
+const SmartGift = require("./files/smartgift")
+const web3 = require("./files/web3")
+const path = require("path")
+const fs = require("fs-extra")
 
-/* You can run this script in the server. It will query the GiftFactory at the 
-address found in factory.js. The Factory will return a list of Recipients. 
-The scripts then iterates over that list and gets a list of a Recipient's Gifts. 
-It then iterates over that list of Gifts and returns stats on that Gift. For each 
-Gift, the script creates an Object containing Gift stats and stores that Object 
+/* You can run this script in the server. It will query the GiftFactory at the
+address found in factory.js. The Factory will return a list of Recipients.
+The scripts then iterates over that list and gets a list of a Recipient's Gifts.
+It then iterates over that list of Gifts and returns stats on that Gift. For each
+Gift, the script creates an Object containing Gift stats and stores that Object
 in the databaseObjects array. The array is logged to the console at the end. */
 
 var databaseObjects = []
@@ -68,33 +68,34 @@ async function getGiftsAndStats(recipientList) {
 // creates an Object using our proposed schema
 const convertToDatabaseObject = (ethereumJSON, smartGiftAddress) => {
 	let dBJSON = {
+		id: 1234, // you get this from DB
 		recipient: {
-			address: ethereumJSON[0],
-			name: '',
-			pic: '',
-			about: '',
-			challenge: ''
+			address: addressCheck(ethereumJSON[0]),
+			name: "",
+			pic: "",
+			about: "",
+			challenge: ""
 		},
-		expiry: ethereumJSON[6],
+		expiry: timeCheck(ethereumJSON[6]),
 		description: ethereumJSON[12],
-		items: [JSON.stringify({ desc: '', qty: 0, unit: '' })],
-		preferredMerchants: [''],
-		donor: ethereumJSON[1],
-		maxDonation: ethereumJSON[3],
-		recommendedDonation: 0,
-		startTime: ethereumJSON[8],
-		giftAddress: smartGiftAddress,
+		items: [{ desc: "", qty: 0, unit: "" }],
+		preferredMerchants: [""],
+		donor: addressCheck(ethereumJSON[1]),
+		maxDonation: parseInt(ethereumJSON[3]),
+		recommendedDonation: "",
+		startTime: timeCheck(ethereumJSON[8]),
+		giftAddress: addressCheck(smartGiftAddress),
 		bids: bidsArray(ethereumJSON[13], ethereumJSON[14]),
-		updateTime: ethereumJSON[7],
-		selectedMerchant: ethereumJSON[2],
-		finalCost: ethereumJSON[5],
+		updateTime: timeCheck(ethereumJSON[7]),
+		selectedMerchant: addressCheck(ethereumJSON[2]),
+		finalCost: parseInt(ethereumJSON[5]),
 		merchantShipped: ethereumJSON[10],
-		timeShipped: ethereumJSON[15],
+		timeShipped: timeCheck(ethereumJSON[15]),
 		itemReceived: ethereumJSON[11],
-		timeReceived: ethereumJSON[16],
-		balance: ethereumJSON[17]
+		timeReceived: timeCheck(ethereumJSON[16]),
+		balance: parseInt(ethereumJSON[17])
 	}
-	return dBJSON
+	return JSON.stringify(dBJSON)
 }
 
 var bidsArray = (merchants, bids) => {
@@ -102,19 +103,33 @@ var bidsArray = (merchants, bids) => {
 
 	for (let i = 0; i < merchants.length; i++) {
 		merchantArray.push(
-			JSON.stringify({
-				merchId: merchants[i], // array of merchant addresses
-				bid: bids[i], // array of merchant bids
-				merchInfo: JSON.stringify({
-					name: '',
-					location: '',
-					about: '',
-					pic: ''
-				})
-			})
+			{
+				merchId: addressCheck(merchants[i]), // array of merchant addresses
+				bid: parseInt(bids[i]), // array of merchant bids
+				merchInfo: {
+					name: "",
+					location: "",
+					about: "",
+					pic: ""
+				}
+			}
 		)
 	}
 	return merchantArray
+}
+
+function timeCheck(time) {
+	if (time === '0') {
+		return ""
+	}
+	return time
+}
+
+function addressCheck(address) {
+	if (address === '0x0000000000000000000000000000000000000000') {
+		return ""
+	}
+	return address
 }
 
 makeArrayOfObjects()
