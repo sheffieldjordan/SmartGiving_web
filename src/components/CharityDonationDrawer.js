@@ -21,7 +21,7 @@ class CharityDonationDrawer extends Component {
 					this.props.history.push('/thanks')
 				}}
 				onSecondary={() => this.props.showRequest(false)}
-				donationValue={this.props.donationValue}/>
+				donationValue={storeState.donationValue}/>
 		)
 	}
 }

@@ -7,6 +7,7 @@ import requests from './data/requests'
 
 const initialState = {
 	donationDrawerOpen: false,
+	donationValue: undefined,
 	selectedRequest: {},
 	...data,
 	...requests

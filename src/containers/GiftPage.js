@@ -18,8 +18,8 @@ import '../style/GiftPage.css'
 class GiftPage extends Component {
 	constructor(props) {
 		super(props)
-		const giftData = this.loadGiftData()
-		this.state = {donationValue: Math.floor(giftData.dollars).toFixed(2)}
+		this.state = {donationValue: 0}
+		this.loadGiftData.bind(this)
 	}
 
 	loadGiftData() {
@@ -30,11 +30,12 @@ class GiftPage extends Component {
 		}
 		return this.props.history.location.state.request
 	}
+
 	render() {
 		const handleDonationChange = (event) => {
 			let donationValue = Math.floor(this.loadGiftData().dollars).toFixed(2)
 			const n = event.target.value
-			if (!isNaN(parseFloat(n)) && isFinite(n) && parseFloat(n) !== 0) {
+			if (!isNaN(parseFloat(n)) && isFinite(n)) {
 				// Shout out to StackOverflow for making a max of two digits parseFloat
 				const digits = Math.min(2, (n.toString().split('.')[1] || []).length)
 				const periodVal = digits === 0 ? '.' : ''
@@ -45,8 +46,10 @@ class GiftPage extends Component {
 		}
 		const giftData = this.loadGiftData()
 
+		const donationValue = () => this.state.donationValue === 0 ? giftData.dollars : this.state.donationValue
+
 		const selectDonate = () => {
-			this.props.showDonate(true, giftData.charity)
+			this.props.showDonate(true, donationValue(), giftData.charity)
 		}
 		return (
 			<div>
@@ -96,7 +99,7 @@ class GiftPage extends Component {
 																									$</InputAdornment>}}
 															required={true}
 															id="donation-value"
-															value={this.state.donationValue}
+															value={donationValue()}
 															onChange={handleDonationChange}/>
 												<FormHelperText id="name-helper-text">How much you want to donate?</FormHelperText>
 											</FormControl>
@@ -118,7 +121,7 @@ class GiftPage extends Component {
 
 						</div>
 					</div>
-					<CharityDonationDrawer store={this.props.store} request={giftData} donationValue={parseFloat(this.state.donationValue)}/>
+					<CharityDonationDrawer store={this.props.store} request={giftData} donationValue={parseFloat(donationValue())}/>
 				</div>
 			</div>
 		)
@@ -127,9 +130,9 @@ class GiftPage extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		showDonate: (showDrawer, request={}) => {
+		showDonate: (showDrawer, donationValue, request={}) => {
 			dispatch(selectRequest(request))
-			dispatch(toggleDrawer(showDrawer))
+			dispatch(toggleDrawer(showDrawer, donationValue))
 		}
 	}
 }

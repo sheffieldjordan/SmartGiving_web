@@ -6,9 +6,11 @@ export const selectRequest = selectedRequest => {
 		selectedRequest
 	}
 }
-export const toggleDrawer = donationDrawerOpen => {
+export const toggleDrawer = (donationDrawerOpen, donationValue) => {
 	return {
 		type: C.TOGGLE_DONATION_DRAWER,
-		donationDrawerOpen
+		donationDrawerOpen,
+		donationValue
+
 	}
 }
