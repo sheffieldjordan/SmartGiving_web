@@ -11,6 +11,7 @@ class DonationDrawer extends Component {
 	render() {
 		const request = this.props.request
 		const dollarsPerEther = 421.0 // TODO: Get this price dynamically
+		const donationValue = this.props.donationValue === undefined ? request.dollars : this.props.donationValue
 		return (
 		<Drawer anchor="bottom" open={this.props.open} onClose={this.props.onClose}>
 			<div className="donation-drawer-container">
@@ -23,7 +24,7 @@ class DonationDrawer extends Component {
 					</div>
 				</div>
 				<div className = "donate-description donate-pre-description">
-				Are you sure you would like to donate ${Math.floor(request.dollars).toFixed(2)} ({(request.dollars/dollarsPerEther).toFixed(5)} ETH) to {request.charity.title}?
+				Are you sure you would like to donate ${Math.floor(donationValue).toFixed(2)} ({(donationValue/dollarsPerEther).toFixed(5)} ETH) to {request.charity.title}?
 				</div>
 				<div className = "donate-description donate-what-happens">
 				(Your payment will be processed once a merchant and recipient agree on delivering and receiving your gifts before the expiration date.)
@@ -55,6 +56,7 @@ DonationDrawer.propTypes = {
 	recipient: PropTypes.object,
 }
 
+// WE NEED THIS NOT TO BREAK THE HOMEPAGE
 DonationDrawer.defaultProps = {
 	request: {
 		charity: {

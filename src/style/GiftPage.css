@@ -24,6 +24,7 @@
 	margin-top:20px;
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-end;
 }
 
 .gift-info-image-card {
@@ -46,4 +47,24 @@
 
 .gift-donation-cost {
 	color:#3f51b5;
+}
+
+.gift-donation-estimate {
+	margin-bottom: 10px;
+}
+
+.gift-your-donation {
+	margin-right: 5px;
+}
+
+.donation-text-field {
+	font-size: 14pt !important;
+}
+
+.gift-donate-button {
+	max-height: 30px;
+}
+.gift-donation-money-section {
+	font-size:14pt;
+	font-weight: 800;
 }

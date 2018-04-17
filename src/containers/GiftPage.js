@@ -6,7 +6,7 @@ import CharityDonationDrawer from '../components/CharityDonationDrawer'
 import ContactInfo from '../components/ContactInfo'
 import { ImageLibrary } from '../components/ImageLibrary'
 
-import { Paper, Button, Card, CardMedia } from 'material-ui'
+import { Paper, Button, Card, CardMedia, TextField, FormHelperText, FormControl, InputAdornment} from 'material-ui'
 import {kStyleElevation, kStylePaper} from '../style/styleConstants'
 
 import { toggleDrawer, selectRequest } from '../redux/actions'
@@ -16,18 +16,34 @@ import { withRouter } from 'react-router'
 import '../style/GiftPage.css'
 
 class GiftPage extends Component {
-	render() {
-		const storeState = this.props.store.getState()
+	constructor(props) {
+		super(props)
+		const giftData = this.loadGiftData()
+		this.state = {donationValue: Math.floor(giftData.dollars).toFixed(2)}
+	}
 
-		// TODO @Gabe make this use the real path!
-		const loadGiftData = () => {
-			if (this.props.history.location.state === undefined){
-				console.log("WARNING: USING FAKE DATA")
-				return storeState.requests[0]
-			}
-			return this.props.history.location.state.request
+	loadGiftData() {
+		const storeState = this.props.store.getState()
+		if (this.props.history.location.state === undefined){
+			console.log("WARNING: USING FAKE DATA")
+			return storeState.requests[0]
 		}
-		const giftData = loadGiftData()
+		return this.props.history.location.state.request
+	}
+	render() {
+		const handleDonationChange = (event) => {
+			let donationValue = Math.floor(this.loadGiftData().dollars).toFixed(2)
+			const n = event.target.value
+			if (!isNaN(parseFloat(n)) && isFinite(n) && parseFloat(n) !== 0) {
+				// Shout out to StackOverflow for making a max of two digits parseFloat
+				const digits = Math.min(2, (n.toString().split('.')[1] || []).length)
+				const periodVal = digits === 0 ? '.' : ''
+				donationValue =Math.floor(parseFloat(n)).toFixed(digits) + periodVal
+			}
+			this.setState({donationValue})
+
+		}
+		const giftData = this.loadGiftData()
 
 		const selectDonate = () => {
 			this.props.showDonate(true, giftData.charity)
@@ -69,8 +85,24 @@ class GiftPage extends Component {
 								<h2 className = "gift-background-title"> Request Details </h2>
 								<RequestTable data={giftData.inventory}/>
 								<div className = "gift-donation-section">
-									<h3 className = "gift-donation-estimate"> Estimated Cost of Donation: <span className = "gift-donation-cost">${Math.floor(giftData.dollars).toFixed(2)} </span></h3>
-									<Button size="large" variant="raised" color="primary" onClick={selectDonate}>Donate</Button>
+									<div className = "gift-donation-money-section">
+										<div className = "gift-donation-estimate"> Estimated Cost of Goods: <span className = "gift-donation-cost">${Math.floor(giftData.dollars).toFixed(2)} </span></div>
+										<div className = "gift-donation-fill-donation">
+											<span className = "gift-your-donation">Your Donation:</span>
+											<FormControl>
+												<TextField InputProps = {{classes: {root:"donation-text-field"},
+																			startAdornment: <InputAdornment className="donation-text-field"
+																													position="start">
+																									$</InputAdornment>}}
+															required={true}
+															id="donation-value"
+															value={this.state.donationValue}
+															onChange={handleDonationChange}/>
+												<FormHelperText id="name-helper-text">How much you want to donate?</FormHelperText>
+											</FormControl>
+										</div>
+									</div>
+									<Button size="large" className="gift-donate-button" variant="raised" color="primary" onClick={selectDonate}>Donate</Button>
 								</div>
 							</Paper>
 							<Paper elevation={kStyleElevation} style={kStylePaper}>
@@ -86,7 +118,7 @@ class GiftPage extends Component {
 
 						</div>
 					</div>
-					<CharityDonationDrawer store={this.props.store} request={giftData}/>
+					<CharityDonationDrawer store={this.props.store} request={giftData} donationValue={parseFloat(this.state.donationValue)}/>
 				</div>
 			</div>
 		)
