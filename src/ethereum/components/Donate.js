@@ -20,7 +20,7 @@ class Donate extends Component {
 					'0x68009930D2E4a9A0A4b53484AED8289c86802Ae5', // Recipient adddress
 					1531353600, // exiration time in Unix format
 					'DONOR_MSG HERE', // some string
-					'5ad4f330b2c368d860b4b011' //example DatabaseId
+					'5ad4f330b2c368d860b4b012' //example DatabaseId
 				)
 				.send({
 					from: accounts[0],

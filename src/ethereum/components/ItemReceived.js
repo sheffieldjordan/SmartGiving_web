@@ -11,7 +11,7 @@ class ItemReceived extends Component {
 		event.preventDefault()
 
 		try {
-			const targetGift = SmartGift('0xF861bbf557eFbb092D48365912dA3b1b64af515d') // address of the Gift you're working on
+			const targetGift = SmartGift('0xd16038d71B68E149B9441dcEEf6C9c8b339701a6') // address of the Gift you're working on
 			const accounts = await web3.eth.getAccounts()
 			await targetGift.methods
 				.recipientReceivesItem()

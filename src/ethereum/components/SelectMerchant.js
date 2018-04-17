@@ -11,10 +11,10 @@ class SelectMerchant extends Component {
 		event.preventDefault()
 
 		try {
-			const targetGift = SmartGift('0xF861bbf557eFbb092D48365912dA3b1b64af515d') // address of the Gift you're working on
+			const targetGift = SmartGift('0xd16038d71B68E149B9441dcEEf6C9c8b339701a6') // address of the Gift you're working on
 			const accounts = await web3.eth.getAccounts()
 			await targetGift.methods
-				.recipientPicksMerchant('0x038740aE426fa19758f6B77E7A92d4F4169e1772') // address of merchant that gets selected
+				.recipientPicksMerchant('0xBae217221CbFE934d8e190c8f0A836Cd44a7ed07') // address of merchant that gets selected
 				.send({
 					from: accounts[0],
 					gas: 1000000
