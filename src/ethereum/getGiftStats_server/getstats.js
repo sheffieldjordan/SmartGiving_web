@@ -54,6 +54,7 @@ async function getGiftsAndStats(recipientList) {
 			giftStats[i][15] = giftStats2[i][2]
 			giftStats[i][16] = giftStats2[i][3]
 			giftStats[i][17] = giftStats2[i][4]
+			giftStats[i][18] = giftStats2[i][5]
 
 			// convert data to our Schema, and add it to the databaseObjects Array
 			databaseObjects.push(
@@ -68,7 +69,7 @@ async function getGiftsAndStats(recipientList) {
 // creates an Object using our proposed schema
 const convertToDatabaseObject = (ethereumJSON, smartGiftAddress) => {
 	let dBJSON = {
-		id: 1234, // you get this from DB
+		id: ethereumJSON[18], // you get this from DB
 		recipient: {
 			address: addressCheck(ethereumJSON[0]),
 			// name: "",
