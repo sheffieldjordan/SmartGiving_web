@@ -10,7 +10,7 @@ class RequestTable extends Component {
 		const data = this.props.data
 		const titles = Object.keys(data[0]) // We're being naughty and assuming the first item as keys
 		return (
-			<div>
+			<div className = "request-table-container">
 			  <Table>
 			    <TableHead>
 			    	<TableRow>
@@ -21,11 +21,10 @@ class RequestTable extends Component {
 			    </TableHead>
 			    <TableBody>
 			    {data.map((d, i) => {
-			    	let j = 0;
 			    	return (
 			    		<TableRow key={i}>
 			    			{Object.values(d).map((v, j) => {
-			    				return (<TableCell key={j}>{v}</TableCell>)
+			    				return (<TableCell className="table-value-cell" key={j}>{v}</TableCell>)
 			    				})
 			    			}
 			    		</TableRow>
