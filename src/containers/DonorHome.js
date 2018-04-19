@@ -26,6 +26,8 @@ class DonorHome extends Component {
 			}
 			return storeState.selectedRequest
 		}
+
+
 		return (
 		<div>
 			<NavBar/>
@@ -39,7 +41,7 @@ class DonorHome extends Component {
 						tags={r.tags}
 						onDonate={selectDonate(r)}
 						onLearnMore={() =>  this.props.history.push({
-							pathname: "/gift",
+							pathname: "/gift/" + r.id,
 							state: {request:r}}
 							)}/>	
 					})}

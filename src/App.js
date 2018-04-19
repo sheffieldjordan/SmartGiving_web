@@ -53,7 +53,7 @@ class App extends Component {
 								component={() => <DonorHome store={this.props.store} />}
 							/>
 							<Route
-								path="/gift"
+								path="/gift/:giftID"
 								component={() => <GiftPage store={this.props.store} />}
 							/>
 							<Route
