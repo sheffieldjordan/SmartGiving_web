@@ -8,7 +8,6 @@
 .gift-page-author {
 	font-size: 20pt;
 	text-align: center;
-	color:#666666;
 }
 
 .gift-info-container {
@@ -17,11 +16,7 @@
 	margin-top:30px;
 }
 
-.gift-summary-section {
-	width:48%;
-}
-
-.gift-inventory {
+.gift-info-section {
 	width:48%;
 }
 
@@ -29,8 +24,47 @@
 	margin-top:20px;
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.gift-info-image-card {
+	margin-top: 20px;
+}
+.gift-background-color {
+	height: 100%;
+	background-color:rgba(255, 255, 255, 0.6);
+}
+.gift-title-container {
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+}
+
+.gift-info-image {
+	height: 200px;
 }
 
 .gift-donation-cost {
-	margin-right: 20px;
+	color:#3f51b5;
+}
+
+.gift-donation-estimate {
+	margin-bottom: 10px;
+}
+
+.gift-your-donation {
+	margin-right: 5px;
+}
+
+.donation-text-field {
+	font-size: 14pt !important;
+}
+
+.gift-donate-button {
+	max-height: 30px;
+}
+.gift-donation-money-section {
+	font-size:14pt;
+	font-weight: 800;
 }

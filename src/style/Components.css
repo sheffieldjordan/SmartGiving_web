@@ -1,6 +1,8 @@
 body {
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	font-size: 12pt;
+
 }
 
 h1, h2, h3{
@@ -32,6 +34,8 @@ h1, h2, h3{
 
 .donation-drawer-container {
 	width:100%;
+	margin-top: 15px;
+
 }
 
 .donation-drawer-title {
@@ -43,6 +47,8 @@ h1, h2, h3{
 	margin:15px;
 	display:flex;
 	justify-content: center;
+	align-items: center;
+
 	font-size: 32pt;
 	font-weight: 800;
 }
@@ -55,11 +61,15 @@ h1, h2, h3{
 	margin:auto;
 }
 
-.donate-pre-description, .donate-post-description {
+.donate-description {
 	text-align: center;
-	width:50%;
+	width:80%;
 	margin:auto;
-	margin-bottom:25px;
+}
+
+.donate-arrow {
+	margin-left: 15px;
+	margin-right: 20px;
 }
 
 .donate-post-description{
@@ -67,13 +77,59 @@ h1, h2, h3{
 	font-style: italic;
 	margin-top:25px;
 	width:60%;
+	margin-bottom:25px;
 }
 
+.donate-what-happens {
+	margin-bottom:25px;
+	font-style: italic;
+
+}
 
 /* RequestTable.js */
 
-.table-title-cell
-{
+.table-title-cell {
 	text-transform: uppercase;
+	font-size: 12pt !important;
 }
 
+.table-value-cell {
+	font-size: 10pt !important;
+}
+
+/* CharitCard.js */
+
+.charity-card-container {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.charity-card {
+	width:400px;
+	margin:15px;
+	display: inline-block;
+}
+
+.charity-card-title {
+	font-size:2.0rem;
+}
+
+.charity-card-media {
+	height:200px;
+}
+
+.charity-card-tags {
+	color:#3f51b5;
+	margin-top:10px;
+}
+
+.charity-card-buttons {
+	margin-bottom:10px;
+}
+
+.charity-card-content {
+	height: 225px;
+	padding-bottom:8px !important;
+}

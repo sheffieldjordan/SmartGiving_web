@@ -1,13 +1,9 @@
 
 .kids{
-    position:absolute;
 	background:url(../images/kids.png);
     background-repeat: no-repeat;
-    background-size: 61% 61%;
-    width: 500px;
-    height: 300px;
-    left:48%;
-    display: flex;
+    width: 310px;
+    height: 210px;
 }
 
 
@@ -17,55 +13,105 @@
     background-size: contain;
 	width: 200px;
 	height:300px;
-    left:30%;
     display: flex;
 }
 
 .donna {
-    position:fixed;
     background:url(../images/donna.png);
     background-repeat: no-repeat;
     background-size: contain;
     width: 200px;
     height:300px;
-    display: flex;
+    position: absolute;
 }
 
 
 
 .delivery {
-    position:fixed;
 	background:url(../images/shopping_cart.png);
     background-repeat: no-repeat;
     background-size: contain;
     width: 240px;
 	height: 260px;
+    position: absolute;
 }
 
 
 .triangle {
-    position:relative;
-    margin: auto;
+	background:url(../images/triangle_.png);
     width: 220px;
     height: 200px;
-	background:url(../images/triangle_.png);
     background-repeat:no-repeat;
+     
 }
 
+.store {
+    background:url(../images/store.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+.coin200 {
+    background:url(../images/coin200.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+}
+
+.coin190 {
+    background:url(../images/coin190.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+}
+
+.coin180 {
+    background:url(../images/coin180.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+}
+
+.books {
+    display:inline-flex;
+    background:url(../images/books.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 150px;
+}
+
+.books1 {
+    position:absolute;
+    background:url(../images/books1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 350px;
+}
 
 .textbooks {
-    position:absolute;
 	background:url(../images/textbooks.png);
     background-repeat: no-repeat;
-    width: 500px;
-    height: 300px;
+    width: 200px;
+    height: 100px;
 }
 
 .caps {
-    position:absolute;
 	background:url(../images/caps.png);
     background-repeat: no-repeat;
-    width: 490px;
-    height: 300px;
+    width: 310px;
+    height: 80px;
   }
 
+.ScrollAllWayUpStyle {
+    position: relative;
+    margin-bottom: 2em;
+    left: 93%;
+}
