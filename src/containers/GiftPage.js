@@ -19,21 +19,17 @@ class GiftPage extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {donationValue: 0}
-		this.loadGiftData.bind(this)
+		this.giftData.bind(this)
 	}
 
-	loadGiftData() {
+	giftData() {
 		const storeState = this.props.store.getState()
-		if (this.props.history.location.state === undefined){
-			console.log("WARNING: USING FAKE DATA")
-			return storeState.requests[0]
-		}
-		return this.props.history.location.state.request
+		return storeState.requests.filter(request => request.id === this.props.match.params.giftID)[0]
 	}
 
 	render() {
 		const handleDonationChange = (event) => {
-			let donationValue = Math.floor(this.loadGiftData().dollars).toFixed(2)
+			let donationValue = Math.floor(this.giftData().dollars).toFixed(2)
 			const n = event.target.value
 			if (!isNaN(parseFloat(n)) && isFinite(n)) {
 				// Shout out to StackOverflow for making a max of two digits parseFloat
@@ -44,9 +40,9 @@ class GiftPage extends Component {
 			this.setState({donationValue})
 
 		}
-		const giftData = this.loadGiftData()
+		const giftData = this.giftData()
 
-		const donationValue = () => this.state.donationValue === 0 ? giftData.dollars : this.state.donationValue
+		const donationValue = () => this.state.donationValue === 0 ? Math.floor(giftData.dollars).toFixed(2) : this.state.donationValue
 
 		const selectDonate = () => {
 			this.props.showDonate(true, donationValue(), giftData.charity)
