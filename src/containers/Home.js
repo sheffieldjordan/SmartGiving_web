@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import NavBar from '../components/NavBar'
 import { Link } from 'react-router-dom'
 import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 
@@ -19,7 +18,6 @@ const LinkToMerchants = props => <Link to="/bid" {...props} />
 const LinkToRecipients = props => <Link to="/selectmerchant" {...props} />
 
 
-
 class Home extends Component {
 // @Natasha write your code here
 	render() {
@@ -32,10 +30,10 @@ class Home extends Component {
 
 			    <div className="home-intro-text">
 			      <Paper elevation={4}>
-			        <Typography variant="subhead" component="h1">
+			        <Typography variant="headline">
 			          Hello
 			        </Typography>
-			        <Typography variant="">
+			        <Typography variant="subheading">
 			          We are SmartGiving. We know how to give smart.
 			        </Typography>
 			      </Paper>
