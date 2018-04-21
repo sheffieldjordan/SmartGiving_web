@@ -15,6 +15,7 @@ import Home from './containers/Home'
 import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
 import DonorHome from './containers/DonorHome'
+import CreateRequest from './containers/CreateRequest'
 import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
 import Donate from './ethereum/components/Donate'
@@ -64,6 +65,10 @@ class App extends Component {
 							<Route
 								path="/donate"
 								component={() => <Donate store={this.props.store} />}
+							/>
+							<Route
+								path="/createrequest"
+								component={() => <CreateRequest store={this.props.store} />}
 							/>
 							<Route
 								path="/bid"
