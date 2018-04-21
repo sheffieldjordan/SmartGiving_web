@@ -24,10 +24,6 @@ class DescribeGift extends Component {
 			this.setState({[section]: value})
 		}
 
-		const tagSectionValue = () => {
-			return this.state.tagInput
-		}
-
 		const deleteTag = tag => event => {
 			const tags = [...this.state.tags]
 			const deletionIndex = this.state.tags.indexOf(tag)
