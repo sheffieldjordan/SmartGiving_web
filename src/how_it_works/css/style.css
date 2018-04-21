@@ -110,3 +110,8 @@
     height: 80px;
   }
 
+.ScrollAllWayUpStyle {
+    position: relative;
+    margin-bottom: 2em;
+    left: 93%;
+}
