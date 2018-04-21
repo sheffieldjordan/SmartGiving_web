@@ -32,10 +32,6 @@ class Howitworks extends Component {
 			</AppBar>
 
 
-
-
-
-
 			<ParallaxB       
 				blur={0}
 				bgImage={require('../how_it_works/images/back.png')}
@@ -196,12 +192,9 @@ class Howitworks extends Component {
 
 
 					<Parallax data={{'data-460p': 'opacity: 0; width: 40%; text-align:justify; top:510vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-470p': 'opacity: 1; top:500vh;','data-530p': 'opacity: 0;'}}>
-						<div><h2>Smart Contract gets executed, and all its details get recorded into Ethereum blockchain, <mark>an immutable distributed ledger</mark></h2></div>
+						<div><h2>Smart Contract gets executed, and all its details get recorded into Ethereum blockchain, <mark>an immutable decentralized ledger</mark></h2></div>
 					</Parallax>
 
-					<Parallax data={{'data-465p': 'opacity: 0; width: 40%; text-align:justify; top:510vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-480p': 'opacity: 1; top:530vh;', 'data-530p': 'opacity: 0; '}}>
-						<div><h2>it allows for <mark>transparency</mark>, <mark>traceability</mark>, <mark>and security </mark></h2></div> 
-					</Parallax> 
 
 					<Parallax data={{'data-520p': 'opacity: 0; top: 600vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-525p': 'opacity: 1; top: 570vh;','data-580p': 'opacity: 0;'}}>
 						<div><h2>but wait...</h2></div>

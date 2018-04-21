@@ -11,6 +11,7 @@ import { ParallaxProvider } from 'react-skrollr'
 import ProfilePage from './containers/ProfilePage'
 import About from './containers/About'
 import Contact from './containers/Contact'
+import Home from './containers/Home'
 import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
 import DonorHome from './containers/DonorHome'
@@ -39,8 +40,8 @@ class App extends Component {
 							<Route
 								exact
 								path="/"
-								component={() => <DonorHome store={this.props.store} />}
-							/>
+								component={Home} />
+
 							<Route path="/about" component={About} />
 							<Route path="/contact" component={Contact} />
 							<Route path="/howitworks" component={Howitworks} />
@@ -100,3 +101,6 @@ const mapStateToProps = (state) => {
 App = connect(mapStateToProps, null)(App)
 
 export default App
+
+
+
