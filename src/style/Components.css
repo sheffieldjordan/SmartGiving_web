@@ -201,4 +201,14 @@ h1, h2, h3{
 	margin-left:30px;
 }
 
+/* ItemizeGift.js */
+.itemize-add-item-container {
+	display:flex;
+	padding:10px;
+	width: 60%;
+	justify-content: space-between;
+}
 
+.itemize-name-of-good {
+	width:50%;
+}
