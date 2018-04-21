@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+
 import TabBar from '../components/TabBar'
 import NavBar from '../components/NavBar'
-
+import DescribeGift from '../components/DescribeGift'
 
 class CreateRequest extends Component {
 
 	render() {
 		const displayData = {
-			"Basic Information" : <div>One</div>,
+			"Basic Information" : <DescribeGift/>,
 			"List of Goods" : <div>Two</div>,
 			"Merchant Selection" : <div>Three</div>
 		}

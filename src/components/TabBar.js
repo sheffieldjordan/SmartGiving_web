@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import AppBar from 'material-ui/AppBar';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import Paper from 'material-ui/Paper';
+import {AppBar, Tabs, Tab, Paper} from 'material-ui';
 
 class TabBar extends Component {
 	constructor(props) {
@@ -24,7 +22,7 @@ class TabBar extends Component {
 					</Tabs>
 				</AppBar>
 
-				<Paper>
+				<Paper className = "tab-bar-container">
 					{this.props.displayData[keys[value]]}
 				</Paper>
 			</div>
