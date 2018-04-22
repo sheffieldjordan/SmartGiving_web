@@ -4,9 +4,10 @@ import { withRouter } from 'react-router'
 
 import { toggleDrawer, selectRequest } from '../redux/actions'
 
+import CardPage from '../components/CardPage'
+
 import CharityCard from '../components/CharityCard'
-import {DonorPreButtons, DonorActionButtons} from '../components/DonorCardComponents'
-import NavBar from '../components/NavBar'
+import {DonorPreButtons, DonorActionButtons} from '../components/CardComponents'
 import CharityDonationDrawer from '../components/CharityDonationDrawer'
 import { ImageLibrary } from '../components/ImageLibrary'
 
@@ -27,34 +28,29 @@ class DonorHome extends Component {
 		}
 
 		const requests = storeState.requests
+		const cards = requests.map((r, i) => {
+			return (
+			<CharityCard key={i}
+				title={r.charity.title}
+				description={r.summary}
+				image={ImageLibrary(r.charity.image)}
+				onImageClick={learnMore(r)}
+				preButtons={DonorPreButtons(r.tags)}
+				buttons={DonorActionButtons(learnMore(r), selectDonate(r))}
+				postButtons={[]}
+			/>)
+		})
+
 		const drawerRequest = () => {
 			if (Object.keys(storeState.selectedRequest).length === 0) {
 				return undefined
 			}
 			return storeState.selectedRequest
 		}
-
+		const drawer = <CharityDonationDrawer store={this.props.store} request={drawerRequest()}/>
 
 		return (
-		<div>
-			<NavBar/>
-			<div className="page-container">
-				<div className="charity-card-container">
-					{requests.map((r, i) => {
-						return <CharityCard key={i}
-						title={r.charity.title}
-						description={r.summary}
-						image={ImageLibrary(r.charity.image)}
-						onImageClick={learnMore(r)}
-						preButtons={DonorPreButtons(r.tags)}
-						buttons={DonorActionButtons(learnMore(r), selectDonate(r))}
-						postButtons={[]}
-						/>
-					})}
-				</div>
-				<CharityDonationDrawer store={this.props.store} request={drawerRequest()}/>
-			</div>
-		</div>
+			<CardPage cards={cards} drawer={drawer}/>
 		)
 	}
 }
