@@ -32,10 +32,6 @@ class Howitworks extends Component {
 			</AppBar>
 
 
-
-
-
-
 			<ParallaxB       
 				blur={0}
 				bgImage={require('../how_it_works/images/back.png')}
@@ -163,8 +159,8 @@ class Howitworks extends Component {
 					</Parallax>
 
 
-					<Parallax data={{'data-275p': 'opacity:0; position:absolute; left: 50%; margin-right: -50%; top: 300vh; transform: translateX(-50%);', 'data-285p': 'opacity: 1;  top:295vh;', 'data-320p': 'top:320vh;', 'data-top-bottom': 'opacity: 0;'}}>
-					<div><h3>Step 3.&ensp;A pool of merchants offer their bids</h3></div>
+					<Parallax data={{'data-275p': 'opacity:0; width: 28%; position:absolute; left: 50%; margin-right: -50%; top: 300vh; transform: translateX(-50%);', 'data-285p': 'opacity: 1;  top:295vh;', 'data-320p': 'top:320vh;', 'data-top-bottom': 'opacity: 0;'}}>
+					<div><h3>Step 3.&ensp;A pool of merchants offer their bids and Donna chooses a winner among the three lowest</h3></div>
 					</Parallax>
 
 
@@ -195,19 +191,28 @@ class Howitworks extends Component {
 					{/*	Scene-6	*/}
 
 
-					<Parallax data={{'data-460p': 'opacity: 0; width: 40%; text-align:justify; top:510vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-470p': 'opacity: 1; top:500vh;','data-530p': 'opacity: 0;'}}>
-						<div><h2>Smart Contract gets executed, and all its details get recorded into Ethereum blockchain, <mark>an immutable distributed ledger</mark></h2></div>
+					<Parallax data={{'data-460p': 'opacity: 0; width: 40%; text-align:justify; top:510vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-470p': 'opacity: 1; top:500vh;','data-530p': 'top: 500vh;'}}>
+						<div><h2>Smart Contract gets executed, and all its details get recorded into Ethereum blockchain, <mark>an immutable decentralized ledger</mark></h2></div>
 					</Parallax>
 
-					<Parallax data={{'data-465p': 'opacity: 0; width: 40%; text-align:justify; top:510vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-480p': 'opacity: 1; top:530vh;', 'data-530p': 'opacity: 0; '}}>
-						<div><h2>it allows for <mark>transparency</mark>, <mark>traceability</mark>, <mark>and security </mark></h2></div> 
-					</Parallax> 
+					<Parallax data={{'data-470p': 'opacity: 0; top:520vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-475p': 'opacity: 1; top:520vh;','data-500p': 'opacity: 0;'}}>
+						<div className="scroll_empty"></div>
+					</Parallax>
 
-					<Parallax data={{'data-520p': 'opacity: 0; top: 600vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-525p': 'opacity: 1; top: 570vh;','data-580p': 'opacity: 0;'}}>
+					<Parallax data={{'data-480p': 'opacity: 0; top:520vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-500p': 'opacity: 1; top:520vh;','data-530p': 'top: 520vh; opacity:0.5;'}}>
+						<div className="scroll_sealed"></div>
+					</Parallax>
+
+					<Parallax data={{'data-480p': 'opacity: 0; position:absolute; right:-10%; top: 540vh','data-490p': 'opacity: 1; top:540vh; right: 25%; width: 15%;','data-530p': 'opacity:0.5;'}}>
+						<div><h2>So that anyone can refer to it anytime</h2></div>
+					</Parallax>
+
+					
+					<Parallax data={{'data-530p': 'opacity: 0; top: 600vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-540p': 'opacity: 1; top: 595vh;','data-580p': 'opacity: 0;'}}>
 						<div><h2>but wait...</h2></div>
 					</Parallax> 
 
-					<Parallax data={{'data-535p': 'opacity: 0; top: 600vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-545p': 'opacity: 1; top: 590vh;','data-595p': 'opacity: 0;'}}>
+					<Parallax data={{'data-540p': 'opacity: 0; top: 610vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-550p': 'opacity: 1; top: 605vh;','data-595p': 'opacity: 0;'}}>
 						<div><h1>where did the $20 go?</h1></div>
 					</Parallax>
 
