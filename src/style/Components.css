@@ -32,13 +32,13 @@ h1, h2, h3{
 
 /* DonationDrawer.js */
 
-.donation-drawer-container {
+.drawer-container {
 	width:100%;
 	margin-top: 15px;
 
 }
 
-.donation-drawer-title {
+.drawer-title {
 	text-align: center;
 	margin: 10px;
 }
@@ -53,7 +53,7 @@ h1, h2, h3{
 	font-weight: 800;
 }
 
-.donate-button-container {
+.drawer-button-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -61,7 +61,7 @@ h1, h2, h3{
 	margin:auto;
 }
 
-.donate-description {
+.drawer-description {
 	text-align: center;
 	width:80%;
 	margin:auto;

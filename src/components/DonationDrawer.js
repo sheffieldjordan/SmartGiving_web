@@ -14,8 +14,8 @@ class DonationDrawer extends Component {
 		const donationValue = this.props.donationValue === undefined ? request.dollars : this.props.donationValue
 		return (
 		<Drawer anchor="bottom" open={this.props.open} onClose={this.props.onClose}>
-			<div className="donation-drawer-container">
-			<h1 className = "donation-drawer-title">Confirm Donation</h1>
+			<div className="drawer-container">
+			<h1 className = "drawer-title">Confirm Donation</h1>
 				<div className="donate-avatar-container">
 					<div className = "donate-avatar-container">
 						<UserAvatar displayName="Donor" />
@@ -23,17 +23,17 @@ class DonationDrawer extends Component {
 						<UserAvatar displayName="Recipient" />
 					</div>
 				</div>
-				<div className = "donate-description donate-pre-description">
+				<div className = "drawer-description donate-pre-description">
 				Are you sure you would like to donate ${Math.floor(donationValue).toFixed(2)} ({(donationValue/dollarsPerEther).toFixed(5)} ETH) to {request.charity.title}?
 				</div>
-				<div className = "donate-description donate-what-happens">
+				<div className = "drawer-description donate-what-happens">
 				(Your payment will be processed once a merchant and recipient agree on delivering and receiving your gifts before the expiration date.)
 				</div>
-				<div className = "donate-button-container">
-					<Button className = "donate-button" onClick = {this.props.onPrimary} variant="raised" size="medium" color="primary">Donate</Button>
-					<Button className = "donate-button" onClick = {this.props.onSecondary} variant="raised" size="medium" color="default">Cancel</Button>
+				<div className = "drawer-button-container">
+					<Button className = "drawer-button" onClick = {this.props.onPrimary} variant="raised" size="medium" color="primary">Donate</Button>
+					<Button className = "drawer-button" onClick = {this.props.onSecondary} variant="raised" size="medium" color="default">Cancel</Button>
 				</div>
-				<div className = "donate-description donate-post-description">
+				<div className = "drawer-description donate-post-description">
 				If you choose to donate, you will be brought to MetaMask where you can complete your donation.
 				</div>
 
