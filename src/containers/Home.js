@@ -13,8 +13,8 @@ import "../style/Components.css"
 
 
 /*these are links attached to the three big buttons on the bottom*/
-const LinkToDonors = props => <Link to="/donor" {...props} />
-const LinkToMerchants = props => <Link to="/bid" {...props} />
+const LinkToDonors = props => <Link to="/home/donor" {...props} />
+const LinkToMerchants = props => <Link to="/home/merchant" {...props} />
 const LinkToRecipients = props => <Link to="/selectmerchant" {...props} />
 
 

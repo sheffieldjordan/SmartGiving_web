@@ -7,13 +7,13 @@ import { toggleDrawer, selectRequest } from '../redux/actions'
 import CardPage from '../components/CardPage'
 
 import CharityCard from '../components/CharityCard'
-import {DonorPreButtons, DonorActionButtons} from '../components/CardComponents'
+import {MerchantPreButtons, MerchantActionButtons, MerchantPostButtons} from '../components/CardComponents'
 import CharityDonationDrawer from '../components/CharityDonationDrawer'
 import { ImageLibrary } from '../components/ImageLibrary'
 
 import "../style/DonorHome.css"
 
-class DonorHome extends Component {
+class MerchantHome extends Component {
 
 	render() {
 		const storeState = this.props.store.getState()
@@ -35,9 +35,9 @@ class DonorHome extends Component {
 				description={r.summary}
 				image={ImageLibrary(r.charity.image)}
 				onImageClick={learnMore(r)}
-				preButtons={DonorPreButtons(r.tags)}
-				buttons={DonorActionButtons(learnMore(r), selectDonate(r))}
-				postButtons={[]}
+				preButtons={MerchantPreButtons(r)}
+				buttons={MerchantActionButtons(learnMore(r), selectDonate(r))}
+				postButtons={MerchantPostButtons(r)}
 			/>)
 		})
 
@@ -64,11 +64,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 	}
 }
 
-DonorHome = connect(
+MerchantHome = connect(
 	null,
 	mapDispatchToProps
-)(DonorHome)
+)(MerchantHome)
 
-export default withRouter(DonorHome)
+export default withRouter(MerchantHome)
 
 
