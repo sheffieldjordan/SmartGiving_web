@@ -82,7 +82,7 @@ class GiftPage extends Component {
 						<div className = "gift-info-section">
 							<Paper elevation={kStyleElevation} style={kStylePaper}>
 								<h2 className = "gift-background-title"> Request Details </h2>
-								<RequestTable data={giftData.inventory}/>
+								<RequestTable data={giftData.inventory} titles = {["Item", "Num", "Unit"]}/>
 								<div className = "gift-donation-section">
 									<div className = "gift-donation-money-section">
 										<div className = "gift-donation-estimate"> Estimated Cost of Goods: <span className = "gift-donation-cost">${Math.floor(giftData.dollars).toFixed(2)} </span></div>

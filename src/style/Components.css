@@ -168,3 +168,47 @@ h1, h2, h3{
 	width: 18%;
 }
 
+/* TabBar.js */
+.tab-bar-container {
+	padding:10px;
+}
+
+/* DescribeGift.js */
+
+.describe-gift-label {
+	display:inline-block;
+	width:100px;
+	margin-right:20px;
+}
+
+.describe-gift-section {
+	margin:30px;
+}
+
+.describe-gift-textfield {
+	min-width:300px;
+	width:60%;
+}
+
+.describe-gift-textfield-tags {
+	min-width:200px;
+	width:30%;
+	margin-right: 200px;
+}
+
+.describe-gift-add-tag {
+	display:inline-block;
+	margin-left:30px;
+}
+
+/* ItemizeGift.js */
+.itemize-add-item-container {
+	display:flex;
+	padding:10px;
+	width: 60%;
+	justify-content: space-between;
+}
+
+.itemize-name-of-good {
+	width:50%;
+}
