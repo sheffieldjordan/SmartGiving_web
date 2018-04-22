@@ -15,6 +15,7 @@ import Home from './containers/Home'
 import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
 import DonorHome from './containers/DonorHome'
+import MerchantHome from './containers/MerchantHome'
 import CreateRequest from './containers/CreateRequest'
 import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
@@ -51,8 +52,12 @@ class App extends Component {
 								component={() => <ProfilePage store={this.props.store} />}
 							/>
 							<Route
-								path="/donor"
+								path="/home/donor"
 								component={() => <DonorHome store={this.props.store} />}
+							/>
+							<Route
+								path="/home/merchant"
+								component={() => <MerchantHome store={this.props.store} />}
 							/>
 							<Route
 								path="/gift/:giftID"

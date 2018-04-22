@@ -10,7 +10,7 @@ class CharityCard extends Component {
 				return <div/>
 			}
 			return (
-				<CardContent>
+				<CardContent className="charity-card-content">
 					{components.map((b, i) => b)}
 				</CardContent>
 			)
