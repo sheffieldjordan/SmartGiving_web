@@ -15,7 +15,7 @@ import "../style/Components.css"
 /*these are links attached to the three big buttons on the bottom*/
 const LinkToDonors = props => <Link to="/donor" {...props} />
 const LinkToMerchants = props => <Link to="/bid" {...props} />
-const LinkToRecipients = props => <Link to="/selectmerchant" {...props} />
+const LinkToRecipients = props => <Link to="/charity" {...props} />
 
 
 class Home extends Component {
@@ -55,7 +55,7 @@ class Home extends Component {
 				</Button>
 
 				<Button variant="raised" size="large" color="primary" component={LinkToRecipients} className="big-button">
-				  For Recipients
+				  For Charities
 				</Button>
 			</div>
 
