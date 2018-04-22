@@ -5,6 +5,7 @@ import { withRouter } from 'react-router'
 import { toggleDrawer, selectRequest } from '../redux/actions'
 
 import CharityCard from '../components/CharityCard'
+import {DonorPreButtons, DonorActionButtons} from '../components/DonorCardComponents'
 import NavBar from '../components/NavBar'
 import CharityDonationDrawer from '../components/CharityDonationDrawer'
 import { ImageLibrary } from '../components/ImageLibrary'
@@ -17,6 +18,12 @@ class DonorHome extends Component {
 		const storeState = this.props.store.getState()
 		const selectDonate = (request) => () => {
 			this.props.showRequest(true, request)
+		}
+		const learnMore = (request) => () => {
+			this.props.history.push({
+			pathname: "/gift/" + request.id,
+			state: {request}}
+			)
 		}
 
 		const requests = storeState.requests
@@ -38,12 +45,11 @@ class DonorHome extends Component {
 						title={r.charity.title}
 						description={r.summary}
 						image={ImageLibrary(r.charity.image)}
-						tags={r.tags}
-						onDonate={selectDonate(r)}
-						onLearnMore={() =>  this.props.history.push({
-							pathname: "/gift/" + r.id,
-							state: {request:r}}
-							)}/>	
+						onImageClick={learnMore(r)}
+						preButtons={DonorPreButtons(r.tags)}
+						buttons={DonorActionButtons(learnMore(r), selectDonate(r))}
+						postButtons={[]}
+						/>
 					})}
 				</div>
 				<CharityDonationDrawer store={this.props.store} request={drawerRequest()}/>
