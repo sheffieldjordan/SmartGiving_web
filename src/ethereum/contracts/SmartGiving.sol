@@ -31,16 +31,16 @@ contract GiftFactory {
     event ItemShipped(address gift, uint time);
     event ItemDelivered(address gift, uint time);
 
-    function createSmartGift(address _recipient, uint32 _expiry, string _donorMsg) public payable returns(address){
+    function createSmartGift(address _recipient, uint32 _expiry, string _donorMsg, string _databaseId) public payable returns(address){
         require(msg.value > 1000000);
-        address newGift = (new SmartGift).value(msg.value)(_recipient, msg.sender, _expiry, _donorMsg);
+        address newGift = (new SmartGift).value(msg.value)(_recipient, msg.sender, _expiry, _donorMsg, _databaseId);
         _updateMasterStats(newGift, msg.sender, _recipient, _expiry, _donorMsg);
         return newGift;
     }
 
-    function createRolloverGift(address _recipient, address _donor, uint32 _expiry, string _donorMsg) external payable returns(address) {
+    function createRolloverGift(address _recipient, address _donor, uint32 _expiry, string _donorMsg, string _databaseId) external payable returns(address) {
         require(msg.value > 1000000);
-        address newGift = (new SmartGift).value(msg.value)(_recipient, _donor, _expiry, _donorMsg);
+        address newGift = (new SmartGift).value(msg.value)(_recipient, _donor, _expiry, _donorMsg, _databaseId);
         _updateMasterStats(newGift, _donor, _recipient, _expiry, _donorMsg);
         return newGift;
     }
@@ -132,6 +132,7 @@ contract SmartGift {
     bool itemShipped;
     bool itemDelivered;
     string donorMsg;
+    string databaseId;
 
     GiftFactory giftFactory;
 
@@ -148,13 +149,14 @@ contract SmartGift {
         _;
     }
 
-    function SmartGift(address _owner, address _donor, uint32 _expiry, string _donorMsg) public payable{
+    function SmartGift(address _owner, address _donor, uint32 _expiry, string _donorMsg, string _databaseId) public payable{
         recipient = _owner;
         donor = _donor;
         expiry = _expiry;
         donorMsg = _donorMsg;
         maxPrice = msg.value -1000000;
         creationTime = now;
+        databaseId = _databaseId;
         giftFactory = GiftFactory(msg.sender);
         recipient.transfer(1000000); // gas money
         giftFactory.giftCreated(address(this), _owner, _expiry);
@@ -210,14 +212,14 @@ contract SmartGift {
         lastUpdate = now;
     }
 
-    function recoverExtra() public donorOnly {
-        require(merchant != 0); // if true, merchant payment has been made.
+    function recoverFunds() public donorOnly {
+        require(merchant != 0 || now > expiry); // if true, merchant payment has been made.
         donor.transfer(address(this).balance);
     }
 
-    function carryOver(address _rolloverRecipient, uint32 _rolloverExpiry, string _donorMsg) public payable donorOnly returns(address){
+    function carryOver(address _rolloverRecipient, uint32 _rolloverExpiry, string _donorMsg, string _id) public payable donorOnly returns(address){
         require(merchant != 0);
-        address newGift = giftFactory.createRolloverGift.value(address(this).balance)(_rolloverRecipient, msg.sender, _rolloverExpiry, _donorMsg);
+        address newGift = giftFactory.createRolloverGift.value(address(this).balance)(_rolloverRecipient, msg.sender, _rolloverExpiry, _donorMsg, _id);
 
         return newGift;
     }
@@ -254,8 +256,8 @@ contract SmartGift {
                 donorMsg
                 );
         }
-    function getGiftStats2() view public returns(address[], uint[], uint, uint, uint) {
-        return (biddersList, bidList, timeShipped, timeReceived, address(this).balance);
+    function getGiftStats2() view public returns(address[], uint[], uint, uint, uint, string) {
+        return (biddersList, bidList, timeShipped, timeReceived, address(this).balance, databaseId);
     }
 
     function() public payable{

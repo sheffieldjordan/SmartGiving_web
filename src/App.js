@@ -16,6 +16,8 @@ import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
 import CharityHome from './containers/CharityHome'
 import DonorHome from './containers/DonorHome'
+import MerchantHome from './containers/MerchantHome'
+import CreateRequest from './containers/CreateRequest'
 import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
 import Donate from './ethereum/components/Donate'
@@ -51,7 +53,7 @@ class App extends Component {
 								component={() => <ProfilePage store={this.props.store} />}
 							/>
 							<Route
-								path="/donor"
+								path="/home/donor"
 								component={() => <DonorHome store={this.props.store} />}
 							/>
 
@@ -60,7 +62,11 @@ class App extends Component {
 								component={CharityHome} />
 
 							<Route
-								path="/gift"
+								path="/home/merchant"
+								component={() => <MerchantHome store={this.props.store} />}
+							/>
+							<Route
+								path="/gift/:giftID"
 								component={() => <GiftPage store={this.props.store} />}
 							/>
 							<Route
@@ -70,6 +76,10 @@ class App extends Component {
 							<Route
 								path="/donate"
 								component={() => <Donate store={this.props.store} />}
+							/>
+							<Route
+								path="/createrequest"
+								component={() => <CreateRequest store={this.props.store} />}
 							/>
 							<Route
 								path="/bid"

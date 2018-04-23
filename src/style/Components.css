@@ -32,13 +32,13 @@ h1, h2, h3{
 
 /* DonationDrawer.js */
 
-.donation-drawer-container {
+.drawer-container {
 	width:100%;
 	margin-top: 15px;
 
 }
 
-.donation-drawer-title {
+.drawer-title {
 	text-align: center;
 	margin: 10px;
 }
@@ -53,7 +53,7 @@ h1, h2, h3{
 	font-weight: 800;
 }
 
-.donate-button-container {
+.drawer-button-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -61,7 +61,7 @@ h1, h2, h3{
 	margin:auto;
 }
 
-.donate-description {
+.drawer-description {
 	text-align: center;
 	width:80%;
 	margin:auto;
@@ -109,6 +109,7 @@ h1, h2, h3{
 .charity-card {
 	width:400px;
 	margin:15px;
+	padding-bottom:15px;
 	display: inline-block;
 }
 
@@ -126,15 +127,21 @@ h1, h2, h3{
 }
 
 .charity-card-buttons {
-	margin-bottom:10px;
+	margin-left: 7px;
 }
 
 .charity-card-content {
-	height: 225px;
 	padding-bottom:8px !important;
 }
 
+.charity-card-commitment-section {
+	margin-top:20px;
+	margin-bottom:10px;
+}
 
+.charity-card-commitment-pre, .charity-card-expiry-pre{ 
+	font-weight: 1000;
+}
 
 /*Home.js*/
 
@@ -197,3 +204,69 @@ h1, h2, h3{
 	justify-content: center;
 	margin: 5vh;
 }
+
+
+/* TabBar.js */
+.tab-bar-container {
+	padding:10px;
+}
+
+/* DescribeGift.js */
+
+.describe-gift-label {
+	display:inline-block;
+	width:100px;
+	margin-right:20px;
+}
+
+.describe-gift-section {
+	margin:30px;
+}
+
+.describe-gift-textfield {
+	min-width:300px;
+	width:60%;
+}
+
+.describe-gift-textfield-tags {
+	min-width:200px;
+	width:30%;
+	margin-right: 200px;
+}
+
+.describe-gift-add-tag {
+	display:inline-block;
+	margin-left:30px;
+}
+
+/* ItemizeGift.js */
+.itemize-add-item-container {
+	display:flex;
+	padding:10px;
+	width: 80%;
+	justify-content: space-between;
+}
+
+.itemize-name-of-good {
+	width:50%;
+}
+
+/* BidDrawer.js */
+.bid-items-section {
+	width:90%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.bid-address {
+	font-weight: 800;
+}
+
+.bid-entry-container {
+	font-style: center;
+	margin:auto;
+	width:200px;
+	margin-bottom:10px;
+}
+

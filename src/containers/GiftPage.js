@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import NavBar from '../components/NavBar'
 import RequestTable from '../components/RequestTable'
-import CharityDonationDrawer from '../components/CharityDonationDrawer'
+import DrawerFactory from '../components/DrawerFactory'
 import ContactInfo from '../components/ContactInfo'
 import { ImageLibrary } from '../components/ImageLibrary'
 
@@ -19,21 +19,17 @@ class GiftPage extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {donationValue: 0}
-		this.loadGiftData.bind(this)
+		this.giftData.bind(this)
 	}
 
-	loadGiftData() {
+	giftData() {
 		const storeState = this.props.store.getState()
-		if (this.props.history.location.state === undefined){
-			console.log("WARNING: USING FAKE DATA")
-			return storeState.requests[0]
-		}
-		return this.props.history.location.state.request
+		return storeState.requests.filter(request => request.id === this.props.match.params.giftID)[0]
 	}
 
 	render() {
 		const handleDonationChange = (event) => {
-			let donationValue = Math.floor(this.loadGiftData().dollars).toFixed(2)
+			let donationValue = Math.floor(this.giftData().dollars).toFixed(2)
 			const n = event.target.value
 			if (!isNaN(parseFloat(n)) && isFinite(n)) {
 				// Shout out to StackOverflow for making a max of two digits parseFloat
@@ -44,9 +40,9 @@ class GiftPage extends Component {
 			this.setState({donationValue})
 
 		}
-		const giftData = this.loadGiftData()
+		const giftData = this.giftData()
 
-		const donationValue = () => this.state.donationValue === 0 ? giftData.dollars : this.state.donationValue
+		const donationValue = () => this.state.donationValue === 0 ? Math.floor(giftData.dollars).toFixed(2) : this.state.donationValue
 
 		const selectDonate = () => {
 			this.props.showDonate(true, donationValue(), giftData.charity)
@@ -86,7 +82,7 @@ class GiftPage extends Component {
 						<div className = "gift-info-section">
 							<Paper elevation={kStyleElevation} style={kStylePaper}>
 								<h2 className = "gift-background-title"> Request Details </h2>
-								<RequestTable data={giftData.inventory}/>
+								<RequestTable data={giftData.inventory} titles = {["Item", "Num", "Unit"]}/>
 								<div className = "gift-donation-section">
 									<div className = "gift-donation-money-section">
 										<div className = "gift-donation-estimate"> Estimated Cost of Goods: <span className = "gift-donation-cost">${Math.floor(giftData.dollars).toFixed(2)} </span></div>
@@ -121,7 +117,7 @@ class GiftPage extends Component {
 
 						</div>
 					</div>
-					<CharityDonationDrawer store={this.props.store} request={giftData} donationValue={parseFloat(donationValue())}/>
+					<DrawerFactory store={this.props.store} request={giftData} donationValue={parseFloat(donationValue())} type="donate"/>
 				</div>
 			</div>
 		)
