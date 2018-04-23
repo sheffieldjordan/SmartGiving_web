@@ -8,7 +8,7 @@ import '../style/Components.css'
 class RequestTable extends Component {
 	render() {
 		const data = this.props.data
-		const titles = Object.keys(data[0]) // We're being naughty and assuming the first item as keys
+		const titles = this.props.titles ? this.props.titles : Object.keys(data[0]) // We're being naughty and assuming the first item as keys
 		return (
 			<div className = "request-table-container">
 			  <Table>

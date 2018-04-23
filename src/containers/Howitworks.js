@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Footer from '../components/Footer';
-
+import ScrollAllWayUp from '../components/ScrollAllWayUp';
 
 import { Parallax } from 'react-skrollr';
 import { Parallax as ParallaxB } from 'react-parallax';
@@ -20,11 +20,8 @@ import '../how_it_works/css/style.css';
 class Howitworks extends Component {
 // @Natasha write your code here
 
-
-	
+		
 	render() {
-
-
     return (
 
 	    	<div><NavBar/>
@@ -33,10 +30,6 @@ class Howitworks extends Component {
 					<h1>How it works</h1>
 				</Toolbar>
 			</AppBar>
-
-
-
-
 
 
 			<ParallaxB       
@@ -130,7 +123,7 @@ class Howitworks extends Component {
 					</Parallax>
 
 					<Parallax data={{'data-245p': 'opacity:0; position:absolute; left:12%; width:10%; top: 325vh;', 'data-260p': 'opacity:1;', 'data-330p': 'top:360vh;', 'data-top-bottom': 'opacity: 0;  transform:translateY(-30vh);'}}>
-						<div><h3>Aida places a request for 20 textbooks</h3></div>
+						<div><h3>Step 1.&ensp;Aida places a request for 20 textbooks</h3></div>
 					</Parallax>
 
 					<Parallax data={{'data-255p': 'opacity:1; position: absolute; left:110%; top:315vh; width: 20%', 'data-265p': 'opacity: 1; left:65%;', 'data-330p': 'top: 350vh;', 'data-top-bottom': 'opacity: 0; transform:translateY(-30vh);'}}>
@@ -138,7 +131,7 @@ class Howitworks extends Component {
 					</Parallax>
 
 					<Parallax data={{'data-260p': 'opacity:0; position: absolute; left: 78%; top: 330vh;  width:10%;', 'data-275p': 'opacity: 1;', 'data-330p': 'top:360vh;', 'data-top-bottom': 'opacity: 0; transform:translateY(-30vh);'}}>
-						<div><h3>Donna pledges a $200 donation to meet this need</h3></div>
+						<div><h3>Step 2.&ensp;Donna pledges a $200 donation to meet this need</h3></div>
 					</Parallax>
 
 					<Parallax data={{'data-270p': 'opacity:1; position: absolute; right:-50%; top:348vh;', 'data-285p': 'right: 55%;' ,'data-320p': 'top: 365vh; right: 240%;'}}>
@@ -166,14 +159,14 @@ class Howitworks extends Component {
 					</Parallax>
 
 
-					<Parallax data={{'data-275p': 'opacity:0; position:absolute; left: 50%; margin-right: -50%; top: 290vh; transform: translateX(-50%);', 'data-285p': 'opacity: 1;  top:290vh;', 'data-top-bottom': 'opacity: 0; transform:translateY(-30vh);'}}>
-					<div><h3>A pool of merchants offer their bids</h3></div>
+					<Parallax data={{'data-275p': 'opacity:0; position:absolute; left: 50%; margin-right: -50%; top: 300vh; transform: translateX(-50%);', 'data-285p': 'opacity: 1;  top:295vh;', 'data-320p': 'top:320vh;', 'data-top-bottom': 'opacity: 0;'}}>
+					<div><h3>Step 3.&ensp;A pool of merchants offer their bids</h3></div>
 					</Parallax>
 
 
 					<Parallax data={{'data-315p': 'opacity:0; width: 30%; display: flex; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top: 375vh;', 'data-320p': 'opacity: 1;  top:365vh;', 'data-top-bottom': 'opacity: 0; transform:translateY(-30vh);'}}>
 					<div>
-					<div style={{float:'left', width:'70%', height: '100%', display: 'flex', alignItems: 'center'}}> <h2> <i>Mercado Colombia</i> bids $180 and wins the right to deliver 20 textbooks to Aida </h2></div>
+					<div style={{float:'left', width:'70%', height: '100%', display: 'flex', alignItems: 'center'}}> <h3> Step 4.&ensp;<i>Mercado Colombia</i> bids $180 and wins the right to deliver 20 textbooks to Aida </h3></div>
 					<div className='books' style={{float:'right', width:'30%', marginTop: 'auto'}}></div>
 					</div>
 					</Parallax>	
@@ -199,12 +192,9 @@ class Howitworks extends Component {
 
 
 					<Parallax data={{'data-460p': 'opacity: 0; width: 40%; text-align:justify; top:510vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-470p': 'opacity: 1; top:500vh;','data-530p': 'opacity: 0;'}}>
-						<div><h2>Smart Contract gets executed, and all its details get recorded into Ethereum blockchain, <mark>an immutable distributed ledger</mark></h2></div>
+						<div><h2>Smart Contract gets executed, and all its details get recorded into Ethereum blockchain, <mark>an immutable decentralized ledger</mark></h2></div>
 					</Parallax>
 
-					<Parallax data={{'data-465p': 'opacity: 0; width: 40%; text-align:justify; top:510vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-480p': 'opacity: 1; top:530vh;', 'data-530p': 'opacity: 0; '}}>
-						<div><h2>it allows for <mark>transparency</mark>, <mark>traceability</mark>, <mark>and security </mark></h2></div> 
-					</Parallax> 
 
 					<Parallax data={{'data-520p': 'opacity: 0; top: 600vh; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-525p': 'opacity: 1; top: 570vh;','data-580p': 'opacity: 0;'}}>
 						<div><h2>but wait...</h2></div>
@@ -234,9 +224,14 @@ class Howitworks extends Component {
 						<div><h1>The End</h1></div>
 					</Parallax>
 
+
 				</React.Fragment>
+
 				<div style={{ height: '5600px' }} />
+				
+				<div className='ScrollAllWayUpStyle'><ScrollAllWayUp /></div>
 			</ParallaxB>
+			
 
 			<Footer />
 			</div>

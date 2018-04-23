@@ -5,7 +5,8 @@ export const updateDrawer = (state = {}, action) => {
 		case C.TOGGLE_DONATION_DRAWER:
 			return {
 				...state,
-				donationDrawerOpen: action.donationDrawerOpen
+				donationDrawerOpen: action.donationDrawerOpen,
+				donationValue: action.donationValue
 			}
 		case C.SELECT_REQUEST:
 			return {

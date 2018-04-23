@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import NavBar from '../components/NavBar'
 import RequestTable from '../components/RequestTable'
-import CharityDonationDrawer from '../components/CharityDonationDrawer'
+import DrawerFactory from '../components/DrawerFactory'
 import ContactInfo from '../components/ContactInfo'
 import { ImageLibrary } from '../components/ImageLibrary'
 
-import { Paper, Button, Card, CardMedia } from 'material-ui'
+import { Paper, Button, Card, CardMedia, TextField, FormHelperText, FormControl, InputAdornment} from 'material-ui'
 import {kStyleElevation, kStylePaper} from '../style/styleConstants'
 
 import { toggleDrawer, selectRequest } from '../redux/actions'
@@ -16,21 +16,36 @@ import { withRouter } from 'react-router'
 import '../style/GiftPage.css'
 
 class GiftPage extends Component {
-	render() {
-		const storeState = this.props.store.getState()
+	constructor(props) {
+		super(props)
+		this.state = {donationValue: 0}
+		this.giftData.bind(this)
+	}
 
-		// TODO @Gabe make this use the real path!
-		const loadGiftData = () => {
-			if (this.props.history.location.state === undefined){
-				console.log("WARNING: USING FAKE DATA")
-				return storeState.requests[0]
+	giftData() {
+		const storeState = this.props.store.getState()
+		return storeState.requests.filter(request => request.id === this.props.match.params.giftID)[0]
+	}
+
+	render() {
+		const handleDonationChange = (event) => {
+			let donationValue = Math.floor(this.giftData().dollars).toFixed(2)
+			const n = event.target.value
+			if (!isNaN(parseFloat(n)) && isFinite(n)) {
+				// Shout out to StackOverflow for making a max of two digits parseFloat
+				const digits = Math.min(2, (n.toString().split('.')[1] || []).length)
+				const periodVal = digits === 0 ? '.' : ''
+				donationValue =Math.floor(parseFloat(n)).toFixed(digits) + periodVal
 			}
-			return this.props.history.location.state.request
+			this.setState({donationValue})
+
 		}
-		const giftData = loadGiftData()
+		const giftData = this.giftData()
+
+		const donationValue = () => this.state.donationValue === 0 ? Math.floor(giftData.dollars).toFixed(2) : this.state.donationValue
 
 		const selectDonate = () => {
-			this.props.showDonate(true, giftData.charity)
+			this.props.showDonate(true, donationValue(), giftData.charity)
 		}
 		return (
 			<div>
@@ -67,10 +82,26 @@ class GiftPage extends Component {
 						<div className = "gift-info-section">
 							<Paper elevation={kStyleElevation} style={kStylePaper}>
 								<h2 className = "gift-background-title"> Request Details </h2>
-								<RequestTable data={giftData.inventory}/>
+								<RequestTable data={giftData.inventory} titles = {["Item", "Num", "Unit"]}/>
 								<div className = "gift-donation-section">
-									<h3 className = "gift-donation-estimate"> Estimated Cost of Donation: <span className = "gift-donation-cost">${Math.floor(giftData.dollars).toFixed(2)} </span></h3>
-									<Button size="large" variant="raised" color="primary" onClick={selectDonate}>Donate</Button>
+									<div className = "gift-donation-money-section">
+										<div className = "gift-donation-estimate"> Estimated Cost of Goods: <span className = "gift-donation-cost">${Math.floor(giftData.dollars).toFixed(2)} </span></div>
+										<div className = "gift-donation-fill-donation">
+											<span className = "gift-your-donation">Your Donation:</span>
+											<FormControl>
+												<TextField InputProps = {{classes: {root:"donation-text-field"},
+																			startAdornment: <InputAdornment className="donation-text-field"
+																													position="start">
+																									$</InputAdornment>}}
+															required={true}
+															id="donation-value"
+															value={donationValue()}
+															onChange={handleDonationChange}/>
+												<FormHelperText id="name-helper-text">How much you want to donate?</FormHelperText>
+											</FormControl>
+										</div>
+									</div>
+									<Button size="large" className="gift-donate-button" variant="raised" color="primary" onClick={selectDonate}>Donate</Button>
 								</div>
 							</Paper>
 							<Paper elevation={kStyleElevation} style={kStylePaper}>
@@ -86,7 +117,7 @@ class GiftPage extends Component {
 
 						</div>
 					</div>
-					<CharityDonationDrawer store={this.props.store} request={giftData}/>
+					<DrawerFactory store={this.props.store} request={giftData} donationValue={parseFloat(donationValue())} type="donate"/>
 				</div>
 			</div>
 		)
@@ -95,9 +126,9 @@ class GiftPage extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		showDonate: (showDrawer, request={}) => {
+		showDonate: (showDrawer, donationValue, request={}) => {
 			dispatch(selectRequest(request))
-			dispatch(toggleDrawer(showDrawer))
+			dispatch(toggleDrawer(showDrawer, donationValue))
 		}
 	}
 }

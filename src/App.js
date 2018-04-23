@@ -8,94 +8,105 @@ import {
 
 import { ParallaxProvider } from "react-skrollr";
 
-import ProfilePage from "./containers/ProfilePage";
-import About from "./containers/About";
-import Contact from "./containers/Contact";
-import Howitworks from "./containers/Howitworks";
-import Whoops404 from "./containers/Whoops404";
-import DonorHome from "./containers/DonorHome";
-import ThankYou from "./containers/ThankYou";
-import GiftPage from "./containers/GiftPage";
-import Donate from "./ethereum/components/Donate";
-import Bid from "./ethereum/components/Bid";
-import GetAllStats from "./ethereum/components/GetAllStats";
-import SelectMerchant from "./ethereum/components/SelectMerchant";
-import ItemSent from "./ethereum/components/ItemSent";
-import ItemReceived from "./ethereum/components/ItemReceived";
+import ProfilePage from './containers/ProfilePage'
+import About from './containers/About'
+import Contact from './containers/Contact'
+import Home from './containers/Home'
+import Howitworks from './containers/Howitworks'
+import Whoops404 from './containers/Whoops404'
+import DonorHome from './containers/DonorHome'
+import MerchantHome from './containers/MerchantHome'
+import CreateRequest from './containers/CreateRequest'
+import ThankYou from './containers/ThankYou'
+import GiftPage from './containers/GiftPage'
+import Donate from './ethereum/components/Donate'
+import Bid from './ethereum/components/Bid'
+import GetAllStats from './ethereum/components/GetAllStats'
+import SelectMerchant from './ethereum/components/SelectMerchant'
+import ItemSent from './ethereum/components/ItemSent'
+import ItemReceived from './ethereum/components/ItemReceived'
 import GetActiveGifts from "./database/components/GetActiveGifts";
 
 class App extends Component {
-  render() {
-    return (
-      <ParallaxProvider
-        init={{
-          smoothScrolling: true,
-          smoothScrollingDuration: 1000,
-          forceHeight: false
-        }}
-      >
-        <HashRouter>
-          <div className="main">
-            <Switch>
-              <Route
-                exact
-                path="/"
-                component={() => <DonorHome store={this.props.store} />}
-              />
-              <Route path="/about" component={About} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/howitworks" component={Howitworks} />
-              <Route
-                path="/profile"
-                component={() => <ProfilePage store={this.props.store} />}
-              />
-              <Route
-                path="/donor"
-                component={() => <DonorHome store={this.props.store} />}
-              />
-              <Route
-                path="/gift"
-                component={() => <GiftPage store={this.props.store} />}
-              />
-              <Route
-                path="/thanks"
-                component={() => <ThankYou store={this.props.store} />}
-              />
-              <Route
-                path="/donate"
-                component={() => <Donate store={this.props.store} />}
-              />
-              <Route
-                path="/bid"
-                component={() => <Bid store={this.props.store} />}
-              />
-              <Route
-                path="/getallstats"
-                component={() => <GetAllStats store={this.props.store} />}
-              />
-              <Route
-                path="/selectmerchant"
-                component={() => <SelectMerchant store={this.props.store} />}
-              />
-              <Route
-                path="/itemsent"
-                component={() => <ItemSent store={this.props.store} />}
-              />
-              <Route
-                path="/itemreceived"
-                component={() => <ItemReceived store={this.props.store} />}
-              />
-              <Route
-                path="/getActiveGifts"
-                component={() => <GetActiveGifts store={this.props.store} />}
-              />
-              <Route component={Whoops404} />
-            </Switch>
-          </div>
-        </HashRouter>
-      </ParallaxProvider>
-    );
-  }
+	render() {
+		return (
+			<ParallaxProvider
+				init={{
+					smoothScrolling: true,
+					smoothScrollingDuration: 1000,
+					forceHeight: false
+				}}
+			>
+				<HashRouter>
+					<div className="main">
+						<Switch>
+							<Route
+								exact
+								path="/"
+								component={Home} />
+
+							<Route path="/about" component={About} />
+							<Route path="/contact" component={Contact} />
+							<Route path="/howitworks" component={Howitworks} />
+							<Route
+								path="/profile"
+								component={() => <ProfilePage store={this.props.store} />}
+							/>
+							<Route
+								path="/home/donor"
+								component={() => <DonorHome store={this.props.store} />}
+							/>
+							<Route
+								path="/home/merchant"
+								component={() => <MerchantHome store={this.props.store} />}
+							/>
+							<Route
+								path="/gift/:giftID"
+								component={() => <GiftPage store={this.props.store} />}
+							/>
+							<Route
+								path="/thanks"
+								component={() => <ThankYou store={this.props.store} />}
+							/>
+							<Route
+								path="/donate"
+								component={() => <Donate store={this.props.store} />}
+							/>
+							<Route
+								path="/createrequest"
+								component={() => <CreateRequest store={this.props.store} />}
+							/>
+							<Route
+								path="/bid"
+								component={() => <Bid store={this.props.store} />}
+							/>
+							<Route
+								path="/getallstats"
+								component={() => <GetAllStats store={this.props.store} />}
+							/>
+							<Route
+								path="/selectmerchant"
+								component={() => <SelectMerchant store={this.props.store} />}
+							/>
+							<Route
+								path="/itemsent"
+								component={() => <ItemSent store={this.props.store} />}
+							/>
+							<Route
+								path="/itemreceived"
+								component={() => <ItemReceived store={this.props.store} />}
+							/>
+							<Route
+								path="/getActiveGifts"
+								component={() => <GetActiveGifts store={this.props.store} />}
+							/>
+							<Route component={Whoops404} />
+						</Switch>
+					</div>
+				</HashRouter>
+			</ParallaxProvider>
+		)
+	}
 }
 
 const mapStateToProps = state => {
@@ -104,4 +115,7 @@ const mapStateToProps = state => {
 
 App = connect(mapStateToProps, null)(App);
 
-export default App;
+export default App
+
+
+
