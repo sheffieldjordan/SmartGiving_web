@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
-	HashRouter,
-	Route,
-	Switch // Displays the first route that matches
-} from 'react-router-dom'
+  HashRouter,
+  Route,
+  Switch // Displays the first route that matches
+} from "react-router-dom";
 
-import { ParallaxProvider } from 'react-skrollr'
+import { ParallaxProvider } from "react-skrollr";
 
 import ProfilePage from './containers/ProfilePage'
 import About from './containers/About'
@@ -23,6 +23,7 @@ import GetAllStats from './ethereum/components/GetAllStats'
 import SelectMerchant from './ethereum/components/SelectMerchant'
 import ItemSent from './ethereum/components/ItemSent'
 import ItemReceived from './ethereum/components/ItemReceived'
+import GetActiveGifts from "./database/components/GetActiveGifts";
 
 class App extends Component {
 	render() {
@@ -85,6 +86,10 @@ class App extends Component {
 								path="/itemreceived"
 								component={() => <ItemReceived store={this.props.store} />}
 							/>
+							<Route
+								path="/getActiveGifts"
+								component={() => <GetActiveGifts store={this.props.store} />}
+							/>
 							<Route component={Whoops404} />
 						</Switch>
 					</div>
@@ -94,11 +99,11 @@ class App extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	return state
-}
+const mapStateToProps = state => {
+  return state;
+};
 
-App = connect(mapStateToProps, null)(App)
+App = connect(mapStateToProps, null)(App);
 
 export default App
 
