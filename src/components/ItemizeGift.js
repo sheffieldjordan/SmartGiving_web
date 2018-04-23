@@ -14,7 +14,7 @@ class ItemizeGift extends Component {
 		const updateSection = (section, isPosNum=false) => event => {
 			let value = event.target.value
 			if (isPosNum) {
-				value = Math.max(parseInt(value), 0)
+				value = Math.max(parseInt(value, 10), 0)
 			}
 			if (event.target.value !== undefined) {
 				this.setState({[section]: value})
