@@ -11,9 +11,13 @@ class ItemizeGift extends Component {
 	}
 	render() {
 
-		const updateSection = section => event => {
+		const updateSection = (section, isPosNum=false) => event => {
+			let value = event.target.value
+			if (isPosNum) {
+				value = Math.max(parseInt(value), 0)
+			}
 			if (event.target.value !== undefined) {
-				this.setState({[section]: event.target.value})
+				this.setState({[section]: value})
 			}
 		}
 		const addItem = event => {
@@ -47,7 +51,7 @@ class ItemizeGift extends Component {
 					<FormHelperText>Name of Good</FormHelperText>
 				</FormControl>
 				<FormControl >
-					<TextField type="number" onChange={updateSection("num")} value={this.state.num}/>
+					<TextField type="number" onChange={updateSection("num", true)} value={this.state.num}/>
 					<FormHelperText>Number</FormHelperText>
 				</FormControl>
 				<FormControl>

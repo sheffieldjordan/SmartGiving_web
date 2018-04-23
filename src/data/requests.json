@@ -6,8 +6,9 @@
 				"about": "Palmira Secondary School is in Palmira, Colombia, located Southwest of Colombia. We are a village based school for students between ages 5-12 throughout the year so that they can receive the necessary education and support when adults are not present at home during the day. Other than the typical school subjects, such as math and writing, our focus is to also engage the students in extracurricular activities as an outlet of their creativity and emotions. These activities include arts and craft, physical education (PE), and dancing.",
 				"image" : "test_colombian",
 				"location": {
+					"address": "Calle 36c #4432",
 					"country": "Colombia",
-					"state": "",
+					"state": "Valle del Cauca",
 					"city": "Palmira",
 					"imgurl": "https://i.imgur.com/SIodEmY.jpg"
 				},
@@ -72,8 +73,9 @@
 				"about": "Cusuco National Park (Cusuco) is located in the Merendon Mountains of northwestern Honduras.  Cusuco harbors remarkable biodiversity and is ranked among the ‘top 100 most irreplaceable sites’ in the world from an analysis of over 173,000 protected areas.  In Cusuco, there are 14 amphibian species listed as Endangered or Critically Endangered on the IUCN Red List of Threatened Species, with five also endemic to this one location.  For this reason, Cusuco is also recognized as a site of global importance by the Alliance for Zero Extinction.",
 				"image" : "test_frog",
 				"location": {
+					"address": "Visitors Center",
 					"country": "Honduras",
-					"state": "",
+					"state": "Santa Bárbara",
 					"city": "Cusuco National Park",
 					"imgurl": "https://i.imgur.com/SIodEmY.jpg"
 				},
@@ -119,6 +121,7 @@
 				"about": "Residency for All is a home to local seniors over the age of 70 years who either don’t have a home or have disabilities to function on their own. We provide rooms where they can stay and also provide basic housing services such as changing their bedding and cleaning the rooms. We want to continue making improvements to the building so that the residents feel like they’re home, safe, and comfortable in our spaces.",
 				"image" : "test_tulip",
 				"location": {
+					"address": "2975 Garber St",
 					"country": "USA",
 					"state": "California",
 					"city": "Berkeley",
@@ -165,6 +168,7 @@
 				"about": "Atzin assists rural people, particularly indigenous women, to attain better life opportunities, stronger cultural wellbeing, and greater self-sufficiency with more peaceful governance. In 1997, Atzin was formed to counter this cycle of poverty and violence in Tlamacazapa. Atzin means 'sacred water' in the local language, Nahuatl. Its humanitarian development programs emerged gradually in response to community needs.",
 				"image" : "test_mexico",
 				"location": {
+					"address": "Building #84",
 					"country": "India",
 					"state": "Tamil Nadu",
 					"city": "Baliganipali",
