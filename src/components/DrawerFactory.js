@@ -7,7 +7,7 @@ import { toggleDrawer, selectRequest } from '../redux/actions'
 
 import DonationDrawer from '../components/DonationDrawer'
 import BidDrawer from '../components/BidDrawer'
-
+import {Bid} from '../ethereum/components/Bid'
 
 class DrawerFactory extends Component {
 
@@ -15,6 +15,13 @@ class DrawerFactory extends Component {
 		const drawerData = (props) => {
 			const storeState = props.store.getState()
 			const onPrimary = () => {
+				Bid((error) => {
+					if (error !== undefined) {
+						console.log(`ERROR: ${error}`)
+					} else {
+						console.log("Great success!")
+					}
+				})
 				props.showRequest(false)
 				props.history.push('/thanks')
 			}

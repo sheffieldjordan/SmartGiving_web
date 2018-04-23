@@ -19,7 +19,6 @@ import MerchantHome from './containers/MerchantHome'
 import CreateRequest from './containers/CreateRequest'
 import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
-import Bid from './ethereum/components/Bid'
 import GetAllStats from './ethereum/components/GetAllStats'
 import SelectMerchant from './ethereum/components/SelectMerchant'
 import ItemSent from './ethereum/components/ItemSent'
@@ -69,10 +68,6 @@ class App extends Component {
 							<Route
 								path="/createrequest"
 								component={() => <CreateRequest store={this.props.store} />}
-							/>
-							<Route
-								path="/bid"
-								component={() => <Bid store={this.props.store} />}
 							/>
 							<Route
 								path="/getallstats"
