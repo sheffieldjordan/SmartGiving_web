@@ -14,6 +14,7 @@ import Contact from './containers/Contact'
 import Home from './containers/Home'
 import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
+import CharityHome from './containers/CharityHome'
 import DonorHome from './containers/DonorHome'
 import MerchantHome from './containers/MerchantHome'
 import CreateRequest from './containers/CreateRequest'
@@ -56,6 +57,11 @@ class App extends Component {
 								path="/home/donor"
 								component={() => <DonorHome store={this.props.store} />}
 							/>
+
+							<Route
+								path="/charity"
+								component={CharityHome} />
+
 							<Route
 								path="/home/merchant"
 								component={() => <MerchantHome store={this.props.store} />}

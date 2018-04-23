@@ -175,6 +175,37 @@ h1, h2, h3{
 	width: 18%;
 }
 
+/*CharityHome */
+
+.charity-status-container {
+	display: block;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 5vh;	
+}
+
+.charity-status-requestName{
+	display: block;
+	margin: 2px 10px 2vh 10px;
+}
+
+.status-bages {
+	float: right;
+}
+
+.charity-status-heading{
+	display: flex;
+	justify-content: center;
+	margin: 2px 10px 5vh 10px;
+}
+
+.profile {
+	display: flex;
+	justify-content: center;
+	margin: 5vh;
+}
+
+
 /* TabBar.js */
 .tab-bar-container {
 	padding:10px;
@@ -238,3 +269,4 @@ h1, h2, h3{
 	width:200px;
 	margin-bottom:10px;
 }
+

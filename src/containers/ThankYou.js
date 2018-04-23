@@ -20,7 +20,7 @@ class ThankYou extends Component {
 					<div className="thanks-text">
 						Your gift is deeply appreciated!
 						We'll let you know when we find a merchant who is able to fulfill it.
-						You can check out more places need your help <Link to="/"> here.</Link>
+						You can check out more places need your help <Link to="/donor"> here.</Link>
 					</div>
 				</div>
 			</div>
