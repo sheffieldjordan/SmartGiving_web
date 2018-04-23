@@ -13,7 +13,7 @@ class DonationDrawer extends Component {
 		const dollarsPerEther = 421.0 // TODO: Get this price dynamically
 		const donationValue = this.props.donationValue === undefined ? request.dollars : this.props.donationValue
 		return (
-		<Drawer anchor="bottom" open={this.props.open} onClose={this.props.onClose}>
+		<Drawer anchor="bottom" open={this.props.data.open} onClose={this.props.data.onClose}>
 			<div className="drawer-container">
 			<h1 className = "drawer-title">Confirm Donation</h1>
 				<div className="donate-avatar-container">
@@ -30,8 +30,8 @@ class DonationDrawer extends Component {
 				(Your payment will be processed once a merchant and recipient agree on delivering and receiving your gifts before the expiration date.)
 				</div>
 				<div className = "drawer-button-container">
-					<Button className = "drawer-button" onClick = {this.props.onPrimary} variant="raised" size="medium" color="primary">Donate</Button>
-					<Button className = "drawer-button" onClick = {this.props.onSecondary} variant="raised" size="medium" color="default">Cancel</Button>
+					<Button className = "drawer-button" onClick = {this.props.data.onPrimary} variant="raised" size="medium" color="primary">Donate</Button>
+					<Button className = "drawer-button" onClick = {this.props.data.onSecondary} variant="raised" size="medium" color="default">Cancel</Button>
 				</div>
 				<div className = "drawer-description donate-post-description">
 				If you choose to donate, you will be brought to MetaMask where you can complete your donation.
@@ -45,15 +45,13 @@ class DonationDrawer extends Component {
 }
 
 DonationDrawer.propTypes = {
-	open: PropTypes.bool,
-	onClose: PropTypes.func,
-	onPrimary: PropTypes.func, // When the user hits the primary butotn
-	onSecondary: PropTypes.func, // When the user hits the secondary button
-
 	request: PropTypes.object,
-	price: PropTypes.number,
-	sender: PropTypes.object,
-	recipient: PropTypes.object,
+	data: PropTypes.shape({
+		open: PropTypes.bool,
+		onClose: PropTypes.func,
+		onPrimary: PropTypes.func, // When the user hits the primary butotn
+		onSecondary: PropTypes.func, // When the user hits the secondary button
+	})
 }
 
 // WE NEED THIS NOT TO BREAK THE HOMEPAGE

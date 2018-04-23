@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import NavBar from '../components/NavBar'
 import RequestTable from '../components/RequestTable'
-import CharityDonationDrawer from '../components/CharityDonationDrawer'
+import DrawerFactory from '../components/DrawerFactory'
 import ContactInfo from '../components/ContactInfo'
 import { ImageLibrary } from '../components/ImageLibrary'
 
@@ -117,7 +117,7 @@ class GiftPage extends Component {
 
 						</div>
 					</div>
-					<CharityDonationDrawer store={this.props.store} request={giftData} donationValue={parseFloat(donationValue())}/>
+					<DrawerFactory store={this.props.store} request={giftData} donationValue={parseFloat(donationValue())} type="donate"/>
 				</div>
 			</div>
 		)

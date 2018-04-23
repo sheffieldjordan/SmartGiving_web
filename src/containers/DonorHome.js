@@ -8,7 +8,7 @@ import CardPage from '../components/CardPage'
 
 import CharityCard from '../components/CharityCard'
 import {DonorPreButtons, DonorActionButtons} from '../components/CardComponents'
-import CharityDonationDrawer from '../components/CharityDonationDrawer'
+import DrawerFactory from '../components/DrawerFactory'
 import { ImageLibrary } from '../components/ImageLibrary'
 
 import "../style/DonorHome.css"
@@ -47,7 +47,7 @@ class DonorHome extends Component {
 			}
 			return storeState.selectedRequest
 		}
-		const drawer = <CharityDonationDrawer store={this.props.store} request={drawerRequest()}/>
+		const drawer = <DrawerFactory store={this.props.store} request={drawerRequest()} type="donate"/>
 
 		return (
 			<CardPage cards={cards} drawer={drawer}/>
