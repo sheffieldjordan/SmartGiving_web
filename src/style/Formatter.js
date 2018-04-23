@@ -10,3 +10,13 @@ export const StringFromUnixTime = (time) => {
 
 	return `${month} ${date}, ${year}`
 }
+
+export const StringFromLocation = (location) => {
+	if (location === undefined) return ''
+	return `${location.address}, ${location.city}, ${location.state}, ${location.country}`
+}
+
+export const DollarsToEther = (dollars) => {
+	const dollarsPerEther = 421.0 // TODO: Get this price dynamically
+	return (parseFloat(dollars)/dollarsPerEther).toFixed(5)
+}

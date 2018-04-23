@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from 'material-ui/Button';
 
-import {StringFromUnixTime} from '../style/TimeStyling'
+import {StringFromUnixTime} from '../style/Formatter'
 
 /* PRIVATE */ 
 class CharityCardTags extends Component {
