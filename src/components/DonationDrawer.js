@@ -5,12 +5,12 @@ import Drawer from 'material-ui/Drawer';
 import Button from 'material-ui/Button';
 
 import UserAvatar from './UserAvatar';
+import {DollarsToEther} from '../style/Formatter'
 
 class DonationDrawer extends Component {
 
 	render() {
 		const request = this.props.request
-		const dollarsPerEther = 421.0 // TODO: Get this price dynamically
 		const donationValue = this.props.donationValue === undefined ? request.dollars : this.props.donationValue
 		return (
 		<Drawer anchor="bottom" open={this.props.data.open} onClose={this.props.data.onClose}>
@@ -24,7 +24,7 @@ class DonationDrawer extends Component {
 					</div>
 				</div>
 				<div className = "drawer-description donate-pre-description">
-				Are you sure you would like to donate ${Math.floor(donationValue).toFixed(2)} ({(donationValue/dollarsPerEther).toFixed(5)} ETH) to {request.charity.title}?
+				Are you sure you would like to donate ${Math.floor(donationValue).toFixed(2)} ({DollarsToEther(donationValue)} ETH) to {request.charity.title}?
 				</div>
 				<div className = "drawer-description donate-what-happens">
 				(Your payment will be processed once a merchant and recipient agree on delivering and receiving your gifts before the expiration date.)

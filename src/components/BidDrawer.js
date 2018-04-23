@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Drawer from 'material-ui/Drawer';
-import Button from 'material-ui/Button';
+import {Drawer, Button, TextField, FormControl, FormHelperText} from 'material-ui';
 
 import RequestTable from './RequestTable'
-import {StringFromLocation} from '../style/Formatter'
+import {StringFromLocation, DollarsToEther} from '../style/Formatter'
 
 class BidDrawer extends Component {
-
+	constructor(props) {
+		super(props)
+		this.state = {"bid" : -1}
+	}
 	render() {
 		const request = this.props.request
 		const itemsTable = (request) => {
@@ -16,6 +18,16 @@ class BidDrawer extends Component {
 				return <RequestTable data={request.inventory}/>
 			}
 			return <div/>
+		}
+		const updateCurrentBid = (event) => {
+			const n = event.target.value
+			this.setState({bid:n})
+		}
+		const currentBid = () => {
+			if (this.state.bid === -1 && this.props.request !== undefined) {
+				return DollarsToEther(this.props.request.dollars)
+			}
+			return this.state.bid
 		}
 
 		const location = request === undefined ? undefined : request.charity.location
@@ -29,7 +41,13 @@ class BidDrawer extends Component {
 				<div className = "bid-items-section">
 					{itemsTable(this.props.request)}
 				</div>
+				<div className = "bid-entry-container">
+					<FormControl>
+						<TextField required={true} InputProps={{classes: {root:"donation-text-field"}}} value={currentBid()} onChange={updateCurrentBid}/>
+						<FormHelperText>Enter your bid amount in ETH</FormHelperText>
+					</FormControl>
 
+				</div>
 				<div className = "drawer-button-container">
 					<Button className = "drawer-button" onClick = {this.props.data.onPrimary} variant="raised" size="medium" color="primary">Bid</Button>
 					<Button className = "drawer-button" onClick = {this.props.data.onSecondary} variant="raised" size="medium" color="default">Cancel</Button>
@@ -44,6 +62,8 @@ class BidDrawer extends Component {
 	}
 }
 
+
+
 BidDrawer.propTypes = {
 	request: PropTypes.object,
 	data: PropTypes.shape({
@@ -54,13 +74,6 @@ BidDrawer.propTypes = {
 	})
 }
 
-// WE NEED THIS NOT TO BREAK THE HOMEPAGE
-// BidDrawer.defaultProps = {
-// 	request: {
-// 		items: [],
-// 	},
-// 	// TODO @Gabe get some default images for here
-// }
 export default BidDrawer;
 
 

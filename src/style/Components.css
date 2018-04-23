@@ -232,3 +232,9 @@ h1, h2, h3{
 	font-weight: 800;
 }
 
+.bid-entry-container {
+	font-style: center;
+	margin:auto;
+	width:200px;
+	margin-bottom:10px;
+}
