@@ -34,10 +34,9 @@
     "mongoose": "^5.0.14"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"npm run server\"",
     "dbserver": "node src/database/index.js",
     "server": "npm run dbserver",
-    "dev": "concurrently \"npm run start\" \"npm run server\"",
     "build": "react-scripts build",
     "build-and-deploy": "npm run build && s3cmd sync build/* s3://smartgiving && echo '🚀  Deployed!'",
     "test": "react-scripts test --env=jsdom",
