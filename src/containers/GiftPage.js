@@ -13,6 +13,7 @@ import { toggleDrawer, selectRequest } from '../redux/actions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
+import {DonateEthereum} from '../ethereum/components/Donate'
 import '../style/GiftPage.css'
 
 class GiftPage extends Component {
@@ -45,6 +46,14 @@ class GiftPage extends Component {
 		const donationValue = () => this.state.donationValue === 0 ? Math.floor(giftData.dollars).toFixed(2) : this.state.donationValue
 
 		const selectDonate = () => {
+			// CALL MORGANS SHIT
+			console.log("WE DONATIN'")
+			DonateEthereum((error) => {
+				if (error !== undefined) {
+					console.log(`ERROR : ${error}`)
+				}
+				console.log("Great success!")
+			})
 			this.props.showDonate(true, donationValue(), giftData.charity)
 		}
 		return (

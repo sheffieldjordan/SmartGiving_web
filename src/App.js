@@ -19,7 +19,6 @@ import MerchantHome from './containers/MerchantHome'
 import CreateRequest from './containers/CreateRequest'
 import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
-import Donate from './ethereum/components/Donate'
 import Bid from './ethereum/components/Bid'
 import GetAllStats from './ethereum/components/GetAllStats'
 import SelectMerchant from './ethereum/components/SelectMerchant'
@@ -66,10 +65,6 @@ class App extends Component {
 							<Route
 								path="/thanks"
 								component={() => <ThankYou store={this.props.store} />}
-							/>
-							<Route
-								path="/donate"
-								component={() => <Donate store={this.props.store} />}
 							/>
 							<Route
 								path="/createrequest"
