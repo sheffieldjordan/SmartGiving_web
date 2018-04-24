@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import {
-	HashRouter,
-	Route,
-	Switch // Displays the first route that matches
-} from 'react-router-dom'
+  HashRouter,
+  Route,
+  Switch // Displays the first route that matches
+} from "react-router-dom";
 
-import { ParallaxProvider } from 'react-skrollr'
+import { ParallaxProvider } from "react-skrollr";
 
 import ProfilePage from './containers/ProfilePage'
 import About from './containers/About'
@@ -16,14 +16,15 @@ import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
 import CharityHome from './containers/CharityHome'
 import DonorHome from './containers/DonorHome'
+import MerchantHome from './containers/MerchantHome'
+import CreateRequest from './containers/CreateRequest'
 import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
-import Donate from './ethereum/components/Donate'
-import Bid from './ethereum/components/Bid'
 import GetAllStats from './ethereum/components/GetAllStats'
 import SelectMerchant from './ethereum/components/SelectMerchant'
 import ItemSent from './ethereum/components/ItemSent'
 import ItemReceived from './ethereum/components/ItemReceived'
+import GetActiveGifts from "./database/components/GetActiveGifts";
 
 class App extends Component {
 	render() {
@@ -51,7 +52,7 @@ class App extends Component {
 								component={() => <ProfilePage store={this.props.store} />}
 							/>
 							<Route
-								path="/donor"
+								path="/home/donor"
 								component={() => <DonorHome store={this.props.store} />}
 							/>
 
@@ -60,7 +61,11 @@ class App extends Component {
 								component={CharityHome} />
 
 							<Route
-								path="/gift"
+								path="/home/merchant"
+								component={() => <MerchantHome store={this.props.store} />}
+							/>
+							<Route
+								path="/gift/:giftID"
 								component={() => <GiftPage store={this.props.store} />}
 							/>
 							<Route
@@ -68,12 +73,8 @@ class App extends Component {
 								component={() => <ThankYou store={this.props.store} />}
 							/>
 							<Route
-								path="/donate"
-								component={() => <Donate store={this.props.store} />}
-							/>
-							<Route
-								path="/bid"
-								component={() => <Bid store={this.props.store} />}
+								path="/createrequest"
+								component={() => <CreateRequest store={this.props.store} />}
 							/>
 							<Route
 								path="/getallstats"
@@ -91,6 +92,10 @@ class App extends Component {
 								path="/itemreceived"
 								component={() => <ItemReceived store={this.props.store} />}
 							/>
+							<Route
+								path="/getActiveGifts"
+								component={() => <GetActiveGifts store={this.props.store} />}
+							/>
 							<Route component={Whoops404} />
 						</Switch>
 					</div>
@@ -100,11 +105,11 @@ class App extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-	return state
-}
+const mapStateToProps = state => {
+  return state;
+};
 
-App = connect(mapStateToProps, null)(App)
+App = connect(mapStateToProps, null)(App);
 
 export default App
 

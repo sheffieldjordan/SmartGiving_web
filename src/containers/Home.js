@@ -13,10 +13,10 @@ import "../style/Components.css"
 
 
 /*these are links attached to the three big buttons on the bottom*/
-const LinkToDonors = props => <Link to="/donor" {...props} />
-const LinkToMerchants = props => <Link to="/bid" {...props} />
-const LinkToRecipients = props => <Link to="/charity" {...props} />
 
+const LinkToDonors = props => <Link to="/donor" {...props} />
+const LinkToMerchants = props => <Link to="/merchant" {...props} />
+const LinkToRecipients = props => <Link to="/charity" {...props} />
 
 class Home extends Component {
 // @Natasha write your code here
@@ -40,7 +40,7 @@ class Home extends Component {
 			    </div>
 
 				<div className="home-intro-video">
-					<ReactPlayer url='https://www.youtube.com/watch?v=lD9KAnkZUjU'/>
+					<ReactPlayer url="http://www.youtube.com/embed/5ct9ALYZ0W4"/>
 				</div>
 
 			</div>

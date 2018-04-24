@@ -4,9 +4,11 @@ import { withRouter } from 'react-router'
 
 import { toggleDrawer, selectRequest } from '../redux/actions'
 
+import CardPage from '../components/CardPage'
+
 import CharityCard from '../components/CharityCard'
-import NavBar from '../components/NavBar'
-import CharityDonationDrawer from '../components/CharityDonationDrawer'
+import {DonorPreButtons, DonorActionButtons} from '../components/CardComponents'
+import DrawerFactory from '../components/DrawerFactory'
 import { ImageLibrary } from '../components/ImageLibrary'
 
 import "../style/DonorHome.css"
@@ -18,35 +20,37 @@ class DonorHome extends Component {
 		const selectDonate = (request) => () => {
 			this.props.showRequest(true, request)
 		}
+		const learnMore = (request) => () => {
+			this.props.history.push({
+			pathname: "/gift/" + request.id,
+			state: {request}}
+			)
+		}
 
 		const requests = storeState.requests
+		const cards = requests.map((r, i) => {
+			return (
+			<CharityCard key={i}
+				title={r.charity.title}
+				description={r.summary}
+				image={ImageLibrary(r.charity.image)}
+				onImageClick={learnMore(r)}
+				preButtons={DonorPreButtons(r.tags)}
+				buttons={DonorActionButtons(learnMore(r), selectDonate(r))}
+				postButtons={[]}
+			/>)
+		})
+
 		const drawerRequest = () => {
 			if (Object.keys(storeState.selectedRequest).length === 0) {
 				return undefined
 			}
 			return storeState.selectedRequest
 		}
+		const drawer = <DrawerFactory store={this.props.store} request={drawerRequest()} type="donate"/>
+
 		return (
-		<div>
-			<NavBar/>
-			<div className="page-container">
-				<div className="charity-card-container">
-					{requests.map((r, i) => {
-						return <CharityCard key={i}
-						title={r.charity.title}
-						description={r.summary}
-						image={ImageLibrary(r.charity.image)}
-						tags={r.tags}
-						onDonate={selectDonate(r)}
-						onLearnMore={() =>  this.props.history.push({
-							pathname: "/gift",
-							state: {request:r}}
-							)}/>	
-					})}
-				</div>
-				<CharityDonationDrawer store={this.props.store} request={drawerRequest()}/>
-			</div>
-		</div>
+			<CardPage cards={cards} drawer={drawer}/>
 		)
 	}
 }
