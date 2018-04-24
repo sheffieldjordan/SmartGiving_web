@@ -31,7 +31,7 @@ class TabBar extends Component {
 				<Paper className = "tab-bar-container">
 					{this.props.displayData[keys[value]]}
 					<Button onClick={moveTabBy(-1)} disabled={this.state.value === 0} style={{margin:"10px"}} variant="raised">Previous</Button>
-					<Button onClick={moveTabBy(1)} style={{margin:"10px"}} variant="raised">Next</Button>
+					<Button onClick={moveTabBy(1)} disabled={this.state.value === keys.length-1} style={{margin:"10px"}} variant="raised">Next</Button>
 
 				</Paper>
 			</div>

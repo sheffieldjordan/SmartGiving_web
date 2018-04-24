@@ -4,13 +4,20 @@ import TabBar from '../components/TabBar'
 import NavBar from '../components/NavBar'
 import DescribeGift from '../components/DescribeGift'
 import ItemizeGift from '../components/ItemizeGift'
+import Button from 'material-ui/Button'
+
+
+
 class CreateRequest extends Component {
 
 	render() {
 		const displayData = {
-			"Basic Information" : <DescribeGift/>,
+			"Basic Information" : <DescribeGift store={this.props.store}/>,
 			"List of Goods" : <ItemizeGift store={this.props.store}/>,
-			"Merchant Selection" : <div>Maybe implement this later?</div>
+			"Let's do it": <div className = "describe-gift-section">
+							<span>Now you can post your request on SmartGiving</span>
+							<div><Button style={{margin:"10px"}} variant="raised" color="secondary">Submit</Button></div>
+						   </div>
 		}
 		return (
 			<div>

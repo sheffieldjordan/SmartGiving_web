@@ -5,6 +5,8 @@ import { List, Image} from 'semantic-ui-react';
 import Nat from '../images/Nat.png';
 import Morgan from '../images/Morgan.png';
 import Liz from '../images/lizlee.png';
+import Gabe from '../images/gabe.png';
+import Sel from '../images/Sel.png'; 
 
 
 
@@ -26,14 +28,14 @@ class About extends Component {
 					</List.Item>
 
 					<List.Item>
-						<Image src={Nat} size='small' circular verticalAlign='middle' />
+						<Image src={Gabe} size='small' circular verticalAlign='middle' />
 						<List.Content verticalAlign='middle'>
 							<List.Header as='a' href='https://www.linkedin.com/in/gnicho/'>Gabriel Nicholas</List.Header>
 							<List.Description>Last seen watching stars 10 hours ago.</List.Description>
 						</List.Content>
 					</List.Item>
 					<List.Item>
-						<Image src={Nat}  size='small' circular verticalAlign='middle' />
+						<Image src={Sel}  size='small' circular verticalAlign='middle' />
 						<List.Content verticalAlign='middle'>
 							<List.Header as='a' href='https://www.linkedin.com/in/selberthely/'>Selenne Berthely</List.Header>
 							<List.Description>Last seen in South Hall just now.</List.Description>

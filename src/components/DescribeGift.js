@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {TextField, Button, Chip} from 'material-ui'
+import {TextField, Button, Chip} from 'material-ui';
 import AddIcon from '@material-ui/icons/Add';
 
 class DescribeGift extends Component {
@@ -34,12 +34,19 @@ class DescribeGift extends Component {
 		return (
 		<div>
 			<div className = "describe-gift-section">
-				<span className = "describe-gift-label">Summary </span>
-				<TextField onChange={updateSection("summary")} className = "describe-gift-textfield" placeholder = "A short summary of your request" />
+				<span className = "describe-gift-label">Description </span>
+				<TextField onChange={updateSection("description")} className = "describe-gift-textfield" multiline rows = "2" rowsMax= "15" placeholder = "Briefly state the purpose of this request"/>
 			</div>
 			<div className = "describe-gift-section">
-				<span className = "describe-gift-label">Description </span>
-				<TextField onChange={updateSection("description")} className = "describe-gift-textfield" multiline rows = "5" rowsMax= "15" placeholder = "A more in depth request"/>
+				<span className = "describe-gift-label">Expiration date</span>
+				<TextField  onChange={updateSection("expiration")}
+			        id="date"
+			        type="date"
+			        defaultValue="2018-05-10"
+			        InputLabelProps={{
+			          shrink: true,
+			        }}
+			    />
 			</div>
 			<div className = "describe-gift-section">
 				<span className = "describe-gift-label">Tags </span>

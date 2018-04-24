@@ -45,8 +45,11 @@ class Howitworks extends Component {
 				<React.Fragment>
 
 
-					<Parallax data={{'data-start': 'opacity: 1; position:absolute; left:45%; top:10vh;','data-top-top': 'opacity: 0;'}}>
+					<Parallax data={{'data-start': 'opacity: 1; position:absolute; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top:10vh;','data-top-top': 'opacity: 0;'}}>
 						<div>Scroll to see the story</div>
+					</Parallax>
+					<Parallax data={{'data-start': 'opacity: 1; position:absolute; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top:13vh;','data-top-top': 'opacity: 0;'}}>
+						<div>&#x25BC;</div>
 					</Parallax>
 
 
@@ -54,21 +57,19 @@ class Howitworks extends Component {
 						<div className='carolyn'></div>
 					</Parallax>
 
-					<Parallax data={{'data-center-center': 'opacity: 1; position:absolute; left:10%; top:30vh;','data-top-bottom': 'opacity: 0; transform:translateY(-10vh);'}}>
+					<Parallax data={{'data-center-center': 'opacity: 1; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top:30vh;','data-top-bottom': 'opacity: 0;'}}>
 						<h2>Meet Aida</h2>
 					</Parallax>
 
-					<Parallax data={{'data-bottom-top': 'opacity: 0; top:190vh;', 'data-center-center': 'opacity: 1; position:absolute; left:10%; top:40vh; width:20%;','data-top-bottom': 'opacity: 0; transform:translateY(-10vh);'}}>
-						<div><h3>She runs a free childcare for refugee families in the outskirts of Bogota, Colombia.</h3><div><h3>Currently, it accounts for 185 kids.</h3></div></div>
+					<Parallax data={{'data-bottom-top': 'opacity: 0; top:190vh;', 'data-center-center': 'opacity: 1; position:absolute; left:10%; top:55vh; width:20%;','data-top-bottom': 'opacity: 0; transform:translateY(-10vh);'}}>
+						<div><h3>She runs a free childcare for refugee families in the outskirts of Bogota, Colombia.</h3><div><h3>Currently, it accounts for 185 kids.</h3>
+						<div><h3>Every day, her pupils are in need of nutritious and safe food, clean water, clothing, textbooks, and toys.</h3></div></div></div>
 					</Parallax>
 
 					<Parallax data={{'data-bottom-top': 'opacity: 0; position:absolute; top:200vh; background-size: 61% 61%;', 'data-center-top': 'opacity: 1; left:50%; top:92vh;','data-top-bottom': 'opacity: 0; transform:translateY(-50vh);'}}>
 						<div className='kids'></div>
 					</Parallax>
 
-					<Parallax data={{'data-bottom-top': 'opacity: 0; position:absolute; width: 20%; top:100vh;', 'data--100-bottom': 'opacity: 1; left:10%; top:70vh;','data-top-bottom': 'opacity: 0; transform:translateY(-10vh);'}}>               
-						<div><h3> Every day, her pupils are in need of nutritious and safe food, clean water, clothing, textbooks, and toys.</h3></div>
-					</Parallax>			
 
 				{/*Scene-2*/}	
 
@@ -76,17 +77,13 @@ class Howitworks extends Component {
 						<div className='donna'></div>
 					</Parallax>
 
-					<Parallax data={{'data-bottom-top': 'opacity: 1; position:absolute; left:10%;', 'data-110p': 'opacity: 1;  top:140vh;', 'data-top-bottom': 'opacity: 1; transform:translateY(-10vh);'}}>
+					<Parallax data={{'data-bottom-top': 'opacity: 1; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%);', 'data-110p': 'opacity: 1;  top:130vh;', 'data-top-bottom': 'opacity: 1;'}}>
 						<h2>Meet Donna</h2>
 					</Parallax> 
 
 					<Parallax data={{'data-bottom-top': 'opacity: 0; position:absolute; top:230vh;', 'data-110p': 'opacity: 1;  left:10%; top:175vh; width: 20%;','data-top-bottom': 'opacity: 1; transform:translateY(-30vh);'}}>
-						<div><h3>She works in New York City and wants to Donate goods to Aida's charity...</h3></div>
+						<div><h3>She works in New York City and wants to donate to Aida's charity so, that it would be as easy as shopping online, and as traceable as a local delivery.</h3></div>
 					</Parallax>
-
-					<Parallax data={{'data-bottom-top': 'opacity: 0; position:absolute; left:10%; top: 220vh','data-120p': 'opacity: 1; top:192vh; width: 20%;','data-top-bottom': 'opacity: 0; transform:translateY(-30vh);'}}>
-						<div><h3>...so, that it would be as easy as shopping online, and as traceable as a local delivery</h3></div>
-					</Parallax> 
 
 					<Parallax data={{'data-110p': 'opacity: 1; position: absolute; right:-10%; top:177vh;', 'data-120p': 'opacity: 1; right:50%; top:177vh;','data-top-bottom': 'opacity: 0; transform:translateY(-30vh);'}}>
 					<div className='delivery'></div>
@@ -100,15 +97,9 @@ class Howitworks extends Component {
 					</Parallax>
 
 					<Parallax data={{'data-180p': 'opacity: 0; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top: 215vh; width: 40%; text-align:justify;', 'data-190p': 'opacity: 1;','data-top-bottom': 'opacity: 0;'}}>
-						<div><h2>A blockchain-based online <mark>marketplace</mark> where anyone can help a small charity directly by paying their check.</h2></div> 
-					</Parallax> 
-
-					<Parallax data={{'data-190p': 'opacity: 0; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top: 240vh; width: 40%; text-align:justify;', 'data-200p': 'opacity: 1;' ,'data-top-bottom': 'opacity: 0;'}}>
-						<div><h2>So a donor always knows what her money buys.</h2></div>
-					</Parallax> 
-
-					<Parallax data={{'data-200p': 'opacity: 0; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top: 250vh; width: 40%; text-align:justify;', 'data-210p': 'opacity: 1;','data-top-bottom': 'opacity: 0;'}}>
-						<div><h2>And the price is always reasonable thanks to multiple offers from merchants.</h2></div>
+						<div><h2>A blockchain-based online <mark>marketplace</mark> where anyone can help a small charity directly by paying their check.</h2>
+						<div><h2>So a donor always knows what her money buys.</h2>
+						<div><h2>And the price is always reasonable thanks to multiple offers from merchants.</h2></div></div></div> 
 					</Parallax> 
 
 
@@ -123,7 +114,7 @@ class Howitworks extends Component {
 					</Parallax>
 
 					<Parallax data={{'data-245p': 'opacity:0; position:absolute; left:12%; width:10%; top: 325vh;', 'data-260p': 'opacity:1;', 'data-330p': 'top:360vh;', 'data-top-bottom': 'opacity: 0;  transform:translateY(-30vh);'}}>
-						<div><h3>Step 1.&ensp;Aida places a request for 20 textbooks</h3></div>
+						<div><h3><span style={{color: '#317EAC'}}>Step 1.&ensp;</span>Aida places a request for 20 textbooks</h3></div>
 					</Parallax>
 
 					<Parallax data={{'data-255p': 'opacity:1; position: absolute; left:110%; top:315vh; width: 20%', 'data-265p': 'opacity: 1; left:65%;', 'data-330p': 'top: 350vh;', 'data-top-bottom': 'opacity: 0; transform:translateY(-30vh);'}}>
@@ -131,7 +122,7 @@ class Howitworks extends Component {
 					</Parallax>
 
 					<Parallax data={{'data-260p': 'opacity:0; position: absolute; left: 78%; top: 330vh;  width:10%;', 'data-275p': 'opacity: 1;', 'data-330p': 'top:360vh;', 'data-top-bottom': 'opacity: 0; transform:translateY(-30vh);'}}>
-						<div><h3>Step 2.&ensp;Donna pledges a $200 donation to meet this need</h3></div>
+						<div><h3><span style={{color: '#317EAC'}}>Step 2.&ensp;</span>Donna pledges a $200 donation to meet this need</h3></div>
 					</Parallax>
 
 					<Parallax data={{'data-270p': 'opacity:1; position: absolute; right:-50%; top:348vh;', 'data-285p': 'right: 55%;' ,'data-320p': 'top: 365vh; right: 240%;'}}>
@@ -160,13 +151,13 @@ class Howitworks extends Component {
 
 
 					<Parallax data={{'data-275p': 'opacity:0; width: 28%; position:absolute; left: 50%; margin-right: -50%; top: 300vh; transform: translateX(-50%);', 'data-285p': 'opacity: 1;  top:295vh;', 'data-320p': 'top:320vh;', 'data-top-bottom': 'opacity: 0;'}}>
-					<div><h3>Step 3.&ensp;A pool of merchants offer their bids and Donna chooses a winner among the three lowest</h3></div>
+					<div><h3><span style={{color: '#317EAC'}}>Step 3.&ensp;</span>A pool of merchants offer their bids and Donna chooses a winner among the three lowest</h3></div>
 					</Parallax>
 
 
 					<Parallax data={{'data-315p': 'opacity:0; width: 30%; display: flex; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top: 375vh;', 'data-320p': 'opacity: 1;  top:365vh;', 'data-top-bottom': 'opacity: 0; transform:translateY(-30vh);'}}>
 					<div>
-					<div style={{float:'left', width:'70%', height: '100%', display: 'flex', alignItems: 'center'}}> <h3> Step 4.&ensp;<i>Mercado Colombia</i> bids $180 and wins the right to deliver 20 textbooks to Aida </h3></div>
+					<div style={{float:'left', width:'70%', height: '100%', display: 'flex', alignItems: 'center'}}> <h3><span style={{color: '#317EAC'}}>Step 4.&ensp;</span><i>Mercado Colombia</i> bids $180 and wins the right to deliver 20 textbooks to Aida </h3></div>
 					<div className='books' style={{float:'right', width:'30%', marginTop: 'auto'}}></div>
 					</div>
 					</Parallax>	
@@ -204,7 +195,7 @@ class Howitworks extends Component {
 					</Parallax>
 
 					<Parallax data={{'data-480p': 'opacity: 0; position:absolute; right:-10%; top: 540vh','data-490p': 'opacity: 1; top:540vh; right: 25%; width: 15%;','data-530p': 'opacity:0.5;'}}>
-						<div><h2>So that anyone can refer to it anytime</h2></div>
+						<div><h3>So that anyone can refer to it anytime</h3></div>
 					</Parallax>
 
 					
@@ -224,11 +215,11 @@ class Howitworks extends Component {
 						<div className='donna'></div>
 					</Parallax>
 
-					<Parallax data={{'data-600p': 'opacity: 0;', 'data-610p': 'opacity: 1; position:absolute; top:625vh; left:48%; width: 28%; text-align:justify;','data-top-bottom': 'opacity: 0;'}}>
+					<Parallax data={{'data-600p': 'opacity: 0;', 'data-610p': 'opacity: 1; position:absolute; top:625vh; left:48%; width: 20%; text-align:justify;','data-top-bottom': 'opacity: 0;'}}>
 						<div><h3>Good eye! Donna received her change of $20 once the contract was executed.</h3></div>
 					</Parallax>
 
-					<Parallax data={{'data-610p': 'opacity: 0;', 'data-620p': 'opacity: 1; position:absolute; top:645vh; left:48%; width: 28%; text-align:justify;','data-top-bottom': 'opacity: 0;'}}>
+					<Parallax data={{'data-610p': 'opacity: 0;', 'data-620p': 'opacity: 1; position:absolute; top:645vh; left:48%; width: 20%; text-align:justify;','data-top-bottom': 'opacity: 0;'}}>
 						<div><h3>And she is already considering pledging this money toward another request.</h3></div>
 					</Parallax>
 
