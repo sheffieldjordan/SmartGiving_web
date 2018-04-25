@@ -58,7 +58,8 @@ class App extends Component {
 
 							<Route
 								path="/charity"
-								component={CharityHome} />
+								component={() => <CharityHome store={this.props.store} />} 
+							/>
 
 							<Route
 								path="/home/merchant"

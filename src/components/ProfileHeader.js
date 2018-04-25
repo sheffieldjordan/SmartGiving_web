@@ -3,7 +3,7 @@ import UserAvatar from './UserAvatar';
 
 class ProfileHeader extends Component {
 	render() {
-		const userInfo = this.props.store.getState().user;
+		const userInfo = this.props.store.getState().globalData.user;
 		return (
 			<header style={{"marginBottom" : 20}}>
 			  <div className = "user-info-header">

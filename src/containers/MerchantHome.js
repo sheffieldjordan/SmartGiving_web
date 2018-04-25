@@ -27,7 +27,7 @@ class MerchantHome extends Component {
 			)
 		}
 
-		const requests = storeState.requests
+		const requests = storeState.globalData.requests
 		const cards = requests.map((r, i) => {
 			return (
 			<CharityCard key={i}
@@ -42,10 +42,11 @@ class MerchantHome extends Component {
 		})
 
 		const drawerRequest = () => {
-			if (Object.keys(storeState.selectedRequest).length === 0) {
+			const selectedRequest = storeState.updateDrawer.selectedRequest
+			if (Object.keys(selectedRequest).length === 0) {
 				return undefined
 			}
-			return storeState.selectedRequest
+			return selectedRequest
 		}
 		const drawer = <DrawerFactory store={this.props.store} request={drawerRequest()} type="bid"/>
 

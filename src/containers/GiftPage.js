@@ -25,7 +25,7 @@ class GiftPage extends Component {
 
 	giftData() {
 		const storeState = this.props.store.getState()
-		return storeState.requests.filter(request => request.id === this.props.match.params.giftID)[0]
+		return storeState.globalData.requests.filter(request => request.id === this.props.match.params.giftID)[0]
 	}
 
 	render() {

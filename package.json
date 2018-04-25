@@ -30,14 +30,15 @@
     "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.79.1",
     "truffle-hdwallet-provider": "0.0.3",
-    "web3": "^1.0.0-beta.34"
+    "web3": "^1.0.0-beta.26"
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"npm run server\"",
     "dbserver": "node src/database/index.js",
     "server": "npm run dbserver",
     "build": "react-scripts build",
-    "build-and-deploy": "npm run build && s3cmd sync build/* s3://smartgiving && echo '🚀  Deployed!'",
+    "build-and-deploy":
+      "npm run build && s3cmd sync build/* s3://smartgiving && echo '🚀  Deployed!'",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
