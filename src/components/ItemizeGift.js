@@ -33,8 +33,9 @@ class ItemizeGift extends Component {
 							num:0,
 							unit:"",
 							price:0,
-							items:[...this.state.items, item]})
-
+							items:[...this.state.items, item]}, () => {
+								this.props.onUpdate({items:this.state.items})
+							})
 		}
 
 

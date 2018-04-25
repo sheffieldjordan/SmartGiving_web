@@ -10,10 +10,25 @@ import Button from 'material-ui/Button'
 
 class CreateRequest extends Component {
 
+	constructor(props) {
+		super(props)
+		this.state = {gift:{}}
+	}
 	render() {
+		const updateGift = (newGift) => {
+			let gift = this.state.gift
+			gift = {
+				...gift,
+				...newGift
+			}
+			this.setState({gift})
+		}
+
+		// @Natasha
+		// Access the gift with this.state.gift
 		const displayData = {
-			"Basic Information" : <DescribeGift store={this.props.store}/>,
-			"List of Goods" : <ItemizeGift store={this.props.store}/>,
+			"Basic Information" : <DescribeGift store={this.props.store} onUpdate = {updateGift}/>,
+			"List of Goods" : <ItemizeGift store={this.props.store} onUpdate = {updateGift}/>,
 			"Let's do it": <div className = "describe-gift-section">
 							<span>Now you can post your request on SmartGiving</span>
 							<div><Button style={{margin:"10px"}} variant="raised" color="secondary">Submit</Button></div>
