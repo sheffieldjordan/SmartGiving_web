@@ -17,3 +17,22 @@ export const updateDrawer = (state = {}, action) => {
 			return state
 	}
 }
+
+export const updateNewGift = (state = {}, action) => {
+	switch (action.type) {
+		case C.UPDATE_GIFT:
+			return {
+				...state,
+				giftData: {
+					...state.giftData,
+					...action.giftData,
+				}
+			}
+		default:
+			return state
+	}
+}
+
+export const globalData = (state = {}, action) => {
+	return state
+}

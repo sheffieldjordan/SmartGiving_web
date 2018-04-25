@@ -27,7 +27,7 @@ class DonorHome extends Component {
 			)
 		}
 
-		const requests = storeState.requests
+		const requests = storeState.globalData.requests
 		const cards = requests.map((r, i) => {
 			return (
 			<CharityCard key={i}
@@ -42,7 +42,7 @@ class DonorHome extends Component {
 		})
 
 		const drawerRequest = () => {
-			if (Object.keys(storeState.selectedRequest).length === 0) {
+			if (Object.keys(storeState.updateDrawer.selectedRequest).length === 0) {
 				return undefined
 			}
 			return storeState.selectedRequest

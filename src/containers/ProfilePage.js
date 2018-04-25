@@ -20,7 +20,7 @@ class ProfilePage extends Component {
           <UserStory store={this.props.store}/>
           <Paper elevation={kStyleElevation} style={kStylePaper}>
             <h2>Learn More</h2>
-            <ContactInfo user={this.props.store.getState().user}/>
+            <ContactInfo user={this.props.store.getState().globalData.user}/>
           </Paper>
 
           <div className = "open-requests requests-section">

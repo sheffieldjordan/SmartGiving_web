@@ -149,12 +149,13 @@ h1, h2, h3{
 	display: flex;
 	flex-wrap: wrap-reverse;
 	justify-content: center;
-	margin: 5vh auto;
+	margin: 10vh auto;
 }
 
 .home-intro-text {
 	flex-basis: auto;
 	margin: 5px;
+	width: 20%;
 }
 
 .home-intro-video {
