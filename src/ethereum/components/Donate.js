@@ -14,7 +14,7 @@ export const DonateEthereum = async (completion) => {
 		.send({
 			from: accounts[0],
 			value: web3.utils.toWei('0.02', 'ether'), // the 0.02 value will be inputted by the Donor
-			gas: 2000000
+			gas: 3000000
 		})
 		completion()
 	} catch (err) {
