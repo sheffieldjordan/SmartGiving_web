@@ -37,7 +37,8 @@
     "dbserver": "node src/database/index.js",
     "server": "npm run dbserver",
     "build": "react-scripts build",
-    "build-and-deploy": "npm run build && s3cmd sync build/* s3://smartgiving && echo '🚀  Deployed!'",
+    "build-and-deploy":
+      "npm run build && s3cmd sync build/* s3://smartgiving && echo '🚀  Deployed!'",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

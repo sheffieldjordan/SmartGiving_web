@@ -79,6 +79,17 @@ const style = {
     paddingRight: "15px",
     fontSize: ".7rem",
     color: "green"
+  },
+  column: {
+    float: "left",
+    width: "50%",
+    padding: "10px",
+    height: "300px"
+  },
+  row: {
+    content: "",
+    display: "table",
+    clear: "both"
   }
 };
 module.exports = style;
