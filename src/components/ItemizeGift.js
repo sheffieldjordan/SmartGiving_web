@@ -8,7 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 class ItemizeGift extends Component {
 	constructor(props) {
 		super(props)
-		this.state= {items:[], name:"", num:0, unit:"", price:0}
+		this.state = props.gift
 	}
 
 	render() {
