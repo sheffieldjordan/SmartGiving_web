@@ -1,0 +1,36 @@
+{
+	"merchants": [
+		{ 
+			"title": "School Supplies",
+			"location": {
+				"address": "Calle 30a",
+				"country": "Colombia",
+				"state": "Antioquia",
+				"city": "Medellin",
+			"id": "1m",
+			"bid" : 230.0,
+		}
+
+		{ 
+			"title": "Stationary for you",
+			"location": {
+				"address": "Calle 5",
+				"country": "Colombia",
+				"state": "Valle del Cauca",
+				"city": "Cali",
+			"id": "2m",
+			"bid" : 220.0,
+		}
+
+		{ 
+			"title": "Penocchio",
+			"location": {
+				"address": "Calle 38a",
+				"country": "Colombia",
+				"state": "Bogota",
+				"city": "Bogota",
+			"id": "3m",
+			"bid" : 210.0,
+		}
+	]
+}

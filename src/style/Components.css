@@ -2,7 +2,6 @@ body {
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
 	font-size: 12pt;
-
 }
 
 h1, h2, h3{
@@ -139,7 +138,7 @@ h1, h2, h3{
 	margin-bottom:10px;
 }
 
-.charity-card-commitment-pre, .charity-card-expiry-pre{ 
+.charity-card-commitment-pre, .charity-card-expiry-pre{
 	font-weight: 1000;
 }
 
@@ -149,17 +148,18 @@ h1, h2, h3{
 	display: flex;
 	flex-wrap: wrap-reverse;
 	justify-content: center;
-	margin: 5vh auto;
+	margin: 10vh auto;
 }
 
 .home-intro-text {
 	flex-basis: auto;
-	margin: 5px;
+	margin: 15px;
+	width: 350px;
 }
 
 .home-intro-video {
 	flex-basis: auto;
-	margin: 5px;
+	margin: 15px;
 
 }
 
@@ -172,7 +172,7 @@ h1, h2, h3{
 }
 
 .big-button {
-	width: 18%;
+	width: 19%;
 }
 
 /*CharityHome */
@@ -181,7 +181,7 @@ h1, h2, h3{
 	display: block;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin: 5vh;	
+	margin: 5vh;
 }
 
 .charity-status-requestName{
@@ -269,4 +269,5 @@ h1, h2, h3{
 	width:200px;
 	margin-bottom:10px;
 }
+
 

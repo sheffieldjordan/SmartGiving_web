@@ -11,6 +11,7 @@ class DonationDrawer extends Component {
 
 	render() {
 		const request = this.props.request
+		const charity = this.props.charity
 		const donationValue = this.props.donationValue === undefined ? request.dollars : this.props.donationValue
 		return (
 		<Drawer anchor="bottom" open={this.props.data.open} onClose={this.props.data.onClose}>
@@ -24,7 +25,7 @@ class DonationDrawer extends Component {
 					</div>
 				</div>
 				<div className = "drawer-description donate-pre-description">
-				Are you sure you would like to donate ${Math.floor(donationValue).toFixed(2)} ({DollarsToEther(donationValue)} ETH) to {request.charity.title}?
+				Are you sure you would like to donate ${Math.floor(donationValue).toFixed(2)} ({DollarsToEther(donationValue)} ETH) to {charity.title}?
 				</div>
 				<div className = "drawer-description donate-what-happens">
 				(Your payment will be processed once a merchant and recipient agree on delivering and receiving your gifts before the expiration date.)
@@ -57,11 +58,11 @@ DonationDrawer.propTypes = {
 // WE NEED THIS NOT TO BREAK THE HOMEPAGE
 DonationDrawer.defaultProps = {
 	request: {
-		charity: {
-			title: "SAMPLE CHARITY"
-		},
 		dollars: 15.0,
 	},
+	charity: {
+		title: "SAMPLE CHARITY"
+	}
 	// TODO @Gabe get some default images for here
 }
 export default DonationDrawer;

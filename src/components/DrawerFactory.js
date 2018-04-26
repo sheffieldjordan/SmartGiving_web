@@ -31,7 +31,7 @@ class DrawerFactory extends Component {
 				onClose,
 				onPrimary,
 				onSecondary,
-				open: storeState.donationDrawerOpen,
+				open: storeState.updateDrawer.donationDrawerOpen,
 			}
 			return data
 		}
@@ -42,8 +42,9 @@ class DrawerFactory extends Component {
 			return (
 				<DonationDrawer store={this.props.store}
 					data={data}
-					donationValue={storeState.donationValue}
+					donationValue={storeState.updateDrawer.donationValue}
 					request={this.props.request}
+					charity={this.props.charity}
 				/>
 			)
 		}

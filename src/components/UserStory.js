@@ -10,7 +10,7 @@ class UserStory extends Component {
           <Paper elevation={kStyleElevation} style={kStylePaper}>
           <h2>Our Story</h2>
           <div className="card-text-container">
-            {this.props.store.getState().user.story}
+            {this.props.store.getState().globalData.user.story}
           </div>
           </Paper>
         </div>

@@ -7,10 +7,10 @@ class ContactInfo extends Component {
         <div className = "contact-container">
           <div className = "card-text-container">
             <div className = "contact-container">
-              {contactSection(titleValueSpan, ['name', 'email'], user.contact,"contact-title")}
+              {contactSection(titleValueSpan, ['name', 'email'], user,"contact-title")}
             </div>
             <div className = "social-container">
-              {contactSection(titleLinkSpan, ['website', 'facebook', 'twitter', 'instagram'], user.contact,"social-info")}
+              {contactSection(titleLinkSpan, ['website', 'facebook', 'twitter', 'instagram'], user,"social-info")}
             </div>
           </div>
         </div>
