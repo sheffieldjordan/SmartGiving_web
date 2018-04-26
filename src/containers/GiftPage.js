@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
-import NavBar from "../components/NavBar";
-import RequestTable from "../components/RequestTable";
-import DrawerFactory from "../components/DrawerFactory";
-import ContactInfo from "../components/ContactInfo";
-import { ImageLibrary } from "../components/ImageLibrary";
+import NavBar from "../components/NavBar"
+import RequestTable from "../components/RequestTable"
+import DrawerFactory from "../components/DrawerFactory"
+import ContactInfo from "../components/ContactInfo"
+import { ImageLibrary } from "../components/ImageLibrary"
 
-import { GetAllOpenGifts } from "../database/public/APIManager";
+import { GetAllOpenGifts } from "../database/public/APIManager"
 
 import {
   Paper,
@@ -17,34 +17,34 @@ import {
   FormHelperText,
   FormControl,
   InputAdornment
-} from "material-ui";
-import { kStyleElevation, kStylePaper } from "../style/styleConstants";
+} from "material-ui"
+import { kStyleElevation, kStylePaper } from "../style/styleConstants"
 
-import { toggleDrawer, selectRequest } from "../redux/actions";
-import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import { toggleDrawer, selectRequest } from "../redux/actions"
+import { connect } from "react-redux"
+import { withRouter } from "react-router"
 
-import { DonateEthereum } from "../ethereum/components/Donate";
-import "../style/GiftPage.css";
+import { DonateEthereum } from "../ethereum/components/Donate"
+import "../style/GiftPage.css"
 
 class GiftPage extends Component {
   constructor(props) {
-    super(props);
-    this.state = { donationValue: 0, charity: {}, gift: { items: [] } };
-    this.giftData.bind(this);
-    this.defaultCost.bind(this);
+    super(props)
+    this.state = { donationValue: 0, charity: {}, gift: { items: [] } }
+    this.giftData.bind(this)
+    this.defaultCost.bind(this)
   }
 
   componentDidMount() {
-    const charityID = this.props.match.params.charityID;
+    const charityID = this.props.match.params.charityID
     const dbCompletion = (data, err) => {
       if (err) {
-        alert(`${err}\nPerhaps the database isn't running.`);
+        alert(`${err}\nPerhaps the database isn't running.`)
         return
       }
       const charity = data.reduce((finalChar, currentChar) => {
-        return currentChar.ethRecipientAddr === charityID ? currentChar : finalChar;
-      }, undefined);
+        return currentChar.ethRecipientAddr === charityID ? currentChar : finalChar
+      }, undefined)
       if (charity === undefined) {
         console.warn(`Cannot find charity for id ${charityID}`)
         return
@@ -53,53 +53,53 @@ class GiftPage extends Component {
         }
       else {
         const gift = charity.gifts[0]
-        this.setState({ charity, gift });
+        this.setState({ charity, gift })
       }
-    };
+    }
 
-    GetAllOpenGifts(dbCompletion);
+    GetAllOpenGifts(dbCompletion)
   }
 
   giftData() {
-    const storeState = this.props.store.getState();
+    const storeState = this.props.store.getState()
     return storeState.globalData.requests.filter(
       request => request.ethGiftAddr === this.props.match.params.giftID
-    )[0];
+    )[0]
   }
 
   defaultCost(gift) {
     const price = this.state.gift.items.reduce((total, item) => {
-      return total + item.pricePerUnit;
-    }, 0);
-    return price;
+      return total + item.pricePerUnit
+    }, 0)
+    return price
   }
 
   render() {
     const handleDonationChange = event => {
-      let donationValue = Math.floor(this.state.gift.dollars).toFixed(2);
-      const n = event.target.value;
+      let donationValue = Math.floor(this.state.gift.dollars).toFixed(2)
+      const n = event.target.value
       if (!isNaN(parseFloat(n)) && isFinite(n)) {
         // Shout out to StackOverflow for making a max of two digits parseFloat
-        const digits = Math.min(2, (n.toString().split(".")[1] || []).length);
-        const periodVal = digits === 0 ? "." : "";
-        donationValue = Math.floor(parseFloat(n)).toFixed(digits) + periodVal;
+        const digits = Math.min(2, (n.toString().split(".")[1] || []).length)
+        const periodVal = digits === 0 ? "." : ""
+        donationValue = Math.floor(parseFloat(n)).toFixed(digits) + periodVal
       }
-      this.setState({ donationValue });
-    };
+      this.setState({ donationValue })
+    }
 
     const donationValue = () =>
       this.state.donationValue === 0
         ? this.defaultCost(this.state.gift)
-        : this.state.donationValue;
+        : this.state.donationValue
     const selectDonate = () => {
       // CALL MORGANS SHIT
       DonateEthereum(error => {
         if (error !== undefined) {
-          console.log(`ERROR : ${error}`);
+          console.log(`ERROR : ${error}`)
         }
-      });
-      this.props.showDonate(true, donationValue(), this.state.charity);
-    };
+      })
+      this.props.showDonate(true, donationValue(), this.state.charity)
+    }
     return (
       <div>
         <NavBar />
@@ -207,19 +207,19 @@ class GiftPage extends Component {
           />
         </div>
       </div>
-    );
+    )
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     showDonate: (showDrawer, donationValue, request = {}) => {
-      dispatch(selectRequest(request));
-      dispatch(toggleDrawer(showDrawer, donationValue));
+      dispatch(selectRequest(request))
+      dispatch(toggleDrawer(showDrawer, donationValue))
     }
-  };
-};
+  }
+}
 
-GiftPage = connect(null, mapDispatchToProps)(GiftPage);
+GiftPage = connect(null, mapDispatchToProps)(GiftPage)
 
-export default withRouter(GiftPage);
+export default withRouter(GiftPage)
