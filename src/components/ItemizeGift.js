@@ -24,7 +24,7 @@ class ItemizeGift extends Component {
 		}
 		const addItem = event => {
 			const item = {
-				item: this.state.name,
+				name: this.state.name,
 				num: this.state.num,
 				unit: this.state.unit,
 				price: this.state.price

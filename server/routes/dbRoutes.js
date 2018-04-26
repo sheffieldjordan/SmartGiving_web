@@ -143,13 +143,14 @@ module.exports = app => {
         //nothing was changed we will not alter the field.
         recipient[0].gifts.push({
           title: req.body.title,
-          summary: req.body.description,
+          // summary: req.body.description,
           expiry: req.body.expiry,
-          dollars: req.body.suggDonationAmt,
-          creationDate: req.body.creationDate,
+          dollars: req.body.dollars,
+          creationDate: Date.now(),
           items: req.body.items
         });
         console.log(recipient[0].gifts);
+        console.log(recipient[0].gifts.items);
 
         //save gift
         recipient[0].save(function(err) {
@@ -159,7 +160,8 @@ module.exports = app => {
       }
     );
   });
-  // Get Active gifts for DONOR and MERCHANT same function
+
+    // Get Active gifts for DONOR and MERCHANT same function
   // app.get("/api/:ethereumAddress/activeGiftsList", async function(req, res) {
   //   var activeGifts = [];
   //   var gifts;

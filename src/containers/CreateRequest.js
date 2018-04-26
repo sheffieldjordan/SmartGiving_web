@@ -17,7 +17,26 @@ class CreateRequest extends Component {
 	}
 
 	handleSubmit = () => {
-		axios.put(`/api/addGift`, this.state.gift);
+
+		const items = this.state.gift.items.map((itemObj, i) => {
+			return {
+				itemDescription: itemObj.name,
+				quantity: itemObj.num,
+				pricePerUnit: itemObj.price,
+				
+			} 
+		})
+
+		const giftJSON = {
+			items,
+			title: this.state.gift.description,
+			ethRecipientAddr: "0xEEEEEEE8926b092D48365912dA3b092D48365912d6b",
+			expiry: this.state.gift.expiration,
+			dollars: 190,
+
+		}
+
+		axios.put(`/api/addGift`, giftJSON);
 	} 
 
 	render() {
