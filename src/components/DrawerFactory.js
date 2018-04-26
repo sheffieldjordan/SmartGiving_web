@@ -44,6 +44,7 @@ class DrawerFactory extends Component {
 					data={data}
 					donationValue={storeState.updateDrawer.donationValue}
 					request={this.props.request}
+					charity={this.props.charity}
 				/>
 			)
 		}
