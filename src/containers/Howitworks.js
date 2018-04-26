@@ -5,7 +5,6 @@ import NavBar from '../components/NavBar';
 import ScrollAllWayUp from '../components/ScrollAllWayUp';
 
 import { Parallax } from 'react-skrollr';
-import { Parallax as ParallaxB } from 'react-parallax';
 
 import '../how_it_works/css/style.css';
 
