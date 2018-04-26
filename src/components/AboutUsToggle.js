@@ -24,7 +24,7 @@ const styles = theme => ({
 
 /*these are links attached to the three buttons inside the toggle menu*/
 
-const LinkToTeam = props => <Link to="/team" {...props} />
+const LinkToTeam = props => <Link to="/home/team" {...props} />
 const LinkToContribute = props => <Link to="/" {...props} />
 const LinkToWhitepaper = props => <Link to="/" {...props} />
 

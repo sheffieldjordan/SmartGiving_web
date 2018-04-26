@@ -9,7 +9,6 @@ import {
 import { ParallaxProvider } from "react-skrollr";
 
 import ProfilePage from './containers/ProfilePage'
-import Contact from './containers/Contact'
 import Home from './containers/Home'
 import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
@@ -26,9 +25,37 @@ import ItemReceived from './ethereum/components/ItemReceived'
 import GetActiveGifts from "./database/components/GetActiveGifts";
 import Team from './containers/Team'
 
+
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+    	light: "#49BBFF",
+    	main: "#317EAC",
+    	dark: "#245D7F",
+    	contrastText: 'white',
+    },
+    secondary: {
+    	light: "#FFBB49",
+    	main: "#EDAE44",
+    	dark: "#7F5E25",
+    	contrastText: 'white',
+    },
+  },
+  status: {
+    danger: 'orange',
+  },
+
+
+
+});
+
+
 class App extends Component {
 	render() {
 		return (
+		  <MuiThemeProvider theme={theme}>
 			<ParallaxProvider
 				init={{
 					smoothScrolling: true,
@@ -44,20 +71,22 @@ class App extends Component {
 								path="/"
 								component={Home} />
 
-							<Route path="/contact" component={Contact} />
-							<Route path="/howitworks" component={Howitworks} />
-							<Route path="/team" component={Team} />
+							<Route path="/home/team" component={Team} />
+
+							<Route path="/home/howitworks" component={Howitworks} />
+
 							<Route
 								path="/profile"
 								component={() => <ProfilePage store={this.props.store} />}
 							/>
+
 							<Route
 								path="/home/donor"
 								component={() => <DonorHome store={this.props.store} />}
 							/>
 
 							<Route
-								path="/charity"
+								path="/home/charity"
 								component={() => <CharityHome store={this.props.store} />}
 							/>
 
@@ -102,6 +131,7 @@ class App extends Component {
 					</div>
 				</HashRouter>
 			</ParallaxProvider>
+		  </MuiThemeProvider>
 		)
 	}
 }
