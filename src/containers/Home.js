@@ -31,7 +31,7 @@ class Home extends Component {
 			        <Typography variant="display3">
 			          Don't just give.
 			        </Typography>
-			        <Typography variant="display3">
+			        <Typography variant="display3" style={{color: '#EDAE44'}}>
 			          Give smart.
 			        </Typography>
 			        <Typography variant="subheading">

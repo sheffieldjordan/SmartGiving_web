@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Manager, Target, Popper } from 'react-popper';
@@ -20,6 +21,12 @@ const styles = theme => ({
     pointerEvents: 'none',
   },
 });
+
+/*these are links attached to the three buttons inside the toggle menu*/
+
+const LinkToTeam = props => <Link to="/team" {...props} />
+const LinkToContribute = props => <Link to="/" {...props} />
+const LinkToWhitepaper = props => <Link to="/" {...props} />
 
 class AboutUsToggle extends Component {
   state = {
@@ -71,9 +78,9 @@ class AboutUsToggle extends Component {
               <Grow in={open} id="menu-list-grow" style={{ transformOrigin: '0 0 0' }}>
                 <Paper>
                   <MenuList role="menu">
-                    <MenuItem onClick={this.handleClose}>Team</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Contribute</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Whitepaper</MenuItem>
+                    <MenuItem onClick={this.handleClose} component={LinkToTeam}>Team</MenuItem>
+                    <MenuItem onClick={this.handleClose} component={LinkToContribute}>Contribute</MenuItem>
+                    <MenuItem onClick={this.handleClose} component={LinkToWhitepaper}>Whitepaper</MenuItem>
                   </MenuList>
                 </Paper>
               </Grow>

@@ -9,7 +9,6 @@ import {
 import { ParallaxProvider } from "react-skrollr";
 
 import ProfilePage from './containers/ProfilePage'
-import AboutUsToggle from './components/AboutUsToggle'
 import Contact from './containers/Contact'
 import Home from './containers/Home'
 import Howitworks from './containers/Howitworks'
@@ -45,7 +44,6 @@ class App extends Component {
 								path="/"
 								component={Home} />
 
-							<Route path="/about" component={AboutUsToggle} />
 							<Route path="/contact" component={Contact} />
 							<Route path="/howitworks" component={Howitworks} />
 							<Route path="/team" component={Team} />
