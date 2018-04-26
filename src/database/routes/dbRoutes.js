@@ -8,6 +8,9 @@ var Recipient = mongoose.model("Recipient");
 var Donor = mongoose.model("Donor");
 var Merchant = mongoose.model("Merchant");
 
+const sendError = (res, error) => {
+  res.status(500).send({ error });
+};
 module.exports = app => {
   // app.get("/api/surveys", async (req, res) => {
   //   const surveys = await Survey.find({ _user: req.user.id }).select({
@@ -32,14 +35,23 @@ module.exports = app => {
     res
   ) {
     var activeGifts = [];
+    const donorAddress = req.params.ethereumAddress;
+    var donor = await Donor.findOne({ ethDonorAddr: donorAddress }, function(
+      err,
+      donor
+    ) {
+      if (err) res.send(err);
+    });
 
-    var donor = await Donor.findOne(
-      { ethDonorAddr: req.params.ethereumAddress },
-      function(err, donor) {
-        if (err) res.send(err);
-      }
-    );
-
+    if (donor === null) {
+      sendError(
+        res,
+        Error(`Could not find donor with address ${donorAddress}`)
+      );
+      return;
+    } else {
+      console.log(donor);
+    }
     var gifts = donor.donatedActiveGifts;
     for (var i = 0, len = gifts.length; i < len; i++) {
       await Recipient.find(

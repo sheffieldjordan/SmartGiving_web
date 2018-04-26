@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import style from "./style";
+import { GetAllOpenGifts } from "../public/APIManager";
 
 class GetActiveGifts extends Component {
   constructor(props) {
@@ -57,19 +58,17 @@ class GetActiveGifts extends Component {
     let ethereumAddress = this.state.ethDonorAddress.trim();
     // console.log(ethereumAddress);
 
-    axios
-      // .get(`/api/donor_${ethereumAddress}/activeGiftsList`)
-      // .get(`/api/${ethereumAddress}/activeDonorGiftsList`)//working version
-      .get(`/api/${ethereumAddress}/activeGiftsList`)
-      .then(res => {
-        console.log("inside Donor GetActiveGifts", res.data);
+    const completion = (data, err) => {
+      if (err !== undefined) {
+        console.log(err);
+      } else {
+        console.log("inside Donor GetActiveGifts", data);
         this.setState({
-          data: res.data
+          data: data
         });
-      })
-      .catch(err => {
-        console.error(err);
-      });
+      }
+    };
+    GetAllOpenGifts(completion, ethereumAddress);
   }
 
   handleMerchantSubmit(e) {
