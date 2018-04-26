@@ -49,9 +49,8 @@ module.exports = app => {
         Error(`Could not find donor with address ${donorAddress}`)
       );
       return;
-    } else {
-      console.log(donor);
     }
+
     var gifts = donor.donatedActiveGifts;
     for (var i = 0, len = gifts.length; i < len; i++) {
       await Recipient.find(

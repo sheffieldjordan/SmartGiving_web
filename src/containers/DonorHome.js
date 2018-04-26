@@ -13,7 +13,6 @@ import {
 } from "../components/CardComponents";
 import DrawerFactory from "../components/DrawerFactory";
 import { ImageLibrary } from "../components/ImageLibrary";
-import { GetAllOpenGifts } from "../database/public/APIManager";
 
 import "../style/DonorHome.css";
 
@@ -25,24 +24,10 @@ class DonorHome extends Component {
     };
     const learnMore = request => () => {
       this.props.history.push({
-        pathname: "/gift/" + request.id,
+        pathname: "/gift/" + request.ethGiftAddr,
         state: { request }
       });
     };
-
-    const dbCompletion = (data, err) => {
-      if (err) {
-        alert(err);
-      } else {
-        console.log(`We got that phat data!`);
-        data.map((d, i) => {
-          console.log(d);
-          return d;
-        });
-      }
-    };
-
-    GetAllOpenGifts(dbCompletion);
 
     const requests = storeState.globalData.requests;
     const cards = requests.map((r, i) => {

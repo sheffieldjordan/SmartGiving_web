@@ -5,7 +5,8 @@ export const GetAllOpenGifts = (
   ethereumAddress = "0X038HEF23A54B9B83"
 ) => {
   /* TODO @Selenne
-      - Make this return all recipients, not gifts from a specific address
+      - Make this return recipients instead of gifts
+      - Make sure this returns *all* gifts, not just ones by a specific donor
      TODO @Gabe
       - Filter out this data by which gifts are really open (no ETH address)
      TODO @Gabe and @Selenne
