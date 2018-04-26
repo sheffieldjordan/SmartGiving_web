@@ -6,12 +6,8 @@ import AddIcon from '@material-ui/icons/Add';
 class DescribeGift extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {gift: {
-						tags:[],
-						expiration:"2018-05-10",
-						description:""
-					 },
-					 tagInput:""}
+		console.log(props)
+		this.state = {gift:props.gift}
 	}
 
 	render() {
@@ -21,8 +17,8 @@ class DescribeGift extends Component {
 				let gift = this.state.gift
 				gift.tags = [...gift.tags, tag]
 				this.props.onUpdate(gift)
-				// this.setState({gift})
-				// this.setState({tagInput: ""})
+				this.setState({gift})
+				this.setState({tagInput: ""})
 				console.log(this.props.store.getState())
 			}
 		}
@@ -50,22 +46,19 @@ class DescribeGift extends Component {
 			this.props.onUpdate(gift)
 		}
 
-		const giftData = () => {
-			return this.state.gift
-		} 
 
 		return (
 		<div>
 			<div className = "describe-gift-section">
 				<span className = "describe-gift-label">Description </span>
-				<TextField value={giftData().description} onChange={updateSection("description")} className = "describe-gift-textfield" multiline rows = "2" rowsMax= "15" placeholder = "Briefly state the purpose of this request"/>
+				<TextField value={this.state.gift.description} onChange={updateSection("description")} className = "describe-gift-textfield" multiline rows = "2" rowsMax= "15" placeholder = "Briefly state the purpose of this request"/>
 			</div>
 			<div className = "describe-gift-section">
 				<span className = "describe-gift-label">Expiration date</span>
 				<TextField  onChange={updateSection("expiration")}
 			        id="date"
 			        type="date"
-			        value={giftData().expiration}
+			        value={this.state.gift.expiration}
 			        InputLabelProps={{
 			          shrink: true,
 			        }}
@@ -77,7 +70,7 @@ class DescribeGift extends Component {
 				<Button onClick={appendTag} className="describe-gift-add-tag" mini variant="fab" color="primary" aria-label="add"><AddIcon /></Button>
 			</div>
 			<div className = "describe-gift-section">
-				{giftData().tags.map((tag, i) => {
+				{this.state.gift.tags.map((tag, i) => {
 					return <Chip key={i}
 								 label={tag}
 								 onDelete={deleteTag(tag)}/>
