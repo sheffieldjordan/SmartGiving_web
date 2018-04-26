@@ -6,6 +6,13 @@ import AddIcon from '@material-ui/icons/Add';
 class DescribeGift extends Component {
 	constructor(props) {
 		super(props)
+		this.state = {gift: {
+						tags:[],
+						expiration:"2018-05-10",
+						description:"",
+						ethRecipientAddr: "21e21ewqd32"
+					 },
+					 tagInput:""}
 		console.log(props)
 		this.state = {gift:props.gift}
 	}

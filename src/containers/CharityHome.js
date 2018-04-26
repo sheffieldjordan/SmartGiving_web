@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import NavBar from '../components/NavBar';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
 import CharityHomeTop from '../components/CharityHomeTop';
 import CharityStatusBar from '../components/CharityStatusBar';
 
@@ -39,12 +37,7 @@ class CharityHome extends Component {
 		return(
 		<div>
 
-			<NavBar/>
-			<AppBar position="static" color="default">
-				<Toolbar className = "title-bar">
-					<h1>Charity's profile</h1>
-				</Toolbar>
-			</AppBar>
+		  <NavBar title="Charity's profile"/>
 
 		  <div className='charity-status-container'>
 			{/*top half of the page*/}

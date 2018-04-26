@@ -9,7 +9,7 @@ import {
 import { ParallaxProvider } from "react-skrollr";
 
 import ProfilePage from './containers/ProfilePage'
-import About from './containers/About'
+import AboutUsToggle from './components/AboutUsToggle'
 import Contact from './containers/Contact'
 import Home from './containers/Home'
 import Howitworks from './containers/Howitworks'
@@ -25,6 +25,7 @@ import SelectMerchant from './ethereum/components/SelectMerchant'
 import ItemSent from './ethereum/components/ItemSent'
 import ItemReceived from './ethereum/components/ItemReceived'
 import GetActiveGifts from "./database/components/GetActiveGifts";
+import Team from './containers/Team'
 
 class App extends Component {
 	render() {
@@ -44,9 +45,10 @@ class App extends Component {
 								path="/"
 								component={Home} />
 
-							<Route path="/about" component={About} />
+							<Route path="/about" component={AboutUsToggle} />
 							<Route path="/contact" component={Contact} />
 							<Route path="/howitworks" component={Howitworks} />
+							<Route path="/team" component={Team} />
 							<Route
 								path="/profile"
 								component={() => <ProfilePage store={this.props.store} />}
@@ -58,7 +60,7 @@ class App extends Component {
 
 							<Route
 								path="/charity"
-								component={() => <CharityHome store={this.props.store} />} 
+								component={() => <CharityHome store={this.props.store} />}
 							/>
 
 							<Route
