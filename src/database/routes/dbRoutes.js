@@ -21,7 +21,7 @@ module.exports = app => {
 
   app.get("/recipients", async (req, res) => {
     const recipients = await Recipient.find({}, { _id: 0, __v: 0 }).sort({
-      orgName: 1
+      title: 1
     });
     // res.send(recipients);
     console.log(res.data);
@@ -132,9 +132,10 @@ module.exports = app => {
         //setting  new data to whatever was changed. If
         //nothing was changed we will not alter the field.
         recipient[0].gifts.push({
-          description: req.body.description,
+          title: req.body.title,
+          summary: req.body.description,
           expiry: req.body.expiry,
-          suggDonationAmt: req.body.suggDonationAmt,
+          dollars: req.body.suggDonationAmt,
           creationDate: req.body.creationDate,
           items: req.body.items
         });
