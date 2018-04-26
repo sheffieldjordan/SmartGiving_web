@@ -22,7 +22,7 @@ import GetAllStats from './ethereum/components/GetAllStats'
 import SelectMerchant from './ethereum/components/SelectMerchant'
 import ItemSent from './ethereum/components/ItemSent'
 import ItemReceived from './ethereum/components/ItemReceived'
-import GetActiveGifts from "./database/components/GetActiveGifts";
+import GetActiveGifts from "./containers/GetActiveGifts";
 import Team from './containers/Team'
 
 
