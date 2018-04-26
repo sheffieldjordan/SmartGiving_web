@@ -30,21 +30,30 @@ import "../style/GiftPage.css";
 class GiftPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { donationValue: 0, gift: { items: [] } };
+    this.state = { donationValue: 0, charity: {}, gift: { items: [] } };
     this.giftData.bind(this);
     this.defaultCost.bind(this);
   }
 
   componentDidMount() {
-    const giftID = this.props.match.params.giftID;
+    const charityID = this.props.match.params.charityID;
     const dbCompletion = (data, err) => {
       if (err) {
         alert(err);
-      } else {
-        const gift = data.reduce((finalVal, currentVal) => {
-          return currentVal.ethGiftAddr === giftID ? currentVal : finalVal;
-        });
-        this.setState({ gift });
+        return
+      }
+      const charity = data.reduce((finalChar, currentChar) => {
+        return currentChar.ethRecipientAddr === charityID ? currentChar : finalChar;
+      }, undefined);
+      if (charity === undefined) {
+        console.warn(`Cannot find charity for id ${charityID}`)
+        return
+      } else if (charity.gifts === undefined || charity.gifts.length === 0) {
+          console.warn(`Cannot find gifts for charity with id ${charityID}`)
+        }
+      else {
+        const gift = charity.gifts[0]
+        this.setState({ charity, gift });
       }
     };
 
@@ -67,7 +76,7 @@ class GiftPage extends Component {
 
   render() {
     const handleDonationChange = event => {
-      let donationValue = Math.floor(this.giftData().dollars).toFixed(2);
+      let donationValue = Math.floor(this.state.gift.dollars).toFixed(2);
       const n = event.target.value;
       if (!isNaN(parseFloat(n)) && isFinite(n)) {
         // Shout out to StackOverflow for making a max of two digits parseFloat
@@ -77,7 +86,6 @@ class GiftPage extends Component {
       }
       this.setState({ donationValue });
     };
-    const giftData = this.giftData();
 
     const donationValue = () =>
       this.state.donationValue === 0
@@ -90,7 +98,7 @@ class GiftPage extends Component {
           console.log(`ERROR : ${error}`);
         }
       });
-      this.props.showDonate(true, donationValue(), giftData.charity);
+      this.props.showDonate(true, donationValue(), this.state.charity);
     };
     return (
       <div>
@@ -101,14 +109,14 @@ class GiftPage extends Component {
               <Card className="gift-info-image-card">
                 <CardMedia
                   className="gift-info-image"
-                  title={giftData.charity.title}
-                  image={ImageLibrary(giftData.charity.image)}
+                  title={this.state.charity.title}
+                  image={ImageLibrary(this.state.charity.image)}
                 >
                   <div className="gift-background-color">
                     <div className="gift-title-container">
-                      <h1 className="gift-page-title">{giftData.title}</h1>
+                      <h1 className="gift-page-title">{this.state.charity.title}</h1>
                       <div className="gift-page-author">
-                        for {giftData.charity.title}
+                        for {this.state.charity.title}
                       </div>
                     </div>
                   </div>
@@ -116,12 +124,12 @@ class GiftPage extends Component {
               </Card>
               <Paper elevation={kStyleElevation} style={kStylePaper}>
                 <h2 className="gift-background-title"> Background </h2>
-                <div className="gift-background">{giftData.background}</div>
+                <div className="gift-background">{this.state.gift.background}</div>
                 <h2 className="gift-background-title">
                   {" "}
                   Why There Is a Challenge{" "}
                 </h2>
-                <div className="gift-background">{giftData.challenge}</div>
+                <div className="gift-background">{this.state.gift.challenge}</div>
               </Paper>
             </div>
             <div className="gift-info-section">
@@ -182,17 +190,18 @@ class GiftPage extends Component {
               </Paper>
               <Paper elevation={kStyleElevation} style={kStylePaper}>
                 <h2 className="gift-background-title"> About Recipient </h2>
-                <div className="gift-background">{giftData.charity.about}</div>
+                <div className="gift-background">{this.state.charity.about}</div>
                 <h2 className="gift-background-title"> Learn More </h2>
                 <div className="gift-background">
-                  <ContactInfo user={giftData.charity} />
+                  <ContactInfo user={this.state.charity} />
                 </div>
               </Paper>
             </div>
           </div>
           <DrawerFactory
             store={this.props.store}
-            request={giftData}
+            request={this.state.gift}
+            charity={this.state.charity}
             donationValue={parseFloat(donationValue())}
             type="donate"
           />
