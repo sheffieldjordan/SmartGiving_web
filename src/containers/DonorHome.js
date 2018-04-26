@@ -70,5 +70,3 @@ DonorHome = connect(
 )(DonorHome)
 
 export default withRouter(DonorHome)
-
-
