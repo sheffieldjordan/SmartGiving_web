@@ -58,7 +58,7 @@ function getStepContent(step) {
 
 class CharityStatusBar extends Component {
 	state = {
-    activeStep: 0,
+    activeStep: 1,
     completed: new Set(),
     skipped: new Set(),
     isDrawerOpen: false,

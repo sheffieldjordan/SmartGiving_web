@@ -9,7 +9,8 @@ class DescribeGift extends Component {
 		this.state = {gift: {
 						tags:[],
 						expiration:"2018-05-10",
-						description:""
+						description:"",
+						ethRecipientAddr: "21e21ewqd32"
 					 },
 					 tagInput:""}
 	}
@@ -21,8 +22,8 @@ class DescribeGift extends Component {
 				let gift = this.state.gift
 				gift.tags = [...gift.tags, tag]
 				this.props.onUpdate(gift)
-				// this.setState({gift})
-				// this.setState({tagInput: ""})
+				this.setState({gift})
+				this.setState({tagInput: ""})
 				console.log(this.props.store.getState())
 			}
 		}

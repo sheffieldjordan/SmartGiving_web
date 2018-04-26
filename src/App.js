@@ -25,6 +25,7 @@ import SelectMerchant from './ethereum/components/SelectMerchant'
 import ItemSent from './ethereum/components/ItemSent'
 import ItemReceived from './ethereum/components/ItemReceived'
 import GetActiveGifts from "./database/components/GetActiveGifts";
+import Team from './containers/Team'
 
 class App extends Component {
 	render() {
@@ -47,6 +48,7 @@ class App extends Component {
 							<Route path="/about" component={About} />
 							<Route path="/contact" component={Contact} />
 							<Route path="/howitworks" component={Howitworks} />
+							<Route path="/team" component={Team} />
 							<Route
 								path="/profile"
 								component={() => <ProfilePage store={this.props.store} />}
