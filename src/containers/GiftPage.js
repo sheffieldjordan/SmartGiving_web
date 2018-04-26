@@ -39,7 +39,7 @@ class GiftPage extends Component {
     const charityID = this.props.match.params.charityID;
     const dbCompletion = (data, err) => {
       if (err) {
-        alert(err);
+        alert(`${err}\nPerhaps the database isn't running.`);
         return
       }
       const charity = data.reduce((finalChar, currentChar) => {
