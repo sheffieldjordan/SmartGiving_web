@@ -60,7 +60,7 @@ class Team extends Component {
 				<div className={classes.container}>
 					<div className={classes.intro}>
 						<Typography variant="subheading" className={classes.container}>
-						We created and submitted the SmartGiving blockchain-based web application as our final project at University of California, Berkeley, School of Information. Quite a few people were involved in the process, so we are going to thank them after we present the core team:  
+						We created and submitted the SmartGive blockchain-based web application as our final project at University of California, Berkeley, School of Information. Quite a few people were involved in the process, so we are going to thank them after we present the core team:  
 						</Typography>
 					</div>
 

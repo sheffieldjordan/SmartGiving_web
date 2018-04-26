@@ -55,7 +55,7 @@ class CreateRequest extends Component {
 			"Basic Information" : <DescribeGift store={this.props.store} onUpdate = {updateGift} gift={this.state.gift}/>,
 			"List of Goods" : <ItemizeGift store={this.props.store} onUpdate = {updateGift} gift={this.state.gift}/>,
 			"Let's do it": <div className = "describe-gift-section">
-							<span>Now you can post your request on SmartGiving's gift factory</span>
+							<span>Now you can post your request on SmartGive's gift factory</span>
 							<div><Button style={{margin:"10px"}} onClick={this.handleSubmit} variant="raised" color="secondary">Submit</Button></div>
 						   </div>
 		}

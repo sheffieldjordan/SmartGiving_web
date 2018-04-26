@@ -35,7 +35,7 @@ class Home extends Component {
 			          Give smart.
 			        </Typography>
 			        <Typography variant="subheading">
-			          SmartGiving is a blockchain-based application for non-cash donations. 
+			          SmartGive is a blockchain-based application for non-cash donations. 
 			          We connect individual donors and small local charity organizations around the world. 
 			          Our mission is to reach transparency and accountability in charitable giving and decrease reliance on blind trust.
 			        </Typography>
