@@ -8,6 +8,9 @@ var Recipient = mongoose.model("Recipient");
 var Donor = mongoose.model("Donor");
 var Merchant = mongoose.model("Merchant");
 
+const sendError = (res, error) => {
+  res.status(500).send({ error });
+};
 module.exports = app => {
   // app.get("/api/surveys", async (req, res) => {
   //   const surveys = await Survey.find({ _user: req.user.id }).select({
@@ -18,7 +21,7 @@ module.exports = app => {
 
   app.get("/recipients", async (req, res) => {
     const recipients = await Recipient.find({}, { _id: 0, __v: 0 }).sort({
-      orgName: 1
+      title: 1
     });
     // res.send(recipients);
     console.log(res.data);
@@ -31,27 +34,44 @@ module.exports = app => {
     req,
     res
   ) {
-    var activeGifts = [];
+    // var activeGifts = [];
+    // const donorAddress = req.params.ethereumAddress;
+    // var donor = await Donor.findOne({ ethDonorAddr: donorAddress }, function(
+    //   err,
+    //   donor
+    // ) {
+    //   if (err) res.send(err);
+    // });
+    //
+    // if (donor === null) {
+    //   sendError(
+    //     res,
+    //     Error(`Could not find donor with address ${donorAddress}`)
+    //   );
+    //   return;
+    // }
+    //
+    // var gifts = donor.donatedActiveGifts;
+    // for (var i = 0, len = gifts.length; i < len; i++) {
+    //   await Recipient.find(
+    //     { "gifts.ethGiftAddr": gifts[i] },
+    //     { "gifts.$": true },
+    //     function(err, gift) {
+    //       if (err) res.send(err);
+    //       activeGifts.push(gift[0].gifts[0]);
+    //     }
+    //   );
+    // }
+    // res.json(activeGifts);
+  });
 
-    var donor = await Donor.findOne(
-      { ethDonorAddr: req.params.ethereumAddress },
-      function(err, donor) {
-        if (err) res.send(err);
-      }
-    );
-
-    var gifts = donor.donatedActiveGifts;
-    for (var i = 0, len = gifts.length; i < len; i++) {
-      await Recipient.find(
-        { "gifts.ethGiftAddr": gifts[i] },
-        { "gifts.$": true },
-        function(err, gift) {
-          if (err) res.send(err);
-          activeGifts.push(gift[0].gifts[0]);
-        }
-      );
-    }
-    res.json(activeGifts);
+  app.get("/api/activeRecipientsList", async function(req, res) {
+    const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
+    // .sort({
+    //   title: 1
+    // });
+    // console.log(recipients);
+    res.json(recipients);
   });
 
   //Get Active gifts for MERCHAMT
@@ -121,9 +141,10 @@ module.exports = app => {
         //setting  new data to whatever was changed. If
         //nothing was changed we will not alter the field.
         recipient[0].gifts.push({
-          description: req.body.description,
+          title: req.body.title,
+          summary: req.body.description,
           expiry: req.body.expiry,
-          suggDonationAmt: req.body.suggDonationAmt,
+          dollars: req.body.suggDonationAmt,
           creationDate: req.body.creationDate,
           items: req.body.items
         });

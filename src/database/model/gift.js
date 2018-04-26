@@ -4,10 +4,13 @@ const bidSchema = require("./bid");
 const itemSchema = require("./item");
 
 const giftSchema = new Schema({
-  description: String,
+  title: String,
+  summary: String,
+  background: String,
+  challenge: String,
   expiry: Date,
   ethGiftAddr: { type: String, default: "" },
-  suggDonationAmt: { type: Number, default: 0 },
+  dollars: { type: Number, default: 0 },
   ethDonorAddr: String,
   donorDonationAmt: { type: Number, default: 0 },
   donorPledgeDate: Date,
@@ -21,7 +24,8 @@ const giftSchema = new Schema({
   receivedDate: Date,
   balance: { type: Number, default: 0 },
   creationDate: Date,
-  lastUpdate: Date
+  lastUpdate: Date,
+  tags: [String]
 });
 
 module.exports = giftSchema;
