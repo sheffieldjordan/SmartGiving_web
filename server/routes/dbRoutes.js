@@ -3,6 +3,7 @@ const Path = require("path-parser").default;
 const { URL } = require("url");
 const mongoose = require("mongoose");
 var fs = require("fs");
+const ethereumData = require("../ethereum/getGiftStats_server/getstats");
 
 var Recipient = mongoose.model("Recipient");
 var Donor = mongoose.model("Donor");
@@ -12,12 +13,20 @@ const sendError = (res, error) => {
   res.status(500).send({ error });
 };
 module.exports = app => {
-  // app.get("/api/surveys", async (req, res) => {
-  //   const surveys = await Survey.find({ _user: req.user.id }).select({
-  //     recipients: false
-  //   });
-  //   res.send(surveys);
-  // });
+  //*************** Working with Gabe ***************//
+  app.get("/api/activeRecipientsList", async function(req, res) {
+    const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
+    res.json(recipients);
+  });
+  //*************** Working with Gabe ***************//
+
+  app.get("/api/updateDB", async function(req, res) {
+    //const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
+    //res.json(recipients);
+    ethereumData.makeArrayOfObjects();
+    res.json({ message: "From Morgan" });
+    // console.log(ethereumData.);
+  });
 
   app.get("/recipients", async (req, res) => {
     const recipients = await Recipient.find({}, { _id: 0, __v: 0 }).sort({
@@ -63,15 +72,6 @@ module.exports = app => {
     //   );
     // }
     // res.json(activeGifts);
-  });
-
-  app.get("/api/activeRecipientsList", async function(req, res) {
-    const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
-    // .sort({
-    //   title: 1
-    // });
-    // console.log(recipients);
-    res.json(recipients);
   });
 
   //Get Active gifts for MERCHAMT
