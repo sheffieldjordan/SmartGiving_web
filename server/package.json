@@ -1,9 +1,10 @@
 {
-  "name": "database",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "smartgiving",
+  "version": "0.1.0",
+  "private": true,
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
