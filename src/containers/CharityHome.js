@@ -37,7 +37,7 @@ class CharityHome extends Component {
 		return(
 		<div>
 
-		  <NavBar title="Charity's profile"/>
+		  <NavBar/>
 
 		  <div className='charity-status-container'>
 			{/*top half of the page*/}

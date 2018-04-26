@@ -2,7 +2,6 @@ body {
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
 	font-size: 12pt;
-
 }
 
 h1, h2, h3{
@@ -154,13 +153,13 @@ h1, h2, h3{
 
 .home-intro-text {
 	flex-basis: auto;
-	margin: 5px;
-	width: 20%;
+	margin: 15px;
+	width: 350px;
 }
 
 .home-intro-video {
 	flex-basis: auto;
-	margin: 5px;
+	margin: 15px;
 
 }
 
@@ -173,7 +172,7 @@ h1, h2, h3{
 }
 
 .big-button {
-	width: 18%;
+	width: 19%;
 }
 
 /*CharityHome */

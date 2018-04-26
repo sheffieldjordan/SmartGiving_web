@@ -15,7 +15,7 @@ import "../style/Components.css"
 
 const LinkToDonors = props => <Link to="/home/donor" {...props} />
 const LinkToMerchants = props => <Link to="/home/merchant" {...props} />
-const LinkToRecipients = props => <Link to="/charity" {...props} />
+const LinkToRecipients = props => <Link to="/home/charity" {...props} />
 
 class Home extends Component {
 // @Natasha write your code here
@@ -31,7 +31,7 @@ class Home extends Component {
 			        <Typography variant="display3">
 			          Don't just give.
 			        </Typography>
-			        <Typography variant="display3">
+			        <Typography variant="display3" style={{color: '#EDAE44'}}>
 			          Give smart.
 			        </Typography>
 			        <Typography variant="subheading">
