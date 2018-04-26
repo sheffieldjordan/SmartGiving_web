@@ -13,13 +13,18 @@ class ItemReceived extends Component {
 		try {
 			const targetGift = SmartGift('0xd16038d71B68E149B9441dcEEf6C9c8b339701a6') // address of the Gift you're working on
 			const accounts = await web3.eth.getAccounts()
-			await targetGift.methods
+			const receiptResult = await targetGift.methods
 				.recipientReceivesItem()
 				.send({
 					from: accounts[0],
 					gas: 1000000
 				})
-			alert('Success!')
+			if (receiptResult.status === "0x0" || !receiptResult.status) {
+				console.log("Transaction Failed!!!")
+			} else {
+				console.log(`You've announced your item has been received!`)
+				alert('Success!')
+			}
 		} catch (err) {
 			this.setState({ errorMessage: err.message })
 		}
