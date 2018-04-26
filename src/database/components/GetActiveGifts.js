@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import style from "../style/GetActiveGiftsStyle";
-import { GetAllOpenGifts } from "../backend/APIManager";
+import style from "./style";
+import { GetAllOpenGifts } from "../public/APIManager";
 
 class GetActiveGifts extends Component {
   constructor(props) {
