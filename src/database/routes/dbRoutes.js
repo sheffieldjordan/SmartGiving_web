@@ -34,35 +34,44 @@ module.exports = app => {
     req,
     res
   ) {
-    var activeGifts = [];
-    const donorAddress = req.params.ethereumAddress;
-    var donor = await Donor.findOne({ ethDonorAddr: donorAddress }, function(
-      err,
-      donor
-    ) {
-      if (err) res.send(err);
-    });
+    // var activeGifts = [];
+    // const donorAddress = req.params.ethereumAddress;
+    // var donor = await Donor.findOne({ ethDonorAddr: donorAddress }, function(
+    //   err,
+    //   donor
+    // ) {
+    //   if (err) res.send(err);
+    // });
+    //
+    // if (donor === null) {
+    //   sendError(
+    //     res,
+    //     Error(`Could not find donor with address ${donorAddress}`)
+    //   );
+    //   return;
+    // }
+    //
+    // var gifts = donor.donatedActiveGifts;
+    // for (var i = 0, len = gifts.length; i < len; i++) {
+    //   await Recipient.find(
+    //     { "gifts.ethGiftAddr": gifts[i] },
+    //     { "gifts.$": true },
+    //     function(err, gift) {
+    //       if (err) res.send(err);
+    //       activeGifts.push(gift[0].gifts[0]);
+    //     }
+    //   );
+    // }
+    // res.json(activeGifts);
+  });
 
-    if (donor === null) {
-      sendError(
-        res,
-        Error(`Could not find donor with address ${donorAddress}`)
-      );
-      return;
-    }
-
-    var gifts = donor.donatedActiveGifts;
-    for (var i = 0, len = gifts.length; i < len; i++) {
-      await Recipient.find(
-        { "gifts.ethGiftAddr": gifts[i] },
-        { "gifts.$": true },
-        function(err, gift) {
-          if (err) res.send(err);
-          activeGifts.push(gift[0].gifts[0]);
-        }
-      );
-    }
-    res.json(activeGifts);
+  app.get("/api/activeRecipientsList", async function(req, res) {
+    const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
+    // .sort({
+    //   title: 1
+    // });
+    // console.log(recipients);
+    res.json(recipients);
   });
 
   //Get Active gifts for MERCHAMT

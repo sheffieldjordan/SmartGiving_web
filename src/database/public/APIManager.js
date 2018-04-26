@@ -1,11 +1,7 @@
 import axios from "axios";
 
-export const GetAllOpenGifts = (
-  completion,
-  ethereumAddress = "0X038HEF23A54B9B83"
-) => {
+export const GetAllOpenGifts = completion => {
   /* TODO @Selenne
-      - Make this return recipients instead of gifts
       - Make sure this returns *all* gifts, not just ones by a specific donor
      TODO @Gabe
       - Filter out this data by which gifts are really open (no ETH address)
@@ -18,7 +14,7 @@ export const GetAllOpenGifts = (
   }
 
   axios
-    .get(`/api/${ethereumAddress}/activeDonorGiftsList`)
+    .get(`/api/activeRecipientsList`)
     .then(res => {
       completion(res.data, undefined);
     })
