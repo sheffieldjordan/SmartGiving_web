@@ -76,8 +76,8 @@ const convertToDatabaseObject = (ethereumJSON, smartGiftAddress) => {
       // about: "",
       // challenge: ""
     },
-    expiry: timeCheck(ethereumJSON[6]),
-    description: ethereumJSON[12],
+    // expiry: timeCheck(ethereumJSON[6]),
+    // description: ethereumJSON[12],
     // items: [{ desc: "", qty: 0, unit: "" }],
     // preferredMerchants: [""],
     donor: addressCheck(ethereumJSON[1]),
