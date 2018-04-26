@@ -6,7 +6,7 @@ import DrawerFactory from "../components/DrawerFactory"
 import ContactInfo from "../components/ContactInfo"
 import { ImageLibrary } from "../components/ImageLibrary"
 
-import { GetAllOpenGifts } from "../database/public/APIManager"
+import { GetAllOpenGifts } from "../backend/APIManager"
 
 import {
   Paper,
