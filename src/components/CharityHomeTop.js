@@ -43,7 +43,7 @@ class CharityHomeTop extends Component {
 				Hello, Palmira Elementary!
 				</Typography>
 			</div>
-			
+
 			<div className='profile'>
 			  <Button className={classes.button} href="#/profile">
 		        Edit Profile
