@@ -3,7 +3,7 @@ const Path = require("path-parser").default;
 const { URL } = require("url");
 const mongoose = require("mongoose");
 var fs = require("fs");
-const ethereumData = require("../ethereum/getGiftStats_server/getstats");
+const GetEthereumGifts = require("../ethereum/getGiftStats_server/getstats");
 
 var Recipient = mongoose.model("Recipient");
 var Donor = mongoose.model("Donor");
@@ -23,9 +23,10 @@ module.exports = app => {
   app.get("/api/updateDB", async function(req, res) {
     //const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
     //res.json(recipients);
-    ethereumData.makeArrayOfObjects();
-    res.json({ message: "From Morgan" });
-    // console.log(ethereumData.);
+    const completion = ethData => {
+      res.json({ message: ethData });
+    };
+    GetEthereumGifts(completion);
   });
 
   app.get("/recipients", async (req, res) => {

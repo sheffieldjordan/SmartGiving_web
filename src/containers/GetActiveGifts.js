@@ -30,6 +30,7 @@ class GetActiveGifts extends Component {
       this
     );
     this.handleRecipientGiftAdd = this.handleRecipientGiftAdd.bind(this);
+    this.handleUpdateDB = this.handleUpdateDB.bind(this);
     this.handleDonorSubmit = this.handleDonorSubmit.bind(this);
     this.handleMerchantSubmit = this.handleMerchantSubmit.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -69,6 +70,33 @@ class GetActiveGifts extends Component {
       }
     };
     GetAllOpenGifts(completion, ethereumAddress);
+  }
+
+  handleUpdateDB(e) {
+    e.preventDefault();
+    axios
+      .get(`/api/updateDB`)
+      .then(res => {
+        console.log("Back GetActiveGifts from req Morgan", res.data);
+        this.setState({
+          data: res.data
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+
+    // const completion = (data, err) => {
+    //   if (err !== undefined) {
+    //     console.log(err);
+    //   } else {
+    //     console.log("inside Donor GetActiveGifts", data);
+    //     this.setState({
+    //       data: data
+    //     });
+    //   }
+    // };
+    // GetAllOpenGifts(completion, ethereumAddress);
   }
 
   handleMerchantSubmit(e) {
@@ -272,6 +300,16 @@ class GetActiveGifts extends Component {
               type="submit"
               style={style.recipientFormPost}
               value="Add Gift"
+            />
+          </div>
+        </form>
+        <hr />
+        <form onSubmit={this.handleUpdateDB}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Update DB"
             />
           </div>
         </form>
