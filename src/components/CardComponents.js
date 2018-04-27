@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from 'material-ui/Button';
 
-import {StringFromTimeStamp} from '../style/Formatter'
+import {StringFromDate} from '../style/Formatter'
 
 /* PRIVATE */ 
 class CharityCardTags extends Component {
@@ -38,7 +38,7 @@ class DonorExpiry extends Component {
 		return (
 			<div className = "charity-card-expiry-section">
 				<span className = "charity-card-expiry-pre">Expiry date: </span>
-				<span className = "charity-card-expiry-date">{StringFromTimeStamp(this.props.expiry["$date"])}</span>
+				<span className = "charity-card-expiry-date">{StringFromDate(new Date(this.props.expiry))}</span>
 			</div>
 		)
 	}
@@ -53,16 +53,16 @@ const button = (title, onClick) => {
 }
 
 /* EXPORTS */
-export const DonorPreButtons = (tags) => {
+export const DonorPreButtons = (request) => {
 	return [
-		<CharityCardTags key={key()} tags={tags}/>
+		<CharityCardTags key={key()} tags={request.tags}/>
 	]
 }
 
-export const DonorActionButtons = (onLearnMore, onDonate) => {
+export const DonorActionButtons = (charity, [onLearnMore, onDonate]) => {
 	return [
-		button("Learn More", onLearnMore),
-		button("Donate", onDonate)
+		button("Learn More", onLearnMore(charity)),
+		button("Donate", onDonate(charity))
     ]
 }
 
@@ -72,10 +72,10 @@ export const MerchantPreButtons = (request) => {
 	]
 }
 
-export const MerchantActionButtons = (onLearnMore, onBid) => {
+export const MerchantActionButtons = (charity, [onLearnMore, onBid]) => {
 	return [
-		button("Learn More", onLearnMore),
-		button("Bid Now", onBid)
+		button("Learn More", onLearnMore(charity)),
+		button("Bid Now", onBid(charity))
     ]
 }
 
