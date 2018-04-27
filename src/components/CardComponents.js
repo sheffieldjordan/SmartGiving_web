@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from 'material-ui/Button';
 
-import {StringFromUnixTime} from '../style/Formatter'
+import {StringFromTimeStamp} from '../style/Formatter'
 
 /* PRIVATE */ 
 class CharityCardTags extends Component {
@@ -38,7 +38,7 @@ class DonorExpiry extends Component {
 		return (
 			<div className = "charity-card-expiry-section">
 				<span className = "charity-card-expiry-pre">Expiry date: </span>
-				<span className = "charity-card-expiry-date">{StringFromUnixTime(this.props.expiry)}</span>
+				<span className = "charity-card-expiry-date">{StringFromTimeStamp(this.props.expiry["$date"])}</span>
 			</div>
 		)
 	}

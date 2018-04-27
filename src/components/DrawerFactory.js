@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import { toggleDrawer, selectRequest } from '../redux/actions'
+import { toggleDrawer, selectCharity } from '../redux/actions'
 
 import DonationDrawer from '../components/DonationDrawer'
 import BidDrawer from '../components/BidDrawer'
@@ -43,7 +43,6 @@ class DrawerFactory extends Component {
 				<DonationDrawer store={this.props.store}
 					data={data}
 					donationValue={storeState.updateDrawer.donationValue}
-					request={this.props.request}
 					charity={this.props.charity}
 				/>
 			)
@@ -65,7 +64,7 @@ class DrawerFactory extends Component {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		showRequest: (showDrawer, request={}) => {
-			dispatch(selectRequest(request))
+			dispatch(selectCharity(request))
 			dispatch(toggleDrawer(showDrawer))
 		}
 	}

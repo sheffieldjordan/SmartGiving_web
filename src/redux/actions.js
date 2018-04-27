@@ -1,9 +1,9 @@
 import C from './reduxConstants'
 
-export const selectRequest = selectedRequest => {
+export const selectCharity = selectedCharity => {
 	return {
-		type: C.SELECT_REQUEST,
-		selectedRequest
+		type: C.SELECT_CHARITY,
+		selectedCharity
 	}
 }
 export const toggleDrawer = (donationDrawerOpen, donationValue) => {

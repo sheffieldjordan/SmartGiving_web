@@ -10,7 +10,7 @@ import {DollarsToEther} from '../style/Formatter'
 class DonationDrawer extends Component {
 
 	render() {
-		const request = this.props.request
+		const request = this.props.charity.gifts !== undefined ? this.props.charity.gifts[0] : {}
 		const charity = this.props.charity
 		const donationValue = this.props.donationValue === undefined ? request.dollars : this.props.donationValue
 		return (
