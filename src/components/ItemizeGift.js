@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 import {TextField, Button, FormControl, FormHelperText, InputAdornment} from 'material-ui'
-import RequestTable from '../components/RequestTable'
 import AddIcon from '@material-ui/icons/Add';
 
+import RequestTable from './RequestTable'
+import {PriceForItems} from './Helpers'
 
 class ItemizeGift extends Component {
 	constructor(props) {
@@ -46,11 +47,6 @@ class ItemizeGift extends Component {
 			}
 		}
 
-		const totalCost = () => {
-			return this.state.items.reduce((total, currentItem) => {
-				return total + currentItem.price * currentItem.num
-			}, 0)
-		}
 
 		return (
 		<div className = "itemize-container">
@@ -85,7 +81,7 @@ class ItemizeGift extends Component {
 			</div>
 			{requestsSection()}
 			<div className = "itemize-estimated-cost">
-				Estimated total cost: <span className = "itemize-total-dollars">${totalCost()} USD</span>
+				Estimated total cost: <span className = "itemize-total-dollars">${PriceForItems(this.state.items)} USD</span>
 			</div>
 
 		</div>

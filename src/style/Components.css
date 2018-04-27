@@ -265,6 +265,32 @@ h1, h2, h3{
 .itemize-estimated-cost {
 	margin-top:20px;
 }
+
+/* NewGiftSummary.js */
+
+.gift-summary-container {
+	margin:30px;
+}
+
+.gift-summary-title {
+	margin-bottom:10px;
+}
+
+.gift-summary-kv {
+	display:flex;
+	font-size:14pt;
+	margin-bottom:10px;
+}
+
+.gift-summary-key {
+	width:20%;
+	color:#666666;
+}
+
+.gift-summary-value {
+	width:70%
+}
+
 /* BidDrawer.js */
 .bid-items-section {
 	width:90%;

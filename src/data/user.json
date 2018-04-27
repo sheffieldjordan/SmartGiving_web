@@ -1,12 +1,7 @@
 {
 	"user": {
 		"charityName": "Ayudelos!",
-		"location": {
-			"country": "Mexico",
-			"state": "",
-			"city": "Ciudad de Mexico",
-			"imgurl": "https://i.imgur.com/SIodEmY.jpg"
-		},
+		"location": "Calle 36c #4432, Colombia, Valle del Cauca, Palmira",
 		"contact": {
 			"name": "Humberto Rodriguez",
 			"email": "humbertorodriguez12@gmail.com",

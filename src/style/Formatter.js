@@ -20,3 +20,10 @@ export const DollarsToEther = (dollars) => {
 	const dollarsPerEther = 421.0 // TODO: Get this price dynamically
 	return (parseFloat(dollars)/dollarsPerEther).toFixed(5)
 }
+
+export const PriceForGift = (gift) => {
+	return gift.reduce((total, currentItem) => {
+		return total + currentItem.price * currentItem.num
+	}, 0)
+
+}

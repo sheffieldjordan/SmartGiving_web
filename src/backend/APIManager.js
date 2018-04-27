@@ -22,3 +22,14 @@ export const GetAllOpenGifts = completion => {
       completion(undefined, err);
     });
 };
+
+export const CreateNewGift = (gift, completion) => {
+  axios
+    .put(`/api/addGift`, gift)
+    .then(res => {
+      completion()
+    })
+    .catch(err => {
+      completion(err)
+    });
+}
