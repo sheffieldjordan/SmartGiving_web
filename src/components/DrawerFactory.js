@@ -17,7 +17,7 @@ class DrawerFactory extends Component {
 			const onPrimary = () => {
 				Bid((error) => {
 					if (error !== undefined) {
-						console.log(`ERROR: ${error}`)
+						console.log(`BLOCKCHAIN: ${error}`)
 					} else {
 						console.log("Great success!")
 					}
@@ -38,7 +38,7 @@ class DrawerFactory extends Component {
 		const storeState = this.props.store.getState()
 		const data = drawerData(this.props)
 
-		if (this.props.type === "donate") {
+		if (this.props.type === "donor") {
 			return (
 				<DonationDrawer store={this.props.store}
 					data={data}
@@ -47,11 +47,11 @@ class DrawerFactory extends Component {
 				/>
 			)
 		}
-		else if (this.props.type === "bid") {
+		else if (this.props.type === "merchant") {
 			return (
 				<BidDrawer store={this.props.store}
 					data={data}
-					request={this.props.request}
+					charity={this.props.charity}
 				/>
 				)
 		} else {

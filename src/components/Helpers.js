@@ -1,6 +1,6 @@
-export const PriceForItems = (items) => {
+export const PriceForItems = (items, quantKey="num", priceKey="price") => {
 	return items.reduce((total, currentItem) => {
-		return total + currentItem.price * currentItem.num
+		return total + currentItem[priceKey] * currentItem[quantKey]
 	}, 0)
 }
 

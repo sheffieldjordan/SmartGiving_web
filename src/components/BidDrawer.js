@@ -5,6 +5,8 @@ import {Drawer, Button, TextField, FormControl, FormHelperText} from 'material-u
 
 import RequestTable from './RequestTable'
 import {StringFromLocation, DollarsToEther} from '../style/Formatter'
+import {PriceForItems} from '../components/Helpers'
+import {isObjectEmpty} from '../components/Helpers'
 
 class BidDrawer extends Component {
 	constructor(props) {
@@ -12,10 +14,14 @@ class BidDrawer extends Component {
 		this.state = {"bid" : -1}
 	}
 	render() {
-		const request = this.props.request
-		const itemsTable = (request) => {
-			if (request !== undefined && request.inventory !== undefined) {
-				return <RequestTable data={request.inventory}/>
+		const charity = this.props.charity
+		const gift = isObjectEmpty(charity) ? undefined : this.props.charity.gifts[0]
+
+		const itemsTable = (g) => {
+			if (g !== undefined && g.items !== undefined) {
+				return <RequestTable	titles = {["Item", "Quantity", "Price per unit"]}
+										keys= {["itemDescription", "quantity", "pricePerUnit"]}
+										data={gift.items}/>
 			}
 			return <div/>
 		}
@@ -24,13 +30,14 @@ class BidDrawer extends Component {
 			this.setState({bid:n})
 		}
 		const currentBid = () => {
-			if (this.state.bid === -1 && this.props.request !== undefined) {
-				return DollarsToEther(this.props.request.dollars)
+			if (this.state.bid === -1 && gift !== undefined) {
+				return DollarsToEther(PriceForItems(gift.items, "quantity", "pricePerUnit"))
 			}
 			return this.state.bid
 		}
 
-		const location = request === undefined ? undefined : request.charity.location
+		const location = charity === undefined ? undefined : charity.location
+
 		return (
 		<Drawer anchor="bottom" open={this.props.data.open} onClose={this.props.data.onClose}>
 			<div className="drawer-container">
@@ -39,7 +46,7 @@ class BidDrawer extends Component {
 					By bidding, you promise that if you win, you will ship to the following items to <span className="bid-address">{StringFromLocation(location)}</span>:
 				</div>
 				<div className = "bid-items-section">
-					{itemsTable(this.props.request)}
+					{itemsTable(gift)}
 				</div>
 				<div className = "bid-entry-container">
 					<FormControl>
@@ -65,7 +72,7 @@ class BidDrawer extends Component {
 
 
 BidDrawer.propTypes = {
-	request: PropTypes.object,
+	charity: PropTypes.object,
 	data: PropTypes.shape({
 		open: PropTypes.bool,
 		onClose: PropTypes.func,

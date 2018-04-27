@@ -6,7 +6,7 @@ import DrawerFactory from "../components/DrawerFactory"
 import ContactInfo from "../components/ContactInfo"
 import { ImageLibrary } from "../components/ImageLibrary"
 import {isObjectEmpty} from '../components/Helpers'
-
+import GiftTextFactory from '../components/GiftTextFactory'
 import { GetAllOpenGifts } from "../backend/APIManager"
 
 import {
@@ -103,6 +103,18 @@ class GiftPage extends Component {
       })
       this.props.showDonate(true, donationValue(), this.state.charity)
     }
+
+    const shippingSection = (textInfo) => {
+      if (textInfo.location === undefined) return
+      return (
+        <div className="gift-donation-money-section gift-donation-shipping">
+          Shipping Address: <span className="gift-donation-shipping-address">{textInfo.location}</span>
+        </div>
+        )
+    }
+
+    const userType = this.props.match.params.userType
+    const textInfo = GiftTextFactory(userType, this.state.charity)
     return (
       <div>
         <NavBar />
@@ -145,6 +157,8 @@ class GiftPage extends Component {
                 />
                 <div className="gift-donation-section">
                   <div className="gift-donation-money-section">
+                    {shippingSection(textInfo)}
+
                     <div className="gift-donation-estimate">
                       {" "}
                       Estimated Cost of Goods:{" "}
@@ -155,7 +169,7 @@ class GiftPage extends Component {
                       </span>
                     </div>
                     <div className="gift-donation-fill-donation">
-                      <span className="gift-your-donation">Your Donation:</span>
+                      <span className="gift-your-donation">{textInfo.moneyDescription}:</span>
                       <FormControl>
                         <TextField
                           InputProps={{
@@ -187,7 +201,7 @@ class GiftPage extends Component {
                     color="primary"
                     onClick={selectDonate}
                   >
-                    Donate
+                    {textInfo.donateButton}
                   </Button>
                 </div>
               </Paper>
@@ -206,7 +220,7 @@ class GiftPage extends Component {
             request={this.state.gift}
             charity={this.state.charity}
             donationValue={parseFloat(donationValue())}
-            type="donate"
+            type={userType}
           />
         </div>
       </div>
