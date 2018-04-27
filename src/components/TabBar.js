@@ -15,7 +15,6 @@ class TabBar extends Component {
 			this.setState({value: parseInt(value, 10)})
 		}
 		const moveTabBy = tabDir => () => {
-			console.log(keys.length)
 			const value = Math.min(Math.max(parseInt(this.state.value + tabDir, 10), 0), keys.length - 1)
 			this.setState({value})	
 		}

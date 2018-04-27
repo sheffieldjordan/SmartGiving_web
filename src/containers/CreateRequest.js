@@ -13,7 +13,15 @@ class CreateRequest extends Component {
 
 	constructor(props) {
 		super(props)
-		this.state = {gift:{tags:[], name:"", expiration: "2018-05-10", num:0, unit:"", price:0, items:[]}}
+		// By default, a gift expires a year from today, UTC
+		const defaultExpiration = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0]
+		this.state = {gift:{tags:[],
+							title:"",
+							description:"",
+							expiration: defaultExpiration,
+							background: "",
+							challenge: "",
+							items:[]}}
 	}
 
 	handleSubmit = () => {
