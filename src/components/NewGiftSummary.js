@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {PriceForItems} from './Helpers'
+import {DollarsToEther} from '../style/Formatter'
 
 class NewGiftSummary extends Component {
 
@@ -15,12 +16,13 @@ class NewGiftSummary extends Component {
 			)
 		}
 
+		const priceDollars = PriceForItems(this.props.gift.items)
 		return (
 			<div className = "gift-summary-container">
 				<h1 className = "gift-summary-title">Summary</h1>
 				{summarySection("Gift title", this.props.gift.title)}
 				{summarySection("Gift description", this.props.gift.description)}
-				{summarySection("Requested funds", `$${PriceForItems(this.props.gift.items)}`)}
+				{summarySection("Requested funds", `$${priceDollars} USD (${DollarsToEther(priceDollars)} ETH)`)}
 				{summarySection("Shipping address", this.props.store.getState().globalData.user.location)}
 		   </div>
 	   )
