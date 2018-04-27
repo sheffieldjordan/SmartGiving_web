@@ -83,7 +83,7 @@ class Howitworks extends Component {
 
 
 					<Parallax data={{'data-150p': 'opacity: 0; position: absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top: 200vh;','data-170p': 'opacity: 1;','data-top-bottom': 'opacity: 0;'}}>
-						<div><h1>Introducing SmartGiving</h1></div>
+						<div><h1>Introducing SmartGive</h1></div>
 					</Parallax>
 
 					<Parallax data={{'data-180p': 'opacity: 0; position:absolute; left: 50%; margin-right: -50%; transform: translateX(-50%); top: 215vh; width: 40%; text-align:justify;', 'data-190p': 'opacity: 1;','data-top-bottom': 'opacity: 0;'}}>

@@ -32,7 +32,7 @@ class NavBar extends Component {
 		<div>
 			<AppBar position="static" color="primary">
 				<Toolbar className="button-bar" disableGutters={true}>
-					<Button color="inherit" component={Link} to="/"> <img src={SGLogo} style={style} alt='Smart Giving logo'/>SmartGiving</Button>
+					<Button color="inherit" component={Link} to="/"> <img src={SGLogo} style={style} alt='Smart Giving logo'/>SmartGive</Button>
 					<Button color="inherit" component={Link} to="/home/howitworks">How It Works</Button>
 					<AboutUsToggle/>
 				</Toolbar>

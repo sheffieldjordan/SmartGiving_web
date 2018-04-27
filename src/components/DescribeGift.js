@@ -10,8 +10,7 @@ class DescribeGift extends Component {
 						tags:[],
 						expiration:"2018-05-10",
 						description:"",
-						ethRecipientAddr: "21e21ewqd32"
-					 },
+					},
 					 tagInput:""}
 		console.log(props)
 		this.state = {gift:props.gift}
