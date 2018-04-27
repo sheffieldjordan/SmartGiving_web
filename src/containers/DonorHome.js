@@ -18,10 +18,10 @@ class DonorHome extends Component {
       "post" : (() => [])
     }
 
-    const drawerType = "donate"
+    const userType = "donor"
 
     return (
-      <HomeTemplate store={this.props.store} buttons={buttons} drawerType={drawerType}/>
+      <HomeTemplate store={this.props.store} buttons={buttons} userType={userType}/>
       )
   }
 }

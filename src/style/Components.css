@@ -291,6 +291,14 @@ h1, h2, h3{
 	width:70%
 }
 
+.gift-donation-shipping {
+	margin-bottom:15px;
+}
+
+.gift-donation-shipping-address {
+	font-weight: 400;
+}
+
 /* BidDrawer.js */
 .bid-items-section {
 	width:90%;

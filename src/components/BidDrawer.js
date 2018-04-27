@@ -6,6 +6,7 @@ import {Drawer, Button, TextField, FormControl, FormHelperText} from 'material-u
 import RequestTable from './RequestTable'
 import {StringFromLocation, DollarsToEther} from '../style/Formatter'
 import {PriceForItems} from '../components/Helpers'
+import {isObjectEmpty} from '../components/Helpers'
 
 class BidDrawer extends Component {
 	constructor(props) {
@@ -14,7 +15,7 @@ class BidDrawer extends Component {
 	}
 	render() {
 		const charity = this.props.charity
-		const gift = charity === undefined ? undefined : this.props.charity.gifts[0]
+		const gift = isObjectEmpty(charity) ? undefined : this.props.charity.gifts[0]
 
 		const itemsTable = (g) => {
 			if (g !== undefined && g.items !== undefined) {

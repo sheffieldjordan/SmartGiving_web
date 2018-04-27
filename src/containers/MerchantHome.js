@@ -15,10 +15,10 @@ class MerchantHome extends Component {
       "post" : ((gift) => MerchantPostButtons(gift))
     }
 
-    const drawerType = "bid"
+    const userType = "merchant"
 
     return (
-      <HomeTemplate store={this.props.store} buttons={buttons} drawerType={drawerType}/>
+      <HomeTemplate store={this.props.store} buttons={buttons} userType={userType}/>
       )
   }
 }

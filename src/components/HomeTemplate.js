@@ -38,7 +38,7 @@ class HomeTemplate extends Component {
     }
     const learnMore = charity => () => {
       this.props.history.push({
-        pathname: "/charity/" + charity.ethRecipientAddr,
+        pathname: `/charity/${charity.ethRecipientAddr}/${this.props.userType}`,
         state: { charity }
       })
     }
@@ -71,7 +71,7 @@ class HomeTemplate extends Component {
       <DrawerFactory
         store={this.props.store}
         charity={drawerCharity()}
-        type={this.props.drawerType}
+        type={this.props.userType}
       />
     )
 
