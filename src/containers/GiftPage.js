@@ -20,7 +20,7 @@ import {
 } from "material-ui"
 import { kStyleElevation, kStylePaper } from "../style/styleConstants"
 
-import { toggleDrawer, selectRequest } from "../redux/actions"
+import { toggleDrawer, selectCharity } from "../redux/actions"
 import { connect } from "react-redux"
 import { withRouter } from "react-router"
 
@@ -214,7 +214,7 @@ class GiftPage extends Component {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     showDonate: (showDrawer, donationValue, request = {}) => {
-      dispatch(selectRequest(request))
+      dispatch(selectCharity(request))
       dispatch(toggleDrawer(showDrawer, donationValue))
     }
   }

@@ -95,7 +95,7 @@ class App extends Component {
 								component={() => <MerchantHome store={this.props.store} />}
 							/>
 							<Route
-								path="/gift/:charityID"
+								path="/charity/:charityID"
 								component={() => <GiftPage store={this.props.store} />}
 							/>
 							<Route

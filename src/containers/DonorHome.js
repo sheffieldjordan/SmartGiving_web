@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import { toggleDrawer, selectRequest } from "../redux/actions";
+import { toggleDrawer, selectCharity } from "../redux/actions";
 
 import CardPage from "../components/CardPage";
 
@@ -19,13 +19,13 @@ import "../style/DonorHome.css";
 class DonorHome extends Component {
   render() {
     const storeState = this.props.store.getState();
-    const selectDonate = request => () => {
-      this.props.showRequest(true, request);
+    const selectDonate = charity => () => {
+      this.props.showCharity(true, charity);
     };
-    const learnMore = request => () => {
+    const learnMore = charity => () => {
       this.props.history.push({
-        pathname: "/gift/" + request.ethGiftAddr,
-        state: { request }
+        pathname: "/charity/" + charity.ethRecipientAddr,
+        state: { charity }
       });
     };
 
@@ -47,16 +47,16 @@ class DonorHome extends Component {
       );
     });
 
-    const drawerRequest = () => {
-      if (Object.keys(storeState.updateDrawer.selectedRequest).length === 0) {
+    const drawerCharity = () => {
+      if (Object.keys(storeState.updateDrawer.selectedCharity).length === 0) {
         return undefined;
       }
-      return storeState.selectedRequest;
+      return storeState.updateDrawer.selectedCharity;
     };
     const drawer = (
       <DrawerFactory
         store={this.props.store}
-        request={drawerRequest()}
+        charity={drawerCharity()}
         type="donate"
       />
     );
@@ -67,8 +67,8 @@ class DonorHome extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    showRequest: (showDrawer, request = {}) => {
-      dispatch(selectRequest(request));
+    showCharity: (showDrawer, charity = {}) => {
+      dispatch(selectCharity(charity));
       dispatch(toggleDrawer(showDrawer));
     }
   };

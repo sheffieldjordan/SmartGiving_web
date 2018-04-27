@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import { toggleDrawer, selectRequest } from '../redux/actions'
+import { toggleDrawer, selectCharity } from '../redux/actions'
 
 import CardPage from '../components/CardPage'
 
@@ -42,11 +42,11 @@ class MerchantHome extends Component {
 		})
 
 		const drawerRequest = () => {
-			const selectedRequest = storeState.updateDrawer.selectedRequest
-			if (Object.keys(selectedRequest).length === 0) {
+			const selectedCharity = storeState.updateDrawer.selectedCharity
+			if (Object.keys(selectedCharity).length === 0) {
 				return undefined
 			}
-			return selectedRequest
+			return selectedCharity
 		}
 		const drawer = <DrawerFactory store={this.props.store} request={drawerRequest()} type="bid"/>
 
@@ -59,7 +59,7 @@ class MerchantHome extends Component {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		showRequest: (showDrawer, request={}) => {
-			dispatch(selectRequest(request))
+			dispatch(selectCharity(request))
 			dispatch(toggleDrawer(showDrawer))
 		}
 	}

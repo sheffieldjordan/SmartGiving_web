@@ -8,10 +8,10 @@ export const updateDrawer = (state = {}, action) => {
 				donationDrawerOpen: action.donationDrawerOpen,
 				donationValue: action.donationValue
 			}
-		case C.SELECT_REQUEST:
+		case C.SELECT_CHARITY:
 			return {
 				...state,
-				selectedRequest:action.selectedRequest
+				selectedCharity:action.selectedCharity
 			}
 		default:
 			return state

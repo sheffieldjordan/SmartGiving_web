@@ -9,7 +9,7 @@ const initialState = {
 	updateDrawer: {
 		donationDrawerOpen: false,
 		donationValue: undefined,
-		selectedRequest: {},
+		selectedCharity: {},
 	},
 	updateNewGift: {
 		giftData: {},
