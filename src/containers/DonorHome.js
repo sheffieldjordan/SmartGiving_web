@@ -20,7 +20,7 @@ import "../style/DonorHome.css"
 class DonorHome extends Component {
   constructor(props) {
     super(props)
-    this.state = {recipients:this.props.store.getState().globalData.recipients}
+    this.state = {recipients:[]}
   }
 
   componentDidMount() {
