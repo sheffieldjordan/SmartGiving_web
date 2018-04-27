@@ -36,8 +36,7 @@
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
     "dbserver": "node src/database/index.js",
-    "build": "rimraf -rf server/build && react-scripts build && mv build server",
-    "build-and-deploy": "npm run build && s3cmd sync build/* s3://smartgiving && echo '🚀  Deployed!'",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

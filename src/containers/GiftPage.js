@@ -31,7 +31,6 @@ class GiftPage extends Component {
   constructor(props) {
     super(props)
     this.state = { donationValue: 0, charity: {}, gift: { items: [] } }
-    this.giftData.bind(this)
     this.defaultCost.bind(this)
   }
 
@@ -58,13 +57,6 @@ class GiftPage extends Component {
     }
 
     GetAllOpenGifts(dbCompletion)
-  }
-
-  giftData() {
-    const storeState = this.props.store.getState()
-    return storeState.globalData.requests.filter(
-      request => request.ethGiftAddr === this.props.match.params.giftID
-    )[0]
   }
 
   defaultCost(gift) {
