@@ -5,6 +5,7 @@ import RequestTable from "../components/RequestTable"
 import DrawerFactory from "../components/DrawerFactory"
 import ContactInfo from "../components/ContactInfo"
 import { ImageLibrary } from "../components/ImageLibrary"
+import {isObjectEmpty} from '../components/Helpers'
 
 import { GetAllOpenGifts } from "../backend/APIManager"
 
@@ -30,11 +31,21 @@ import "../style/GiftPage.css"
 class GiftPage extends Component {
   constructor(props) {
     super(props)
-    this.state = { donationValue: 0, charity: {}, gift: { items: [] } }
+    const locationState = this.props.location.state
+    const charity = locationState === undefined ? {} : locationState.charity
+    const gift = locationState === undefined ? { items: [] } : charity.gifts[0]
+
+    this.state = { charity, gift, donationValue: 0, }
     this.defaultCost.bind(this)
   }
 
   componentDidMount() {
+    // If we got provided a charity already, we don't need to reload it
+    if (!isObjectEmpty(this.state.charity)) {
+      return
+    }
+
+    // Otherwise, load it from the database
     const charityID = this.props.match.params.charityID
     const dbCompletion = (data, err) => {
       if (err) {
