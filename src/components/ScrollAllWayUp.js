@@ -3,6 +3,7 @@ import Button from 'material-ui/Button';
 import UpIcon from "@material-ui/icons/ArrowUpward"
 
 
+
 class ScrollAllWayUp extends Component {
   constructor() {
     super();
@@ -25,7 +26,7 @@ class ScrollAllWayUp extends Component {
   }
   
   render () {
-      return <Button variant="fab" color="primary" title='Back to top' className='scroll' 
+      return <Button variant="fab" color="primary" title='Back to top' style={{margin: '30px'}} 
                onClick={ () => { this.scrollToTop(); }}>
                 <UpIcon/>
               </Button>;

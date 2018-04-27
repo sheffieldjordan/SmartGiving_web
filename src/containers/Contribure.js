@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import NavBar from '../components/NavBar';
 
-class Contact extends Component {
+class Contribute extends Component {
 // @Natasha write your code here
   render() {
     return (
 
 		<div>
-			<NavBar title="Contact us"/>
+			<NavBar/>
 		</div>
     )    
   }
 }
 
-export default Contact;
+export default Contribute;
