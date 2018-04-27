@@ -29,16 +29,18 @@ class DonorHome extends Component {
       });
     };
 
-    const requests = storeState.globalData.requests;
-    const cards = requests.map((r, i) => {
+    const recipients = storeState.globalData.recipients
+    const cards = recipients.map((r, i) => {
+      // Assume it is the first gift
+      const gift = r.gifts[0]
       return (
         <CharityCard
           key={i}
-          title={r.charity.title}
-          description={r.summary}
-          image={ImageLibrary(r.charity.image)}
+          title={r.title}
+          description={gift.summary}
+          image={ImageLibrary(r.image)}
           onImageClick={learnMore(r)}
-          preButtons={DonorPreButtons(r.tags)}
+          preButtons={DonorPreButtons(gift.tags)}
           buttons={DonorActionButtons(learnMore(r), selectDonate(r))}
           postButtons={[]}
         />

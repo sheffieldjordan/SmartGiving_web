@@ -16,7 +16,7 @@ const initialState = {
 	},
 	globalData: {
 		...data,
-		...requests
+		recipients: requests['recipients']
 	}
 }
 
