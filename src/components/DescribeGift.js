@@ -6,14 +6,8 @@ import AddIcon from '@material-ui/icons/Add';
 class DescribeGift extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {gift: {
-						tags:[],
-						expiration:"2018-05-10",
-						description:"",
-					},
-					 tagInput:""}
-		console.log(props)
 		this.state = {gift:props.gift}
+		this.state.tagInput = ""
 	}
 
 	render() {
@@ -25,7 +19,6 @@ class DescribeGift extends Component {
 				this.props.onUpdate(gift)
 				this.setState({gift})
 				this.setState({tagInput: ""})
-				console.log(this.props.store.getState())
 			}
 		}
 		const updateSection = (section) => event => {
@@ -56,8 +49,20 @@ class DescribeGift extends Component {
 		return (
 		<div>
 			<div className = "describe-gift-section">
-				<span className = "describe-gift-label">Description </span>
+				<span className = "describe-gift-label">Title </span>
+				<TextField value={this.state.gift.title} onChange={updateSection("title")} className = "describe-gift-textfield" placeholder = 'In a couple words, what is this for? E.g, "School Supplies"'/>
+			</div>
+			<div className = "describe-gift-section">
+				<span className = "describe-gift-label">Summary </span>
 				<TextField value={this.state.gift.description} onChange={updateSection("description")} className = "describe-gift-textfield" multiline rows = "2" rowsMax= "15" placeholder = "Briefly state the purpose of this request"/>
+			</div>
+			<div className = "describe-gift-section">
+				<span className = "describe-gift-label">Background </span>
+				<TextField value={this.state.gift.background} onChange={updateSection("background")} className = "describe-gift-textfield" multiline rows = "4" rowsMax= "15" placeholder = "Give more in depth information about your request (optional)"/>
+			</div>
+			<div className = "describe-gift-section">
+				<span className = "describe-gift-label">Challenge </span>
+				<TextField value={this.state.gift.challenge} onChange={updateSection("challenge")} className = "describe-gift-textfield" multiline rows = "4" rowsMax= "15" placeholder = "Why is it difficult for your organization to get the support it needs? (optional)"/>
 			</div>
 			<div className = "describe-gift-section">
 				<span className = "describe-gift-label">Expiration date</span>
