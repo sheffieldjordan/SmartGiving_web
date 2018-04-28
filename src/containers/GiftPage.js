@@ -25,7 +25,6 @@ import { toggleDrawer, selectCharity } from "../redux/actions"
 import { connect } from "react-redux"
 import { withRouter } from "react-router"
 
-import { DonateEthereum } from "../ethereum/components/Donate"
 import "../style/GiftPage.css"
 
 class GiftPage extends Component {
@@ -95,13 +94,7 @@ class GiftPage extends Component {
         ? this.defaultCost(this.state.gift)
         : this.state.donationValue
     const selectDonate = () => {
-      // CALL MORGANS SHIT
-      DonateEthereum(error => {
-        if (error !== undefined) {
-          console.log(`ERROR : ${error}`)
-        }
-      })
-      this.props.showDonate(true, donationValue(), this.state.charity)
+      this.props.showRequest(true, donationValue(), this.state.charity)
     }
 
     const shippingSection = (textInfo) => {
@@ -115,6 +108,7 @@ class GiftPage extends Component {
 
     const userType = this.props.match.params.userType
     const textInfo = GiftTextFactory(userType, this.state.charity)
+
     return (
       <div>
         <NavBar />
@@ -230,7 +224,7 @@ class GiftPage extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    showDonate: (showDrawer, donationValue, request = {}) => {
+    showRequest: (showDrawer, donationValue, request = {}) => {
       dispatch(selectCharity(request))
       dispatch(toggleDrawer(showDrawer, donationValue))
     }

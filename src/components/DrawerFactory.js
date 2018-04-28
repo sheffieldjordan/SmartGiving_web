@@ -5,25 +5,37 @@ import { withRouter } from 'react-router'
 
 import { toggleDrawer, selectCharity } from '../redux/actions'
 
+import {Bid} from '../ethereum/components/Bid'
+import { DonateEthereum } from "../ethereum/components/Donate"
+
 import DonationDrawer from '../components/DonationDrawer'
 import BidDrawer from '../components/BidDrawer'
-import {Bid} from '../ethereum/components/Bid'
 
 class DrawerFactory extends Component {
 
 	render() {
+
+		const blockchainFunc = (type) => {
+			switch(type) {
+				case "donor":
+					return DonateEthereum
+				case "merchant":
+					return Bid
+				default: return () => console.log(`No blockchain call for type ${type}`)
+			}
+		}
 		const drawerData = (props) => {
+			const blockchainCall = blockchainFunc(this.props.type)
 			const storeState = props.store.getState()
 			const onPrimary = () => {
-				Bid((error) => {
+				blockchainCall((error) => {
 					if (error !== undefined) {
-						console.log(`BLOCKCHAIN: ${error}`)
+						alert(`Blockchain Error: ${error}`)
 					} else {
-						console.log("Great success!")
+						props.history.push('/thanks')
 					}
 				})
 				props.showRequest(false)
-				props.history.push('/thanks')
 			}
 			const onClose = () => props.showRequest(false)
 			const onSecondary = onClose
@@ -37,13 +49,13 @@ class DrawerFactory extends Component {
 		}
 		const storeState = this.props.store.getState()
 		const data = drawerData(this.props)
-
 		if (this.props.type === "donor") {
 			return (
 				<DonationDrawer store={this.props.store}
 					data={data}
 					donationValue={storeState.updateDrawer.donationValue}
 					charity={this.props.charity}
+					blockchainCall={DonateEthereum}
 				/>
 			)
 		}
@@ -52,6 +64,7 @@ class DrawerFactory extends Component {
 				<BidDrawer store={this.props.store}
 					data={data}
 					charity={this.props.charity}
+					blockchainCall={Bid}
 				/>
 				)
 		} else {
