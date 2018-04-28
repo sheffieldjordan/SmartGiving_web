@@ -8,8 +8,6 @@ import { withStyles } from 'material-ui/styles';
 import Badge from 'material-ui/Badge';
 import Typography from 'material-ui/Typography';
 
-import "../style/Components.css";
-
 
 
 const styles = theme => ({
