@@ -1,4 +1,7 @@
 import axios from "axios";
+import requests from '../data/requests'
+
+export const FakeData = true;
 
 export const GetAllOpenGifts = completion => {
   /* TODO @Selenne
@@ -13,9 +16,15 @@ export const GetAllOpenGifts = completion => {
     console.warn("Completion block for GetAllOpenGifts is undefined :(");
   }
 
+  if (FakeData) {
+    completion(requests.recipients, undefined)
+    return
+  }
+
   axios
     .get(`/api/activeRecipientsList`)
     .then(res => {
+      console.log(JSON.stringify({recipients:res.data}))
       completion(res.data, undefined);
     })
     .catch(err => {
@@ -33,3 +42,4 @@ export const CreateNewGift = (gift, completion) => {
       completion(err)
     });
 }
+
