@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {store} from './RootStore'
-import {FakeData} './backend/APIManager'
+import {FakeData} from './backend/APIManager'
+
+const assert = require('assert');
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -10,6 +12,6 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it('not using fake data'), () => {
-	assert.isNotTrue(FakeData)
-}
+it('not using fake data', () => {
+	assert.equal(FakeData, false)
+})
