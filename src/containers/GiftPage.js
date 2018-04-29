@@ -81,7 +81,7 @@ class GiftPage extends Component {
     const textInfo = GiftTextFactory(userType, this.state.charity)
     const useDollars = userType === "donor"
     const unit = useDollars ? "$" : "ETH"
-
+    const minVal = useDollars ? ".01" : ".00001"
     const handleDonationChange = event => {
       const donationValue = parseFloat(event.target.value)
       this.setState({ donationValue })
@@ -172,7 +172,7 @@ class GiftPage extends Component {
                             classes: { root: "donation-text-field" },
                             step:"any",
                             type:"number",
-                            min:0,
+                            min:minVal,
                             startAdornment: (
                               <InputAdornment
                                 className="donation-text-field"
@@ -219,7 +219,7 @@ class GiftPage extends Component {
             store={this.props.store}
             request={this.state.gift}
             charity={this.state.charity}
-            donationValue={parseFloat(donationValue())}
+            money={parseFloat(donationValue())}
             type={userType}
           />
         </div>

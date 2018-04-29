@@ -10,7 +10,7 @@ import {isObjectEmpty} from '../components/Helpers'
 class BidDrawer extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {"bid" : -1}
+		this.state = {"bid" : props.bid}
 	}
 	render() {
 		const charity = this.props.charity
@@ -30,7 +30,7 @@ class BidDrawer extends Component {
 		}
 		const currentBid = () => {
 			if (this.state.bid === -1 && gift !== undefined) {
-				return WeiToEther(gift.donorDonationAmt).toFixed(5)
+				return WeiToEther(gift.donorDonationAmt)
 			}
 			return this.state.bid
 		}
@@ -72,6 +72,7 @@ class BidDrawer extends Component {
 
 BidDrawer.propTypes = {
 	charity: PropTypes.object,
+	bid: PropTypes.number,
 	data: PropTypes.shape({
 		open: PropTypes.bool,
 		onClose: PropTypes.func,
