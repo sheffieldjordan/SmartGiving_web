@@ -28,7 +28,7 @@ class DonorCommitment extends Component {
 		return (
 			<div className = "charity-card-commitment-section">
 				<span className = "charity-card-commitment-pre">Donor has committed: </span>
-				<span className = "charity-card-commitment-dollars">${WeiToDollars(donation)} (~{WeiToEther(donation).toFixed(3)} ETH)</span>
+				<span className = "charity-card-commitment-dollars">{WeiToEther(donation).toFixed(3)} ETH (${WeiToDollars(donation)} USD)</span>
 			</div>
 		)
 	}

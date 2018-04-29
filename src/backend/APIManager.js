@@ -1,7 +1,7 @@
 import axios from "axios";
 import requests from '../data/requests'
 
-export const FakeData = true;
+export const FakeData = false;
 
 export const GetAllOpenGifts = completion => {
   /* TODO @Selenne
@@ -24,7 +24,6 @@ export const GetAllOpenGifts = completion => {
   axios
     .get(`/api/activeRecipientsList`)
     .then(res => {
-      console.log(JSON.stringify({recipients:res.data}))
       completion(res.data, undefined);
     })
     .catch(err => {

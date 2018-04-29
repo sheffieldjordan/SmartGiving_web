@@ -35,7 +35,7 @@ class GiftPage extends Component {
     const charity = locationState === undefined ? {} : locationState.charity
     const gift = locationState === undefined ? { items: [], donorDonationAmt:0} : charity.gifts[0]
 
-    this.state = { charity, gift, donationValue: 0, }
+    this.state = { charity, gift, donationValue: -1, }
     this.defaultCost.bind(this)
   }
 
@@ -83,19 +83,12 @@ class GiftPage extends Component {
     const unit = useDollars ? "$" : "ETH"
 
     const handleDonationChange = event => {
-      let donationValue = this.defaultCost(useDollars)
-      const n = event.target.value
-      if (!isNaN(parseFloat(n)) && isFinite(n)) {
-        // Shout out to StackOverflow for making a max of two digits parseFloat
-        const digits = Math.min(2, (n.toString().split(".")[1] || []).length)
-        const periodVal = digits === 0 ? "." : ""
-        donationValue = Math.floor(parseFloat(n)).toFixed(digits) + periodVal
-      }
+      const donationValue = parseFloat(event.target.value)
       this.setState({ donationValue })
     }
 
     const donationValue = () =>
-      this.state.donationValue === 0
+      this.state.donationValue < 0 || isNaN(parseFloat(this.state.donationValue))
         ? this.defaultCost(useDollars, this.state.gift)
         : this.state.donationValue
     const selectDonate = () => {
@@ -109,6 +102,16 @@ class GiftPage extends Component {
           Shipping Address: <span className="gift-donation-shipping-address">{textInfo.location}</span>
         </div>
         )
+    }
+
+    const donationCost = () => {
+      const val = this.defaultCost(useDollars, this.state.gift) 
+      if (unit === '$') {
+        return unit + Math.floor(val).toFixed(2) 
+      }
+      else {
+        return unit + " " + parseFloat(val).toFixed(5)
+      }
     }
 
 
@@ -157,12 +160,8 @@ class GiftPage extends Component {
                     {shippingSection(textInfo)}
 
                     <div className="gift-donation-estimate">
-                      {" "}
                       Estimated Cost of Goods:{" "}
-                      <span className="gift-donation-cost">
-                        {unit + (unit === "$" ? "" : " ")}{Math.floor(this.defaultCost(useDollars, this.state.gift)).toFixed(
-                          2
-                        )}{" "}
+                      <span className="gift-donation-cost">{donationCost()}
                       </span>
                     </div>
                     <div className="gift-donation-fill-donation">
@@ -171,6 +170,9 @@ class GiftPage extends Component {
                         <TextField
                           InputProps={{
                             classes: { root: "donation-text-field" },
+                            step:"any",
+                            type:"number",
+                            min:0,
                             startAdornment: (
                               <InputAdornment
                                 className="donation-text-field"
@@ -183,6 +185,7 @@ class GiftPage extends Component {
                           required={true}
                           id="donation-value"
                           value={donationValue()}
+                          type="number"
                           onChange={handleDonationChange}
                         />
                         <FormHelperText id="name-helper-text">
