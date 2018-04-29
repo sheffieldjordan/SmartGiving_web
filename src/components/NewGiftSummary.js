@@ -16,7 +16,7 @@ class NewGiftSummary extends Component {
 			)
 		}
 
-		const priceDollars = PriceForItems(this.props.gift.items)
+		const priceDollars = PriceForItems(this.props.gift.items, true)
 		return (
 			<div className = "gift-summary-container">
 				<h1 className = "gift-summary-title">Summary</h1>
