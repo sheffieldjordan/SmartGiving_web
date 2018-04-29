@@ -50,7 +50,7 @@
       "shippingDate": "1970-01-18T15:18:43.836Z",
       "receivedDate": "1970-01-18T15:18:43.986Z"
     }],
-    "title": "Morgan moves to Belgium",
+    "title": "The Jordan Family",
     "facebook": "www.facebook.com",
     "instagram": "www.instagram.com",
     "twitter": "www.twitter.com",
@@ -60,7 +60,7 @@
     "location": "2300 Morgan Road",
     "website": "morgan.com",
     "ethRecipientAddr": "0x68009930D2E4a9A0A4b53484AED8289c86802Ae5",
-    "image": ""
+    "image": "morgan"
   }, {
     "gifts": [{
       "ethGiftAddr": "0xC7777bf557eFbb092D48365912dA3b1b64af515d",
@@ -207,7 +207,8 @@
     "ethRecipientAddr": "0xDDDDDDD8926b092D48365912dA3b092D48365912d6b",
     "image": "test_mexico"
   }, {
-    "gifts": [{
+    "gifts": [
+      {
       "ethGiftAddr": "0xB7777bf557eFbb092D48365912dA3b1b64af515d",
       "dollars": 333,
       "donorDonationAmt": 0,
@@ -253,181 +254,6 @@
       "summary": "Gift school supplies to students aged 5-12 at Palmira Elementary School in Colombia!",
       "expiry": "2018-07-07T07:00:00.000Z",
       "creationDate": "2018-04-16T19:02:07.926Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [{
-        "quantity": 100,
-        "pricePerUnit": 2,
-        "_id": "5ae2533e7f982802c9fa9b91",
-        "itemDescription": "Pens"
-      }, {
-        "quantity": 100,
-        "pricePerUnit": 1,
-        "_id": "5ae2533e7f982802c9fa9b90",
-        "itemDescription": "Pencils"
-      }],
-      "_id": "5ae2533e7f982802c9fa9b8f",
-      "title": "Stationary for children in need",
-      "expiry": "2018-05-10T00:00:00.000Z",
-      "creationDate": "2018-04-26T22:31:26.920Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [{
-        "quantity": 12,
-        "pricePerUnit": 1,
-        "_id": "5ae28ad33923970327726ce0",
-        "itemDescription": "baloons"
-      }],
-      "_id": "5ae28ad33923970327726cdf",
-      "title": "Party supplies",
-      "expiry": "2018-05-12T00:00:00.000Z",
-      "creationDate": "2018-04-27T02:28:35.695Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [{
-        "quantity": 30,
-        "pricePerUnit": 11,
-        "_id": "5ae364670065bf2c0f228e87",
-        "itemDescription": "Socks"
-      }],
-      "_id": "5ae364670065bf2c0f228e86",
-      "title": "I'd really like a big back of socks. It'd go well with the rest of my wardrobe",
-      "expiry": "2019-04-27T00:00:00.000Z",
-      "creationDate": "2018-04-27T17:56:55.948Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [],
-      "_id": "5ae3654ffc85542c37a4b2c8",
-      "title": "",
-      "expiry": "2019-04-27T00:00:00.000Z",
-      "creationDate": "2018-04-27T18:00:47.095Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [],
-      "_id": "5ae365f5ec0e402c4cb07aa3",
-      "title": "",
-      "expiry": "2019-04-27T00:00:00.000Z",
-      "creationDate": "2018-04-27T18:03:33.012Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [],
-      "_id": "5ae36dcd92d3832e6a94603e",
-      "title": "I'd really like some food that tastes good. It would be nice to feed it to my family. My children.",
-      "expiry": "2019-04-27T00:00:00.000Z",
-      "creationDate": "2018-04-27T18:37:01.316Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [],
-      "_id": "5ae39a4adb1a5d3e0bc4f30d",
-      "title": "",
-      "expiry": "2019-04-27T00:00:00.000Z",
-      "creationDate": "2018-04-27T21:46:50.400Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [{
-        "quantity": 2,
-        "pricePerUnit": 35,
-        "_id": "5ae563aa5e18e70a0be70a4c",
-        "itemDescription": "Lawn Wooden Giant Size Domino set"
-      }],
-      "_id": "5ae563aa5e18e70a0be70a4b",
-      "title": "A set of giant size dominos to play on the grass",
-      "expiry": "2019-05-29T00:00:00.000Z",
-      "creationDate": "2018-04-29T06:18:18.299Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [],
-      "_id": "5ae56b217a1d5a0a5916b7fa",
-      "title": "",
-      "expiry": "2019-04-29T00:00:00.000Z",
-      "creationDate": "2018-04-29T06:50:09.098Z"
-    }, {
-      "ethGiftAddr": "",
-      "dollars": 190,
-      "donorDonationAmt": 0,
-      "finalCost": 0,
-      "merchantShipped": false,
-      "itemReceived": false,
-      "balance": 0,
-      "tags": [],
-      "bids": [],
-      "items": [],
-      "_id": "5ae56b677a1d5a0a5916b7fb",
-      "title": "",
-      "expiry": "2019-04-29T00:00:00.000Z",
-      "creationDate": "2018-04-29T06:51:19.270Z"
     }],
     "title": "Palmira Elementary School",
     "facebook": "www.facebook.com",

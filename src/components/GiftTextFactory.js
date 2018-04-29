@@ -9,16 +9,17 @@ const GiftTextFactory = (type, charity) => {
 }
 
 const donorText = (charity) => {
-	return textFactory("Your Donation", "Donate")
+	return textFactory("Your Donation", "How much you want to donate?", "Donate")
 }
 
 const merchantText = (charity) => {
-	return textFactory("Your Bid", "Bid", charity.location)
+	return textFactory("Your Bid", "How much you want to bid?", "Bid", charity.location)
 }
 
-const textFactory = (moneyDescription, donateButton, location) => {
+const textFactory = (moneyDescription, moneySubDescription, donateButton, location) => {
 	return {
 		moneyDescription,
+		moneySubDescription,
 		donateButton,
 		location
 	}

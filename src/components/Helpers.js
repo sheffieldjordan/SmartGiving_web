@@ -1,4 +1,7 @@
-export const PriceForItems = (items, quantKey="num", priceKey="price") => {
+export const PriceForItems = (items, newGift=false) => {
+	if (items === undefined) return 0
+	const quantKey = newGift ? "num" : "quantity"
+	const priceKey = newGift ? "price" : "pricePerUnit"
 	return items.reduce((total, currentItem) => {
 		return total + currentItem[priceKey] * currentItem[quantKey]
 	}, 0)

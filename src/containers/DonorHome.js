@@ -6,6 +6,7 @@ import {
   DonorPreButtons,
   DonorActionButtons
 } from "../components/CardComponents"
+import {HomepageFilter} from "../components/GiftFilters"
 
 class DonorHome extends Component {
 
@@ -20,8 +21,10 @@ class DonorHome extends Component {
 
     const userType = "donor"
 
+    const filter = HomepageFilter(false)
+
     return (
-      <HomeTemplate store={this.props.store} buttons={buttons} userType={userType}/>
+      <HomeTemplate store={this.props.store} filter= {filter} buttons={buttons} userType={userType}/>
       )
   }
 }

@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import HomeTemplate from "../components/HomeTemplate"
 
 import {MerchantPreButtons, MerchantActionButtons, MerchantPostButtons} from '../components/CardComponents'
-
+import {HomepageFilter} from "../components/GiftFilters"
 
 class MerchantHome extends Component {
 
@@ -17,8 +17,10 @@ class MerchantHome extends Component {
 
     const userType = "merchant"
 
+    const filter = HomepageFilter(true)
+
     return (
-      <HomeTemplate store={this.props.store} buttons={buttons} userType={userType}/>
+      <HomeTemplate store={this.props.store} filter={filter} buttons={buttons} userType={userType}/>
       )
   }
 }
