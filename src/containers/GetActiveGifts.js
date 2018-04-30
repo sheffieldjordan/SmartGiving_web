@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import style from "../style/GetActiveGiftsStyle";
-import { GetAllOpenGifts } from "../backend/APIManager";
+import { GetAllOpenGifts, GetAllMerchants } from "../backend/APIManager";
 
 class GetActiveGifts extends Component {
   constructor(props) {
@@ -31,7 +31,9 @@ class GetActiveGifts extends Component {
     );
     this.handleRecipientGiftAdd = this.handleRecipientGiftAdd.bind(this);
     this.handleUpdateDB = this.handleUpdateDB.bind(this);
+    this.handleGetMerchants = this.handleGetMerchants.bind(this);
     this.handleDonorSubmit = this.handleDonorSubmit.bind(this);
+    this.handleGetRecipients = this.handleGetRecipients.bind(this);
     this.handleMerchantSubmit = this.handleMerchantSubmit.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleExpiryChange = this.handleExpiryChange.bind(this);
@@ -54,9 +56,8 @@ class GetActiveGifts extends Component {
     console.log(this.props);
   }
 
-  handleDonorSubmit(e) {
+  handleGetRecipients(e) {
     e.preventDefault();
-    let ethereumAddress = this.state.ethDonorAddress.trim();
     // console.log(ethereumAddress);
 
     const completion = (data, err) => {
@@ -69,7 +70,7 @@ class GetActiveGifts extends Component {
         });
       }
     };
-    GetAllOpenGifts(completion, ethereumAddress);
+    GetAllOpenGifts(completion);
   }
 
   handleUpdateDB(e) {
@@ -97,6 +98,39 @@ class GetActiveGifts extends Component {
     //   }
     // };
     // GetAllOpenGifts(completion, ethereumAddress);
+  }
+
+  //////NOT IMPLEMENTED IN PROJECT WITH GABE////////
+  handleDonorSubmit(e) {
+    e.preventDefault();
+    let ethereumAddress = this.state.ethMerchantAddress.trim();
+    // console.log(ethereumAddress);
+
+    const completion = (data, err) => {
+      if (err !== undefined) {
+        console.log(err);
+      } else {
+        console.log("inside Donor GetActiveGifts", data);
+        this.setState({
+          data: data
+        });
+      }
+    };
+    GetAllOpenGifts(completion, ethereumAddress);
+  }
+  handleGetMerchants(e) {
+    e.preventDefault();
+    const completion = (data, err) => {
+      if (err !== undefined) {
+        console.log(err);
+      } else {
+        console.log("inside Donor GetActiveGifts", data);
+        this.setState({
+          data: data
+        });
+      }
+    };
+    GetAllMerchants(completion);
   }
 
   handleMerchantSubmit(e) {
@@ -310,6 +344,24 @@ class GetActiveGifts extends Component {
               type="submit"
               style={style.recipientFormPost}
               value="Update DB"
+            />
+          </div>
+        </form>
+        <form onSubmit={this.handleGetRecipients}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Get Recipients"
+            />
+          </div>
+        </form>
+        <form onSubmit={this.handleGetMerchants}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Get Merchants"
             />
           </div>
         </form>

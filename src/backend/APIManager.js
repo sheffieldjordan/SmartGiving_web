@@ -27,9 +27,20 @@ export const CreateNewGift = (gift, completion) => {
   axios
     .put(`/api/addGift`, gift)
     .then(res => {
-      completion()
+      completion();
     })
     .catch(err => {
-      completion(err)
+      completion(err);
     });
-}
+};
+
+export const GetAllMerchants = completion => {
+  axios
+    .get(`/api/getMerchants`)
+    .then(res => {
+      completion(res.data, undefined);
+    })
+    .catch(err => {
+      completion(undefined, err);
+    });
+};

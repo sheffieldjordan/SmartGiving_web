@@ -8,6 +8,8 @@ const merchantSchema = new Schema({
   ethMerchantAddr: String,
   storeDescription: String,
   photo: String,
+  minShipment: { type: Number, default: 0 },
+  maxShipment: { type: Number, default: 0 },
   servedGifts: [String],
   servedActiveGifts: [String]
 });

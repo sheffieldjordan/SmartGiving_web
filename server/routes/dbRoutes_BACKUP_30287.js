@@ -19,12 +19,6 @@ module.exports = app => {
     const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
     res.json(recipients);
   });
-
-  app.get("/api/getMerchants", async function(req, res) {
-    const merchants = await Merchant.find({}, { _id: 0, __v: 0 });
-    res.json(merchants);
-  });
-
   //*************** Working with Gabe ***************//
 
   app.get("/api/updateDB", async function(req, res) {
@@ -32,18 +26,21 @@ module.exports = app => {
       console.log(ethData.length);
       for (var i = 0, len = ethData.length; i < len; i++) {
         var obj = JSON.parse(ethData[i]);
-        console.log("JSON parsed", obj);
+        // console.log("JSON parsed", obj);
         var recipient = await Recipient.find(
           { "gifts._id": obj.id },
           { "gifts.$": true },
           function(err, recipient) {
+            console.log("An error occurred: " + i);
             if (err) res.send(err);
           }
         );
 
         if (recipient[0] == undefined) {
-          console.log("Recipient not found: " + obj.id);
+          console.log("Recipient not found: " + i);
           continue;
+        } else {
+          console.log("Recipient found : " + i);
         }
 
         new_gift_data = recipient[0].gifts[0];
@@ -106,6 +103,16 @@ module.exports = app => {
       res.json({ message: ethData });
     };
     GetEthereumGifts(completion);
+  });
+
+  app.get("/recipients", async (req, res) => {
+    const recipients = await Recipient.find({}, { _id: 0, __v: 0 }).sort({
+      title: 1
+    });
+    // res.send(recipients);
+    console.log(res.data);
+    res.json(recipients);
+    fs.writeFile("../output/recipients.json", JSON.stringify(recipients));
   });
 
   //Get Active gifts for DONOR
