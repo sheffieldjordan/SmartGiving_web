@@ -12,6 +12,11 @@ export const StringFromDate = (a) => {
 	return `${month} ${date}, ${year}`
 }
 
+export const UnixFromString = (s) => {
+	const date = new Date(s)
+	return date.getTime()
+}
+
 export const StringFromLocation = (location) => {
 	if (location === undefined) return ''
 	return `${location.address}, ${location.city}, ${location.state}, ${location.country}`

@@ -6,7 +6,8 @@ import { withRouter } from 'react-router'
 import { toggleDrawer, selectCharity } from '../redux/actions'
 
 import {Bid} from '../ethereum/components/Bid'
-import { DonateEthereum } from "../ethereum/components/Donate"
+import {DonateEthereum} from "../ethereum/components/Donate"
+import {DonationRequest} from '../backend/EthereumRequestManager'
 
 import DonationDrawer from '../components/DonationDrawer'
 import BidDrawer from '../components/BidDrawer'
@@ -16,24 +17,30 @@ class DrawerFactory extends Component {
 
 	render() {
 
-		const blockchainFunc = (type) => {
+		const blockchainFuncs = (type) => {
 			switch(type) {
 				case UserType.DONOR:
-					return DonateEthereum
+					return [DonateEthereum, DonationRequest]
 				case UserType.MERCHANT:
-					return Bid
+					return [Bid, DonationRequest] // @Gabe TODO: Make this the bid request
 				default: return () => console.log(`No blockchain call for type ${type}`)
 			}
 		}
+
+
 		const drawerData = (props) => {
-			const blockchainCall = blockchainFunc(this.props.type)
+			const [blockchainCall, requestFormatter] = blockchainFuncs(this.props.type)
 			const storeState = props.store.getState()
-			const onPrimary = () => {
-				blockchainCall((error) => {
+			const onPrimary = (money) => () => {
+				const ethData = requestFormatter(this.props.charity, money)
+				console.log(ethData)
+				blockchainCall(ethData, (error) => {
 					if (error !== undefined) {
-						alert(`Blockchain Error: ${error}`)
+						console.log(`Blockchain Error: ${error}`)
+						console.log(error)
 					} else {
 						props.history.push('/thanks')
+						//@Gabe TODO: call the update database method
 					}
 				})
 				props.showRequest(false)
@@ -57,14 +64,12 @@ class DrawerFactory extends Component {
 					data={data}
 					donationValue={moneyVal}
 					charity={this.props.charity}
-					blockchainCall={DonateEthereum}
 				/>
 			case UserType.MERCHANT:
 				return <BidDrawer store={this.props.store}
 					data={data}
 					charity={this.props.charity}
 					bid={moneyVal}
-					blockchainCall={Bid}
 				/>
 			default: console.warn(`Uh oh! Bad drawer prop type: ${this.props.type}`)
 		}
