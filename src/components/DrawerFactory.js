@@ -10,6 +10,7 @@ import { DonateEthereum } from "../ethereum/components/Donate"
 
 import DonationDrawer from '../components/DonationDrawer'
 import BidDrawer from '../components/BidDrawer'
+import {UserType} from '../components/User'
 
 class DrawerFactory extends Component {
 
@@ -17,9 +18,9 @@ class DrawerFactory extends Component {
 
 		const blockchainFunc = (type) => {
 			switch(type) {
-				case "donor":
+				case UserType.DONOR:
 					return DonateEthereum
-				case "merchant":
+				case UserType.MERCHANT:
 					return Bid
 				default: return () => console.log(`No blockchain call for type ${type}`)
 			}
@@ -50,27 +51,22 @@ class DrawerFactory extends Component {
 		const storeState = this.props.store.getState()
 		const data = drawerData(this.props)
 		const moneyVal = this.props.money !== undefined ? this.props.money : parseFloat(storeState.updateDrawer.donationValue)
-		if (this.props.type === "donor") {
-			return (
-				<DonationDrawer store={this.props.store}
+		switch(this.props.type) {
+			case UserType.DONOR:
+				return <DonationDrawer store={this.props.store}
 					data={data}
 					donationValue={moneyVal}
 					charity={this.props.charity}
 					blockchainCall={DonateEthereum}
 				/>
-			)
-		}
-		else if (this.props.type === "merchant") {
-			return (
-				<BidDrawer store={this.props.store}
+			case UserType.MERCHANT:
+				return <BidDrawer store={this.props.store}
 					data={data}
 					charity={this.props.charity}
 					bid={moneyVal}
 					blockchainCall={Bid}
 				/>
-				)
-		} else {
-			console.warn(`Uh oh! Bad drawer prop type: ${this.props.type}`)
+			default: console.warn(`Uh oh! Bad drawer prop type: ${this.props.type}`)
 		}
 	}
 }

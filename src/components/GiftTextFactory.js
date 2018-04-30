@@ -1,11 +1,15 @@
+import {UserType} from '../components/User'
+
 const GiftTextFactory = (type, charity) => {
 	if (charity === undefined) return {}
-	if (type === "donor") {
-		return donorText(charity)
-	} else if (type === "merchant") {
-		return merchantText(charity)
+	switch (type) {
+		case UserType.DONOR:
+			return donorText(charity)
+		case UserType.MERCHANT:
+			return merchantText(charity)
+		default:
+			return {}
 	}
-	return {}
 }
 
 const donorText = (charity) => {
