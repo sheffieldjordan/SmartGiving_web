@@ -1,0 +1,56 @@
+.merchant-select-all-merchants {
+	display: flex;	
+	flex-direction: column;
+}
+
+.merchant-select-overlay {
+	background: rgba(255, 255, 255, .55);
+	width: 100%;
+	height:100%;
+	position:absolute;
+}
+.merchant-select-merchant-box {
+	display: flex;	
+	align-items: center;
+	margin:8px;
+	padding:4px;
+	font-size: 14pt;
+}
+
+.merchant-select-container {
+	position:relative;
+}
+
+.merchant-select-avatar {
+	width: 10%;
+}
+.merchant-select-name {
+	color: #666666;
+	margin:10px;
+	width:35%;
+}
+
+.merchant-select-price {
+	width:15%;
+}
+
+.merchant-select-time {
+	width:20%;
+}
+
+.merchant-select-choice {
+	width:15%;
+}
+.merchant-header-text {
+	color:black !important;
+	text-transform: uppercase;
+	font-size: 14pt;
+}
+
+.merchant-selected-name {
+	font-weight: 800;
+}
+
+.merchant-selected-description {
+	margin-bottom:10px;
+}

@@ -19,7 +19,7 @@ import CreateRequest from './containers/CreateRequest'
 import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
 import GetAllStats from './ethereum/components/GetAllStats'
-import SelectMerchant from './ethereum/components/SelectMerchant'
+import SelectMerchant from './containers/SelectMerchant'
 import ItemSent from './ethereum/components/ItemSent'
 import ItemReceived from './ethereum/components/ItemReceived'
 import GetActiveGifts from "./containers/GetActiveGifts";

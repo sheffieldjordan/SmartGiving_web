@@ -22,6 +22,7 @@ class CharityCard extends Component {
 				</CardMedia>
 				<CardContent className="charity-card-content">
 					<h2 className="charity-card-title" onClick={this.props.onLearnMore}>{this.props.title}</h2>
+					<div className="charity-card-subtitle">Request for <span className = "charity-card-action">{this.props.subtitle}</span></div>
 					<div className="charity-card-desc">{this.props.description}</div>
 					{ this.props.preButtons.map((b, i) => b)}
 				</CardContent>

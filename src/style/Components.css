@@ -116,6 +116,15 @@ h1, h2, h3{
 .charity-card-title {
 	font-size:2.0rem;
 }
+.charity-card-subtitle {
+	padding-bottom:5px;
+	padding-top:5px;
+	font-size:1.5rem;
+	color:#666666;
+}
+.charity-card-action{
+	text-transform: uppercase;
+}
 
 .charity-card-media {
 	height:200px;

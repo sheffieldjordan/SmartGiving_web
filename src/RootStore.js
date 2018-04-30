@@ -2,7 +2,6 @@ import { createStore, combineReducers } from 'redux'
 import { updateDrawer, updateNewGift, globalData } from './redux/reducers'
 
 import data from './data/user'
-import requests from './data/requests'
 
 
 const initialState = {
@@ -16,7 +15,6 @@ const initialState = {
 	},
 	globalData: {
 		...data,
-		recipients: requests['recipients']
 	}
 }
 

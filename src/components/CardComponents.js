@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from 'material-ui/Button';
 
-import {StringFromDate} from '../style/Formatter'
+import {StringFromDate, WeiToDollars, WeiToEther} from '../style/Formatter'
 
 /* PRIVATE */ 
 class CharityCardTags extends Component {
@@ -24,10 +24,11 @@ CharityCardTags.propTypes = {
 
 class DonorCommitment extends Component {
 	render () {
+		const donation = this.props.request.donorDonationAmt
 		return (
 			<div className = "charity-card-commitment-section">
 				<span className = "charity-card-commitment-pre">Donor has committed: </span>
-				<span className = "charity-card-commitment-dollars">${this.props.request.dollars}</span>
+				<span className = "charity-card-commitment-dollars">{WeiToEther(donation).toFixed(3)} ETH (${WeiToDollars(donation)} USD)</span>
 			</div>
 		)
 	}

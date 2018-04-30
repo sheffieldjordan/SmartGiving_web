@@ -81,7 +81,7 @@ class ItemizeGift extends Component {
 			</div>
 			{requestsSection()}
 			<div className = "itemize-estimated-cost">
-				Estimated total cost: <span className = "itemize-total-dollars">${PriceForItems(this.state.items)} USD</span>
+				Estimated total cost: <span className = "itemize-total-dollars">${PriceForItems(this.state.items, true)} USD</span>
 			</div>
 
 		</div>
