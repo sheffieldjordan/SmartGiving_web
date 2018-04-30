@@ -1,6 +1,7 @@
 {
-	"charity" : {
-	    "ethRecipientAddr": "0x68009930D2E4a9A0A4b53484AED8289c86802Ae5"
+	"recipient" : {
+	    "ethRecipientAddr": "0x68009930D2E4a9A0A4b53484AED8289c86802Ae5",
+	    "location": "Calle 36c #4432, Colombia, Valle del Cauca, Palmira"
 	},
 	"merchant" : {
 	    "ethMerchantAddr": "0X077B379AB393379AB393379AF94E87B22CA79"
