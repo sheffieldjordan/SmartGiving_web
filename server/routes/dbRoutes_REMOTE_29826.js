@@ -19,12 +19,6 @@ module.exports = app => {
     const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
     res.json(recipients);
   });
-
-  app.get("/api/getMerchants", async function(req, res) {
-    const merchants = await Merchant.find({}, { _id: 0, __v: 0 });
-    res.json(merchants);
-  });
-
   //*************** Working with Gabe ***************//
 
   app.get("/api/updateDB", async function(req, res) {
@@ -41,10 +35,10 @@ module.exports = app => {
           }
         );
 
-        if (recipient[0] == undefined) {
-          console.log("Recipient not found: " + obj.id);
-          continue;
-        }
+        // if (recipient[0] == undefined) {
+        //   console.log("Recipient not found: ", obj.id);
+        //   continue;
+        // }
 
         new_gift_data = recipient[0].gifts[0];
         obj.giftAddress ? (new_gift_data.ethGiftAddr = obj.giftAddress) : null;
@@ -79,9 +73,9 @@ module.exports = app => {
 
         var new_bid_data = [];
         new_gift_data.bids = [];
-        for (var j = 0, len_j = obj.bids.length; j < len_j; j++) {
-          let merchId = obj.bids[j].merchId;
-          let bid = obj.bids[j].bid;
+        for (var i = 0, len_i = obj.bids.length; i < len_i; i++) {
+          let merchId = obj.bids[i].merchId;
+          let bid = obj.bids[i].bid;
 
           new_bid_data = {
             ethMerchantAddr: merchId,
@@ -106,6 +100,16 @@ module.exports = app => {
       res.json({ message: ethData });
     };
     GetEthereumGifts(completion);
+  });
+
+  app.get("/recipients", async (req, res) => {
+    const recipients = await Recipient.find({}, { _id: 0, __v: 0 }).sort({
+      title: 1
+    });
+    // res.send(recipients);
+    console.log(res.data);
+    res.json(recipients);
+    fs.writeFile("../output/recipients.json", JSON.stringify(recipients));
   });
 
   //Get Active gifts for DONOR
@@ -228,7 +232,6 @@ module.exports = app => {
       }
     );
   });
-
   // Get Active gifts for DONOR and MERCHANT same function
   // app.get("/api/:ethereumAddress/activeGiftsList", async function(req, res) {
   //   var activeGifts = [];
