@@ -219,7 +219,6 @@ class GiftPage extends Component {
             store={this.props.store}
             request={this.state.gift}
             charity={this.state.charity}
-            money={parseFloat(donationValue())}
             type={userType}
           />
         </div>

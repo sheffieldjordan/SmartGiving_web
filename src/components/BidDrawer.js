@@ -72,7 +72,6 @@ class BidDrawer extends Component {
 
 BidDrawer.propTypes = {
 	charity: PropTypes.object,
-	bid: PropTypes.number,
 	data: PropTypes.shape({
 		open: PropTypes.bool,
 		onClose: PropTypes.func,

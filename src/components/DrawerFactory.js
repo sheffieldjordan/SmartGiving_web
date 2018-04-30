@@ -49,7 +49,7 @@ class DrawerFactory extends Component {
 		}
 		const storeState = this.props.store.getState()
 		const data = drawerData(this.props)
-		const moneyVal = parseFloat(storeState.updateDrawer.donationValue)
+		const moneyVal = this.props.money !== undefined ? this.props.money : parseFloat(storeState.updateDrawer.donationValue)
 		if (this.props.type === "donor") {
 			return (
 				<DonationDrawer store={this.props.store}

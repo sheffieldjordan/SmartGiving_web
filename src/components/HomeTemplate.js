@@ -69,10 +69,15 @@ class HomeTemplate extends Component {
       }
       return storeState.updateDrawer.selectedCharity
     }
+    const drawerGifts = () => {
+      if (drawerCharity() === undefined) return {}
+      return drawerCharity().gifts[0]
+    }
     const drawer = (
       <DrawerFactory
         store={this.props.store}
         charity={drawerCharity()}
+        money={this.props.priceFunc(drawerGifts())}
         type={this.props.userType}
       />
     )
