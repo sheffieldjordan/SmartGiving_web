@@ -11,3 +11,15 @@ export const isObjectEmpty = (obj) => {
 	if (obj === undefined ) return true
 	return Object.keys(obj).length === 0
 }
+
+// Shout out to StackOverflow
+// https://stackoverflow.com/a/4587130/1031615
+export const containsObject = (obj, list) => {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
