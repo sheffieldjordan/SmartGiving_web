@@ -14,7 +14,7 @@ export const Bid = async (ethData, completion = (err) => {}) => {
 			.merchantBids(web3.utils.toWei(ethData.ether, 'ether')) // Provide BID AMOUNT
 			.send({
 				from: accounts[0],
-				gas: 1000000
+				gas: 2000000
 			})
 		if (bidEntry.status === "0x0" || !bidEntry.status) {
 			console.log("Transaction Failed!!!")

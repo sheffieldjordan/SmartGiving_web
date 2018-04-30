@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { withRouter } from "react-router"
 
 import {Avatar, Paper, Divider, Radio, Button} from 'material-ui'
 
@@ -7,8 +8,9 @@ import NavBar from "../components/NavBar"
 import '../style/SelectMerchant.css'
 import {kStyleElevation, kStylePaper} from '../style/styleConstants'
 import {WeiToDollars} from '../style/Formatter'
-import {containsObject} from '../components/Helpers'
+import {containsObject, isObjectEmpty} from '../components/Helpers'
 import {ChooseMerchant} from '../ethereum/components/ChooseMerchant'
+import {FetchGift, FetchMerchants} from '../backend/APIHelper'
 
 class SelectMerchant extends Component {
 
@@ -16,35 +18,46 @@ class SelectMerchant extends Component {
     super(props)
     this.state = {selectedValue : ''}
   }
+  
+  componentDidMount() {
+    // If we got provided a charity already, we don't need to reload it
+    if (!isObjectEmpty(this.state.charity)) {
+      return
+    }
+    // Otherwise, load it from the database
+    const charityID = this.props.match.params.charityID
+    FetchGift(charityID, (charity, gift) => {
+      FetchMerchants(gift, (merchants) => {
+        console.log(merchants)
+        console.log(charity)
+        this.setState({charity, gift, merchants})
+      })
+    })
+  }
 
   render() {
-    const merchants = [
-      {
-        name: "Devin the Merchant",
-        offer: 90000000000000000,
-        timeMin:7,
-        timeMax:11,
-      },
-      {
-        name: "Kevin's Big Shipping Company",
-        offer: 75000000000000000,
-        timeMin:15,
-        timeMax:21,
-      },
-      {
-        name: "Jeanette McMerchant",
-        offer: 63000000000000000,
-        timeMin:9,
-        timeMax:14,
-      },
-      {
-        name: "Amazon",
-        offer: 68000000000000000,
-        timeMin:10,
-        timeMax:15,
-      }
-    ]
-    merchants.sort((a, b) => a.offer - b.offer)
+
+    if (this.state.merchants === undefined)
+      return <div/>
+
+    const merchantInfo = this.state.merchants.reduce((finalVal, m) => {
+      finalVal[m.ethMerchantAddr] = m
+      return finalVal
+    }, {})
+    const merchants = this.state.gift.bids.map((b, i) => {
+      let bid = b
+      bid['info'] = merchantInfo[b.ethMerchantAddr]
+      return bid
+    })
+
+    console.log(merchants)
+        //     name: "Devin the Merchant",
+        // offer: 90000000000000000,
+        // timeMin:7,
+        // timeMax:11,
+
+
+    merchants.sort((a, b) => a.bidAmt - b.bidAmt)
 
     const handleChange = event => {
       this.setState({selectedValue: event.target.value})
@@ -53,8 +66,6 @@ class SelectMerchant extends Component {
       return this.state.selectedValue === val
     }
 
-
-
     const topMerchants = (merch, topCount) => {
       return merch.reduce((merchants, m) => {
         const allMerchants = [...merchants, m]
@@ -62,7 +73,7 @@ class SelectMerchant extends Component {
           return allMerchants
         }
         const minValIndex = allMerchants.reduce((finalIndex, currentVal, currentIndex, array) => {
-          return array[currentIndex].offer >= array[finalIndex].offer ? currentIndex : finalIndex
+          return array[currentIndex].bidAmt >= array[finalIndex].bidAmt ? currentIndex : finalIndex
         }, 0)
         return allMerchants.slice(0, minValIndex).concat(allMerchants.slice(minValIndex + 1))
       }, [])
@@ -80,9 +91,9 @@ class SelectMerchant extends Component {
             {
               merchants.map((m, i) => {
                 return <MerchantOptions  key={i}
-                                        name={m.name}
-                                        offer={m.offer}
-                                        days={[m.timeMin, m.timeMax]}
+                                        name={m.info.name}
+                                        offer={m.bidAmt}
+                                        days={[m.info.minShipment, m.info.maxShipment]}
                                         index={i}
                                         enabled={containsObject(m, availableMerchants)}
                                         radio={{handleChange, checked}}/>
@@ -184,5 +195,5 @@ class MerchantSelected extends Component {
   }
 }
 
-export default SelectMerchant
+export default withRouter(SelectMerchant)
 
