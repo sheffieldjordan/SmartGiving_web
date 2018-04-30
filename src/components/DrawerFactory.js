@@ -8,6 +8,7 @@ import { toggleDrawer, selectCharity } from '../redux/actions'
 import {Bid} from '../ethereum/components/Bid'
 import {DonateEthereum} from "../ethereum/components/Donate"
 import {DonationRequest} from '../backend/EthereumRequestManager'
+import {UpdateDatabase} from '../backend/APIManager'
 
 import DonationDrawer from '../components/DonationDrawer'
 import BidDrawer from '../components/BidDrawer'
@@ -36,11 +37,12 @@ class DrawerFactory extends Component {
 				console.log(ethData)
 				blockchainCall(ethData, (error) => {
 					if (error !== undefined) {
-						console.log(`Blockchain Error: ${error}`)
+						alert(`Blockchain Error: ${error.message}`)
 						console.log(error)
 					} else {
-						props.history.push('/thanks')
-						//@Gabe TODO: call the update database method
+						UpdateDatabase(() => {
+							props.history.push('/thanks')
+						})
 					}
 				})
 				props.showRequest(false)
