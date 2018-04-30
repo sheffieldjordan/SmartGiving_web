@@ -55,7 +55,7 @@ class BidDrawer extends Component {
 
 				</div>
 				<div className = "drawer-button-container">
-					<Button className = "drawer-button" onClick = {this.props.data.onPrimary} variant="raised" size="medium" color="primary">Bid</Button>
+					<Button className = "drawer-button" onClick = {this.props.data.onPrimary(currentBid())} variant="raised" size="medium" color="primary">Bid</Button>
 					<Button className = "drawer-button" onClick = {this.props.data.onSecondary} variant="raised" size="medium" color="default">Cancel</Button>
 				</div>
 				<div className = "drawer-description donate-post-description">

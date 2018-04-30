@@ -8,7 +8,6 @@ import {
 
 import { ParallaxProvider } from "react-skrollr";
 
-import ProfilePage from './containers/ProfilePage'
 import Home from './containers/Home'
 import Howitworks from './containers/Howitworks'
 import Whoops404 from './containers/Whoops404'
@@ -74,12 +73,7 @@ class App extends Component {
 							<Route path="/home/team" component={Team} />
 
 							<Route path="/home/howitworks" component={Howitworks} />
-
-							<Route
-								path="/profile"
-								component={() => <ProfilePage store={this.props.store} />}
-							/>
-
+							
 							<Route
 								path="/home/donor"
 								component={() => <DonorHome store={this.props.store} />}

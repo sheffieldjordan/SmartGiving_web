@@ -32,7 +32,7 @@ class DonationDrawer extends Component {
 				(Your payment will be processed once a merchant and recipient agree on delivering and receiving your gifts before the expiration date.)
 				</div>
 				<div className = "drawer-button-container">
-					<Button className = "drawer-button" onClick = {this.props.data.onPrimary} variant="raised" size="medium" color="primary">Donate</Button>
+					<Button className = "drawer-button" onClick = {this.props.data.onPrimary(donationValue)} variant="raised" size="medium" color="primary">Donate</Button>
 					<Button className = "drawer-button" onClick = {this.props.data.onSecondary} variant="raised" size="medium" color="default">Cancel</Button>
 				</div>
 				<div className = "drawer-description donate-post-description">

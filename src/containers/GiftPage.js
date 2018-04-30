@@ -217,7 +217,6 @@ class GiftPage extends Component {
           </div>
           <DrawerFactory
             store={this.props.store}
-            request={this.state.gift}
             charity={this.state.charity}
             type={userType}
           />

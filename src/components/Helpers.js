@@ -23,3 +23,13 @@ export const containsObject = (obj, list) => {
     }
     return false;
 }
+
+export const objectContainsKeys = (obj, requiredKeys) => {
+	const missingKey = requiredKeys.reduce((final, currentVal) => {
+		if (final === undefined) return final
+		return Object.keys(obj).indexOf(currentVal) === -1 ? currentVal : undefined
+	}, undefined)
+	if (missingKey !== undefined) {
+		return new Error(`Bad formatted input data. Missing key ${missingKey}`)
+	}
+}
