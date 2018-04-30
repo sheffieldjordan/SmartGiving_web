@@ -7,7 +7,7 @@ import { toggleDrawer, selectCharity } from '../redux/actions'
 
 import {Bid} from '../ethereum/components/Bid'
 import {DonateEthereum} from "../ethereum/components/Donate"
-import {DonationRequest} from '../backend/EthereumRequestManager'
+import {DonationRequest, BidRequest} from '../backend/EthereumRequestManager'
 import {UpdateDatabase} from '../backend/APIManager'
 
 import DonationDrawer from '../components/DonationDrawer'
@@ -23,7 +23,7 @@ class DrawerFactory extends Component {
 				case UserType.DONOR:
 					return [DonateEthereum, DonationRequest]
 				case UserType.MERCHANT:
-					return [Bid, DonationRequest] // @Gabe TODO: Make this the bid request
+					return [Bid, BidRequest]
 				default: return () => console.log(`No blockchain call for type ${type}`)
 			}
 		}
