@@ -8,6 +8,7 @@ import '../style/SelectMerchant.css'
 import {kStyleElevation, kStylePaper} from '../style/styleConstants'
 import {WeiToDollars} from '../style/Formatter'
 import {containsObject} from '../components/Helpers'
+import {ChooseMerchant} from '../ethereum/components/ChooseMerchant'
 
 class SelectMerchant extends Component {
 
@@ -168,12 +169,16 @@ class MerchantSelected extends Component {
     if (this.props.merchant === undefined)
       return <div>Please select a merchant to ship your goods.</div>
 
+    const completion = (error) => {
+      if (error) alert(error)
+      else       alert("You've selected a merchant, maybe.")
+    }
     return (
       <div>
         <div className = "merchant-selected-description">
         You have selected <span className = "merchant-selected-name">{this.props.merchant}</span> to ship your goods. Upon confirmation, the merchant will be paid and your goods will be shipped.
         </div>
-        <Button onClick ={() => console.log("TADA")} variant="raised" size="medium" color="primary">Confirm</Button>
+        <Button onClick ={() => ChooseMerchant(completion)} variant="raised" size="medium" color="primary">Confirm</Button>
       </div>
     )
   }
