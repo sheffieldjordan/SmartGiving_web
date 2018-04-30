@@ -1,0 +1,34 @@
+.merchant-select-all-merchants {
+	display: flex;	
+	flex-direction: column;
+}
+
+.merchant-select-merchant-box {
+	display: flex;	
+	align-items: center;
+	margin:15px;
+	font-size: 16pt;
+
+}
+.merchant-select-avatar {
+	width: 10%;
+}
+.merchant-select-name {
+	color: #666666;
+	margin:10px;
+	width:35%;
+}
+
+.merchant-select-price {
+	width:15%;
+}
+
+.merchant-select-time {
+	width:20%;
+}
+
+.merchant-header-text {
+	color:black !important;
+	text-transform: uppercase;
+	padding-bottom:10px;
+}
