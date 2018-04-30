@@ -1,12 +1,17 @@
 import web3 from '../web3'
 import SmartGift from '../smartgift'
+import {objectContainsKeys} from '../../components/Helpers'
 
-export const Bid = async (completion = (err) => {}) => {
+export const Bid = async (ethData, completion = (err) => {}) => {
 	try {
-		const targetGift = SmartGift('0xe7afd832c05f55ed3414df0b0194457fe8b1da65') // Provide GIFT ADDRESS
+		const requiredKeys = ['databaseID', 'ether']
+		const keyError = objectContainsKeys(ethData, requiredKeys)
+		if (keyError !== undefined)  return completion(keyError)
+
+		const targetGift = SmartGift(ethData.bidAddress) // Provide GIFT ADDRESS
 		const accounts = await web3.eth.getAccounts()
 		const bidEntry = await targetGift.methods
-			.merchantBids(web3.utils.toWei('0.0172', 'ether')) // Provide BID AMOUNT. 0.019 is the example Bid amount in Ether.
+			.merchantBids(web3.utils.toWei(ethData.ether, 'ether')) // Provide BID AMOUNT
 			.send({
 				from: accounts[0],
 				gas: 1000000

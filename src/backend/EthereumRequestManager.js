@@ -9,3 +9,11 @@ export const DonationRequest = (charity, money) => {
 		ether: DollarsToEther(money).toString()
 	}
 }
+
+export const BidRequest = (charity, money) => {
+	const gift = charity.gifts[0]
+	return {
+		bidAddress : gift.ethGiftAddr,
+		ether: money.toString()
+	}
+}
