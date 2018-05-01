@@ -9,7 +9,9 @@ import '../style/SelectMerchant.css'
 import {kStyleElevation, kStylePaper} from '../style/styleConstants'
 import {WeiToDollars} from '../style/Formatter'
 import {containsObject, isObjectEmpty} from '../components/Helpers'
+
 import {ChooseMerchant} from '../ethereum/components/ChooseMerchant'
+import {ChooseMerchantRequest} from '../backend/EthereumRequestManager'
 import {FetchGift, FetchMerchants} from '../backend/APIHelper'
 
 class SelectMerchant extends Component {
@@ -28,8 +30,6 @@ class SelectMerchant extends Component {
     const charityID = this.props.match.params.charityID
     FetchGift(charityID, (charity, gift) => {
       FetchMerchants(gift, (merchants) => {
-        console.log(merchants)
-        console.log(charity)
         this.setState({charity, gift, merchants})
       })
     })
@@ -49,13 +49,6 @@ class SelectMerchant extends Component {
       bid['info'] = merchantInfo[b.ethMerchantAddr]
       return bid
     })
-
-    console.log(merchants)
-        //     name: "Devin the Merchant",
-        // offer: 90000000000000000,
-        // timeMin:7,
-        // timeMax:11,
-
 
     merchants.sort((a, b) => a.bidAmt - b.bidAmt)
 
@@ -79,29 +72,43 @@ class SelectMerchant extends Component {
       }, [])
     }
 
+    const onSelect = (merchant) => () => {
+      const blockchainCompletion = (error) => {
+        if (error) alert(error)
+        else       alert("You've selected a merchant, maybe.")
+      }
+      const ethData = ChooseMerchantRequest(this.state.gift, merchant.ethMerchantAddr)
+      ChooseMerchant(ethData, blockchainCompletion)
+    }
+
+
     const availableMerchants = topMerchants(merchants, 3)
-    const selectedMerchant = this.state.selectedValue === '' ? undefined : this.state.selectedValue
+    const selectedMerchant = this.state.selectedValue === '' ? undefined : merchantInfo[this.state.selectedValue]
 
     return (
         <div>
           <NavBar title={"Select Merchant"} />
           <div className="page-container">
             <Paper elevation={kStyleElevation} style={kStylePaper}>
-            <MerchantOptionsHeader/>
+            <MerchantOptionHeader/>
             {
               merchants.map((m, i) => {
-                return <MerchantOptions  key={i}
+                return <MerchantOption  key={i}
                                         name={m.info.name}
+                                        merchantAddress={m.ethMerchantAddr}
                                         offer={m.bidAmt}
                                         days={[m.info.minShipment, m.info.maxShipment]}
                                         index={i}
                                         enabled={containsObject(m, availableMerchants)}
-                                        radio={{handleChange, checked}}/>
+                                        radio={{handleChange, checked}}
+                        />
               })
             }
             </Paper>
             <Paper elevation={kStyleElevation} style={kStylePaper}>
-             <MerchantSelected merchant = {selectedMerchant}/>
+             <MerchantSelected merchant = {selectedMerchant}
+                               onSelect = {onSelect}
+              />
             </Paper>
           </div>
         </div>
@@ -110,7 +117,7 @@ class SelectMerchant extends Component {
 }
 
 
-class MerchantOptions extends Component {
+class MerchantOption extends Component {
 
   render() {
     const overlayClass = this.props.enabled ? "merchant-select-no-overlay" : "merchant-select-overlay"
@@ -142,9 +149,9 @@ class MerchantOptions extends Component {
               <div className = "merchant-select-time">{this.props.days[0]} - {this.props.days[1]} days</div>
               <div className = "merchant-select-choice">
                 <Radio
-                  checked={this.props.radio.checked(this.props.name)}
+                  checked={this.props.radio.checked(this.props.merchantAddress)}
                   onChange={this.props.radio.handleChange}
-                  value={this.props.name}
+                  value={this.props.merchantAddress}
                   color="primary"
                   disabled={!this.props.enabled}
                   aria-label={this.props.name}/>
@@ -156,7 +163,7 @@ class MerchantOptions extends Component {
   }
 }
 
-class MerchantOptionsHeader extends Component {
+class MerchantOptionHeader extends Component {
 
   render() {
 
@@ -180,16 +187,12 @@ class MerchantSelected extends Component {
     if (this.props.merchant === undefined)
       return <div>Please select a merchant to ship your goods.</div>
 
-    const completion = (error) => {
-      if (error) alert(error)
-      else       alert("You've selected a merchant, maybe.")
-    }
     return (
       <div>
         <div className = "merchant-selected-description">
-        You have selected <span className = "merchant-selected-name">{this.props.merchant}</span> to ship your goods. Upon confirmation, the merchant will be paid and your goods will be shipped.
+        You have selected <span className = "merchant-selected-name">{this.props.merchant.name}</span> to ship your goods. Upon confirmation, the merchant will be paid and your goods will be shipped.
         </div>
-        <Button onClick ={() => ChooseMerchant(completion)} variant="raised" size="medium" color="primary">Confirm</Button>
+        <Button onClick = {this.props.onSelect(this.props.merchant)} variant="raised" size="medium" color="primary">Confirm</Button>
       </div>
     )
   }

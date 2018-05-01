@@ -13,7 +13,14 @@ export const DonationRequest = (charity, money) => {
 export const BidRequest = (charity, money) => {
 	const gift = charity.gifts[0]
 	return {
-		bidAddress : gift.ethGiftAddr,
+		giftAddress : gift.ethGiftAddr,
 		ether: money.toString()
+	}
+}
+
+export const ChooseMerchantRequest = (gift, merchantAddress) => {
+	return {
+		giftAddress: gift.ethGiftAddr,
+		merchantAddress
 	}
 }

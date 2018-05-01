@@ -1,16 +1,21 @@
 import web3 from '../web3'
 import SmartGift from '../smartgift'
+import {objectContainsKeys} from '../../components/Helpers'
 
 
-export const ChooseMerchant = async (completion) => {	
+export const ChooseMerchant = async (ethData, completion) => {	
 	try {
-		const targetGift = SmartGift('0xd16038d71B68E149B9441dcEEf6C9c8b339701a6') // address of the Gift you're working on
+		const requiredKeys = ['giftAddress', 'merchantAddress']
+		const keyError = objectContainsKeys(ethData, requiredKeys)
+		if (keyError !== undefined)  return completion(keyError)
+
+		const targetGift = SmartGift(ethData.giftAddress) // address of the Gift you're working on
 		const accounts = await web3.eth.getAccounts()
 		const selectionResult = await targetGift.methods
-			.recipientPicksMerchant('0xBae217221CbFE934d8e190c8f0A836Cd44a7ed07') // address of merchant that gets selected
+			.recipientPicksMerchant(ethData.merchantAddress) // address of merchant that gets selected
 			.send({
 				from: accounts[0],
-				gas: 1000000
+				gas: 2000000
 			})
 		if (selectionResult.status === "0x0" || !selectionResult.status) {
 			const err = new Error ("Transaction returned a bad status")

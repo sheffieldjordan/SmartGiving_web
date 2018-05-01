@@ -63,6 +63,8 @@ class HomeTemplate extends Component {
       )
     })
 
+    console.log(recipients)
+
     const drawerCharity = () => {
       if (isObjectEmpty(storeState.updateDrawer.selectedCharity)) {
         return undefined
