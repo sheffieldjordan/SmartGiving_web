@@ -26,7 +26,7 @@ export const containsObject = (obj, list) => {
 
 export const objectContainsKeys = (obj, requiredKeys) => {
 	const missingKey = requiredKeys.reduce((final, currentVal) => {
-		if (final === undefined) return final
+		if (final !== undefined) return final
 		return Object.keys(obj).indexOf(currentVal) === -1 ? currentVal : undefined
 	}, undefined)
 	if (missingKey !== undefined) {

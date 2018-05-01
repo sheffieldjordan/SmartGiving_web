@@ -105,7 +105,7 @@ class App extends Component {
 								component={() => <GetAllStats store={this.props.store} />}
 							/>
 							<Route
-								path="/selectmerchant"
+								path="/selectmerchant/:charityID"
 								component={() => <SelectMerchant store={this.props.store} />}
 							/>
 							<Route
