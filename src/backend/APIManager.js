@@ -1,5 +1,5 @@
 import axios from "axios";
-import requests from "../data/requests";
+import requests from '../data/requests'
 
 export const FakeData = false;
 
@@ -17,8 +17,8 @@ export const GetAllOpenGifts = completion => {
   }
 
   if (FakeData) {
-    completion(requests.recipients, undefined);
-    return;
+    completion(requests.recipients, undefined)
+    return
   }
 
   axios
@@ -30,6 +30,19 @@ export const GetAllOpenGifts = completion => {
       completion(undefined, err);
     });
 };
+
+
+export const UpdateDatabase = completion => {
+  axios
+    .get(`/api/updateDB`)
+    .then(res => {
+      completion()
+    })
+    .catch(err => {
+      completion(err)
+    })
+}
+
 
 export const CreateNewGift = (gift, completion) => {
   axios

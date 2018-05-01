@@ -1,15 +1,12 @@
 {
-	"user": {
-		"charityName": "Ayudelos!",
-		"location": "Calle 36c #4432, Colombia, Valle del Cauca, Palmira",
-		"contact": {
-			"name": "Humberto Rodriguez",
-			"email": "humbertorodriguez12@gmail.com",
-			"website": "www.google.com",
-			"facebook": "www.facebook.com",
-			"instagram": "www.instagram.com",
-			"twitter": "www.twitter.com"
-		},
-		"story": "Que te pasa? Aroident cillum cupidatat veniam ipsum do reprehenderit. In commodo ipsum excepteur proident et pariatur. Aliqua veniam irure labore culpa velit laboris sunt excepteur proident. Irure adipisicing et dolore consequat irure esse est consectetur ad id officia id. Deserunt anim adipisicing in officia eiusmod ullamco exercitation minim aute. Nostrud sint cillum aute amet minim ut culpa nisi amet veniam nisi adipisicing esse minim. Eiusmod consectetur laboris in minim excepteur consequat ipsum exercitation in voluptate eiusmod eiusmod id adipisicing. Culpa ipsum aute nostrud enim Lorem Lorem consequat. Ex proident veniam dolor anim nisi dolor ex aliqua sint et excepteur labore. Id qui eu velit officia elit consectetur aliquip fugiat culpa adipisicing minim anim excepteur."
+	"recipient" : {
+	    "ethRecipientAddr": "0x6a882e335512ce6829b0D8dfF2698d17a7b6b53D",
+	    "location": "Calle 36c #4432, Colombia, Valle del Cauca, Palmira"
+	},
+	"merchant" : {
+	    "ethMerchantAddr": "0X077B379AB393379AB393379AF94E87B22CA79"
+	},
+	"donor" : {
+	    "ethDonorAddr": "0xd4B148Efb0C22F0bc92652302B43e3A72994678B"
 	}
 }

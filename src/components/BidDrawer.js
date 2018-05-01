@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Drawer, Button, TextField, FormControl, FormHelperText} from 'material-ui';
 
 import RequestTable from './RequestTable'
-import {StringFromLocation, WeiToEther} from '../style/Formatter'
+import {WeiToEther} from '../style/Formatter'
 import {isObjectEmpty} from '../components/Helpers'
 
 class BidDrawer extends Component {
@@ -42,7 +42,7 @@ class BidDrawer extends Component {
 			<div className="drawer-container">
 			<h1 className = "drawer-title">Confirm Bid</h1>
 				<div className = "drawer-description donate-pre-description">
-					By bidding, you promise that if you win, you will ship to the following items to <span className="bid-address">{StringFromLocation(location)}</span>:
+					By bidding, you promise that if you win, you will ship to the following items to <span className="bid-address">{location}</span>:
 				</div>
 				<div className = "bid-items-section">
 					{itemsTable(gift)}
@@ -55,7 +55,7 @@ class BidDrawer extends Component {
 
 				</div>
 				<div className = "drawer-button-container">
-					<Button className = "drawer-button" onClick = {this.props.data.onPrimary} variant="raised" size="medium" color="primary">Bid</Button>
+					<Button className = "drawer-button" onClick = {this.props.data.onPrimary(currentBid())} variant="raised" size="medium" color="primary">Bid</Button>
 					<Button className = "drawer-button" onClick = {this.props.data.onSecondary} variant="raised" size="medium" color="default">Cancel</Button>
 				</div>
 				<div className = "drawer-description donate-post-description">

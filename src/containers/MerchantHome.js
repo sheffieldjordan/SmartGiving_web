@@ -5,6 +5,7 @@ import HomeTemplate from "../components/HomeTemplate"
 import {MerchantPreButtons, MerchantActionButtons, MerchantPostButtons} from '../components/CardComponents'
 import {HomepageFilter} from "../components/GiftFilters"
 import {WeiToEther} from '../style/Formatter'
+import {UserType} from '../components/User'
 
 class MerchantHome extends Component {
 
@@ -16,7 +17,7 @@ class MerchantHome extends Component {
       "post" : ((gift) => MerchantPostButtons(gift))
     }
 
-    const userType = "merchant"
+    const userType = UserType.MERCHANT
     const priceFunc = (gift) => WeiToEther(gift.donorDonationAmt).toFixed(5)
     const filter = HomepageFilter(true)
 
