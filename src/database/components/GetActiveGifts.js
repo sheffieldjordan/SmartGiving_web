@@ -31,6 +31,9 @@ class GetActiveGifts extends Component {
     );
     this.handleRecipientGiftAdd = this.handleRecipientGiftAdd.bind(this);
     this.handleUpdateDB = this.handleUpdateDB.bind(this);
+    this.handleAddDonor = this.handleAddDonor.bind(this);
+    this.handleAddMerchant = this.handleAddMerchant.bind(this);
+    this.handleAddRecipient = this.handleAddRecipient.bind(this);
     this.handleDonorSubmit = this.handleDonorSubmit.bind(this);
     this.handleMerchantSubmit = this.handleMerchantSubmit.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -144,6 +147,82 @@ class GetActiveGifts extends Component {
       .put(`/api/addGift`, gift)
       .then(res => {
         console.log("inside Merchant GetActiveGifts", res.data);
+        this.setState({
+          data: res.data
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  handleAddRecipient(e) {
+    e.preventDefault();
+
+    let recipient = {
+      title: "req.body.title",
+      contact_name: "req.body.contact_name",
+      about: "req.body.about",
+      email: "req.body.email",
+      location: "req.body.location",
+      website: "req.body.website",
+      facebook: "req.body.facebook",
+      instagram: "req.body.instagram",
+      twitter: "req.body.twitter",
+      ethRecipientAddr: "req.body.ethRecipientAddr",
+      image: "req.body.image"
+    };
+    axios
+      .put(`/api/addRecipient`, recipient)
+      .then(res => {
+        console.log("Back in GetActiveGifts from Add Recipient", res.data);
+        this.setState({
+          data: res.data
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  handleAddDonor(e) {
+    e.preventDefault();
+
+    let donor = {
+      ethDonorAddr: "req.body.ethDonorAddr",
+      name: "req.body.description",
+      email: "req.body.expiry"
+    };
+    axios
+      .put(`/api/addDonor`, donor)
+      .then(res => {
+        console.log("Back in GetActiveGifts from Add Donor", res.data);
+        this.setState({
+          data: res.data
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  handleAddMerchant(e) {
+    e.preventDefault();
+
+    let merchant = {
+      ethMerchantAddr: "req.body.ethMerchantAddr",
+      name: "req.body.name",
+      email: "req.body.email",
+      location: "req.body.location",
+      storeDescription: "req.body.storeDescription",
+      photo: "req.body.photo",
+      minShipment: "req.body.minShipment",
+      maxShipment: "req.body.maxShipment"
+    };
+    axios
+      .put(`/api/addMerchant`, merchant)
+      .then(res => {
+        console.log("Back in GetActiveGifts from Add Merchant", res.data);
         this.setState({
           data: res.data
         });
@@ -310,6 +389,33 @@ class GetActiveGifts extends Component {
               type="submit"
               style={style.recipientFormPost}
               value="Update DB"
+            />
+          </div>
+        </form>
+        <form onSubmit={this.handleAddRecipient}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Add Recipient"
+            />
+          </div>
+        </form>
+        <form onSubmit={this.handleAddDonor}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Add Donor"
+            />
+          </div>
+        </form>
+        <form onSubmit={this.handleAddMerchant}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Add Merchant"
             />
           </div>
         </form>

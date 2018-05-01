@@ -6,33 +6,43 @@ import { withRouter } from 'react-router'
 import { toggleDrawer, selectCharity } from '../redux/actions'
 
 import {Bid} from '../ethereum/components/Bid'
-import { DonateEthereum } from "../ethereum/components/Donate"
+import {DonateEthereum} from "../ethereum/components/Donate"
+import {DonationRequest, BidRequest} from '../backend/EthereumRequestManager'
+import {UpdateDatabase} from '../backend/APIManager'
 
 import DonationDrawer from '../components/DonationDrawer'
 import BidDrawer from '../components/BidDrawer'
+import {UserType} from '../components/User'
 
 class DrawerFactory extends Component {
 
 	render() {
 
-		const blockchainFunc = (type) => {
+		const blockchainFuncs = (type) => {
 			switch(type) {
-				case "donor":
-					return DonateEthereum
-				case "merchant":
-					return Bid
+				case UserType.DONOR:
+					return [DonateEthereum, DonationRequest]
+				case UserType.MERCHANT:
+					return [Bid, BidRequest]
 				default: return () => console.log(`No blockchain call for type ${type}`)
 			}
 		}
+
+
 		const drawerData = (props) => {
-			const blockchainCall = blockchainFunc(this.props.type)
+			const [blockchainCall, requestFormatter] = blockchainFuncs(this.props.type)
 			const storeState = props.store.getState()
-			const onPrimary = () => {
-				blockchainCall((error) => {
+			const onPrimary = (money) => () => {
+				const ethData = requestFormatter(this.props.charity, money)
+				console.log(ethData)
+				blockchainCall(ethData, (error) => {
 					if (error !== undefined) {
-						alert(`Blockchain Error: ${error}`)
+						alert(`Blockchain Error: ${error.message}`)
+						console.log(error)
 					} else {
-						props.history.push('/thanks')
+						UpdateDatabase(() => {
+							props.history.push('/thanks')
+						})
 					}
 				})
 				props.showRequest(false)
@@ -49,26 +59,21 @@ class DrawerFactory extends Component {
 		}
 		const storeState = this.props.store.getState()
 		const data = drawerData(this.props)
-		if (this.props.type === "donor") {
-			return (
-				<DonationDrawer store={this.props.store}
+		const moneyVal = this.props.money !== undefined ? this.props.money : parseFloat(storeState.updateDrawer.donationValue)
+		switch(this.props.type) {
+			case UserType.DONOR:
+				return <DonationDrawer store={this.props.store}
 					data={data}
-					donationValue={storeState.updateDrawer.donationValue}
+					donationValue={moneyVal}
 					charity={this.props.charity}
-					blockchainCall={DonateEthereum}
 				/>
-			)
-		}
-		else if (this.props.type === "merchant") {
-			return (
-				<BidDrawer store={this.props.store}
+			case UserType.MERCHANT:
+				return <BidDrawer store={this.props.store}
 					data={data}
 					charity={this.props.charity}
-					blockchainCall={Bid}
+					bid={moneyVal}
 				/>
-				)
-		} else {
-			console.warn(`Uh oh! Bad drawer prop type: ${this.props.type}`)
+			default: console.warn(`Uh oh! Bad drawer prop type: ${this.props.type}`)
 		}
 	}
 }

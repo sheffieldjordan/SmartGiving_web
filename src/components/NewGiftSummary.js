@@ -16,14 +16,14 @@ class NewGiftSummary extends Component {
 			)
 		}
 
-		const priceDollars = PriceForItems(this.props.gift.items)
+		const priceDollars = PriceForItems(this.props.gift.items, true)
 		return (
 			<div className = "gift-summary-container">
 				<h1 className = "gift-summary-title">Summary</h1>
 				{summarySection("Gift title", this.props.gift.title)}
 				{summarySection("Gift description", this.props.gift.description)}
 				{summarySection("Requested funds", `$${priceDollars} USD (${DollarsToEther(priceDollars)} ETH)`)}
-				{summarySection("Shipping address", this.props.store.getState().globalData.user.location)}
+				{summarySection("Shipping address", this.props.user.location)}
 		   </div>
 	   )
 	}

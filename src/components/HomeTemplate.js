@@ -25,7 +25,8 @@ class HomeTemplate extends Component {
         alert(`${err}`)
         return
       }
-      this.setState({recipients:data})
+      const filteredCharities = this.props.filter(data)
+      this.setState({recipients:filteredCharities})
     }
 
     GetAllOpenGifts(dbCompletion)
@@ -51,6 +52,7 @@ class HomeTemplate extends Component {
         <CharityCard
           key={i}
           title={r.title}
+          subtitle={gift.title}
           description={gift.summary}
           image={ImageLibrary(r.image)}
           onImageClick={learnMore(r)}
@@ -61,16 +63,23 @@ class HomeTemplate extends Component {
       )
     })
 
+    console.log(recipients)
+
     const drawerCharity = () => {
       if (isObjectEmpty(storeState.updateDrawer.selectedCharity)) {
         return undefined
       }
       return storeState.updateDrawer.selectedCharity
     }
+    const drawerGifts = () => {
+      if (drawerCharity() === undefined) return {}
+      return drawerCharity().gifts[0]
+    }
     const drawer = (
       <DrawerFactory
         store={this.props.store}
         charity={drawerCharity()}
+        money={this.props.priceFunc(drawerGifts())}
         type={this.props.userType}
       />
     )

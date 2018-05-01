@@ -6,6 +6,9 @@ import {
   DonorPreButtons,
   DonorActionButtons
 } from "../components/CardComponents"
+import {HomepageFilter} from "../components/GiftFilters"
+import {PriceForItems} from '../components/Helpers'
+import {UserType} from '../components/User'
 
 class DonorHome extends Component {
 
@@ -18,10 +21,16 @@ class DonorHome extends Component {
       "post" : (() => [])
     }
 
-    const userType = "donor"
+    const userType = UserType.DONOR
+    const priceFunc = (gift) => PriceForItems(gift.items)
+    const filter = HomepageFilter(false)
 
     return (
-      <HomeTemplate store={this.props.store} buttons={buttons} userType={userType}/>
+      <HomeTemplate store={this.props.store}
+                    filter= {filter}
+                    buttons={buttons}
+                    priceFunc={priceFunc}
+                    userType={userType}/>
       )
   }
 }

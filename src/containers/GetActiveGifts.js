@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import style from "../style/GetActiveGiftsStyle";
-import { GetAllOpenGifts } from "../backend/APIManager";
+import { GetAllOpenGifts, GetAllMerchants } from "../backend/APIManager";
 
 class GetActiveGifts extends Component {
   constructor(props) {
@@ -29,9 +29,14 @@ class GetActiveGifts extends Component {
     this.handleRecipientEthAddrChange = this.handleRecipientEthAddrChange.bind(
       this
     );
+    this.handleAddDonor = this.handleAddDonor.bind(this);
+    this.handleAddMerchant = this.handleAddMerchant.bind(this);
+    this.handleAddRecipient = this.handleAddRecipient.bind(this);
     this.handleRecipientGiftAdd = this.handleRecipientGiftAdd.bind(this);
     this.handleUpdateDB = this.handleUpdateDB.bind(this);
+    this.handleGetMerchants = this.handleGetMerchants.bind(this);
     this.handleDonorSubmit = this.handleDonorSubmit.bind(this);
+    this.handleGetRecipients = this.handleGetRecipients.bind(this);
     this.handleMerchantSubmit = this.handleMerchantSubmit.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleExpiryChange = this.handleExpiryChange.bind(this);
@@ -54,9 +59,8 @@ class GetActiveGifts extends Component {
     console.log(this.props);
   }
 
-  handleDonorSubmit(e) {
+  handleGetRecipients(e) {
     e.preventDefault();
-    let ethereumAddress = this.state.ethDonorAddress.trim();
     // console.log(ethereumAddress);
 
     const completion = (data, err) => {
@@ -69,7 +73,7 @@ class GetActiveGifts extends Component {
         });
       }
     };
-    GetAllOpenGifts(completion, ethereumAddress);
+    GetAllOpenGifts(completion);
   }
 
   handleUpdateDB(e) {
@@ -97,6 +101,39 @@ class GetActiveGifts extends Component {
     //   }
     // };
     // GetAllOpenGifts(completion, ethereumAddress);
+  }
+
+  //////NOT IMPLEMENTED IN PROJECT WITH GABE////////
+  handleDonorSubmit(e) {
+    e.preventDefault();
+    let ethereumAddress = this.state.ethMerchantAddress.trim();
+    // console.log(ethereumAddress);
+
+    const completion = (data, err) => {
+      if (err !== undefined) {
+        console.log(err);
+      } else {
+        console.log("inside Donor GetActiveGifts", data);
+        this.setState({
+          data: data
+        });
+      }
+    };
+    GetAllOpenGifts(completion, ethereumAddress);
+  }
+  handleGetMerchants(e) {
+    e.preventDefault();
+    const completion = (data, err) => {
+      if (err !== undefined) {
+        console.log(err);
+      } else {
+        console.log("inside Donor GetActiveGifts", data);
+        this.setState({
+          data: data
+        });
+      }
+    };
+    GetAllMerchants(completion);
   }
 
   handleMerchantSubmit(e) {
@@ -144,6 +181,82 @@ class GetActiveGifts extends Component {
       .put(`/api/addGift`, gift)
       .then(res => {
         console.log("inside Merchant GetActiveGifts", res.data);
+        this.setState({
+          data: res.data
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  handleAddRecipient(e) {
+    e.preventDefault();
+
+    let recipient = {
+      title: "req.body.title",
+      contact_name: "req.body.contact_name",
+      about: "req.body.about",
+      email: "req.body.email",
+      location: "req.body.location",
+      website: "req.body.website",
+      facebook: "req.body.facebook",
+      instagram: "req.body.instagram",
+      twitter: "req.body.twitter",
+      ethRecipientAddr: "req.body.ethRecipientAddr",
+      image: "req.body.image"
+    };
+    axios
+      .put(`/api/addRecipient`, recipient)
+      .then(res => {
+        console.log("Back in GetActiveGifts from Add Recipient", res.data);
+        this.setState({
+          data: res.data
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  handleAddDonor(e) {
+    e.preventDefault();
+
+    let donor = {
+      ethDonorAddr: "req.body.ethDonorAddr",
+      name: "req.body.name",
+      email: "req.body.email"
+    };
+    axios
+      .put(`/api/addDonor`, donor)
+      .then(res => {
+        console.log("Back in GetActiveGifts from Add Donor", res.data);
+        this.setState({
+          data: res.data
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  handleAddMerchant(e) {
+    e.preventDefault();
+
+    let merchant = {
+      ethMerchantAddr: "req.body.ethMerchantAddr",
+      name: "req.body.name",
+      email: "req.body.email",
+      location: "req.body.location",
+      storeDescription: "req.body.storeDescription",
+      photo: "req.body.photo",
+      minShipment: "req.body.minShipment",
+      maxShipment: "req.body.maxShipment"
+    };
+    axios
+      .put(`/api/addMerchant`, merchant)
+      .then(res => {
+        console.log("Back in GetActiveGifts from Add Merchant", res.data);
         this.setState({
           data: res.data
         });
@@ -310,6 +423,52 @@ class GetActiveGifts extends Component {
               type="submit"
               style={style.recipientFormPost}
               value="Update DB"
+            />
+          </div>
+        </form>
+        <form onSubmit={this.handleGetRecipients}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Get Recipients"
+            />
+          </div>
+        </form>
+        <form onSubmit={this.handleGetMerchants}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Get Merchants"
+            />
+          </div>
+        </form>
+        <hr />
+        <form onSubmit={this.handleAddRecipient}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Add Recipient"
+            />
+          </div>
+        </form>
+        <form onSubmit={this.handleAddDonor}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Add Donor"
+            />
+          </div>
+        </form>
+        <form onSubmit={this.handleAddMerchant}>
+          <div>
+            <input
+              type="submit"
+              style={style.recipientFormPost}
+              value="Add Merchant"
             />
           </div>
         </form>
