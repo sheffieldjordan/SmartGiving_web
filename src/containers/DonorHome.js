@@ -25,10 +25,13 @@ class DonorHome extends Component {
     const priceFunc = (gift) => PriceForItems(gift.items)
     const filter = HomepageFilter(false)
 
+    const sectioningFunc = (charities) => [{charities}]
+
     return (
       <HomeTemplate store={this.props.store}
                     filter= {filter}
                     buttons={buttons}
+                    sectioningFunc={sectioningFunc}
                     priceFunc={priceFunc}
                     userType={userType}/>
       )

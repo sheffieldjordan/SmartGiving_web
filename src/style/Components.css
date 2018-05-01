@@ -102,8 +102,23 @@ h1, h2, h3{
 .charity-card-container {
 	display: flex;
 	align-items: flex-start;
-	justify-content: center;
+	justify-content: left;
 	flex-wrap: wrap;
+			width:100%;
+
+}
+
+.charity-section-container {
+	margin-bottom: 30px;
+		width:100%;
+
+}
+
+.charity-section-title {
+	color: #666666;
+	font-size:26pt;
+	margin-left:15px;
+	margin-bottom: 5px;
 }
 
 .charity-card {
