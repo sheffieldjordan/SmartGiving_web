@@ -198,9 +198,60 @@ module.exports = app => {
     res.json(activeGifts);
   });
 
+  app.put("/api/addMerchant", async function(req, res) {
+    var merchant = new Merchant();
+
+    merchant.name = req.body.name;
+    merchant.email = req.body.email;
+    merchant.ethMerchantAddr = req.body.ethMerchantAddr;
+    merchant.location = req.body.location;
+    merchant.storeDescription = req.body.storeDescription;
+    merchant.photo = req.body.photo;
+    merchant.minShipment = 0;
+    merchant.maxShipment = 100;
+
+    merchant.save(function(err) {
+      if (err) res.send(err);
+      res.json({ message: "Merchant successfully added!" });
+    });
+  });
+
+  app.put("/api/addDonor", async function(req, res) {
+    var donor = new Donor();
+
+    donor.name = req.body.name;
+    donor.email = req.body.email;
+    donor.ethDonorAddr = req.body.ethDonorAddr;
+
+    donor.save(function(err) {
+      if (err) res.send(err);
+      res.json({ message: "Donor successfully added!" });
+    });
+  });
+
+  app.put("/api/addRecipient", async function(req, res) {
+    var recipient = new Recipient();
+
+    recipient.title = req.body.title;
+    recipient.contact_name = req.body.contact_name;
+    recipient.about = req.body.about;
+    recipient.email = req.body.email;
+    recipient.location = req.body.location;
+    recipient.website = req.body.website;
+    recipient.facebook = req.body.facebook;
+    recipient.instagram = req.body.instagram;
+    recipient.twitter = req.body.twitter;
+    recipient.ethRecipientAddr = req.body.ethRecipientAddr;
+    recipient.image = req.body.image;
+
+    recipient.save(function(err) {
+      if (err) res.send(err);
+      res.json({ message: "Recipient successfully added!" });
+    });
+  });
+
   app.put("/api/addGift", async function(req, res) {
     // Recipient.findById(req.params.recipient_id, function(err, recipient) {
-    // console.log(req.body);
     Recipient.find(
       { ethRecipientAddr: req.body.ethRecipientAddr },
       // { "gifts.$": true },
@@ -212,7 +263,10 @@ module.exports = app => {
         //nothing was changed we will not alter the field.
         recipient[0].gifts.push({
           title: req.body.title,
-          // summary: req.body.description,
+          summary: req.body.summary,
+          background: req.body.background,
+          tags: req.body.tags,
+          challenge: req.body.challenge,
           expiry: req.body.expiry,
           dollars: req.body.dollars,
           creationDate: Date.now(),
