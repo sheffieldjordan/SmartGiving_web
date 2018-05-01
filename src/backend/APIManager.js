@@ -1,5 +1,5 @@
 import axios from "axios";
-import requests from '../data/requests'
+import requests from "../data/requests";
 
 export const FakeData = false;
 
@@ -17,8 +17,8 @@ export const GetAllOpenGifts = completion => {
   }
 
   if (FakeData) {
-    completion(requests.recipients, undefined)
-    return
+    completion(requests.recipients, undefined);
+    return;
   }
 
   axios
@@ -50,5 +50,38 @@ export const GetAllMerchants = completion => {
     })
     .catch(err => {
       completion(undefined, err);
+    });
+};
+
+export const CreateNewRecipient = (recipient, completion) => {
+  axios
+    .put(`/api/addRecipient`, recipient)
+    .then(res => {
+      completion();
+    })
+    .catch(err => {
+      completion(err);
+    });
+};
+
+export const CreateNewDonor = (donor, completion) => {
+  axios
+    .put(`/api/addDonor`, donor)
+    .then(res => {
+      completion();
+    })
+    .catch(err => {
+      completion(err);
+    });
+};
+
+export const CreateNewMerchant = (merchant, completion) => {
+  axios
+    .put(`/api/addMerchant`, merchant)
+    .then(res => {
+      completion();
+    })
+    .catch(err => {
+      completion(err);
     });
 };
