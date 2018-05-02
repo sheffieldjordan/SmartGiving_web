@@ -19,13 +19,12 @@ import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
 import GetAllStats from './ethereum/components/GetAllStats'
 import SelectMerchant from './containers/SelectMerchant'
-import ItemSent from './ethereum/components/ItemSent'
-import ItemReceived from './ethereum/components/ItemReceived'
-import GetActiveGifts from "./containers/GetActiveGifts";
+import GetActiveGifts from "./containers/GetActiveGifts"
+import ItemReceivedPage from "./containers/ItemReceivedPage"
 import Team from './containers/Team'
+import {PollUserAddress, CancelPollUserAddress} from './components/User'
 
-
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 
 const theme = createMuiTheme({
   palette: {
@@ -45,13 +44,22 @@ const theme = createMuiTheme({
   status: {
     danger: 'orange',
   },
-
-
-
 });
 
 
 class App extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {}
+	}
+	componentDidMount() {
+		PollUserAddress((account) => {
+			this.setState({account})
+		})
+	}
+	componentWillUnmount() {
+		CancelPollUserAddress()
+	}
 	render() {
 		return (
 		  <MuiThemeProvider theme={theme}>
@@ -76,7 +84,7 @@ class App extends Component {
 							
 							<Route
 								path="/home/donor"
-								component={() => <DonorHome store={this.props.store} />}
+								component={() => <DonorHome store={this.props.store} account={this.state.account}/>}
 							/>
 
 							<Route
@@ -86,7 +94,7 @@ class App extends Component {
 
 							<Route
 								path="/home/merchant"
-								component={() => <MerchantHome store={this.props.store} />}
+								component={() => <MerchantHome store={this.props.store} account={this.state.account}/>}
 							/>
 							<Route
 								path="/charity/:charityID/:userType"
@@ -109,12 +117,8 @@ class App extends Component {
 								component={() => <SelectMerchant store={this.props.store} />}
 							/>
 							<Route
-								path="/itemsent"
-								component={() => <ItemSent store={this.props.store} />}
-							/>
-							<Route
 								path="/itemreceived"
-								component={() => <ItemReceived store={this.props.store} />}
+								component={() => <ItemReceivedPage account={this.state.account}/>}
 							/>
 							<Route
 								path="/getActiveGifts"

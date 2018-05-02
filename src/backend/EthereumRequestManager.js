@@ -24,3 +24,10 @@ export const ChooseMerchantRequest = (gift, merchantAddress) => {
 		merchantAddress
 	}
 }
+
+export const ConfirmRequest = (charity) => {
+	const gift = charity.gifts[0]
+	return {
+		giftAddress: gift.ethGiftAddr
+	}
+}

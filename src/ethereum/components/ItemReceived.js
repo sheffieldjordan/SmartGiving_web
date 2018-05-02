@@ -1,45 +1,29 @@
-import React, { Component } from 'react'
 import web3 from '../web3'
 import SmartGift from '../smartgift'
+import {objectContainsKeys} from '../../components/Helpers'
 
-class ItemReceived extends Component {
-	state = {
-		errorMessage: ''
-	}
+export const ItemReceived = async (ethData, completion) => {
+	try {
+		const requiredKeys = ['giftAddress']
+		const keyError = objectContainsKeys(ethData, requiredKeys)
+		if (keyError !== undefined)  return completion(keyError)
 
-	onSubmit = async (event) => {
-		event.preventDefault()
-
-		try {
-			const targetGift = SmartGift('0xd16038d71B68E149B9441dcEEf6C9c8b339701a6') // address of the Gift you're working on
-			const accounts = await web3.eth.getAccounts()
-			const receiptResult = await targetGift.methods
-				.recipientReceivesItem()
-				.send({
-					from: accounts[0],
-					gas: 1000000
-				})
-			if (receiptResult.status === "0x0" || !receiptResult.status) {
-				console.log("Transaction Failed!!!")
-			} else {
-				console.log(`You've announced your item has been received!`)
-				alert('Success!')
-			}
-		} catch (err) {
-			this.setState({ errorMessage: err.message })
+		const targetGift = SmartGift(ethData.giftAddress) // address of the Gift you're working on
+		const accounts = await web3.eth.getAccounts()
+		const receiptResult = await targetGift.methods
+			.recipientReceivesItem()
+			.send({
+				from: accounts[0],
+				gas: 2000000
+			})
+		if (receiptResult.status === "0x0" || !receiptResult.status) {
+			const err = new Error("Item Received transaction failed")
+			return completion(err)
+		} else {
+			console.log(`You've announced your item has been received!`)
+			return completion()
 		}
-	}
-
-	render() {
-		return (
-			<div>
-				<form onSubmit={this.onSubmit}>
-					<button>Mark Item 'RECEIVED'</button>
-				</form>
-				<h1>{this.state.errorMessage}</h1>
-			</div>
-		)
+	} catch (err) {
+		completion(err)
 	}
 }
-
-export default ItemReceived
