@@ -15,21 +15,26 @@ const sendError = (res, error) => {
 };
 module.exports = app => {
   //*************** Working with Gabe ***************//
-  // app.get("/api/activeRecipientsList", async function(req, res) {
-  //   const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
-  //   res.json(recipients);
-  // });
-
   app.get("/api/activeRecipientsList", async function(req, res) {
-    const recipients = await Recipient.aggregate([
-      //{ $project: { gifts: 1 } },
-      { $unwind: "$gifts" },
-      { $sort: { "gifts.creationDate": -1 } },
-      { $match: { "gifts.itemReceived": { $ne: true } } },
-      { $group: { _id: "$_id", gifts: { $push: "$gifts" } } }
-    ]);
+    const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
     res.json(recipients);
   });
+
+  // app.get("/api/activeRecipientsList", async function(req, res) {
+  //   const recipients = await Recipient.aggregate([
+  //     //{ $project: { gifts: 1 } },
+  //     { $unwind: "$gifts" },
+  //     { $sort: { "gifts.creationDate": -1 } },
+  //     { $match: { "gifts.itemReceived": { $ne: true } } },
+  //     {
+  //       $group: {
+  //         _id: { title: "$title", contact_name: "$contact_name" },
+  //         gifts: { $push: "$gifts" }
+  //       }
+  //     }
+  //   ]);
+  //   res.json(recipients);
+  // });
 
   app.get("/api/getMerchants", async function(req, res) {
     const merchants = await Merchant.find({}, { _id: 0, __v: 0 });
@@ -272,7 +277,7 @@ module.exports = app => {
         //var gift = new Gift();
         //setting  new data to whatever was changed. If
         //nothing was changed we will not alter the field.
-        recipient[0].gifts.push({
+        const newGift = {
           title: req.body.title,
           summary: req.body.summary,
           background: req.body.background,
@@ -282,7 +287,8 @@ module.exports = app => {
           dollars: req.body.dollars,
           creationDate: Date.now(),
           items: req.body.items
-        });
+        };
+        recipient[0].gifts = [newGift, ...recipient[0].gifts];
         // console.log(recipient[0].gifts);
 
         //save gift
