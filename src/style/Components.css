@@ -171,9 +171,14 @@ h1, h2, h3{
     font-style: italic;
 }
 
+.charity-card-merchant-confirm {
+	font-style: italic;
+}
+
 .charity-card-other-bid {
 	font-weight: 800;
 }
+
 /*Home.js*/
 
 .home-intro-container {

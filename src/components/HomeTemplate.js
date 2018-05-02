@@ -10,6 +10,7 @@ import CharityCard from "../components/CharityCard"
 import DrawerFactory from "../components/DrawerFactory"
 import { ImageLibrary } from "../components/ImageLibrary"
 import {isObjectEmpty} from '../components/Helpers'
+import {PrimaryButtonFunction, LearnMore} from '../components/CardActions'
 
 import "../style/DonorHome.css"
 
@@ -34,22 +35,14 @@ class HomeTemplate extends Component {
 
   render() {
     const recipients = this.state.recipients
-
     const storeState = this.props.store.getState()
-    const selectDonate = charity => () => {
-      this.props.showCharity(true, charity)
-    }
-    const learnMore = charity => () => {
-      this.props.history.push({
-        pathname: `/charity/${charity.ethRecipientAddr}/${this.props.userType}`,
-        state: { charity }
-      })
-    }
 
     const cardsForRecipients = (recipients) => {
       return recipients.map((r, i) => {
         // Assume it is the first gift
         const gift = r.gifts[0]
+        const buttonFuncs = [LearnMore(this), PrimaryButtonFunction(r, this.props.account)(this)]
+
         return (
           <CharityCard
             key={i}
@@ -57,9 +50,9 @@ class HomeTemplate extends Component {
             subtitle={gift.title}
             description={gift.summary}
             image={ImageLibrary(r.image)}
-            onImageClick={learnMore(r)}
+            onImageClick={LearnMore(this)(r)}
             preButtons={this.props.buttons.pre(gift)}
-            buttons={this.props.buttons.main(r, [learnMore, selectDonate])}
+            buttons={this.props.buttons.main(r, buttonFuncs)}
             postButtons={this.props.buttons.post(gift)}
           />
         )

@@ -17,15 +17,15 @@ export const Bid = async (ethData, completion = (err) => {}) => {
 				gas: 2000000
 			})
 		if (bidEntry.status === "0x0" || !bidEntry.status) {
-			console.log("Transaction Failed!!!")
+			const err = new Error("Bid transaction failed")
+			return completion(err)
 		} else {
 			let rawEventData = bidEntry.events["0"].raw.data
 			let rawBidData = rawEventData.substr(rawEventData.length - 64)
 			let bidDataDecimal = parseInt(rawBidData, 16)
 			console.log(`You've bid ${bidDataDecimal} wei on the gift at ${bidEntry.to}`)
-			// console.log(bidEntry)
+			return completion()
 		}
-		completion()
 	} catch (err) {
 		completion(err)
 	}

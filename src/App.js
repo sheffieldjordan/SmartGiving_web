@@ -19,7 +19,6 @@ import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
 import GetAllStats from './ethereum/components/GetAllStats'
 import SelectMerchant from './containers/SelectMerchant'
-import ItemSent from './ethereum/components/ItemSent'
 import ItemReceived from './ethereum/components/ItemReceived'
 import GetActiveGifts from "./containers/GetActiveGifts";
 import Team from './containers/Team'
@@ -116,10 +115,6 @@ class App extends Component {
 							<Route
 								path="/selectmerchant/:charityID"
 								component={() => <SelectMerchant store={this.props.store} />}
-							/>
-							<Route
-								path="/itemsent"
-								component={() => <ItemSent store={this.props.store} />}
 							/>
 							<Route
 								path="/itemreceived"
