@@ -15,8 +15,19 @@ const sendError = (res, error) => {
 };
 module.exports = app => {
   //*************** Working with Gabe ***************//
+  // app.get("/api/activeRecipientsList", async function(req, res) {
+  //   const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
+  //   res.json(recipients);
+  // });
+
   app.get("/api/activeRecipientsList", async function(req, res) {
-    const recipients = await Recipient.find({}, { _id: 0, __v: 0 });
+    const recipients = await Recipient.aggregate([
+      //{ $project: { gifts: 1 } },
+      { $unwind: "$gifts" },
+      { $sort: { "gifts.creationDate": -1 } },
+      { $match: { "gifts.itemReceived": { $ne: true } } },
+      { $group: { _id: "$_id", gifts: { $push: "$gifts" } } }
+    ]);
     res.json(recipients);
   });
 
