@@ -1,5 +1,6 @@
 import {ItemSent} from '../ethereum/components/ItemSent'
-import {ConfirmShippedRequest} from '../backend/EthereumRequestManager'
+import {ConfirmRequest} from '../backend/EthereumRequestManager'
+import {UpdateDatabase} from '../backend/APIManager'
 
 export const SelectDonate = component => charity => () => {
   component.props.showCharity(true, charity)
@@ -13,9 +14,9 @@ export const LearnMore = component => charity => () => {
 }
 
 export const ConfirmShipment = component => charity => () => {
-	ItemSent(ConfirmShippedRequest(charity), (err) => {
+	ItemSent(ConfirmRequest(charity), (err) => {
 		if (err !== undefined) alert(err)
-		else console.log(`Wow I love ${charity.title}`)
+		else UpdateDatabase(() => console.log("Finished confirming shipment"))
 	})
   
 }

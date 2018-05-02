@@ -25,7 +25,7 @@ export const ChooseMerchantRequest = (gift, merchantAddress) => {
 	}
 }
 
-export const ConfirmShippedRequest = (charity) => {
+export const ConfirmRequest = (charity) => {
 	const gift = charity.gifts[0]
 	return {
 		giftAddress: gift.ethGiftAddr

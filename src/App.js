@@ -19,12 +19,12 @@ import ThankYou from './containers/ThankYou'
 import GiftPage from './containers/GiftPage'
 import GetAllStats from './ethereum/components/GetAllStats'
 import SelectMerchant from './containers/SelectMerchant'
-import ItemReceived from './ethereum/components/ItemReceived'
-import GetActiveGifts from "./containers/GetActiveGifts";
+import GetActiveGifts from "./containers/GetActiveGifts"
+import ItemReceivedPage from "./containers/ItemReceivedPage"
 import Team from './containers/Team'
 import {PollUserAddress, CancelPollUserAddress} from './components/User'
 
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 
 const theme = createMuiTheme({
   palette: {
@@ -118,7 +118,7 @@ class App extends Component {
 							/>
 							<Route
 								path="/itemreceived"
-								component={() => <ItemReceived store={this.props.store} />}
+								component={() => <ItemReceivedPage account={this.state.account}/>}
 							/>
 							<Route
 								path="/getActiveGifts"
