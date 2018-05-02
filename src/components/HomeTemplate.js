@@ -33,6 +33,8 @@ class HomeTemplate extends Component {
   }
 
   render() {
+    const recipients = this.state.recipients
+
     const storeState = this.props.store.getState()
     const selectDonate = charity => () => {
       this.props.showCharity(true, charity)
@@ -44,24 +46,32 @@ class HomeTemplate extends Component {
       })
     }
 
-    const recipients = this.state.recipients
-    const cards = recipients.map((r, i) => {
-      // Assume it is the first gift
-      const gift = r.gifts[0]
-      return (
-        <CharityCard
-          key={i}
-          title={r.title}
-          subtitle={gift.title}
-          description={gift.summary}
-          image={ImageLibrary(r.image)}
-          onImageClick={learnMore(r)}
-          preButtons={this.props.buttons.pre(gift)}
-          buttons={this.props.buttons.main(r, [learnMore, selectDonate])}
-          postButtons={this.props.buttons.post(gift)}
-        />
-      )
+    const cardsForRecipients = (recipients) => {
+      return recipients.map((r, i) => {
+        // Assume it is the first gift
+        const gift = r.gifts[0]
+        return (
+          <CharityCard
+            key={i}
+            title={r.title}
+            subtitle={gift.title}
+            description={gift.summary}
+            image={ImageLibrary(r.image)}
+            onImageClick={learnMore(r)}
+            preButtons={this.props.buttons.pre(gift)}
+            buttons={this.props.buttons.main(r, [learnMore, selectDonate])}
+            postButtons={this.props.buttons.post(gift)}
+          />
+        )
+      })      
+    }
+    const sectionedRecipients = this.props.sectioningFunc(recipients)
+    const sections = sectionedRecipients.map((s) => {
+      s.cards = cardsForRecipients(s.charities)
+      return s
     })
+
+
 
     console.log(recipients)
 
@@ -84,7 +94,7 @@ class HomeTemplate extends Component {
       />
     )
 
-    return <CardPage cards={cards} drawer={drawer} />
+    return <CardPage sections={sections} drawer={drawer} />
   }
 }
 
