@@ -31,6 +31,7 @@ contract GiftFactory {
     event ItemShipped(address gift, uint time);
     event ItemDelivered(address gift, uint time);
 
+
     function createSmartGift(address _recipient, uint32 _expiry, string _donorMsg, string _databaseId) public payable returns(address){
         require(msg.value > 1000000);
         address newGift = (new SmartGift).value(msg.value)(_recipient, msg.sender, _expiry, _donorMsg, _databaseId);
@@ -100,7 +101,7 @@ contract GiftFactory {
         address[] memory result = new address[](recipientGiftCount[_recipient]);
         uint counter = 0;
         for (uint i = 0; i < gifts.length; i++) {
-            if (giftToOwner[i] == _recipient) {
+            if (giftToOwner[i] == _recipient && giftExists[gifts[i].location] == true) {
                 result[counter] = gifts[i].location;  //??
                 counter++;
             }
@@ -111,6 +112,7 @@ contract GiftFactory {
     function getRecipients() view public returns(address[]){
         return recipients;
     }
+
 }
 
 contract SmartGift {
@@ -211,7 +213,7 @@ contract SmartGift {
 
     function recipientReceivesItem() public recipientOnly {
         itemDelivered = true;
-        giftFactory.itemShipped(address(this), now);
+        giftFactory.itemDelivered(address(this), now);
         timeReceived = now;
         lastUpdate = now;
     }
