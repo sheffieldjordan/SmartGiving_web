@@ -54,6 +54,16 @@ class MerchantBid extends Component {
 	}
 }
 
+class MerchantConfirm extends Component {
+	render () {
+		return(
+			<div className = "charity-card-commitment-section">
+				<span className="charity-card-merchant-confirm">Congratulations! You won the bid and your money has been sent. Now it's time to ship your items.</span> 
+			</div>
+		)
+	}
+}
+
 class DonorExpiry extends Component {
 	render () {
 		return (
@@ -81,6 +91,21 @@ const merchantBid = (request, merchantAddress) => {
 	}
 }
 
+
+const merchantStatus = (request, merchantAddress) => {
+	const bid = merchantBid(request, merchantAddress)
+	const winningMerchant = request.ethMerchantAddr
+	if (bid !== undefined) {
+		if (winningMerchant === merchantAddress) {
+			return "won"
+		} else {
+			return "bid"
+		}
+	} else {
+		return "open"
+	}
+}
+
 const minimumBid = (request) => {
 	return request.bids.reduce((finalBid, b) => Math.min(finalBid, b.bidAmt), Number.MAX_SAFE_INTEGER)
 }
@@ -100,15 +125,41 @@ export const DonorActionButtons = (charity, [onLearnMore, onDonate]) => {
 }
 
 export const MerchantPreButtons = (request, merchantAddress) => {
-	const minBid = minimumBid(request)
 	const bid = merchantBid(request, merchantAddress)
-	return bid === undefined ?  [<DonorCommitment request={request} key={key()}/>] : [<MerchantBid bid={bid} minBid={minBid} key={key()}/>]
+	const minBid = minimumBid(request)
+	switch(merchantStatus(request, merchantAddress)) {
+		case "won":
+			return [<MerchantConfirm request={request} key={key()}/>]
+		case "bid":
+			return [<MerchantBid bid={bid} minBid={minBid} key={key()}/>]
+		case "open":
+			return [<DonorCommitment request={request} key={key()}/>]
+		default:
+			return [<div/>]
+	}
 }
 
 export const MerchantActionButtons = (charity, [onLearnMore, onBid], merchantAddress) => {
-	const bidText = merchantBid(charity.gifts[0], merchantAddress) === undefined ? "Bid Now" : "Change Bid"
+	let bidText
+	let moreInfoText
+	switch(merchantStatus(charity.gifts[0], merchantAddress)) {
+		case "won":
+			bidText = "Confirm Shipment"
+			moreInfoText = "Review Items"
+			break
+		case "bid":
+			bidText = "Change Bid"
+			moreInfoText = "Learn More"
+			break
+		case "open":
+			bidText = "Bid Now"
+			moreInfoText = "Learn More"
+			break
+		default:
+			break
+	}
 	return [
-		button("Learn More", onLearnMore(charity)),
+		button(moreInfoText, onLearnMore(charity)),
 		button(bidText, onBid(charity))
     ]
 }
