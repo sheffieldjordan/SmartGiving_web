@@ -6,7 +6,7 @@ import DrawerFactory from "../components/DrawerFactory"
 import ContactInfo from "../components/ContactInfo"
 import { ImageLibrary } from "../components/ImageLibrary"
 import {isObjectEmpty, PriceForItems} from '../components/Helpers'
-import {WeiToEther} from '../style/Formatter'
+import {WeiToEther, DigitsPerEther} from '../style/Formatter'
 import GiftTextFactory from '../components/GiftTextFactory'
 import { FetchGift } from '../backend/APIHelper'
 
@@ -51,7 +51,7 @@ class GiftPage extends Component {
 
   defaultCost(useDollars, gift) {
     if (useDollars) return PriceForItems(gift.items)
-    return WeiToEther(gift.donorDonationAmt).toFixed(5)
+    return WeiToEther(gift.donorDonationAmt)
   }
 
   render() {
@@ -89,7 +89,7 @@ class GiftPage extends Component {
         return unit + Math.floor(val).toFixed(2) 
       }
       else {
-        return unit + " " + parseFloat(val).toFixed(5)
+        return unit + " " + parseFloat(val).toFixed(DigitsPerEther)
       }
     }
 

@@ -167,6 +167,13 @@ h1, h2, h3{
 	font-weight: 1000;
 }
 
+.charity-card-min-bid {
+    font-style: italic;
+}
+
+.charity-card-other-bid {
+	font-weight: 800;
+}
 /*Home.js*/
 
 .home-intro-container {

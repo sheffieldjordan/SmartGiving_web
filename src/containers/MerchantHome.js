@@ -12,13 +12,13 @@ class MerchantHome extends Component {
   render() {
 
     const buttons = {
-      "pre": ((gift) => MerchantPreButtons(gift)),
-      "main": ((charity, actions) => MerchantActionButtons(charity, actions)),
+      "pre": ((gift) => MerchantPreButtons(gift, this.props.account)),
+      "main": ((charity, actions) => MerchantActionButtons(charity, actions, this.props.account)),
       "post" : ((gift) => MerchantPostButtons(gift))
     }
 
     const userType = UserType.MERCHANT
-    const priceFunc = (gift) => WeiToEther(gift.donorDonationAmt).toFixed(5)
+    const priceFunc = (gift) => WeiToEther(gift.donorDonationAmt)
     const filter = HomepageFilter(true)
     const sectioningFunc = (recipients) => {
       const fulfilledFilter = (fulfilled) => (charity) => {
@@ -44,7 +44,8 @@ class MerchantHome extends Component {
                     buttons={buttons}
                     priceFunc={priceFunc}
                     sectioningFunc={sectioningFunc}
-                    userType={userType}/>
+                    userType={userType}
+                    account={this.props.account}/>
       )
   }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from 'material-ui/Button';
-
 import {StringFromDate, WeiToDollars, WeiToEther} from '../style/Formatter'
 
 /* PRIVATE */ 
@@ -28,7 +27,28 @@ class DonorCommitment extends Component {
 		return (
 			<div className = "charity-card-commitment-section">
 				<span className = "charity-card-commitment-pre">Donor has committed: </span>
-				<span className = "charity-card-commitment-dollars">{WeiToEther(donation).toFixed(3)} ETH (${WeiToDollars(donation)} USD)</span>
+				<span className = "charity-card-commitment-dollars">{WeiToEther(donation)} ETH (${WeiToDollars(donation)} USD)</span>
+			</div>
+		)
+	}
+}
+
+class MerchantBid extends Component {
+	render () {
+		const bid = this.props.bid
+		const minBid = this.props.minBid
+		return (
+			<div>
+				<div className = "charity-card-commitment-section">
+					<span className = "charity-card-commitment-pre">Your bid: </span>
+					<span className = "charity-card-commitment-dollars">{WeiToEther(bid)} ETH (${WeiToDollars(bid)} USD)</span>
+				</div>
+				<div className = "charity-card-commitment-section">
+				{bid === minBid && <span className="charity-card-min-bid">You currently have the lowest bid for this request</span>}
+				{bid !== minBid && <span className="charity-card-min-bid">Currently there is a bid lower than yours at 
+									<span className = "charity-card-other-bid"> {WeiToEther(minBid)} ETH (${WeiToDollars(minBid)})</span></span>}
+				</div>
+
 			</div>
 		)
 	}
@@ -53,6 +73,18 @@ const button = (title, onClick) => {
 	return <Button key={key()} size="medium" variant="raised" color="default" onClick={onClick}>{title}</Button>
 }
 
+const merchantBid = (request, merchantAddress) => {
+	try {
+		return request.bids.filter(b => b.ethMerchantAddr === merchantAddress)[0].bidAmt
+	} catch(err) {
+		return undefined
+	}
+}
+
+const minimumBid = (request) => {
+	return request.bids.reduce((finalBid, b) => Math.min(finalBid, b.bidAmt), Number.MAX_SAFE_INTEGER)
+}
+
 /* EXPORTS */
 export const DonorPreButtons = (request) => {
 	return [
@@ -67,16 +99,17 @@ export const DonorActionButtons = (charity, [onLearnMore, onDonate]) => {
     ]
 }
 
-export const MerchantPreButtons = (request) => {
-	return [
-		<DonorCommitment request={request} key={key()}/>
-	]
+export const MerchantPreButtons = (request, merchantAddress) => {
+	const minBid = minimumBid(request)
+	const bid = merchantBid(request, merchantAddress)
+	return bid === undefined ?  [<DonorCommitment request={request} key={key()}/>] : [<MerchantBid bid={bid} minBid={minBid} key={key()}/>]
 }
 
-export const MerchantActionButtons = (charity, [onLearnMore, onBid]) => {
+export const MerchantActionButtons = (charity, [onLearnMore, onBid], merchantAddress) => {
+	const bidText = merchantBid(charity.gifts[0], merchantAddress) === undefined ? "Bid Now" : "Change Bid"
 	return [
 		button("Learn More", onLearnMore(charity)),
-		button("Bid Now", onBid(charity))
+		button(bidText, onBid(charity))
     ]
 }
 
