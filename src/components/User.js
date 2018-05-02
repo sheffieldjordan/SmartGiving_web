@@ -35,5 +35,5 @@ export const PollUserAddress = (completion = () => {}) => {
 }
 
 export const CancelPollUserAddress = () => {
-	if (currentTimer !== undefined) currentTimer.cancelInterval()
+	if (currentTimer !== undefined) currentTimer.clearTimeout()
 }
