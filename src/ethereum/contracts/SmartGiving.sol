@@ -178,6 +178,9 @@ contract SmartGift {
         if (lowestBid > _bid) {
             lowestBid = _bid;
             }
+        if (maxPrice < _bid) {
+            _bid = maxPrice;
+        }
         bidderCount++;
         biddersList.push(msg.sender);
         bidList.push(_bid);
@@ -189,6 +192,7 @@ contract SmartGift {
 
     function recipientPicksMerchant(address _merchant) public recipientOnly {
         require(merchantsToBids[_merchant] > 0);
+        require(merchant == 0x0);
         merchant = _merchant;
         finalCost = merchantsToBids[merchant];
         merchant.transfer(finalCost);
